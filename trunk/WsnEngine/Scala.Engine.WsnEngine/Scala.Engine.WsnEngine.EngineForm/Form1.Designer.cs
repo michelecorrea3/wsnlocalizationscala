@@ -52,6 +52,7 @@
             this.radioButtonCentroidLocalization.TabStop = true;
             this.radioButtonCentroidLocalization.Text = "Centroid Localization";
             this.radioButtonCentroidLocalization.UseVisualStyleBackColor = true;
+            this.radioButtonCentroidLocalization.CheckedChanged += new System.EventHandler(this.radioButtonCentroidLocalization_CheckedChanged);
             // 
             // radioButtonMinMaxSimpleModel
             // 
@@ -63,6 +64,7 @@
             this.radioButtonMinMaxSimpleModel.TabStop = true;
             this.radioButtonMinMaxSimpleModel.Text = "MinMaxSimpleModel";
             this.radioButtonMinMaxSimpleModel.UseVisualStyleBackColor = true;
+            this.radioButtonMinMaxSimpleModel.CheckedChanged += new System.EventHandler(this.radioButtonMinMaxSimpleModel_CheckedChanged);
             // 
             // Form1
             // 

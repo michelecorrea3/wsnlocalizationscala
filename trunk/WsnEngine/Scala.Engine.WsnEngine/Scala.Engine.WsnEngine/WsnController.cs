@@ -61,6 +61,12 @@ namespace Elab.Rtls.Engines.WsnEngine
 
         #endregion private variables
 
+        public string SelectedAlgorithm
+        {
+            get; set;
+        }
+
+
         #region Event variables
 
         public event EventHandler<EventMessage> NewPositionEvent;
@@ -334,12 +340,16 @@ namespace Elab.Rtls.Engines.WsnEngine
                     }
 
                     //TODO: switch on the bulletlist or whatever you use to select the algorithm
-                    switch ()
+                    switch (SelectedAlgorithm)
                     {
-                            
+                        case "CentroidLocalization":
+                            pos = CentroidLocalization.CalculatePosition(CurrentBlindNode);
+                            break;
+                        case "MinMax":
+                            pos = MinMaxSimpleModel.CalculatePosition(CurrentBlindNode);
+                            break;
                     }
 
-                    pos = CentroidLocalization.CalculatePosition(CurrentBlindNode);
                     Console.WriteLine("Position succesfully calculated, x = {0}, y = {1}", pos.x.ToString(), pos.y.ToString());
 
                     //Create the command that we send to the database to insert the new row.

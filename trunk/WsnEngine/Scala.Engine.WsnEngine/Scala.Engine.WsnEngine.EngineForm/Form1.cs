@@ -14,32 +14,46 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
 {
     public partial class Form1 : Form
     {
+        private Controller WsnController;
+
         public Form1()
         {
             InitializeComponent();
             this.Text = "WsnEngine Panel";
 
             //start the WsnController
-            Controller WsnController = new Controller();
+            WsnController = new Controller();
             WsnEngine.Advise(WsnController);
 
             //start the Wcf Host
             Host WsnHost = new Host();
         }
 
-        public string SelectedAlgorithm
+        private void radioButtonCentroidLocalization_CheckedChanged(object sender, EventArgs e)
         {
-            get
-            {
-                if (radioButtonCentroidLocalization.Checked)
-                    return "CentroidLocalization";
-                else if (radioButtonMinMaxSimpleModel.Checked)
-                    return "MinMaxSimpleModel";
-                else
-                {
-                    return "Rubbish";
-                }
-            }
+            if (radioButtonCentroidLocalization.Checked)
+                WsnController.SelectedAlgorithm = "CentroidLocalization";
         }
+
+        private void radioButtonMinMaxSimpleModel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonMinMaxSimpleModel.Checked)
+                WsnController.SelectedAlgorithm = "MinMax";
+        }
+
+        //public string SelectedAlgorithm
+        //{
+        //    get
+        //    {
+        //        if (radioButtonCentroidLocalization.Checked)
+        //            return "CentroidLocalization";
+        //        else if (radioButtonMinMaxSimpleModel.Checked)
+        //            return "MinMaxSimpleModel";
+        //        else
+        //        {
+        //            return "Rubbish";
+        //        }
+        //    }
+        //}
     }
 }
