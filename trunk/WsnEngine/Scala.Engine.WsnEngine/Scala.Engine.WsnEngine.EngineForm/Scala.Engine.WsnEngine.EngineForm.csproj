@@ -31,9 +31,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Scala\Scala-src\Resources\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
     <Reference Include="Elab.Rtls.Engines.WsnEngine.Hosts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Scala.Hosts.WsnEngine\obj\Debug\Elab.Rtls.Engines.WsnEngine.Hosts.dll</HintPath>
+    </Reference>
+    <Reference Include="Elab.Toolkit.Rtls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40f3577d2354700d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Scala\Scala-src\Elab.Toolkit.Rtls\obj\Debug\Elab.Toolkit.Rtls.dll</HintPath>
+    </Reference>
+    <Reference Include="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Scala\Scala-src\Scala.Core\obj\Debug\Scala.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -60,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -70,6 +85,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,6 +95,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Scala.Engine.WsnEngine\Elab.Rtls.Engines.WsnEngine.csproj">
+      <Project>{C91B3347-B0FE-4AA9-AC1F-0547B7D62E60}</Project>
+      <Name>Elab.Rtls.Engines.WsnEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

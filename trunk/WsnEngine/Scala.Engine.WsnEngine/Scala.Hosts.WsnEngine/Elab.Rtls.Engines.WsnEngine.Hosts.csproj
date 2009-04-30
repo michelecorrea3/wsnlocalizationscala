@@ -6,7 +6,7 @@
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Elab.Rtls.Engines.WsnEngine.Hosts</RootNamespace>
     <AssemblyName>Elab.Rtls.Engines.WsnEngine.Hosts</AssemblyName>
@@ -48,6 +48,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Scala\Scala-src\Resources\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
     <Reference Include="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Scala\Scala-src\Scala.Core\obj\Debug\Scala.Core.dll</HintPath>

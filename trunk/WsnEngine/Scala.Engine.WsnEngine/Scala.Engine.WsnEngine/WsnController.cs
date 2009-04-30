@@ -334,6 +334,10 @@ namespace Elab.Rtls.Engines.WsnEngine
                     }
 
                     //TODO: switch on the bulletlist or whatever you use to select the algorithm
+                    switch ()
+                    {
+                            
+                    }
 
                     pos = CentroidLocalization.CalculatePosition(CurrentBlindNode);
                     Console.WriteLine("Position succesfully calculated, x = {0}, y = {1}", pos.x.ToString(), pos.y.ToString());

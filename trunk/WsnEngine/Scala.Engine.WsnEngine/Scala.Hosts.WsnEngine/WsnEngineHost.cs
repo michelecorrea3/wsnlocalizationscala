@@ -12,16 +12,37 @@ namespace Elab.Rtls.Engines.WsnEngine.Hosts
     {
         #region Methods
 
+        ///// <summary>
+        ///// Constructor
+        ///// </summary>
+        ///// <param name="args"></param>
+        //static void Main(string[] args)
+        //{
+        //    //bad design
+        //    //start the WsnController
+        //    //Controller WsnController = new Controller();
+        //    //WsnEngine.Advise(WsnController);
+
+        //    //start the WCF Engine
+        //    using (ServiceHost host = HostService(typeof(Elab.Rtls.Engines.WsnEngine.WsnEngineService)))
+        //    {
+        //        Console.WriteLine("Press <ENTER> to quit hosting. . . ");
+        //        Console.ReadLine();
+        //    }
+
+        //    //TODO: dispose of WsnController?
+        //}
+
+
+
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="args"></param>
-        static void Main(string[] args)
+        ///<param name="args"></param>
+        static Host()
         {
-            //bad design
             //start the WsnController
-            Controller WsnController = new Controller();
-            WsnEngine.Advise(WsnController);
+            //Controller WsnController = new Controller();
 
             //start the WCF Engine
             using (ServiceHost host = HostService(typeof(Elab.Rtls.Engines.WsnEngine.WsnEngineService)))
@@ -32,27 +53,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Hosts
 
             //TODO: dispose of WsnController?
         }
-
-
-
-        ///// <summary>
-        ///// Constructor
-        ///// </summary>
-        ///// <param name="args"></param>
-        //public Host()
-        //{
-        //    //start the WsnController
-        //    Controller WsnController = new Controller();
-
-        //    //start the WCF Engine
-        //    using (ServiceHost host = HostService(typeof(Elab.Rtls.Engines.WsnEngine.WsnEngine)))
-        //    {
-        //        Console.WriteLine("Press <ENTER> to quit hosting. . . ");
-        //        Console.ReadLine();
-        //    }
-
-        //    //TODO: dispose of WsnController?
-        //}
 
 
         /// <summary>

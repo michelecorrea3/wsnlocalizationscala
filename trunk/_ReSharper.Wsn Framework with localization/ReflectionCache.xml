@@ -13,4 +13,5 @@
   <Assembly Name="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37" Image="d2808674-44bd-4302-83ed-aa2693d4e87f" Timestamp="633765019768750000" />
   <Assembly Name="System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Image="cec1eb78-c4b7-4c30-b090-0fb080cd2884" Timestamp="633529485980000000" XmlDocIndexTimestamp="633262442400000000" />
   <Assembly Name="JetBrains.Annotations, Version=4.1.933.3, Culture=neutral, PublicKeyToken=1010a0d8d6380325" Image="7e16ad66-4379-46d7-909f-e4dea1a161db" Timestamp="633559670920000000" XmlDocIndexTimestamp="633559670920000000" />
+  <Assembly Name="Elab.Toolkit.Rtls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40f3577d2354700d" Image="a77900f8-1e31-4e91-96cc-c896480b5b74" Timestamp="633759835360625000" />
 </Assemblies>

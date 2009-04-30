@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DatabaseConnection, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\stable\DatabaseConnection.dll</HintPath>
-    </Reference>
     <Reference Include="Elab.Rtls.Engines.WsnEngine.Positioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.Positioning\obj\Debug\Elab.Rtls.Engines.WsnEngine.Positioning.dll</HintPath>
@@ -56,6 +52,12 @@
     <Compile Include="AlgorithmsCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DatabaseConnection\DatabaseConnection.csproj">
+      <Project>{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}</Project>
+      <Name>DatabaseConnection</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
