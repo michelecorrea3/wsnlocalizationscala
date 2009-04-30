@@ -12,7 +12,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
         /// <summary>
         /// Abstract base class for all positioning algorithms used for type safety
-        /// </summary>
         public abstract class Positioning
         {
         }

@@ -134,6 +134,16 @@ namespace Elab.Rtls.Engines.WsnEngine
                             case "RTLSBlinkTime":
                                 tagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
                                 break;
+                            case "All":
+                                tagBlink["TagID"] = Row["idnode"].ToString();
+                                tagBlink["Name"] = Row["name"].ToString();
+                                tagBlink["Serial"] = Row["sensor"].ToString();
+                                tagBlink["Location/X"] = Row["X"].ToString();
+                                tagBlink["Location/Y"] = Row["Y"].ToString();
+                                tagBlink["Buttons"] = Row["button1"].ToString();
+                                tagBlink["Temperature"] = Row["temperature"].ToString();
+                                tagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                                break;
                             default:
                                 throw new FaultException("The field" + field.ToString() + " is not available");
                         }
@@ -234,6 +244,23 @@ namespace Elab.Rtls.Engines.WsnEngine
                             break;
                         case "RTLSBlinkTime":
                             ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                            break;
+                        case "All":
+                            //switch on the type of event
+                            switch (eventSubscription.EventType)
+                            {
+                                case "NewSensorData":
+                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["Temperature"] = tagBlink["temperature"];
+                                    ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                                    break;
+                                case "NewPosition":
+                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["Location/X"] = tagBlink["X"];
+                                    ReturnTagBlink["Location/Y"] = tagBlink["Y"];
+                                    ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                                    break;
+                            }
                             break;
                         default:
                             throw new FaultException("The field" + field.ToString() + " is not provided in the WSN engine");

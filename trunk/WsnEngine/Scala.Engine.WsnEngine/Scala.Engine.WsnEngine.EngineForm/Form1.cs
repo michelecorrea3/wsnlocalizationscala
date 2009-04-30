@@ -27,6 +27,7 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
 
             //start the Wcf Host
             Host WsnHost = new Host();
+            
         }
 
         private void radioButtonCentroidLocalization_CheckedChanged(object sender, EventArgs e)
@@ -40,20 +41,5 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             if (radioButtonMinMaxSimpleModel.Checked)
                 WsnController.SelectedAlgorithm = "MinMax";
         }
-
-        //public string SelectedAlgorithm
-        //{
-        //    get
-        //    {
-        //        if (radioButtonCentroidLocalization.Checked)
-        //            return "CentroidLocalization";
-        //        else if (radioButtonMinMaxSimpleModel.Checked)
-        //            return "MinMaxSimpleModel";
-        //        else
-        //        {
-        //            return "Rubbish";
-        //        }
-        //    }
-        //}
     }
 }

@@ -288,19 +288,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     Console.WriteLine("AddSensorMeasurements OK");
                     Console.WriteLine("WSNID is: \n" + row["ID"].ToString());
 
-                    //#region NewSensorData
-
-                    //XElementExtended payload = new XElementExtended("Event",
-                    //    new XElementExtended("ID", row["ID"].ToString()),
-                    //    new XElementExtended("Type", "NewSensorData"),
-                    //    new XElementExtended("Data",
-                    //        new XElementExtended("Temperature", row["Temp"].ToString()),
-                    //        new XElementExtended("Light", row["Light"].ToString())));
-                    ////payload["ID"] = row["ID"].ToString();
-                    ////payload["Type"] = "NewSensorData";
-                    ////payload["Data"] = new XElementExtended(new XElementExtended("Temperature", row["Temp"].ToString()),new XElementExtended("Light", row["Light"].ToString()));
-                    //NewSensorDataEvent(this, new EventMessage("1", payload.ToString()));
-
+                    #region NewSensorData
                     if (NewSensorDataEvent != null)
                     {
                         EventMessage EventData = new EventMessage();
@@ -313,8 +301,7 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                         NewSensorDataEvent(this, EventData);
                     }
-
-                    //#endregion
+                    #endregion
 
                 }
                 else if (Set.DataSetName == "LocationMessage")
@@ -366,18 +353,21 @@ namespace Elab.Rtls.Engines.WsnEngine
                     "Centroid Localization" + "');";
                     Console.WriteLine("Add location OK");
 
-                    //#region NewPosition
+                    #region NewPosition
 
-                    //conform to the RTLS ANSI API
-                    //XElementExtended payload = new XElementExtended("Event",
-                    //    new XElementExtended("ID", row["ID"].ToString()),
-                    //    new XElementExtended("Type", "NewPosition"),
-                    //    new XElementExtended("Data",
-                    //        new XElementExtended("X", row["X"].ToString()),
-                    //        new XElementExtended("Y", row["Y"].ToString())));
-                    //NewPositionEvent(this, new EventMessage("2" ,payload.ToString()));
+                    if (NewPositionEvent != null)
+                    {
+                        EventMessage EventData = new EventMessage();
+                        EventData.EventSubscriptionId = "2";
+                        EventData.EventType = "NewPosition";
 
-                    //#endregion
+                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                        EventData.TagBlink["X"] = pos.x.ToString();
+                        EventData.TagBlink["Y"] = pos.y.ToString();
+
+                        NewPositionEvent(this, EventData);
+                    }
+                    #endregion
 
                 }
                 else if (Set.DataSetName == "StatusMessage")

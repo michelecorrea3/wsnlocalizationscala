@@ -10,8 +10,8 @@
   <Assembly Name="ZedGraph, Version=5.0.9.41461, Culture=neutral, PublicKeyToken=02a83cbd123fcd60" Image="2f2a464d-f4fb-4fa9-8603-15c4594b0de7" Timestamp="633598356420000000" />
   <Assembly Name="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc" Image="81c4e266-c756-4545-a08f-d2e76350ab61" Timestamp="633746338374062500" />
   <Assembly Name="Elab.Toolkit.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37c3a49e34abacd0" Image="96c44202-d4e8-4568-97be-c4dbf0b1fb08" Timestamp="633765019755781250" />
-  <Assembly Name="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37" Image="d2808674-44bd-4302-83ed-aa2693d4e87f" Timestamp="633765019768750000" />
   <Assembly Name="System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Image="cec1eb78-c4b7-4c30-b090-0fb080cd2884" Timestamp="633529485980000000" XmlDocIndexTimestamp="633262442400000000" />
   <Assembly Name="JetBrains.Annotations, Version=4.1.933.3, Culture=neutral, PublicKeyToken=1010a0d8d6380325" Image="7e16ad66-4379-46d7-909f-e4dea1a161db" Timestamp="633559670920000000" XmlDocIndexTimestamp="633559670920000000" />
   <Assembly Name="Elab.Toolkit.Rtls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40f3577d2354700d" Image="a77900f8-1e31-4e91-96cc-c896480b5b74" Timestamp="633759835360625000" />
+  <Assembly Name="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37" Image="00c5322c-2cb4-46fb-9388-8822b2be783a" Timestamp="633766755567812500" />
 </Assemblies>

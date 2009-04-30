@@ -39,7 +39,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Hosts
         /// Constructor
         /// </summary>
         ///<param name="args"></param>
-        static Host()
+        static void Main()
         {
             //start the WsnController
             //Controller WsnController = new Controller();
