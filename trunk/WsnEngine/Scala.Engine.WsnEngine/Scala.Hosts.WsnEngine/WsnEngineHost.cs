@@ -10,6 +10,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Hosts
     /// </summary>
     public class Host
     {
+        
+
         #region Methods
 
         ///// <summary>
@@ -39,7 +41,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Hosts
         /// Constructor
         /// </summary>
         ///<param name="args"></param>
-        static void Main()
+        static Host()
         {
             //start the WsnController
             //Controller WsnController = new Controller();

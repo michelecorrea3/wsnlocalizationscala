@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Assemblies Version="1073741836">
   <Assembly Name="IBM.Data.DB2, Version=8.1.2.1, Culture=neutral, PublicKeyToken=7c307b91aa13d208" Image="fa5fb24b-23db-4b96-983e-e654a99d8e55" Timestamp="633598358520000000" />
-  <Assembly Name="Elab.Rtls.Engines.WsnEngine.Positioning, Version=1.0.0.0, Culture=neutral" Image="df7ec05c-7796-4eff-b739-308dde9cb9fd" Timestamp="633765004970000000" />
   <Assembly Name="System.Core, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Image="701c747a-6977-45c3-87f6-703f8ffd97ab" Timestamp="633529644480000000" XmlDocIndexTimestamp="633265035640000000" />
   <Assembly Name="System.Xml.Linq, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Image="6febf7d1-0a44-420e-b823-7c6749bffc3b" Timestamp="633529644480000000" XmlDocIndexTimestamp="633258133180000000" />
   <Assembly Name="System.Data.DataSetExtensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Image="5859ac66-be9a-457b-b139-2bc0fee21fe1" Timestamp="633529644480000000" XmlDocIndexTimestamp="633265035640000000" />
@@ -13,5 +12,7 @@
   <Assembly Name="System.ServiceModel, Version=3.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Image="cec1eb78-c4b7-4c30-b090-0fb080cd2884" Timestamp="633529485980000000" XmlDocIndexTimestamp="633262442400000000" />
   <Assembly Name="JetBrains.Annotations, Version=4.1.933.3, Culture=neutral, PublicKeyToken=1010a0d8d6380325" Image="7e16ad66-4379-46d7-909f-e4dea1a161db" Timestamp="633559670920000000" XmlDocIndexTimestamp="633559670920000000" />
   <Assembly Name="Elab.Toolkit.Rtls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40f3577d2354700d" Image="a77900f8-1e31-4e91-96cc-c896480b5b74" Timestamp="633759835360625000" />
-  <Assembly Name="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37" Image="00c5322c-2cb4-46fb-9388-8822b2be783a" Timestamp="633766755567812500" />
+  <Assembly Name="Elab.Rtls.Engines.WsnEngine.Positioning, Version=1.0.0.0, Culture=neutral" Image="1bc09ce7-1d1f-434a-b2ea-ed599baeec5c" Timestamp="633766738393593750" />
+  <Assembly Name="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37" Image="72005030-bcb7-4e04-ac05-028a64605f0f" Timestamp="633766755567812500" />
+  <Assembly Name="NHibernate, Version=1.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4" Image="b5ceebf2-a60b-4f49-a8f4-aba19aa5e391" Timestamp="633746338371875000" XmlDocIndexTimestamp="633746338374843750" />
 </Assemblies>

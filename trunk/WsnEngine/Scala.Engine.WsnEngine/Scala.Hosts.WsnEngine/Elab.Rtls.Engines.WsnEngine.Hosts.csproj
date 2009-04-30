@@ -6,7 +6,7 @@
     <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Elab.Rtls.Engines.WsnEngine.Hosts</RootNamespace>
     <AssemblyName>Elab.Rtls.Engines.WsnEngine.Hosts</AssemblyName>
