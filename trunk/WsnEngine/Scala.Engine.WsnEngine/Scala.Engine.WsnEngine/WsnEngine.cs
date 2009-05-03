@@ -40,7 +40,14 @@ namespace Elab.Rtls.Engines.WsnEngine
         #region Constructor
 
         static WsnEngine()
-        { }
+        {
+            
+        }
+
+        private  WsnEngine()
+        {
+            this.EventListeners = new Dictionary<string, EventListener>();
+        }
 
         #endregion
 

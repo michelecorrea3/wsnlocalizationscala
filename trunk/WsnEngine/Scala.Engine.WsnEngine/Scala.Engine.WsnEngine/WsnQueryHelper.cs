@@ -40,40 +40,71 @@ namespace Elab.Rtls.Engines.WsnEngine
 
             //Ignore the fields in the SQL request, just request them all for now...
             //Fields
-            QueryCmd.Append("select idnode, sensor, name, button1, temperature, X, Y, Z  from (select idnode, sensor, name from node) as nd inner join (select * from (select button1, temperature, max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens left outer join (select X, Y, Z, max(time) as loctime, node as locnode from localization group by node) as loc on sens.sensnode = loc.locnode union select * from (select button1, temperature, max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens right outer join (select X, Y, Z, max(time) as loctime, node as locnode from localization group by node) as loc on sens.sensnode = loc.locnode) as sq on nd.idnode = sq.sensnode");
+            QueryCmd.Append(
+                "select idnode, sensor, name, button1, temperature, X, Y, Z  from (select idnode, sensor, name from node) as nd inner join (select * from (select button1, temperature, max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens left outer join (select X, Y, Z, max(time) as loctime, node as locnode from localization group by node) as loc on sens.sensnode = loc.locnode union select * from (select button1, temperature, max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens right outer join (select X, Y, Z, max(time) as loctime, node as locnode from localization group by node) as loc on sens.sensnode = loc.locnode) as sq on nd.idnode = sq.sensnode");
 
-
-            //Filter
-            //Olivier: only ANDs and = 
-            //New filter format is for the next Sprint
-            //which filters???
-            //use TagID, Mac only rest is for later ...
-            //use a where in the SQL query
-            QueryCmd.Append(" where ");
-
-            //there is a better way to do this but just lazy atm.
-            int max = query.Filters.Count, i = 1;
+            if (query.Filters != null)
+            {
+            int i = 1, j = 1;
 
             foreach (string filter in query.Filters.Keys)
             {
+                List<string> filterValues = query.Filters[filter];
+
                 switch (filter)
                 {
                     case "Serial":
-                        QueryCmd.Append("sensor = " + query.Filters["Serial"]);
+                        QueryCmd.Append(" where ");
+
+                        foreach (string filterValue in filterValues)
+                        {
+                            QueryCmd.Append("sensor = " + filterValue);
+                            if (j != filterValues.Count)
+                            {
+                                QueryCmd.Append(" OR ");
+                                j++;
+                            }
+                        }
+                        j = 1;
                         break;
                     case "TagID":
-                        QueryCmd.Append("idnode = " + query.Filters["TagID"]);
+                        QueryCmd.Append(" where ");
+
+                        foreach (string filterValue in filterValues)
+                        {
+                            QueryCmd.Append("idnode = " + filterValue);
+                            if (j != filterValues.Count)
+                            {
+                                QueryCmd.Append(" OR ");
+                                j++;
+                            }
+                        }
+                        j = 1;
                         break;
                     case "Name":
-                        QueryCmd.Append("name = " + query.Filters["Name"]);
+                        QueryCmd.Append(" where ");
+
+                        foreach (string filterValue in filterValues)
+                        {
+                            QueryCmd.Append("name = " + filterValue);
+                            if (j != filterValues.Count)
+                            {
+                                QueryCmd.Append(" OR ");
+                                j++;
+                            }
+                        }
+                        j = 1;
+                        break;
+                    case "":
                         break;
                     default:
                         throw new FaultException("The filter" + filter.ToString() + "is not implemented yet");
                 }
-                if (i < max)
+                if (i < query.Filters.Keys.Count)
                     QueryCmd.Append(" AND ");
                 i++;
             }
+        }
 
             //Sortby
             if (query.SortBy != null)
@@ -83,6 +114,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             //assemble the SQL results into TagBlinks
             //parse them into the correct type
             TagBlinks tagBlinks = new TagBlinks();
+            string TempString = QueryCmd.ToString();
 
             try
             {
@@ -169,7 +201,7 @@ namespace Elab.Rtls.Engines.WsnEngine
         /// For use in IEventSource
         /// </summary>
         /// <param name="query">Query</param>
-        /// <returns>QueryResult</returns>
+        /// <returns>Whether the Query succeeded or not</returns>
         public static bool TryQuery(EventSubscription eventSubscription, TagBlink tagBlink, out TagBlink ReturnTagBlink)
         {
             ReturnTagBlink = null;
@@ -194,6 +226,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                             }
                             if (!availaible)
                                 return false;
+                            break;
+                        case "":
                             break;
                         default :
                             throw new FaultException("Filtering on: " + filterKey + " is not supported yet in WsnEngine");

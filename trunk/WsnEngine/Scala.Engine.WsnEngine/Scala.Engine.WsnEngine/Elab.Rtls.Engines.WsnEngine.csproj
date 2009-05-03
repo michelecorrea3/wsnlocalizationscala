@@ -45,7 +45,7 @@
     </Reference>
     <Reference Include="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Scala\Scala-src\Scala.Core\obj\Debug\Scala.Core.dll</HintPath>
+      <HintPath>..\..\..\..\Scala\Scala-src\Scala.Core\obj\Debug\Scala.Core.dll</HintPath>
     </Reference>
     <Reference Include="SocketConnection, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
