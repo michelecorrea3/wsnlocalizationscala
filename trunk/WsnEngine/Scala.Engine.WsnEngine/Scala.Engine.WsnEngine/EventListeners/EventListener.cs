@@ -41,20 +41,24 @@ namespace Elab.Rtls.Engines.WsnEngine
         {
             switch (eventSubscription.EventType)
             {
-                case "NewSensorData":
+                case "ButtonPressed":
+                case "HumidityChanged":
+                case "LightChanged":
+                case "TemperatureChanged":
                     return new SensorDataEventListener(eventSubscription);
-                case "NewPosition":
+                case "LocationUpdated":
                     return new PositionEventListener(eventSubscription);
             }
-
             throw new ArgumentOutOfRangeException("eventSubscription", "EventType does not exist.");
         }
 
         protected void OnEventReceived(object sender, EventMessage eventMessage)
         {
             EventMessage QueriedEventMessage = new EventMessage();
-            QueriedEventMessage.EventSubscriptionId = eventMessage.EventSubscriptionId;
-            QueriedEventMessage.EventType = eventMessage.EventType;
+            //QueriedEventMessage.EventSubscriptionId = eventMessage.EventSubscriptionId;
+            //QueriedEventMessage.EventType = eventMessage.EventType;
+            QueriedEventMessage.EventSubscriptionId = this.EventSubscription.EventId;
+            QueriedEventMessage.EventType = this.EventSubscription.EventType;
 
             TagBlink TempTagBlink;
 

@@ -96,5 +96,17 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
         }
 
         #endregion Methods
+
+        private void radioButtonMedianFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAverageFilter.Checked)
+                WsnController.SelectedFilter = "Median";
+        }
+
+        private void radioButtonAverageFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAverageFilter.Checked)
+                WsnController.SelectedFilter = "Average";
+        }
     }
 }

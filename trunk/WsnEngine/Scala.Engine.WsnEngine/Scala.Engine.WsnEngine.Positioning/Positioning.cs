@@ -24,22 +24,51 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         /// </summary>
         public abstract class RangeBasedPositioning : Positioning
         {
-            /// <summary>
-            /// Simple FIR filter, with weight 90%
-            /// </summary>
-            /// <param name="RSS"></param>
-            /// <returns></returns>
-            public static double FilterRSS(double RSS)
+            public static double AverageFilter(Queue<double> RSS)
             {
-                double fRSS = 0;
+                double total = 0;
 
-                if (fRSS == 0)
-                    fRSS = RSS;
-                else
-                    fRSS = 0.9 * fRSS + 0.1 * RSS;
+                foreach (var d in RSS)
+                {
+                    total += d;
+                }
 
-                return fRSS;
+                return (total/RSS.Count);
             }
+
+            public static double MedianFilter(Queue<double> RSS)
+            {
+                List<double> RSSList = RSS.ToList();
+                RSSList.Sort();
+
+                //uneven
+                if (RSSList.Count % 2 != 0)
+                {
+                    return RSSList[(RSSList.Count - 1)/2];
+                }
+                //even
+                else
+                {
+                    return ((RSSList[(RSSList.Count/2) - 1] + RSSList[(RSSList.Count/2)])/2);
+                }
+            }
+
+            ///// <summary>
+            ///// Simple FIR filter, with weight 90%
+            ///// </summary>
+            ///// <param name="RSS"></param>
+            ///// <returns></returns>
+            //public static double FilterRSS(double RSS)
+            //{
+            //    double fRSS = 0;
+
+            //    if (fRSS == 0)
+            //        fRSS = RSS;
+            //    else
+            //        fRSS = 0.9 * fRSS + 0.1 * RSS;
+
+            //    return fRSS;
+            //}
 
             /// <summary>
             /// Translates RSS readings into distances expressed in meters
@@ -96,9 +125,9 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         /// Min-Max Localization algorithm with simple radio propagation model
         /// Model parameters:
         /// </summary>
-        public class MinMaxSimpleModel : RangeBasedPositioning
+        public class MinMax : RangeBasedPositioning
         {
-            public static Point CalculatePosition(Node BlindNode)
+            public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod)
             {
                 BoundingBox BnBox = new BoundingBox(0);
                 Point position = new Point();
@@ -109,7 +138,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                     foreach (AnchorNode AN in BlindNode.Anchors)
                     {
                         //perform the ranging
-                        distance = Ranging(AN.RSS);
+                        double fRSS = filterMethod(AN.RSS);
+                        distance = Ranging(fRSS);
 
                         Point center = new Point(AN.posx, AN.posy);
                         BoundingBox AnBox = new BoundingBox(center, distance);
@@ -154,13 +184,14 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             }
         }
 
-        public class Node : Elab.Rtls.Engines.WsnEngine.Positioning.INode
+        public class Node //: Elab.Rtls.Engines.WsnEngine.Positioning.INode
         {
             private MySQLClass MyDb;
 
             private string WsnId, AnchorWsnId;
 
             private List<AnchorNode> Anchorlist = new List<AnchorNode>();
+
 
             public List<AnchorNode> Anchors
             {
@@ -172,6 +203,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 get { return WsnId; }
             }
 
+            public delegate double FilterMethod(Queue<double> RSS);
+
             public Node(string WsnId, MySQLClass MyDb)
             {
                 this.MyDb = MyDb;
@@ -182,7 +215,17 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             {
                 this.MyDb = MyDb;
                 this.WsnId = WsnId;
-                AddAnchor(AnchorWsnId, RSS);
+                NewAnchor(AnchorWsnId, RSS);
+            }
+
+            private void NewAnchor(string AnchorWsnId, double RSS)
+            {
+                this.AnchorWsnId = AnchorWsnId;
+                Point ANpos = new Point();
+
+                ANpos = GetANPosition(AnchorWsnId);
+
+                Anchorlist.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
             }
 
             public void AddAnchor(string AnchorWsnId, double RSS)
@@ -194,20 +237,25 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
                 ANpos = GetANPosition(AnchorWsnId);
 
-                if (!Anchorlist.Exists(HasNodeID))
+                AnchorNode TempANode = Anchorlist.Find(AN => AN.nodeid == AnchorWsnId);
+                int index = Anchorlist.IndexOf(TempANode);
+
+                Anchorlist[index].RSS.Enqueue(RSS);
+
+                if (Anchorlist[index].RSS.Count > 20)
                 {
-                    Anchorlist.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
-                }
-                else
-                {
+                    do
+                    {
+                        Anchorlist[index].RSS.Dequeue();
+                    } while (Anchorlist[index].RSS.Count > 20);
+                }   
                     //RSS bestaande Anchor zoeken
                     //bestaande Anchor Zoeken
-                    TempNode = Anchorlist.Find(HasNodeID);
-                    fRSS = RangeBasedPositioning.FilterRSS(TempNode.RSS);
-                    //RSS filteren via RangeBasedPositioning.Filter
-                    Anchorlist.RemoveAll(HasNodeID);
-                    Anchorlist.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, fRSS));
-                }
+                    //TempNode = Anchorlist.Find(HasNodeID);
+                    //fRSS = RangeBasedPositioning.FilterRSS(TempNode.RSS);
+                    ////RSS filteren via RangeBasedPositioning.Filter
+                    //Anchorlist.RemoveAll(HasNodeID);
+                    //Anchorlist.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, fRSS));
             }
 
             /// <summary>
@@ -260,12 +308,13 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         /// <summary>
         /// Struct that holds information about the anchors, including RSS!
         /// </summary>
-        public struct AnchorNode
+        public class AnchorNode
         {
             public string nodeid;
             public int posx;
             public int posy;
-            public double RSS;
+            public double fRSS;
+            public Queue<double> RSS = new Queue<double>(20);
 
             //NOT USED FOR NOW
             public DateTime time;
@@ -275,7 +324,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 this.nodeid = wsnid;
                 this.posx = posx;
                 this.posy = posy;
-                this.RSS = RSS;
+                this.RSS.Enqueue(RSS);
                 this.time = DateTime.UtcNow;
             }
         }

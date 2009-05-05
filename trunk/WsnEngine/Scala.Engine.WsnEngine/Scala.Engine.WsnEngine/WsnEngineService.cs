@@ -9,7 +9,7 @@ using Scala.Core;
 namespace Elab.Rtls.Engines.WsnEngine
 {
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession, AutomaticSessionShutdown = false, IncludeExceptionDetailInFaults = true)]
-    public class WsnEngineService : Scala.Core.IQueryService, IMapService, IEventService
+    public class WsnEngineService : Scala.Core.IQueryService, IMapService, IEventService, ITagInformationService
     {
         public WsnEngineService()
         {
@@ -29,10 +29,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             set;
         }
 
-        //public void Advise(Controller controller)
-        //{
-        //    this.WsnEngine.Advise(controller);
-        //}
+        private List<string> EventIDs;
 
         /// <summary>
         /// Queries the Engine to retrieve tag information
@@ -49,12 +46,14 @@ namespace Elab.Rtls.Engines.WsnEngine
             //this.Logger.Trace("Subscribe method called on Ekahau4EngineAdapterService.");
             this.Callback = OperationContext.Current.GetCallbackChannel<IEventSourceCallback>();
             this.WsnEngine.Subscribe(eventSubscription);
+            this.EventIDs.Add(eventSubscription.EventId);
         }
 
         public void Unsubscribe(string id)
         {
             //this.Logger.Trace("Unsubscribe method called on Ekahau4EngineAdapterService.");
             this.WsnEngine.Unsubscribe(id);
+            this.EventIDs.Remove(id);
         }
 
         /// <summary>
@@ -98,8 +97,42 @@ namespace Elab.Rtls.Engines.WsnEngine
             }
             else
             {
-                this.Callback.OnEventRaised(eventMessage);
+                if (EventIDs.Contains(eventMessage.EventSubscriptionId))
+                    this.Callback.OnEventRaised(eventMessage);
             }
         }
+
+        #region ITagInformationService Members
+
+        public List<Tag> GetAllTags()
+        {
+            return this.WsnEngine.GetAllTags();
+        }
+
+        public Tag GetTag(string tagId)
+        {
+            return this.WsnEngine.GetTag(tagId);
+        }
+
+        #endregion
+
+        #region IMapService Members
+
+        public Map AssociateMiddlewareMapToEngineMaps(Map mapObject, params string[] engineMapIds)
+        {
+            throw new FaultException("This is an engine, not the middleware");
+        }
+
+        public List<Site> GetAllSites()
+        {
+            throw new FaultException("This is an engine, not the middleware");
+        }
+
+        public void SaveSite(Site site)
+        {
+            throw new FaultException("This is an engine, not the middleware");
+        }
+
+        #endregion
     }
 }

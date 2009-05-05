@@ -13,12 +13,12 @@ namespace Elab.Rtls.Engines.WsnEngine
 
         public override void Advise(Controller controller)
         {
-            controller.NewSensorDataEvent += base.OnEventReceived;
+            controller.LocationUpdated += base.OnEventReceived;
         }
 
         public override void UnAdvise(Controller controller)
         {
-            controller.NewSensorDataEvent -= base.OnEventReceived;
+            controller.LocationUpdated -= base.OnEventReceived;
         }
     }
 }

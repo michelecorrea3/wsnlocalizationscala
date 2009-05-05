@@ -46,7 +46,6 @@ namespace Elab.Rtls.Engines.WsnEngine
         /// </summary>
         private bool MySQLAllowedConn = true;
 
-
         //Specific to positioning
 
         /// <summary>
@@ -61,16 +60,31 @@ namespace Elab.Rtls.Engines.WsnEngine
 
         #endregion private variables
 
+        /// <summary>
+        /// Property for the used algororithm
+        /// </summary>
         public string SelectedAlgorithm
         {
             get; set;
         }
 
+        /// <summary>
+        /// Property for the used filter
+        /// </summary>
+        public string SelectedFilter
+        {
+            get; set;
+        }
+
+
 
         #region Event variables
 
-        public event EventHandler<EventMessage> NewPositionEvent;
-        public event EventHandler<EventMessage> NewSensorDataEvent;
+        public event EventHandler<EventMessage> LocationUpdated;
+        public event EventHandler<EventMessage> TemperatureChanged;
+        public event EventHandler<EventMessage> HumidityChanged;
+        public event EventHandler<EventMessage> LightChanged;
+        public event EventHandler<EventMessage> ButtonPressed;
 
         #endregion
 
@@ -288,19 +302,49 @@ namespace Elab.Rtls.Engines.WsnEngine
                     Console.WriteLine("AddSensorMeasurements OK");
                     Console.WriteLine("WSNID is: \n" + row["ID"].ToString());
 
-                    #region NewSensorData
-                    if (NewSensorDataEvent != null)
+                    #region SensorDataEvents
+                    //RTLSBlinkTime is generated in the TryQuery to reduce the code size
+                    if (TemperatureChanged != null)
                     {
                         EventMessage EventData = new EventMessage();
-                        EventData.EventSubscriptionId = "1";
-                        EventData.EventType = "NewSensorData";
+                        //EventData.EventType = "TemperatureChanged";
 
                         EventData.TagBlink["TagID"] = row["idnode"].ToString();
-                        EventData.TagBlink["Temperature"] = row["temperature"].ToString();
+                        EventData.TagBlink["Temperature"] = row["Temp"].ToString();
+
+                        TemperatureChanged(this, EventData);
+                    }
+                    if (LightChanged != null)
+                    {
+                        EventMessage EventData = new EventMessage();
+                        //EventData.EventType = "LightChanged";
+
+                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
                         EventData.TagBlink["Light"] = row["Light"].ToString();
 
-                        NewSensorDataEvent(this, EventData);
+                        LightChanged(this, EventData);
                     }
+                    if (HumidityChanged != null)
+                    {
+                        EventMessage EventData = new EventMessage();
+                        //EventData.EventType = "HumidityChanged";
+
+                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                        EventData.TagBlink["Humidity"] = row["Humidity"].ToString();
+
+                        HumidityChanged(this, EventData);
+                    }
+                    if (ButtonPressed!= null)
+                    {
+                        EventMessage EventData = new EventMessage();
+                        //EventData.EventType = "ButtonPressed";
+
+                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                        EventData.TagBlink["Button"] = row["temperature"].ToString();
+
+                        ButtonPressed(this, EventData);
+                    }
+
                     #endregion
 
                 }
@@ -327,13 +371,28 @@ namespace Elab.Rtls.Engines.WsnEngine
                     }
 
                     //TODO: switch on the bulletlist or whatever you use to select the algorithm
+                    Node.FilterMethod myFilter;
+
+                    switch (SelectedFilter)
+                    {
+                        case "Median":
+                            myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
+                            break;
+                        case "Average":
+                            myFilter = new Node.FilterMethod(RangeBasedPositioning.AverageFilter);
+                            break;
+                        default:
+                            myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
+                            break;
+                    }
+
                     switch (SelectedAlgorithm)
                     {
                         case "CentroidLocalization":
                             pos = CentroidLocalization.CalculatePosition(CurrentBlindNode);
                             break;
                         case "MinMax":
-                            pos = MinMaxSimpleModel.CalculatePosition(CurrentBlindNode);
+                            pos = MinMax.CalculatePosition(CurrentBlindNode, myFilter);
                             break;
                     }
 
@@ -355,17 +414,16 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                     #region NewPosition
 
-                    if (NewPositionEvent != null)
+                    if (LocationUpdated != null)
                     {
                         EventMessage EventData = new EventMessage();
-                        EventData.EventSubscriptionId = "2";
-                        EventData.EventType = "NewPosition";
+                        //EventData.EventType = "LocationUpdated";
 
                         EventData.TagBlink["TagID"] = row["idnode"].ToString();
                         EventData.TagBlink["X"] = pos.x.ToString();
                         EventData.TagBlink["Y"] = pos.y.ToString();
 
-                        NewPositionEvent(this, EventData);
+                        LocationUpdated(this, EventData);
                     }
                     #endregion
 

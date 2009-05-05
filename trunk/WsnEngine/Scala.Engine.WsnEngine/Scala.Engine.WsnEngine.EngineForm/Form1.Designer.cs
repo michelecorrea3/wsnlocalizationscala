@@ -28,24 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.radioButtonCentroidLocalization = new System.Windows.Forms.RadioButton();
             this.radioButtonMinMaxSimpleModel = new System.Windows.Forms.RadioButton();
+            this.radioButtonMedianFilter = new System.Windows.Forms.RadioButton();
+            this.radioButtonAverageFilter = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Choose your positioning algorithm:";
             // 
             // radioButtonCentroidLocalization
             // 
             this.radioButtonCentroidLocalization.AutoSize = true;
-            this.radioButtonCentroidLocalization.Location = new System.Drawing.Point(38, 42);
+            this.radioButtonCentroidLocalization.Location = new System.Drawing.Point(22, 32);
             this.radioButtonCentroidLocalization.Name = "radioButtonCentroidLocalization";
             this.radioButtonCentroidLocalization.Size = new System.Drawing.Size(123, 17);
             this.radioButtonCentroidLocalization.TabIndex = 1;
@@ -57,7 +53,7 @@
             // radioButtonMinMaxSimpleModel
             // 
             this.radioButtonMinMaxSimpleModel.AutoSize = true;
-            this.radioButtonMinMaxSimpleModel.Location = new System.Drawing.Point(38, 65);
+            this.radioButtonMinMaxSimpleModel.Location = new System.Drawing.Point(22, 55);
             this.radioButtonMinMaxSimpleModel.Name = "radioButtonMinMaxSimpleModel";
             this.radioButtonMinMaxSimpleModel.Size = new System.Drawing.Size(122, 17);
             this.radioButtonMinMaxSimpleModel.TabIndex = 2;
@@ -66,26 +62,77 @@
             this.radioButtonMinMaxSimpleModel.UseVisualStyleBackColor = true;
             this.radioButtonMinMaxSimpleModel.CheckedChanged += new System.EventHandler(this.radioButtonMinMaxSimpleModel_CheckedChanged);
             // 
+            // radioButtonMedianFilter
+            // 
+            this.radioButtonMedianFilter.AutoSize = true;
+            this.radioButtonMedianFilter.Location = new System.Drawing.Point(22, 30);
+            this.radioButtonMedianFilter.Name = "radioButtonMedianFilter";
+            this.radioButtonMedianFilter.Size = new System.Drawing.Size(60, 17);
+            this.radioButtonMedianFilter.TabIndex = 4;
+            this.radioButtonMedianFilter.TabStop = true;
+            this.radioButtonMedianFilter.Text = "Median";
+            this.radioButtonMedianFilter.UseVisualStyleBackColor = true;
+            this.radioButtonMedianFilter.CheckedChanged += new System.EventHandler(this.radioButtonMedianFilter_CheckedChanged);
+            // 
+            // radioButtonAverageFilter
+            // 
+            this.radioButtonAverageFilter.AutoSize = true;
+            this.radioButtonAverageFilter.Location = new System.Drawing.Point(22, 53);
+            this.radioButtonAverageFilter.Name = "radioButtonAverageFilter";
+            this.radioButtonAverageFilter.Size = new System.Drawing.Size(65, 17);
+            this.radioButtonAverageFilter.TabIndex = 5;
+            this.radioButtonAverageFilter.TabStop = true;
+            this.radioButtonAverageFilter.Text = "Average";
+            this.radioButtonAverageFilter.UseVisualStyleBackColor = true;
+            this.radioButtonAverageFilter.CheckedChanged += new System.EventHandler(this.radioButtonAverageFilter_CheckedChanged);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.radioButtonCentroidLocalization);
+            this.groupBox1.Controls.Add(this.radioButtonMinMaxSimpleModel);
+            this.groupBox1.Location = new System.Drawing.Point(22, 22);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Choose your positioning algorithm";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButtonMedianFilter);
+            this.groupBox2.Controls.Add(this.radioButtonAverageFilter);
+            this.groupBox2.Location = new System.Drawing.Point(22, 146);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 87);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Choose your RSS filter";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 171);
-            this.Controls.Add(this.radioButtonMinMaxSimpleModel);
-            this.Controls.Add(this.radioButtonCentroidLocalization);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(682, 331);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButtonCentroidLocalization;
         private System.Windows.Forms.RadioButton radioButtonMinMaxSimpleModel;
+        private System.Windows.Forms.RadioButton radioButtonMedianFilter;
+        private System.Windows.Forms.RadioButton radioButtonAverageFilter;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 

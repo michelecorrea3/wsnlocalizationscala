@@ -30,7 +30,7 @@ namespace Elab.Rtls.Engines.WsnEngine
     /// Singleton
     /// 
     /// </summary>
-    public sealed class WsnEngine : IQueryable, IEventSource, IMappable 
+    public sealed class WsnEngine : IQueryable, IEventSource, IMappable, ITagInformationSource 
     {
         private readonly MySQLClass MyDB = new MySQLClass("DRIVER={MySQL ODBC 3.51 Driver};SERVER=localhost;DATABASE=senseless;UID=root;PASSWORD=admin;OPTION=3;");
         private static readonly WsnEngine instance = new WsnEngine();
@@ -95,7 +95,6 @@ namespace Elab.Rtls.Engines.WsnEngine
         {
             if (!this.EventListeners.ContainsKey(eventSubscription.EventId))
             {
-                //TODO: filters checken -> Ekahau
                 var eventListener = EventListener.Create(eventSubscription);
                 eventListener.EventReceived += this.EventListenerEventReceived;
                 this.EventListeners.Add(eventSubscription.EventId, eventListener);
@@ -155,6 +154,10 @@ namespace Elab.Rtls.Engines.WsnEngine
                     CurrentMap.EngineId = "WsnEngine1";
                     CurrentMap.FloorNumber = Convert.ToInt32(Row["Floor"]);
                     CurrentMap.MapId = CurrentMap.EngineId + "map" + Row["idMap"].ToString();
+
+                    //test
+                    var ImageBytes = Row["ImageBlob"];
+
                     CurrentMap.MapImageBytes = (byte[])Row["ImageBlob"];
                     CurrentMap.MapName = Row["Name"].ToString();
                     CurrentMap.MapScale = Convert.ToDouble(Row["Scale"]);
@@ -212,6 +215,31 @@ namespace Elab.Rtls.Engines.WsnEngine
         public Zone GetZone(string zoneId)
         {
             throw new FaultException("Not implemented");
+        }
+
+        #endregion
+
+        #region ITagInformationSource Members
+
+        public List<Tag> GetAllTags()
+        {
+            List<Tag> tagList = new List<Tag>();
+            string queryCmd = "SELECT idnode FROM node n where sensortype = 2;";
+
+            DataSet ReturnSet = MyDB.Query(queryCmd);
+
+            foreach (DataRow Row in ReturnSet.Tables[0].Rows)
+            {
+                tagList.Add(new Tag(Row["idnode"].ToString(), "TelosWsnEngine"));
+            }
+
+            return tagList;
+        }
+
+        public Tag GetTag(string tagId)
+        {
+            Tag tag = new Tag(tagId, "TelosWsnEngine");
+            return tag;
         }
 
         #endregion

@@ -107,9 +107,10 @@ namespace Elab.Rtls.Engines.WsnEngine
         }
 
             //Sortby
-            if (query.SortBy != null)
+            if (query.SortBy != null && query.SortBy != "" && query.SortBy != "asc" && query.SortBy != "desc")
                 QueryCmd.Append(" order by " + query.SortBy + ";");
-
+            else
+                QueryCmd.Append(";");
 
             //assemble the SQL results into TagBlinks
             //parse them into the correct type
@@ -119,7 +120,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             try
             {
                 //Execute the Query
-                ReturnSet = MyDB.Query(QueryCmd.ToString());
+                ReturnSet = MyDB.Query(TempString);
 
                 //determine the UTC offset
                 int hours = TimeZoneInfo.Local.BaseUtcOffset.Hours;
@@ -163,8 +164,23 @@ namespace Elab.Rtls.Engines.WsnEngine
                             case "Temperature":
                                 tagBlink["Temperature"] = Row["temperature"].ToString();
                                 break;
+                            case "Light":
+                                tagBlink["Light"] = Row["light"].ToString();
+                                break;
+                            case "Humidity":
+                                tagBlink["Humidity"] = Row["humidity"].ToString();
+                                break;
                             case "RTLSBlinkTime":
                                 tagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                                break;
+                            case "LocateTime":
+                                tagBlink["LocateTime"] = Row["loctime"].ToString().Replace('-', '/') + timezone;
+                                break;
+                            case "TagModel":
+                                tagBlink["TagModel"] = "Telosb";
+                                break;
+                            case "Technology":
+                                tagBlink["Technology"] = "TelosbWsn";
                                 break;
                             case "All":
                                 tagBlink["TagID"] = Row["idnode"].ToString();
@@ -175,21 +191,33 @@ namespace Elab.Rtls.Engines.WsnEngine
                                 tagBlink["Buttons"] = Row["button1"].ToString();
                                 tagBlink["Temperature"] = Row["temperature"].ToString();
                                 tagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                                tagBlink["Light"] = Row["light"].ToString();
+                                tagBlink["Humidity"] = Row["humidity"].ToString();
+                                tagBlink["LocateTime"] = Row["loctime"].ToString().Replace('-', '/') + timezone;
                                 break;
                             default:
-                                throw new FaultException("The field" + field.ToString() + " is not available");
+                                throw new FaultException("The field " + field.ToString() + " is not available");
                         }
                     }
                     tagBlinks.Add(tagBlink);
                 }
             }
             //Jerry won't like this...
+            catch (FaultException fex)
+            {
+                Console.WriteLine(fex.Message);
+                Console.WriteLine(fex.StackTrace);
+                throw fex;
+            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 throw new FaultException("The database of the WSN could not be accessed properly or the SQL query was unable to execute\n Check the connection parameters");
             }
+
+            if (tagBlinks.Count == 0 || tagBlinks == null)
+                throw new FaultException("No tagBlinks availaible for " + query.ToString());
 
             QueryResult queryResult = new QueryResult(tagBlinks);
             return new QueryResponse(queryResult);
@@ -240,7 +268,6 @@ namespace Elab.Rtls.Engines.WsnEngine
                 }
             }
 
-
             //fields!!
             foreach (string field in eventSubscription.Fields)
             {
@@ -271,10 +298,16 @@ namespace Elab.Rtls.Engines.WsnEngine
                             break;
                         case "Buttons":
                             //skip if this boolean is 0
-                            ReturnTagBlink["Buttons"] = tagBlink["button1"];
+                            ReturnTagBlink["Buttons"] = tagBlink["Button"];
                             break;
                         case "Temperature":
                             ReturnTagBlink["Temperature"] = tagBlink["temperature"];
+                            break;
+                        case "Light":
+                            ReturnTagBlink["Light"] = tagBlink["Light"];
+                            break;
+                        case "Humidity":
+                            ReturnTagBlink["Humidity"] = tagBlink["Humidity"];
                             break;
                         case "RTLSBlinkTime":
                             ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
@@ -283,12 +316,27 @@ namespace Elab.Rtls.Engines.WsnEngine
                             //switch on the type of event
                             switch (eventSubscription.EventType)
                             {
-                                case "NewSensorData":
+                                case "TemperatureChanged":
                                     ReturnTagBlink["TagID"] = tagBlink["idnode"];
-                                    ReturnTagBlink["Temperature"] = tagBlink["temperature"];
+                                    ReturnTagBlink["Temperature"] = tagBlink["Temperature"];
                                     ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
                                     break;
-                                case "NewPosition":
+                                case "LightChanged":
+                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["Light"] = tagBlink["Light"];
+                                    ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                                    break;
+                                case "HumidityChanged":
+                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["Humidity"] = tagBlink["Humidity"];
+                                    ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                                    break;
+                                case "ButtonPressed":
+                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["Button"] = tagBlink["Button"];
+                                    ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                                    break;
+                                case "LocationUpdated":
                                     ReturnTagBlink["TagID"] = tagBlink["idnode"];
                                     ReturnTagBlink["Location/X"] = tagBlink["X"];
                                     ReturnTagBlink["Location/Y"] = tagBlink["Y"];
