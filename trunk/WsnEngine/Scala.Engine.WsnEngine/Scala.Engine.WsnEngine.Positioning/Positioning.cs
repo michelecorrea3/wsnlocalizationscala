@@ -184,6 +184,106 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             }
         }
 
+        public class clusterTrilateration : RangeBasedPositioning
+        {
+            int anchors = 0;
+//            Point coordinates = new Point();
+
+            public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod)
+            {
+                Point coordinates = new Point();
+                if (BlindNode.Anchors.Count >= 3)
+                {
+                    anchors = BlindNode.Anchors.Count;
+
+                    for (int i = 0; i <= anchors; i++)
+                    {
+                        cuttingpoint(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy,Ranging(BlindNode.Anchors[i].fRSS);
+                    }
+                    
+                    foreach (AnchorNode AN in BlindNode.Anchors)
+                    {
+                        anchors++;
+                        //perform the ranging
+                        double fRSS = filterMethod(AN.RSS);
+                        distance = Ranging(fRSS);
+                        coordinates.x = AN.posx;
+                        coordinates.y = AN.posy;
+
+                    }
+                }
+                else
+                    throw new ApplicationException("Less than three anchor nodes available");
+      
+
+            }
+            private List<Point> cuttingpoint(int x1, int y1, int radius1, int x2, int y2, int radius2)
+            {
+
+                Point position1 = new Point();
+                Point position2 = new Point();
+                List<Point> points = new List<Point>();
+                double l = 0;
+                double k = 0;
+
+                int a = x1;
+                int b = y1;
+
+                int c = x2;
+                int d = y2;
+
+                double D;
+
+                int r1 = radius1 * radius1;
+                int r2 = radius2 * radius2;
+
+
+                //Calculatiings:
+                // y = lx + b
+                l = (2*c - 2*a)/(2*b - 2*d);
+                k = (r2 - r1 - (c * c) - (d*d) + (a*a) + (b*b))/(2*b - 2*d);
+
+                //discriminant
+                double f = -2 * a + 2 * l * k - 2 * b * l;
+                double e = 1 + (l * l);
+                double g = (a * a) + (k * k) - 2 * b * k + (b * b) - r1;
+
+                D = (f * f) - 4 * e * g;
+
+                if (D == 0)
+                {
+                    position1.x = (-f) / (2 * e);
+                    position1.y = Math.Pow(0.5, (r1 - ((position1.x - a) * (position1.x - a)))) + b;
+                    points.Add(position1);
+
+                    return points;
+
+                }
+                else if (D > 0)
+                {
+
+                    position1.x = (-f + Math.Pow(0.5, ((f * f) - 4 * e * g)) / (2 * e));
+                    position1.y = Math.Pow(0.5, (r1 - ((position1.x - a) * (position1.x - a)))) + b;
+
+                    position2.x = (-f + Math.Pow(0.5, ((f * f) - 4 * e * g)) / (2 * e));
+                    position2.y = Math.Pow(0.5, (r1 - ((position1.x - a) * (position1.x - a)))) + b;
+
+                    points.Add(position1);
+                    points.Add(position2);
+
+                    return points;
+                }
+                else
+                    throw new ApplicationException("No cutting points");
+
+            }
+
+
+        }
+
+
+
+
         public class Node //: Elab.Rtls.Engines.WsnEngine.Positioning.INode
         {
             private MySQLClass MyDb;
