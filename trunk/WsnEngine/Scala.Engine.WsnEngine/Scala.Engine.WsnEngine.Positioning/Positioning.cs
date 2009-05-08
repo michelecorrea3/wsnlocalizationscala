@@ -209,7 +209,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                             }
                         }
                     }
-                    return Clusters(IntersectionPoints, anchors);
+                    return Cluster(IntersectionPoints, anchors);
                     
                 }
                 else
@@ -224,7 +224,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 public double distance;
             };
 
-            private List<Point> CuttingPoint(double x1, double y1, double radius1, double x2, double y2, double radius2)
+            private static List<Point> CuttingPoint(double x1, double y1, double radius1, double x2, double y2, double radius2)
             {
 
                 Point position1 = new Point();
@@ -285,10 +285,11 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             }
 
-            private DistanceBetweenCutpoints ShortestDistanceBetweenCutPoints(List<Point> CuttingPoints)
+            private static DistanceBetweenCutpoints ShortestDistanceBetweenCutPoints(List<Point> CuttingPoints)
             {
-                List<DistanceBetweenCutpoints> Distances;
-                DistanceBetweenCutpoints ShortestDistance;
+                List<DistanceBetweenCutpoints> Distances = new List<DistanceBetweenCutpoints>();
+                DistanceBetweenCutpoints ShortestDistance = new DistanceBetweenCutpoints();
+                DistanceBetweenCutpoints Distance = new DistanceBetweenCutpoints();
 
                 ShortestDistance.distance = 100000;
 
@@ -316,7 +317,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 return ShortestDistance;
             }
 
-            private Point Cluster(List<Point> CuttingPoints, int anchors)
+            private static Point Cluster(List<Point> CuttingPoints, int anchors)
             {
                 //List<DistanceBetweenCutpoints> ListOfDistance = new List<DistanceBetweenCutpoints>();
                 //DistanceBetweenCutpoints cuts = new DistanceBetweenCutpoints();
