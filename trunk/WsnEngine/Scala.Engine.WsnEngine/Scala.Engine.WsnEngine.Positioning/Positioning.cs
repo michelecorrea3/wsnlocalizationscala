@@ -82,9 +82,9 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             public static double Ranging(double fRSS)
             {
                 double distance;
-                const double baseRSS = -51, lossFactor = 2;
+                const double baseRSS = 51, pathLossExponent = 2;
 
-                distance = 100 * Math.Pow(10, ((baseRSS - fRSS) / (10 * lossFactor)));
+                distance = Math.Pow(10, ((-baseRSS - fRSS) / (10 * pathLossExponent)));
 
                 return distance;
             }
@@ -105,7 +105,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             public static Point CalculatePosition(Node BlindNode)
             {
                 Point position = new Point();
-                int tempx = 0, tempy = 0, count = 0;
+                double tempx = 0, tempy = 0;
+                int count = 0;
 
                 foreach (AnchorNode AN in BlindNode.Anchors)
                 {
@@ -184,40 +185,46 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             }
         }
 
-        public class clusterTrilateration : RangeBasedPositioning
+        public class ClusterTrilateration : RangeBasedPositioning
         {
-            int anchors = 0;
+            
 //            Point coordinates = new Point();
 
             public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod)
             {
+                int anchors = 0;
                 Point coordinates = new Point();
+                List<Point> IntersectionPoints = new List<Point>();
                 if (BlindNode.Anchors.Count >= 3)
                 {
                     anchors = BlindNode.Anchors.Count;
 
-                    for (int i = 0; i <= anchors; i++)
+                    for (int i = 0; i < anchors-1; i++)
                     {
-                        cuttingpoint(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy,Ranging(BlindNode.Anchors[i].fRSS);
+                        for (int j = i + 1; j < anchors; j++)
+                        {
+                            foreach (Point cuttingpoint in CuttingPoint(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+                            {
+                                IntersectionPoints.Add(cuttingpoint);
+                            }
+                        }
                     }
+                    return Clusters(IntersectionPoints, anchors);
                     
-                    foreach (AnchorNode AN in BlindNode.Anchors)
-                    {
-                        anchors++;
-                        //perform the ranging
-                        double fRSS = filterMethod(AN.RSS);
-                        distance = Ranging(fRSS);
-                        coordinates.x = AN.posx;
-                        coordinates.y = AN.posy;
-
-                    }
                 }
                 else
                     throw new ApplicationException("Less than three anchor nodes available");
       
-
             }
-            private List<Point> cuttingpoint(int x1, int y1, int radius1, int x2, int y2, int radius2)
+
+            private struct DistanceBetweenCutpoints
+            {
+                public Point point1;
+                public Point point2;
+                public double distance;
+            };
+
+            private List<Point> CuttingPoint(double x1, double y1, double radius1, double x2, double y2, double radius2)
             {
 
                 Point position1 = new Point();
@@ -226,16 +233,16 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 double l = 0;
                 double k = 0;
 
-                int a = x1;
-                int b = y1;
+                double a = x1;
+                double b = y1;
 
-                int c = x2;
-                int d = y2;
+                double c = x2;
+                double d = y2;
 
                 double D;
 
-                int r1 = radius1 * radius1;
-                int r2 = radius2 * radius2;
+                double r1 = radius1 * radius1;
+                double r2 = radius2 * radius2;
 
 
                 //Calculatiings:
@@ -276,6 +283,61 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 else
                     throw new ApplicationException("No cutting points");
 
+            }
+
+            private DistanceBetweenCutpoints ShortestDistanceBetweenCutPoints(List<Point> CuttingPoints)
+            {
+                List<DistanceBetweenCutpoints> Distances;
+                DistanceBetweenCutpoints ShortestDistance;
+
+                ShortestDistance.distance = 100000;
+
+                for (int i = 0; i < CuttingPoints.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < CuttingPoints.Count; j++)
+                    {
+                        Distance.point1 = CuttingPoints[i];
+                        Distance.point2 = CuttingPoints[j];
+                        Distance.distance = Math.Pow(0.5, (Math.Pow(2, (CuttingPoints[0].x - CuttingPoints[1].x)) + Math.Pow(2, (CuttingPoints[0].y - CuttingPoints[1].y))));
+                        Distances.Add(Distance);
+                    }
+                }
+
+                foreach (DistanceBetweenCutpoints dist in Distances)
+                {
+                    if (dist.distance < ShortestDistance.distance)
+                    {
+                        ShortestDistance.distance = dist.distance;
+                        ShortestDistance.point1 = dist.point1;
+                        ShortestDistance.point2 = dist.point2;
+                    }
+                }
+
+                return ShortestDistance;
+            }
+
+            private Point Cluster(List<Point> CuttingPoints, int anchors)
+            {
+                //List<DistanceBetweenCutpoints> ListOfDistance = new List<DistanceBetweenCutpoints>();
+                //DistanceBetweenCutpoints cuts = new DistanceBetweenCutpoints();
+                Point centroid = new Point();
+
+                DistanceBetweenCutpoints shortest = new DistanceBetweenCutpoints();
+                //shortest.distance = 100000;
+
+                while (CuttingPoints.Count != 0)
+                {
+                    shortest = ShortestDistanceBetweenCutPoints(CuttingPoints); // get struct back
+
+                    centroid.x = (shortest.point1.x - shortest.point2.x) / 2;
+                    centroid.y = (shortest.point1.y - shortest.point2.y) / 2;
+
+                    CuttingPoints.Remove(shortest.point1);
+                    CuttingPoints.Remove(shortest.point2);
+                    CuttingPoints.Add(centroid);
+                }
+                
+                return centroid;
             }
 
 
@@ -376,8 +438,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
                         foreach (DataRow row in returnSet.Tables[0].Rows)
                         {
-                            pos.x = Convert.ToInt32(row["X"]);
-                            pos.y = Convert.ToInt32(row["Y"]);
+                            pos.x = Convert.ToDouble(row["X"]);
+                            pos.y = Convert.ToDouble(row["Y"]);
                         }
                     }
                 }
@@ -411,15 +473,15 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         public class AnchorNode
         {
             public string nodeid;
-            public int posx;
-            public int posy;
+            public double posx;
+            public double posy;
             public double fRSS;
             public Queue<double> RSS = new Queue<double>(20);
 
             //NOT USED FOR NOW
             public DateTime time;
 
-            public AnchorNode(string wsnid, int posx, int posy, double RSS)
+            public AnchorNode(string wsnid, double posx, double posy, double RSS)
             {
                 this.nodeid = wsnid;
                 this.posx = posx;
@@ -437,14 +499,14 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             /// <summary>
             /// X & Y coordinates
             /// </summary>
-            public int x, y;
+            public double x, y;
 
             /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="x"></param>
             /// <param name="y"></param>
-            public Point(int x, int y)
+            public Point(double x, double y)
             {
                 this.x = x;
                 this.y = y;
