@@ -38,7 +38,6 @@ C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEng
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Rtls.Engines.WsnEngine.EngineForm.exe
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Rtls.Engines.WsnEngine.EngineForm.pdb
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Rtls.Engines.WsnEngine.dll
-C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Scala.Core.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\DatabaseConnection.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Rtls.Engines.WsnEngine.Positioning.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\SocketConnection.dll
@@ -51,16 +50,13 @@ C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEng
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Rtls.Engines.WsnEngine.pdb
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\obj\Debug\Elab.Rtls.Engines.WsnEngine.EngineForm.exe
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\obj\Debug\Elab.Rtls.Engines.WsnEngine.EngineForm.pdb
-C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Castle.ActiveRecord.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\log4net.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Castle.Components.Validator.dll
-C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\NHibernate.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Iesi.Collections.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Castle.Core.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Castle.DynamicProxy.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\NHibernate.xml
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Castle.Core.xml
-C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Toolkit.Rtls.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Toolkit.Rtls.pdb
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\IBM.Data.DB2.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\DatabaseConnection.pdb
@@ -68,5 +64,6 @@ C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEng
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Rtls.Engines.WsnEngine.EngineForm.exe.config
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\obj\Debug\Elab.Rtls.Engines.WsnEngine.EngineForm.Form1.resources
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Rtls.Engines.WsnEngine.Hosts.dll
-C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Toolkit.Core.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Toolkit.Core.pdb
+C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Toolkit.Imaging.dll
+C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.EngineForm\bin\Debug\Elab.Toolkit.Imaging.pdb

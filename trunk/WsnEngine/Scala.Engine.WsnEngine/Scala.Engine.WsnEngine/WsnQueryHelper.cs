@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Xml;
@@ -10,12 +11,14 @@ using System.ComponentModel;
 using System.ServiceModel;
 using System.Diagnostics;
 using System.Xml.Linq;
+using System.Drawing.Imaging;
 
 using SocketConnection;
 using DatabaseConnection;
 using Elab.Rtls.Engines.WsnEngine.Positioning;
 
 using Elab.Toolkit.Core.Xml;
+using Elab.Toolkit.Imaging;
 using Scala.Core;
 
 namespace Elab.Rtls.Engines.WsnEngine
@@ -41,7 +44,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             //Ignore the fields in the SQL request, just request them all for now...
             //Fields
             QueryCmd.Append(
-                "select idnode, sensor, name, button1, temperature, X, Y, Z  from (select idnode, sensor, name from node) as nd inner join (select * from (select button1, temperature, max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens left outer join (select X, Y, Z, max(time) as loctime, node as locnode from localization group by node) as loc on sens.sensnode = loc.locnode union select * from (select button1, temperature, max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens right outer join (select X, Y, Z, max(time) as loctime, node as locnode from localization group by node) as loc on sens.sensnode = loc.locnode) as sq on nd.idnode = sq.sensnode");
+                "select * from (select idnode, sensor, name from node) as nd left outer join (select * from (select button1, temperature, light, humidity, max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens left outer join (select X, Y, max(time) as loctime, node as locnode from position group by node) as loc on sens.sensnode = loc.locnode union select * from(select button1, temperature, light, humidity,max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens right outer join (select X, Y, max(time) as loctime, node as locnode from position group by node) as loc on sens.sensnode = loc.locnode) as sq on nd.idnode = sq.sensnode");
 
             if (query.Filters != null)
             {
@@ -132,6 +135,14 @@ namespace Elab.Rtls.Engines.WsnEngine
                     //declare a single tagblink
                     TagBlink tagBlink = new TagBlink();
 
+                    //if ( !String.IsNullOrEmpty(Row["X"].ToString()) && !String.IsNullOrEmpty(Row["Y"].ToString()))
+                    //{
+                    Map tempMap; //= WsnEngine.Instance.GetMap("3");
+                    Image tempImage;// = tempMap.MapImageBytes.ToImage();
+                    double tempX;// = (double)Row["X"];
+                    double tempY;// = (double)Row["Y"];   
+                    //}
+
                     foreach (string field in query.QueryFields)
                     {
                         switch (field)
@@ -142,38 +153,77 @@ namespace Elab.Rtls.Engines.WsnEngine
                                 tagBlink["TagID"] = Row["idnode"].ToString();
                                 break;
                             case "Name":
+                                if (!string.IsNullOrEmpty(Row["name"].ToString()))
                                 tagBlink["Name"] = Row["name"].ToString();
                                 break;
                             case "Serial":
+                                if (!String.IsNullOrEmpty(Row["sensor"].ToString()))
                                 tagBlink["Serial"] = Row["sensor"].ToString();
                                 break;
                             case "Location":
-                                tagBlink["Location/X"] = Row["X"].ToString();
-                                tagBlink["Location/Y"] = Row["Y"].ToString();
+                                if ( !String.IsNullOrEmpty(Row["X"].ToString()) && !String.IsNullOrEmpty(Row["Y"].ToString()))
+                                {
+                                    tagBlink["Location/X"] = Row["X"].ToString();
+                                    tagBlink["Location/Y"] = Row["Y"].ToString();
+                                    //hardcode this to floor two 
+                                    tagBlink["Location/MapID"] = "3";
+
+                                    tempMap = WsnEngine.Instance.GetMap("3");
+                                    tempImage = tempMap.MapImageBytes.ToImage();
+                                    tempX = Convert.ToDouble(Row["X"]);
+                                    tempY = Convert.ToDouble(Row["Y"]);
+
+                                    if (tempX < 0 || tempX > tempImage.Width || tempY < 0 || tempY > tempImage.Height)
+                                        tagBlink["Location/Accuracy"] = "0";
+                                    else
+                                        tagBlink["Location/Accuracy"] = "100";
+                                }
                                 break;
                             case "Location/X":
+                                if (!string.IsNullOrEmpty(Row["X"].ToString()))
                                 tagBlink["Location/X"] = Row["X"].ToString();
                                 break;
                             case "Location/Y":
+                                if (!String.IsNullOrEmpty(Row["Y"].ToString()))
                                 tagBlink["Location/Y"] = Row["Y"].ToString();
+                                break;
+                            case "Location/MapID":
+                                //hardcode this to floor two 
+                                tagBlink["Location/MapID"] = "3";
+                                break;
+                            case "Accuracy":
+                                tempMap = WsnEngine.Instance.GetMap("3");
+                                tempImage = tempMap.MapImageBytes.ToImage();
+                                tempX = Convert.ToDouble(Row["X"]);
+                                tempY = Convert.ToDouble(Row["Y"]);  
+
+                                if (tempX < 0 || tempX > tempImage.Width || tempY < 0 || tempY > tempImage.Height)
+                                    tagBlink["Location/Accuracy"] = "0";
+                                else
+                                    tagBlink["Location/Accuracy"] = "100";
                                 break;
                             case "Buttons":
                                 //skip if this boolean is 0
+                                if (!String.IsNullOrEmpty(Row["button1"].ToString()))
                                 tagBlink["Buttons"] = Row["button1"].ToString();
                                 break;
                             case "Temperature":
+                                if (!string.IsNullOrEmpty(Row["temperature"].ToString()))
                                 tagBlink["Temperature"] = Row["temperature"].ToString();
                                 break;
                             case "Light":
+                                if (!String.IsNullOrEmpty(Row["light"].ToString()))
                                 tagBlink["Light"] = Row["light"].ToString();
                                 break;
                             case "Humidity":
+                                if (!string.IsNullOrEmpty(Row["humidity"].ToString()))
                                 tagBlink["Humidity"] = Row["humidity"].ToString();
                                 break;
                             case "RTLSBlinkTime":
                                 tagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
                                 break;
                             case "LocateTime":
+                                if (!string.IsNullOrEmpty(Row["loctime"].ToString()))
                                 tagBlink["LocateTime"] = Row["loctime"].ToString().Replace('-', '/') + timezone;
                                 break;
                             case "TagModel":
@@ -184,15 +234,39 @@ namespace Elab.Rtls.Engines.WsnEngine
                                 break;
                             case "All":
                                 tagBlink["TagID"] = Row["idnode"].ToString();
+                                if (!string.IsNullOrEmpty(Row["name"].ToString()))
                                 tagBlink["Name"] = Row["name"].ToString();
+                                if (!String.IsNullOrEmpty(Row["sensor"].ToString()))
                                 tagBlink["Serial"] = Row["sensor"].ToString();
-                                tagBlink["Location/X"] = Row["X"].ToString();
-                                tagBlink["Location/Y"] = Row["Y"].ToString();
+
+                                if (!String.IsNullOrEmpty(Row["X"].ToString()) && !String.IsNullOrEmpty(Row["Y"].ToString()))
+                                {
+                                    tagBlink["Location/X"] = Row["X"].ToString();
+                                    tagBlink["Location/Y"] = Row["Y"].ToString();
+                                    //hardcode this to floor two 
+                                    tagBlink["Location/MapID"] = "3";
+
+                                    tempMap = WsnEngine.Instance.GetMap("3");
+                                    tempImage = tempMap.MapImageBytes.ToImage();
+                                    tempX = Convert.ToDouble(Row["X"]);
+                                    tempY = Convert.ToDouble(Row["Y"]);  
+
+                                    if (tempX < 0 || tempX > tempImage.Width || tempY < 0 || tempY > tempImage.Height)
+                                        tagBlink["Location/Accuracy"] = "0";
+                                    else
+                                        tagBlink["Location/Accuracy"] = "100";
+                                }
+
+                                if (!String.IsNullOrEmpty(Row["button1"].ToString()))
                                 tagBlink["Buttons"] = Row["button1"].ToString();
+                                if (!string.IsNullOrEmpty(Row["temperature"].ToString()))
                                 tagBlink["Temperature"] = Row["temperature"].ToString();
                                 tagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
+                                if (!String.IsNullOrEmpty(Row["light"].ToString()))
                                 tagBlink["Light"] = Row["light"].ToString();
+                                if (!string.IsNullOrEmpty(Row["humidity"].ToString()))
                                 tagBlink["Humidity"] = Row["humidity"].ToString();
+                                if (!string.IsNullOrEmpty(Row["loctime"].ToString()))
                                 tagBlink["LocateTime"] = Row["loctime"].ToString().Replace('-', '/') + timezone;
                                 break;
                             default:

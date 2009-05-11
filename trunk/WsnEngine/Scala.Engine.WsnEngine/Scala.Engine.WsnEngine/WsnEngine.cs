@@ -183,10 +183,14 @@ namespace Elab.Rtls.Engines.WsnEngine
         {           
             DataSet ReturnSet;
             Map CurrentMap = new Map();
+            string QueryCmd;
             //query the database for all maps
             //dataset
             //parse them into the list
-            string QueryCmd = "select * from map where idMap = " + mapId.Remove(0, 15) + ";";
+            if (mapId.Length > 5)
+                QueryCmd = "select * from map where idMap = " + mapId.Remove(0, 15) + ";";
+            else
+                QueryCmd = "select * from map where idMap = " + mapId + ";";
 
             //try
             {

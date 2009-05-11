@@ -51,5 +51,5 @@ C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEng
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine\bin\Debug\IBM.Data.DB2.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine\bin\Debug\DatabaseConnection.pdb
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine\bin\Debug\DatabaseConnection.xml
-C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine\bin\Debug\Scala.Core.dll
 C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine\bin\Debug\Scala.Core.pdb
+C:\Documents and Settings\peter\Desktop\Google SVN\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine\bin\Debug\Elab.Toolkit.Imaging.pdb
