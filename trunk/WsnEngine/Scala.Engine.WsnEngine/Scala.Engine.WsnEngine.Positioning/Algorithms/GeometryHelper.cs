@@ -81,7 +81,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 {
                     closest.point1 = intersectionPoints[i];
                     closest.point2 = intersectionPoints[j];
-                    closest.distance = Math.Pow(0.5, (Math.Pow(2, (intersectionPoints[0].x - intersectionPoints[1].x)) + Math.Pow(2, (intersectionPoints[0].y - intersectionPoints[1].y))));
+                    closest.distance = Math.Pow((Math.Pow(2, (intersectionPoints[0].x - intersectionPoints[1].x)) + Math.Pow(2, (intersectionPoints[0].y - intersectionPoints[1].y))),0.5);
                     Distances.Add(closest);
                 }
             }
@@ -104,19 +104,19 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             List<ClosestToCentroid> DistancesToCentroid = new List<ClosestToCentroid>();
             ClosestToCentroid intersectionPoint = new ClosestToCentroid();
             ClosestToCentroid closest = new ClosestToCentroid();
-
-            double distance = 100000;
+            closest.distance = 100000;
+            //double distance = 100000;
 
             for (int i = 0; i < intersectionPoints.Count - 1; i++)
             {
                 intersectionPoint.intersectionPoint = intersectionPoints[i];
-                intersectionPoint.distance = Math.Pow(0.5, (Math.Pow(2, (intersectionPoints[0].x - centroid.x)) + Math.Pow(2, (intersectionPoints[0].y - centroid.y))));
+                intersectionPoint.distance = Math.Pow((Math.Pow(2, (intersectionPoints[i].x - centroid.x)) + Math.Pow(2, (intersectionPoints[0].y - centroid.y))),0.5);
                 DistancesToCentroid.Add(intersectionPoint);
             }
 
             foreach (ClosestToCentroid dist in DistancesToCentroid)
             {
-                if (dist.distance < distance)
+                if (dist.distance < closest.distance)
                 {
                     closest.distance = dist.distance;
                     closest.intersectionPoint = dist.intersectionPoint;
