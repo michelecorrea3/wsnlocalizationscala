@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DatabaseConnection</name>
+    </assembly>
+    <members>
+        <member name="T:DatabaseConnection.DBClassDB2">
+            <summary>
+            Base class for the DB2-database linker
+            </summary>
+        </member>
+        <member name="F:DatabaseConnection.DBClassDB2.ConnString">
+            <summary>
+            String with the needed specifications/arguments to set up a connection to the database.
+            </summary>
+        </member>
+        <member name="M:DatabaseConnection.DBClassDB2.#ctor(System.String)">
+            <summary>
+            Constructor of DBClassDB2
+            </summary>
+            <param name="ConnectionString">Connection-string with the needed specifications and arguments to set up a connection.</param>
+        </member>
+        <member name="M:DatabaseConnection.DBClassDB2.Query(System.String)">
+            <summary>
+            Function that executes the given command on the database and returns the result.
+            </summary>
+            <param name="myquery">the query (stored procedure) to execute on the database.</param>
+            <returns>A dataset which is filled with the table(s) with results from the stored procedure.</returns>
+        </member>
+        <member name="T:DatabaseConnection.DBClassOdbc">
+            <summary>
+            Baseclass from which we inherit to create a class specific to a database-type. (or can also be used as a generic class to connect to any database).
+            </summary>
+        </member>
+        <member name="F:DatabaseConnection.DBClassOdbc.ConnStringBuild">
+            <summary>
+            Builder which helps create a syntax-correct connection-string.
+            </summary>
+        </member>
+        <member name="M:DatabaseConnection.DBClassOdbc.#ctor(System.String)">
+            <summary>
+            Base constructor that takes a connection-string and initializes the ConnectionStringBuilder with it.
+            </summary>
+            <param name="ConnectionString">Connection-string with the needed specifications and arguments to set up a connection.</param>
+        </member>
+        <member name="M:DatabaseConnection.DBClassOdbc.#ctor(System.Data.Odbc.OdbcConnectionStringBuilder)">
+            <summary>
+            Base constructor that takes a ConnectionStringBuilder and initializes the ConnectionStringBuilder with it.
+            </summary>
+            <param name="ConnectionStringBuilder">ConnectionStringBuilder with a connectionstring (preferably) to connect to a database.</param>
+        </member>
+        <member name="M:DatabaseConnection.DBClassOdbc.Query(System.String)">
+            <summary>
+            Function that sends a query to the database and returns the results in a dataset.
+            </summary>
+            <param name="myquery">The query (in string-format) that we want to execute on the database</param>
+            <returns>Dataset with the results of the query</returns>
+        </member>
+        <member name="T:DatabaseConnection.MySQLClass">
+            <summary>5
+            Class specific for MySQL.
+            </summary>
+        </member>
+        <member name="M:DatabaseConnection.MySQLClass.#ctor(System.String)">
+            <summary>
+            Constructor for MySQLClass
+            </summary>
+            <param name="MySQLConnectionString">connectionstring to use for the connection to the database (MySQL!)</param>
+        </member>
+        <member name="M:DatabaseConnection.MySQLClass.#ctor">
+            <summary>
+            Constructor that automatically adds a standard MySQL connectionstring
+            </summary>
+        </member>
+        <member name="T:DatabaseConnection.DB2Class">
+            <summary>
+            Class specific for DB2.
+            </summary>
+        </member>
+        <member name="M:DatabaseConnection.DB2Class.#ctor(System.String)">
+            <summary>
+            Constructor for DB2Class
+            </summary>
+            <param name="DB2ConnectionString">connectionstring to use for the connection to the database (DB2!)</param>
+        </member>
+        <member name="M:DatabaseConnection.DB2Class.#ctor">
+            <summary>
+            Constructor that automatically adds a standard DB2 connectionstring
+            </summary>
+        </member>
+    </members>
+</doc>
