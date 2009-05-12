@@ -1,6 +1,0 @@
-C:\Documents and Settings\peter\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
-C:\Documents and Settings\peter\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.pdb
-C:\Documents and Settings\peter\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.XML
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\SocketConnection\obj\Debug\SocketConnection.dll
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\SocketConnection\obj\Debug\SocketConnection.pdb
