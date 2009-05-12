@@ -32,22 +32,7 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             host = HostService(typeof(Elab.Rtls.Engines.WsnEngine.WsnEngineService));
         }
 
-        private void radioButtonCentroidLocalization_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonCentroidLocalization.Checked)
-                WsnController.SelectedAlgorithm = "CentroidLocalization";
-        }
-
-        private void radioButtonMinMaxSimpleModel_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonMinMaxSimpleModel.Checked)
-                WsnController.SelectedAlgorithm = "MinMax";
-        }
-
         #region Methods
-
-
-
 
 
         /// <summary>
@@ -68,7 +53,6 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
 
             //TODO: dispose of WsnController?
         }
-
 
         /// <summary>
         /// Hosts a service given by its type
@@ -107,6 +91,32 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
         {
             if (radioButtonAverageFilter.Checked)
                 WsnController.SelectedFilter = "Average";
+        }
+
+        private void radioButtonClusteredTriLateration_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonClusteredTriLateration.Checked)
+                WsnController.SelectedAlgorithm = "Trilateration";
+        }
+
+        private void radioButtonCentroidLocalization_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonCentroidLocalization.Checked)
+                WsnController.SelectedAlgorithm = "CentroidLocalization";
+        }
+
+        private void radioButtonMinMaxSimpleModel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonMinMaxSimpleModel.Checked)
+                WsnController.SelectedAlgorithm = "MinMax";
+        }
+
+        private void checkBoxCalibration_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxCalibration.Checked)
+                WsnController.UseCalibration = true;
+            else
+                WsnController.UseCalibration = false;
         }
     }
 }

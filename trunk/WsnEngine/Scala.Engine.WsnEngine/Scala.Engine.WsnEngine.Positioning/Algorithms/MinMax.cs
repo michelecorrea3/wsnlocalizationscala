@@ -22,7 +22,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             double distance;
             Point center;
 
-            if ((BlindNode.Anchors.Count + BlindNode.VirtualAnchors.Count) >= 3)
+            if (multiHop && (BlindNode.Anchors.Count + BlindNode.VirtualAnchors.Count) >= 3)
             {
                 //comment for the test
                 BlindNode.Anchors[0].fRSS = filterMethod(BlindNode.Anchors[0].RSS);
@@ -53,7 +53,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                     BnBox.Ymax = Math.Min(BnBox.Ymax, AnBox.Ymax);
                 }
 
-                if ( BlindNode.Anchors.Count < 3)
+                if ( BlindNode.Anchors.Count < 3 )
                 {
                     if (BlindNode.Anchors.Count == 0)
                     {
@@ -106,6 +106,37 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                             BnBox.Ymax = Math.Min(BnBox.Ymax, AnBox.Ymax);
                         }
                     }
+                }
+            }
+            else if ( !multiHop & BlindNode.Anchors.Count >= 3)
+            {
+                //comment for the test
+                BlindNode.Anchors[0].fRSS = filterMethod(BlindNode.Anchors[0].RSS);
+                distance = Ranging(BlindNode.Anchors[0].fRSS);
+
+                center = new Point(BlindNode.Anchors[0].posx, BlindNode.Anchors[0].posy);
+
+                //TEST: replace distance with constance
+                AnBox = new BoundingBox(center, distance);
+                BnBox = AnBox;
+
+                for (int i = 1; i < BlindNode.Anchors.Count; i++)
+                {
+                    //disabled for testing
+                    BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
+                    distance = Ranging(BlindNode.Anchors[i].fRSS);
+
+                    center = new Point(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy);
+
+                    AnBox = new BoundingBox(center, distance);
+
+                    //TEST
+                    //AnBox = new BoundingBox(center, 1);
+
+                    BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
+                    BnBox.Xmax = Math.Min(BnBox.Xmax, AnBox.Xmax);
+                    BnBox.Ymin = Math.Max(BnBox.Ymin, AnBox.Ymin);
+                    BnBox.Ymax = Math.Min(BnBox.Ymax, AnBox.Ymax);
                 }
             }
             else

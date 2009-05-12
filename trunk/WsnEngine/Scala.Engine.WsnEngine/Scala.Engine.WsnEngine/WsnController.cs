@@ -80,6 +80,11 @@ namespace Elab.Rtls.Engines.WsnEngine
             get; set;
         }
 
+        public bool UseCalibration
+        {
+            get; set;
+        }
+
         #endregion
 
         #region Event variables
@@ -326,7 +331,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     }
 
                     //TODO: switch on the bulletlist or whatever you use to select the algorithm
-                    Node.FilterMethod myFilter;
+                    Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
 
                     switch (SelectedFilter)
                     {
@@ -335,9 +340,6 @@ namespace Elab.Rtls.Engines.WsnEngine
                             break;
                         case "Average":
                             myFilter = new Node.FilterMethod(RangeBasedPositioning.AverageFilter);
-                            break;
-                        default:
-                            myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
                             break;
                     }
                     try
@@ -350,6 +352,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                             case "MinMax":
                                 pos = MinMax.CalculatePosition(CurrentNode, myFilter, false);
                                 break;
+                            //case "Trilateration":
+                            //    pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, false);
                         }
 
                         //Console.WriteLine("Position succesfully calculated, x = {0}, y = {1}", pos.x.ToString(),
@@ -444,8 +448,6 @@ namespace Elab.Rtls.Engines.WsnEngine
                         myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
                         break;
                 }
-
-                
             }
         }
 
