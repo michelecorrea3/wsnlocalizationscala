@@ -32,7 +32,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                         //    intersectionPoints.Add(crossing);
                         //}
                         //TEST
-                        foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 1.41, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 1.41))
+                        foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 1.41, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 1.41))
                         {
                             intersectionPoints.Add(crossing);
                         }
@@ -55,7 +55,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             ClosestPointPair closestPointPair = new ClosestPointPair();
 
             //get the two closest intersection point
-            closestPointPair = ShortestDistanceBetweenCutPoints(crossings); // get struct back
+            closestPointPair = GeometryHelper.ShortestDistanceBetweenCutPoints(crossings); // get struct back
             
             //add these points to the cluster
             cluster.Add(new Point(closestPointPair.point1.x, closestPointPair.point1.y));
@@ -69,7 +69,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             while (cluster.Count < anchors && crossings.Count > 0 )
             {
-                Point closestPoint = ShortestDistanceBetweenCutPoints(crossings, centroid);
+                Point closestPoint = GeometryHelper.ShortestDistanceBetweenCutPoints(crossings, centroid);
 
                 cluster.Add(closestPoint);
                 crossings.Remove(closestPoint);

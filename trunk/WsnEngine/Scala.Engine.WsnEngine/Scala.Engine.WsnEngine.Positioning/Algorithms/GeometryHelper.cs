@@ -126,21 +126,19 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             return closest.intersectionPoint;
         }
 
-        //public static Dictionary<double, double> AnchorNodeDistance 
+        //public static Dictionary<double, double> AnchorNodeDistance
+    }
 
-        public struct ClosestPointPair
-        {
-            public Point point1;
-            public Point point2;
-            public double distance;
-        }
+    public struct ClosestPointPair
+    {
+        public Point point1;
+        public Point point2;
+        public double distance;
+    }
 
-        public struct ClosestToCentroid
-        {
-            public Point intersectionPoint;
-            public double distance;
-        }
-
-        
+    public struct ClosestToCentroid
+    {
+        public Point intersectionPoint;
+        public double distance;
     }
 }

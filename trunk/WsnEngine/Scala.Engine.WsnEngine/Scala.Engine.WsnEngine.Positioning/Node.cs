@@ -69,10 +69,10 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         }
         
         //TEST
-        //public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy)
-        //{
-        //    Anchorlist.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
-        //}
+        public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy)
+        {
+            anchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
+        }
 
         public void AddAnchor(string AnchorWsnId, double RSS, int van)
         {
@@ -128,14 +128,14 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
         //OUTDATED....  
         /// <summary>
-        /// Retrieves the position of the specified node from the DB
+        /// Retrieves the position of the specified node from the DB  
         /// </summary>
         /// <param name="AN">The WSNid of the Anchor Node</param>
         /// <returns>The position of the Anchor Node</returns>
         private Point GetANPosition(string AnchorWsnId)
         {
             DataSet returnSet;
-            string cmd = "call getStatusWSNID('" + AnchorWsnId + "');";
+            string cmd = "call getPositionWsnId('" + AnchorWsnId + "');";
             Point pos = new Point();
 
             try
