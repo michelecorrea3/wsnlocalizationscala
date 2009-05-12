@@ -56,7 +56,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             //get the two closest intersection point
             closestPointPair = GeometryHelper.ShortestDistanceBetweenCutPoints(crossings); // get struct back
-            
+
             //add these points to the cluster
             cluster.Add(new Point(closestPointPair.point1.x, closestPointPair.point1.y));
             cluster.Add(new Point(closestPointPair.point2.x, closestPointPair.point2.y));
@@ -67,7 +67,9 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             centroid.x = (cluster[0].x + cluster[1].x) / 2;
             centroid.y = (cluster[0].y + cluster[1].y) / 2;
 
-            while (cluster.Count < anchors && crossings.Count > 0 )
+            crossings.Add(centroid);
+
+            while (cluster.Count < anchors && crossings.Count > 0)
             {
                 Point closestPoint = GeometryHelper.ShortestDistanceBetweenCutPoints(crossings, centroid);
 

@@ -9,6 +9,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
     {
         public static List<Point> Intersect(double x1, double y1, double radius1, double x2, double y2, double radius2)
         {
+
             Point position1 = new Point();
             Point position2 = new Point();
             List<Point> points = new List<Point>();
@@ -26,44 +27,126 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             double r1 = radius1 * radius1;
             double r2 = radius2 * radius2;
 
+            double xdis = Math.Pow((x1 - x2), 2);
+            double ydis = Math.Pow((y1 - y2), 2);
 
-            //Calculating:
-            // y = lx + b
-            l = (2 * c - 2 * a) / (2 * b - 2 * d);
-            k = (r2 - r1 - (c * c) - (d * d) + (a * a) + (b * b)) / (2 * b - 2 * d);
 
-            //discriminant
-            double f = -2 * a + 2 * l * k - 2 * b * l;
-            double e = 1 + (l * l);
-            double g = (a * a) + (k * k) - 2 * b * k + (b * b) - r1;
+            //            double distance = Math.Pow(     (    Math.Pow(     (x1 - x2),2    ) + Math.Pow(   (y1 - y2),2     )   )     ,0.5);
+            double distance = Math.Pow((xdis + ydis), 0.5);
 
-            D = (f * f) - 4 * e * g;
-
-            if (D == 0)
-            {
-                position1.x = (-f) / (2 * e);
-                position1.y = Math.Pow(0.5, (r1 - ((position1.x - a) * (position1.x - a)))) + b;
-                points.Add(position1);
-
-                return points;
-
-            }
-            else if (D > 0)
-            {
-
-                position1.x = (-f + Math.Pow(0.5, ((f * f) - 4 * e * g)) / (2 * e));
-                position1.y = Math.Pow(0.5, (r1 - ((position1.x - a) * (position1.x - a)))) + b;
-
-                position2.x = (-f + Math.Pow(0.5, ((f * f) - 4 * e * g)) / (2 * e));
-                position2.y = Math.Pow(0.5, (r1 - ((position1.x - a) * (position1.x - a)))) + b;
-
-                points.Add(position1);
-                points.Add(position2);
-
-                return points;
-            }
+            if ((distance > (radius1 + radius2)) || (distance < Math.Abs(radius1 - radius2)))
+                throw new ApplicationException("Distance between circles to big/small to cut");
             else
-                throw new ApplicationException("No crossing");
+            {
+                if (x1 == x2)
+                {
+                    position1.y = ((b * b) - (d * d) - r1 + r2) / (2 * b - 2 * d);
+                    position2.y = ((b * b) - (d * d) - r1 + r2) / (2 * b - 2 * d);
+
+                    double e = 1;
+                    double f = -2 * a;
+                    double g = (a * a) + Math.Pow((position1.y - b), 2) - r1;
+
+                    if (((f * f) - 4 * e * g) == 0)
+                    {
+                        position1.x = (-f) / (2 * e);
+                        points.Add(position1);
+
+                        return points;
+                    }
+
+                    else if (((f * f) - 4 * e * g) > 0)
+                    {
+
+                        position1.x = (-f + Math.Pow(((f * f) - 4 * e * g), 0.5) / (2 * e));
+                        position2.x = (-f + Math.Pow(((f * f) - 4 * e * g), 0.5) / (2 * e));
+
+                        points.Add(position1);
+                        points.Add(position2);
+
+                        return points;
+                    }
+                    else
+                        throw new ApplicationException("No cutting points");
+
+                }
+                else if (y1 == y2)
+                {
+                    position1.x = ((a * a) - (c * c) - r1 + r2) / (2 * a - 2 * c);
+                    position2.x = ((a * a) - (c * c) - r1 + r2) / (2 * a - 2 * c);
+
+                    double e = 1;
+                    double f = -2 * b;
+                    //double g = (b * b) + (Math.Pow(2.00, (position1.x - a)) - r1);
+                    double g = (b * b) + (position1.x - a) * (position1.x - a) - r1;
+
+                    if (((f * f) - 4 * e * g) == 0)
+                    {
+                        position1.y = (-f) / (2 * e);
+                        points.Add(position1);
+
+                        return points;
+                    }
+
+                    else if (((f * f) - 4 * e * g) > 0)
+                    {
+
+                        position1.y = (-f + Math.Pow(((f * f) - 4 * e * g), 0.5)) / (2 * e);
+                        position2.y = (-f - Math.Pow(((f * f) - 4 * e * g), 0.5)) / (2 * e);
+
+                        points.Add(position1);
+                        points.Add(position2);
+
+                        return points;
+                    }
+                    else
+                        throw new ApplicationException("No cutting points");
+
+                }
+                else
+                {
+
+                    //Calculatiings:
+                    // y = lx + b
+                    l = (2 * c - 2 * a) / (2 * b - 2 * d);
+                    k = (r2 - r1 - (c * c) - (d * d) + (a * a) + (b * b)) / (2 * b - 2 * d);
+
+                    //discriminant: y = ex^2 + fx + g
+                    // D = -f +- V(f^2 -4eg)  /  2e                             // a*x^2 + b*x + c
+                    double f = -2 * a + 2 * l * k - 2 * b * l;                  // b
+                    double e = 1 + (l * l);                                     // a
+                    double g = (a * a) + (k * k) - 2 * b * k + (b * b) - r1;    // c
+
+                    D = (f * f) - 4 * e * g;
+
+                    if (D == 0)
+                    {
+                        position1.x = (-f) / (2 * e);
+                        position1.y = Math.Pow((r1 - ((position1.x - a) * (position1.x - a))), 0.5) + b;
+                        points.Add(position1);
+
+                        return points;
+
+                    }
+                    else if (D > 0)
+                    {
+
+                        position1.x = (-f + Math.Pow(((f * f) - 4 * e * g), 0.5)) / (2 * e);
+                        position1.y = Math.Pow((r1 - ((position1.x - a) * (position1.x - a))), 0.5) + b;
+
+                        position2.x = (-f - Math.Pow(((f * f) - 4 * e * g), 0.5)) / (2 * e);
+                        position2.y = Math.Pow((r1 - ((position2.x - a) * (position2.x - a))), 0.5) + b;
+
+                        points.Add(position1);
+                        points.Add(position2);
+
+                        return points;
+                    }
+                    else
+                        throw new ApplicationException("No cutting points");
+                }
+
+            }
 
         }
 
@@ -81,7 +164,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 {
                     closest.point1 = intersectionPoints[i];
                     closest.point2 = intersectionPoints[j];
-                    closest.distance = Math.Pow((Math.Pow(2, (intersectionPoints[0].x - intersectionPoints[1].x)) + Math.Pow(2, (intersectionPoints[0].y - intersectionPoints[1].y))),0.5);
+                    closest.distance = Math.Pow((Math.Pow((intersectionPoints[i].x - intersectionPoints[j].x), 2) + Math.Pow((intersectionPoints[i].y - intersectionPoints[j].y), 2)), 0.5);
                     Distances.Add(closest);
                 }
             }
@@ -110,7 +193,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             for (int i = 0; i < intersectionPoints.Count - 1; i++)
             {
                 intersectionPoint.intersectionPoint = intersectionPoints[i];
-                intersectionPoint.distance = Math.Pow((Math.Pow(2, (intersectionPoints[i].x - centroid.x)) + Math.Pow(2, (intersectionPoints[0].y - centroid.y))),0.5);
+                intersectionPoint.distance = Math.Pow((Math.Pow((intersectionPoints[i].x - centroid.x), 2) + Math.Pow((intersectionPoints[i].y - centroid.y), 2)), 0.5);
                 DistancesToCentroid.Add(intersectionPoint);
             }
 
