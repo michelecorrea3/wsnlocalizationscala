@@ -64,7 +64,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             crossings.Remove(closestPointPair.point1);
             crossings.Remove(closestPointPair.point2);
 
-            centroid.x = (cluster[0].x + cluster[1].x)/2;
+            centroid.x = (cluster[0].x + cluster[1].x) / 2;
             centroid.y = (cluster[0].y + cluster[1].y) / 2;
 
             while (cluster.Count < anchors && crossings.Count > 0 )
