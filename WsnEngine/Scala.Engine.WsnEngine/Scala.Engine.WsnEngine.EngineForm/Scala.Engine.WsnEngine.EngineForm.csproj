@@ -35,27 +35,23 @@
   <ItemGroup>
     <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Scala\Scala-src\Resources\Castle.ActiveRecord.dll</HintPath>
-    </Reference>
-    <Reference Include="Elab.Rtls.Engines.WsnEngine.Hosts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Scala.Hosts.WsnEngine\obj\Debug\Elab.Rtls.Engines.WsnEngine.Hosts.dll</HintPath>
+      <HintPath>..\..\..\..\Scala\Scala - Src\build\Castle.ActiveRecord.dll</HintPath>
     </Reference>
     <Reference Include="Elab.Toolkit.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37c3a49e34abacd0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Scala\Scala-src\Elab.Toolkit.Core\obj\Debug\Elab.Toolkit.Core.dll</HintPath>
+      <HintPath>..\..\..\..\Scala\Scala - Src\trunk\Elab.Toolkit.Core\obj\Debug\Elab.Toolkit.Core.dll</HintPath>
     </Reference>
     <Reference Include="Elab.Toolkit.Rtls, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40f3577d2354700d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Scala\Scala-src\Elab.Toolkit.Rtls\obj\Debug\Elab.Toolkit.Rtls.dll</HintPath>
+      <HintPath>..\..\..\Resources\Elab.Toolkit.Rtls.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate, Version=1.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Scala\Scala-src\Resources\NHibernate.dll</HintPath>
+      <HintPath>..\..\..\Resources\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Scala\Scala-src\Scala.Core\obj\Debug\Scala.Core.dll</HintPath>
+      <HintPath>..\..\..\Resources\Scala.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
