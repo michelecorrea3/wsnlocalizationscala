@@ -58,7 +58,11 @@ namespace Elab.Rtls.Engines.WsnEngine
         /// </summary>
         private List<Node> BlindNodes = new List<Node>();
 
+        private List<Node> AnchorNodes = new List<Node>();
+
         #endregion private variables
+
+        #region Properties
 
         /// <summary>
         /// Property for the used algororithm
@@ -76,7 +80,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             get; set;
         }
 
-
+        #endregion
 
         #region Event variables
 
@@ -269,105 +273,56 @@ namespace Elab.Rtls.Engines.WsnEngine
 
 
                 if (Set.DataSetName == "SensorMeasurements")
-                {
-                    int TimeSecs;
-                    if (int.TryParse(row["Time"].ToString(), out TimeSecs))
-                        row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
-
-                    //Create the command that we send to the database to insert the new row.
-                    cmd = "call addSensorMeasurements('" +
-                        row["ID"] + "','" +
-                        row["Time"] + "','" +
-                        row["Temp"] + "','" +
-                        row["Light"] + "'," +
-                        ((double.TryParse(row["Humidity"].ToString(), out temp)) ? row["Humidity"] : "null") + "," +
-                        ((int.TryParse(row["Power"].ToString(), out tempint)) ? row["Power"] : "null") + "," +
-                        ((double.TryParse(row["TiltX"].ToString(), out temp)) ? row["TiltX"] : "null") + "," +
-                        ((double.TryParse(row["TiltY"].ToString(), out temp)) ? row["TiltY"] : "null") + "," +
-                        ((double.TryParse(row["TiltZ"].ToString(), out temp)) ? row["TiltZ"] : "null") + "," +
-                        ((double.TryParse(row["AccX"].ToString(), out temp)) ? row["AccX"] : "null") + "," +
-                        ((double.TryParse(row["AccY"].ToString(), out temp)) ? row["AccY"] : "null") + "," +
-                        ((double.TryParse(row["AccZ"].ToString(), out temp)) ? row["AccZ"] : "null") + ",'" +
-                        ((int.TryParse(row["Button1"].ToString(), out tempint)) ? row["Button1"] : "0") + "'," +
-                        ((int.TryParse(row["Button2"].ToString(), out tempint)) ? row["Button2"] : "null") + ",'" +
-                        ((double.TryParse(row["LED1"].ToString(), out temp)) ? row["LED1"] : "null") + "','" +
-                        ((double.TryParse(row["LED2"].ToString(), out temp)) ? row["LED2"] : "null") + "','" +
-                        ((double.TryParse(row["LED3"].ToString(), out temp)) ? row["LED3"] : "null") + "','" +
-                        ((double.TryParse(row["LED4"].ToString(), out temp)) ? row["LED4"] : "null") + "','" +
-                        ((double.TryParse(row["LED5"].ToString(), out temp)) ? row["LED5"] : "null") + "','" +
-                        ((double.TryParse(row["LED6"].ToString(), out temp)) ? row["LED6"] : "null") + "','" +
-                        ((double.TryParse(row["LED7"].ToString(), out temp)) ? row["LED7"] : "null") + "','" +
-                        ((double.TryParse(row["LED8"].ToString(), out temp)) ? row["LED8"] : "null") + "'," +
-                        ((int.TryParse(row["Polling"].ToString(), out tempint)) ? row["Polling"] : "null") + ");";
-                    Console.WriteLine("AddSensorMeasurements OK");
-                    Console.WriteLine("WSNID is: \n" + row["ID"].ToString());
-
-                    #region SensorDataEvents
-                    //RTLSBlinkTime is generated in the TryQuery to reduce the code size
-                    if (TemperatureChanged != null)
-                    {
-                        EventMessage EventData = new EventMessage();
-                        //EventData.EventType = "TemperatureChanged";
-
-                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
-                        EventData.TagBlink["Temperature"] = row["Temp"].ToString();
-
-                        TemperatureChanged(this, EventData);
-                    }
-                    if (LightChanged != null)
-                    {
-                        EventMessage EventData = new EventMessage();
-                        //EventData.EventType = "LightChanged";
-
-                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
-                        EventData.TagBlink["Light"] = row["Light"].ToString();
-
-                        LightChanged(this, EventData);
-                    }
-                    if (HumidityChanged != null)
-                    {
-                        EventMessage EventData = new EventMessage();
-                        //EventData.EventType = "HumidityChanged";
-
-                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
-                        EventData.TagBlink["Humidity"] = row["Humidity"].ToString();
-
-                        HumidityChanged(this, EventData);
-                    }
-                    if (ButtonPressed!= null)
-                    {
-                        EventMessage EventData = new EventMessage();
-                        //EventData.EventType = "ButtonPressed";
-
-                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
-                        EventData.TagBlink["Button"] = row["temperature"].ToString();
-
-                        ButtonPressed(this, EventData);
-                    }
-
-                    #endregion
-
-                }
+                    cmd = ParseSensor(row);
                 else if (Set.DataSetName == "LocationMessage")
                 {
-                    int TimeSecs;
-                    if (int.TryParse(row["Time"].ToString(), out TimeSecs))
-                        row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
+                    if (Convert.ToInt16(row["VANr"]) == 1)
+                    {
+                        ParseAnchor(row);
+                        return null;
+                    }
+                    else
+                        cmd = ParseBlind(row);
+                }
+                else if (Set.DataSetName == "StatusMessage")
+                    cmd = ParseStatus(row);
 
-                    currentID = row["ID"].ToString();
-                    Positioning.Point pos = new Positioning.Point(0, 0);
-                    Node CurrentBlindNode;
+                //try
+                {
+                    //Update the MySQL-database (if it is available)
+                    if (MySQLAllowedConn)
+                        returnSet = MySQLConn.Query(cmd);
+                    Console.WriteLine("Query OK");
+                }
+            }
+            return returnSet;
+        }
+
+        private string ParseBlind(DataRow row)
+        {
+            string cmd;
+            int tempint;
+           
+                int TimeSecs;
+                if (int.TryParse(row["Time"].ToString(), out TimeSecs))
+                    row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);
+                        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
+
+                currentID = row["ID"].ToString();
+                Positioning.Point pos = new Positioning.Point(0, 0);
+                Node CurrentNode;
 
                     if (!BlindNodes.Exists(ExistsNode))
                     {
-                        BlindNodes.Add(new Node(row["ID"].ToString(), MySQLConn, row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString())));
+                        BlindNodes.Add(new Node(row["ID"].ToString(), MySQLConn, row["ANode"].ToString(),
+                                                Convert.ToDouble(row["RSSI"].ToString())));
                         Console.WriteLine("Added new BN to be positioned\n\n\n");
-                        CurrentBlindNode = BlindNodes.Find(ExistsNode);
+                        CurrentNode = BlindNodes.Find(ExistsNode);
                     }
                     else
                     {
-                        CurrentBlindNode = BlindNodes.Find(ExistsNode);
-                        CurrentBlindNode.AddAnchor(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()));
+                        CurrentNode = BlindNodes.Find(ExistsNode);
+                        CurrentNode.AddAnchor(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()));
                     }
 
                     //TODO: switch on the bulletlist or whatever you use to select the algorithm
@@ -390,10 +345,10 @@ namespace Elab.Rtls.Engines.WsnEngine
                         switch (SelectedAlgorithm)
                         {
                             case "CentroidLocalization":
-                                pos = CentroidLocalization.CalculatePosition(CurrentBlindNode);
+                                pos = CentroidLocalization.CalculatePosition(CurrentNode);
                                 break;
                             case "MinMax":
-                                pos = MinMax.CalculatePosition(CurrentBlindNode, myFilter);
+                                pos = MinMax.CalculatePosition(CurrentNode, myFilter);
                                 break;
                         }
 
@@ -413,12 +368,13 @@ namespace Elab.Rtls.Engines.WsnEngine
                               ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
                               "Centroid Localization" + "');";
 
+                        //add the position to the position table
                         string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
                                                row["Time"].ToString() + ", " + "0, " + pos.x.ToString() + ", " +
                                                pos.y.ToString();
                         MySQLConn.Query(AddToPosition);
 
-                        #region NewPosition
+                        #region LocationUpdated
 
                         if (LocationUpdated != null)
                         {
@@ -437,59 +393,177 @@ namespace Elab.Rtls.Engines.WsnEngine
                     catch
                     {
                         cmd = "call addLocalizationData(" +
-                          ((int.TryParse(row["RSSI"].ToString(), out tempint)) ? row["RSSI"] : "null") + "," +
+                              ((int.TryParse(row["RSSI"].ToString(), out tempint)) ? row["RSSI"] : "null") + "," +
 
-                          "null, " +
-                          "null, " +
+                              "null, " +
+                              "null, " +
 
-                          ((int.TryParse(row["Z"].ToString(), out tempint)) ? row["Z"] : "null") + "," +
-                          row["ID"] + ",'" +
-                          row["Time"] + "'," +
-                          ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
-                          "Centroid Localization" + "');";
+                              ((int.TryParse(row["Z"].ToString(), out tempint)) ? row["Z"] : "null") + "," +
+                              row["ID"] + ",'" +
+                              row["Time"] + "'," +
+                              ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
+                              "Centroid Localization" + "');";
 
                         string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
                                                row["Time"].ToString() + ", " + "0, null, null";
                         MySQLConn.Query(AddToPosition);
                     }
-                }
-                else if (Set.DataSetName == "StatusMessage")
+                
+                //nothing to be returned when this the node is an anchor...
+                return cmd;
+        }
+
+        private void ParseAnchor(DataRow row)
+        {
+            Node CurrentNode;
+            currentID = row["ID"].ToString();
+            {
+                if (!AnchorNodes.Exists(ExistsNode))
                 {
-                    int TimeSecs;
-                    if (int.TryParse(row["Time"].ToString(), out TimeSecs))
-                        row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
-
-                    //Create the command that we send to the database to insert the new row.
-                    cmd = "call addStatus(" +
-                    row["ID"] + ",'" +
-                    row["Time"] + "'," +
-                    row["Active"] + "," +
-                    row["AN"] + "," +
-                    ((int.TryParse(row["X"].ToString(), out tempint)) ? row["X"] : "null") + "," +
-                    ((int.TryParse(row["Y"].ToString(), out tempint)) ? row["Y"] : "null") + "," +
-                    ((int.TryParse(row["SampleRate"].ToString(), out tempint)) ? row["SampleRate"] : "null") + "," +
-                    ((int.TryParse(row["LocRate"].ToString(), out tempint)) ? row["LocRate"] : "null") + "," +
-                    ((int.TryParse(row["Leds"].ToString(), out tempint)) ? row["Leds"] : "null") + "," +
-                    ((int.TryParse(row["Power"].ToString(), out tempint)) ? row["Power"] : "null") + "," +
-                    ((int.TryParse(row["Frequency"].ToString(), out tempint)) ? row["Frequency"] : "null") + "," +
-                    ((int.TryParse(row["Conn"].ToString(), out tempint)) ? row["Conn"] : "null") + ");";
-                    Console.WriteLine("Add Status OK");
-
-                    string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
-                       row["Time"].ToString() + ", " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString();
-                    MySQLConn.Query(AddToPosition);
+                    AnchorNodes.Add(new Node(row["ID"].ToString(), MySQLConn, row["ANode"].ToString(),
+                                            Convert.ToDouble(row["RSSI"].ToString())));
+                    CurrentNode = BlindNodes.Find(ExistsNode);
                 }
-
-                //try
+                else
                 {
-                    //Update the MySQL-database (if it is available)
-                    if (MySQLAllowedConn)
-                        returnSet = MySQLConn.Query(cmd);
-                    Console.WriteLine("Query OK");
+                    CurrentNode = AnchorNodes.Find(ExistsNode);
+                    CurrentNode.AddAnchor(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()));
                 }
+
+                Node.FilterMethod myFilter;
+
+                switch (SelectedFilter)
+                {
+                    case "Median":
+                        myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
+                        break;
+                    case "Average":
+                        myFilter = new Node.FilterMethod(RangeBasedPositioning.AverageFilter);
+                        break;
+                    default:
+                        myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
+                        break;
+                }
+
+                RangeBasedPositioning.CalibratePathloss(AnchorNodes,myFilter);
             }
+        }
 
-            return returnSet;
+        private string ParseSensor(DataRow row)
+        {
+            string cmd;
+            double temp;
+            int tempint;
+            {
+                int TimeSecs;
+                if (int.TryParse(row["Time"].ToString(), out TimeSecs))
+                    row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
+
+                //Create the command that we send to the database to insert the new row.
+                cmd = "call addSensorMeasurements('" +
+                      row["ID"] + "','" +
+                      row["Time"] + "','" +
+                      row["Temp"] + "','" +
+                      row["Light"] + "'," +
+                      ((double.TryParse(row["Humidity"].ToString(), out temp)) ? row["Humidity"] : "null") + "," +
+                      ((int.TryParse(row["Power"].ToString(), out tempint)) ? row["Power"] : "null") + "," +
+                      ((double.TryParse(row["TiltX"].ToString(), out temp)) ? row["TiltX"] : "null") + "," +
+                      ((double.TryParse(row["TiltY"].ToString(), out temp)) ? row["TiltY"] : "null") + "," +
+                      ((double.TryParse(row["TiltZ"].ToString(), out temp)) ? row["TiltZ"] : "null") + "," +
+                      ((double.TryParse(row["AccX"].ToString(), out temp)) ? row["AccX"] : "null") + "," +
+                      ((double.TryParse(row["AccY"].ToString(), out temp)) ? row["AccY"] : "null") + "," +
+                      ((double.TryParse(row["AccZ"].ToString(), out temp)) ? row["AccZ"] : "null") + ",'" +
+                      ((int.TryParse(row["Button1"].ToString(), out tempint)) ? row["Button1"] : "0") + "'," +
+                      ((int.TryParse(row["Button2"].ToString(), out tempint)) ? row["Button2"] : "null") + ",'" +
+                      ((double.TryParse(row["LED1"].ToString(), out temp)) ? row["LED1"] : "null") + "','" +
+                      ((double.TryParse(row["LED2"].ToString(), out temp)) ? row["LED2"] : "null") + "','" +
+                      ((double.TryParse(row["LED3"].ToString(), out temp)) ? row["LED3"] : "null") + "','" +
+                      ((double.TryParse(row["LED4"].ToString(), out temp)) ? row["LED4"] : "null") + "','" +
+                      ((double.TryParse(row["LED5"].ToString(), out temp)) ? row["LED5"] : "null") + "','" +
+                      ((double.TryParse(row["LED6"].ToString(), out temp)) ? row["LED6"] : "null") + "','" +
+                      ((double.TryParse(row["LED7"].ToString(), out temp)) ? row["LED7"] : "null") + "','" +
+                      ((double.TryParse(row["LED8"].ToString(), out temp)) ? row["LED8"] : "null") + "'," +
+                      ((int.TryParse(row["Polling"].ToString(), out tempint)) ? row["Polling"] : "null") + ");";
+                Console.WriteLine("AddSensorMeasurements OK");
+                Console.WriteLine("WSNID is: \n" + row["ID"].ToString());
+
+                #region SensorDataEvents
+                //RTLSBlinkTime is generated in the TryQuery to reduce the code size
+                if (TemperatureChanged != null)
+                {
+                    EventMessage EventData = new EventMessage();
+                    //EventData.EventType = "TemperatureChanged";
+
+                    EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                    EventData.TagBlink["Temperature"] = row["Temp"].ToString();
+
+                    TemperatureChanged(this, EventData);
+                }
+                if (LightChanged != null)
+                {
+                    EventMessage EventData = new EventMessage();
+                    //EventData.EventType = "LightChanged";
+
+                    EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                    EventData.TagBlink["Light"] = row["Light"].ToString();
+
+                    LightChanged(this, EventData);
+                }
+                if (HumidityChanged != null)
+                {
+                    EventMessage EventData = new EventMessage();
+                    //EventData.EventType = "HumidityChanged";
+
+                    EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                    EventData.TagBlink["Humidity"] = row["Humidity"].ToString();
+
+                    HumidityChanged(this, EventData);
+                }
+                if (ButtonPressed!= null)
+                {
+                    EventMessage EventData = new EventMessage();
+                    //EventData.EventType = "ButtonPressed";
+
+                    EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                    EventData.TagBlink["Button"] = row["temperature"].ToString();
+
+                    ButtonPressed(this, EventData);
+                }
+
+                #endregion
+
+            }
+            return cmd;
+        }
+
+        private string ParseStatus(DataRow row)
+        {
+            string cmd;
+            int TimeSecs, tempint;
+            if (int.TryParse(row["Time"].ToString(), out TimeSecs))
+                row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
+
+            //Create the command that we send to the database to insert the new row.
+            cmd = "call addStatus(" +
+            row["ID"] + ",'" +
+            row["Time"] + "'," +
+            row["Active"] + "," +
+            row["AN"] + "," +
+            ((int.TryParse(row["X"].ToString(), out tempint)) ? row["X"] : "null") + "," +
+            ((int.TryParse(row["Y"].ToString(), out tempint)) ? row["Y"] : "null") + "," +
+            ((int.TryParse(row["SampleRate"].ToString(), out tempint)) ? row["SampleRate"] : "null") + "," +
+            ((int.TryParse(row["LocRate"].ToString(), out tempint)) ? row["LocRate"] : "null") + "," +
+            ((int.TryParse(row["Leds"].ToString(), out tempint)) ? row["Leds"] : "null") + "," +
+            ((int.TryParse(row["Power"].ToString(), out tempint)) ? row["Power"] : "null") + "," +
+            ((int.TryParse(row["Frequency"].ToString(), out tempint)) ? row["Frequency"] : "null") + "," +
+            ((int.TryParse(row["Conn"].ToString(), out tempint)) ? row["Conn"] : "null") + ");";
+            Console.WriteLine("Add Status OK");
+
+            string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
+               row["Time"].ToString() + ", " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString();
+            MySQLConn.Query(AddToPosition);
+
+            return cmd;
         }
 
         /// <summary>

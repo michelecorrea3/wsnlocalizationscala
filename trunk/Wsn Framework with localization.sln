@@ -37,7 +37,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scala.Engine.WsnEngine.Engi
 		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382} = {9C4DE4C2-6532-46B8-8FD7-CE29065A2382}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Positioning.Tests", "Elab.Rtls.Engines.WsnEngine.Positioning.Tests\Elab.Rtls.Engines.WsnEngine.Positioning.Tests.csproj", "{2A02D430-4BB9-461D-BE96-16C5B2199BA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4D93AC2-8501-4C0C-AAD1-E0A3BE4865E7}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		Wsn Framework with localization.vsmdi = Wsn Framework with localization.vsmdi
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Wsn Framework with localization.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -75,6 +86,10 @@ Global
 		{47E53925-70BC-41A3-806D-DE7CEC723509}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47E53925-70BC-41A3-806D-DE7CEC723509}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47E53925-70BC-41A3-806D-DE7CEC723509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A02D430-4BB9-461D-BE96-16C5B2199BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A02D430-4BB9-461D-BE96-16C5B2199BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A02D430-4BB9-461D-BE96-16C5B2199BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A02D430-4BB9-461D-BE96-16C5B2199BA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,59 +15,62 @@
   <RecentFiles>
     <RecentFiles>
       <File id="47E53925-70BC-41A3-806D-DE7CEC723509/f:Form1.Designer.cs" caret="6845" scrollPosition="0|0" />
-      <File id="AD1B0220-33A6-46C6-96DB-0866851F745D/f:SocketClass.cs" caret="9198" scrollPosition="0|0" />
       <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/d:EventListeners/f:PositionEventListener.cs" caret="590" scrollPosition="0|0" />
       <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/d:EventListeners/f:SensorDataEventListener.cs" caret="1368" scrollPosition="0|0" />
       <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/d:EventListeners/f:EventListener.cs" caret="1478" scrollPosition="0|0" />
       <File id="47E53925-70BC-41A3-806D-DE7CEC723509/f:App.config" caret="1248" scrollPosition="0|0" />
       <File id="5844E910-E08E-431B-838D-257864CBE4F3/f:Form1.cs" caret="0" scrollPosition="0|0" />
-      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnEngineService.cs" caret="505" scrollPosition="0|60" />
-      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnQueryHelper.cs" caret="15084" scrollPosition="0|282" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:INode.cs" caret="0" scrollPosition="0|0" />
       <File id="47E53925-70BC-41A3-806D-DE7CEC723509/f:Form1.cs" caret="0" scrollPosition="0|0" />
       <File id="47E53925-70BC-41A3-806D-DE7CEC723509/f:Program.cs" caret="0" scrollPosition="0|0" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:AbstractPositioning.cs" caret="664" scrollPosition="0|24" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:MinMax.cs" caret="893" scrollPosition="0|12" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="1539" scrollPosition="0|0" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Centroid.cs" caret="663" scrollPosition="0|7" />
       <File id="2A02D430-4BB9-461D-BE96-16C5B2199BA8/f:AuthoringTests.txt" caret="0" scrollPosition="0|0" />
       <File id="25F894F5-9B32-46FA-985A-2FDBE8ACCDC6/f:DBClass.cs" caret="4607" scrollPosition="0|0" />
-      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnController.cs" caret="18056" scrollPosition="0|298" />
-      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnEngine.cs" caret="832" scrollPosition="0|21" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="1354" scrollPosition="0|26" />
-      <File id="2A02D430-4BB9-461D-BE96-16C5B2199BA8/f:LocalizationAlgorithmsTest.cs" caret="2291" scrollPosition="0|30" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:INode.cs" caret="0" scrollPosition="0|0" />
+      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnEngineService.cs" caret="505" scrollPosition="0|0" />
+      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnQueryHelper.cs" caret="15121" scrollPosition="0|0" />
+      <File id="AD1B0220-33A6-46C6-96DB-0866851F745D/f:SocketClass.cs" caret="9220" scrollPosition="0|0" />
+      <File id="2A02D430-4BB9-461D-BE96-16C5B2199BA8/f:LocalizationAlgorithmsTest.cs" caret="3629" scrollPosition="0|0" />
+      <File id="2A02D430-4BB9-461D-BE96-16C5B2199BA8/f:FiltersAndRangingTest.cs" caret="435" scrollPosition="0|0" />
+      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnEngine.cs" caret="832" scrollPosition="0|0" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Centroid.cs" caret="0" scrollPosition="0|0" />
+      <File id="d:Miscellaneous Files/f:Positioning.cs" caret="14726" scrollPosition="0|0" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:GeometryHelper.cs" caret="219" scrollPosition="5|0" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="3592" scrollPosition="0|0" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:AbstractPositioning.cs" caret="2728" scrollPosition="8|42" />
+      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnController.cs" caret="13121" scrollPosition="0|114" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="2158" scrollPosition="0|99" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:MinMax.cs" caret="680" scrollPosition="0|6" />
     </RecentFiles>
     <RecentEdits>
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="2450" scrollPosition="2|60" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="394" scrollPosition="0|12" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="1396" scrollPosition="0|12" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="6525" scrollPosition="0|139" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="1580" scrollPosition="0|28" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="7383" scrollPosition="0|148" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="905" scrollPosition="0|14" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="3882" scrollPosition="0|110" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="4636" scrollPosition="74|110" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="6097" scrollPosition="0|87" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="6035" scrollPosition="0|54" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="6007" scrollPosition="0|57" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="6327" scrollPosition="0|57" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="5179" scrollPosition="0|48" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="6401" scrollPosition="0|84" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="6756" scrollPosition="0|84" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="7992" scrollPosition="0|107" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="1903" scrollPosition="0|0" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="7020" scrollPosition="0|30" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Trilateration.cs" caret="7608" scrollPosition="0|45" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="2174" scrollPosition="0|60" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="3310" scrollPosition="0|96" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Centroid.cs" caret="991" scrollPosition="0|3" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Centroid.cs" caret="863" scrollPosition="0|3" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:Centroid.cs" caret="663" scrollPosition="0|7" />
-      <File id="2A02D430-4BB9-461D-BE96-16C5B2199BA8/f:LocalizationAlgorithmsTest.cs" caret="128" scrollPosition="0|0" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="1135" scrollPosition="0|31" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="364" scrollPosition="0|4" />
-      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="1497" scrollPosition="0|32" />
-      <File id="2A02D430-4BB9-461D-BE96-16C5B2199BA8/f:LocalizationAlgorithmsTest.cs" caret="2397" scrollPosition="0|30" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:AbstractPositioning.cs" caret="2711" scrollPosition="44|36" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:AbstractPositioning.cs" caret="2329" scrollPosition="0|36" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:AbstractPositioning.cs" caret="3132" scrollPosition="0|48" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:AbstractPositioning.cs" caret="1962" scrollPosition="0|27" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:AbstractPositioning.cs" caret="2074" scrollPosition="0|27" />
+      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnController.cs" caret="18781" scrollPosition="0|214" />
+      <File id="C91B3347-B0FE-4AA9-AC1F-0547B7D62E60/f:WsnController.cs" caret="19423" scrollPosition="0|214" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="4495" scrollPosition="0|42" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="4036" scrollPosition="6|27" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="5606" scrollPosition="0|89" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="5747" scrollPosition="0|89" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="5933" scrollPosition="0|89" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="512" scrollPosition="0|9" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="787" scrollPosition="0|9" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="909" scrollPosition="0|9" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="1525" scrollPosition="0|38" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="1850" scrollPosition="0|38" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="1890" scrollPosition="0|42" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="2157" scrollPosition="0|51" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="3964" scrollPosition="0|74" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="2521" scrollPosition="0|77" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="3659" scrollPosition="0|81" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/f:Node.cs" caret="3612" scrollPosition="0|87" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:MinMax.cs" caret="2650" scrollPosition="0|39" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:MinMax.cs" caret="575" scrollPosition="0|3" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:MinMax.cs" caret="1134" scrollPosition="0|21" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:MinMax.cs" caret="2694" scrollPosition="0|53" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:MinMax.cs" caret="2694" scrollPosition="0|60" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:MinMax.cs" caret="4722" scrollPosition="0|76" />
+      <File id="2EC133F5-6F78-4166-AEE7-F730B4ED258F/d:Algorithms/f:MinMax.cs" caret="3783" scrollPosition="0|76" />
     </RecentEdits>
   </RecentFiles>
   <UnitTestRunner>
@@ -81,14 +84,14 @@
   <CompletionStatisticsManager>
     <ItemStatistics item="Default">
       <Item value="Rtls.Engines.WsnEngine" priority="0" />
-      <Item value="public" priority="13" />
+      <Item value="public" priority="28" />
       <Item value="radioButtonCentroidLocalization" priority="1" />
-      <Item value="return" priority="10" />
-      <Item value="else" priority="7" />
-      <Item value="if" priority="26" />
+      <Item value="return" priority="13" />
+      <Item value="else" priority="13" />
+      <Item value="if" priority="36" />
       <Item value="radioButtonMinMaxSimpleModel" priority="1" />
       <Item value="switch" priority="3" />
-      <Item value="string" priority="15" />
+      <Item value="string" priority="16" />
       <Item value="WsnController" priority="3" />
       <Item value="SelectedAlgorithm" priority="0" />
       <Item value="case" priority="23" />
@@ -99,29 +102,29 @@
       <Item value="eventSubscription" priority="1" />
       <Item value="NewPositionEvent" priority="1" />
       <Item value="EventData" priority="2" />
-      <Item value="this" priority="10" />
+      <Item value="this" priority="13" />
       <Item value="WsnHost" priority="0" />
       <Item value="Host" priority="4" />
-      <Item value="new" priority="15" />
+      <Item value="new" priority="17" />
       <Item value="Form1" priority="0" />
       <Item value="MessageBox" priority="0" />
-      <Item value="private" priority="4" />
+      <Item value="private" priority="7" />
       <Item value="Rtls" priority="0" />
       <Item value="Engines" priority="0" />
       <Item value="WsnEngine" priority="2" />
       <Item value="Hosts" priority="0" />
       <Item value="query" priority="6" />
-      <Item value="foreach" priority="3" />
+      <Item value="foreach" priority="6" />
       <Item value="QueryCmd" priority="4" />
-      <Item value="int" priority="0" />
+      <Item value="int" priority="5" />
       <Item value="filterValues" priority="0" />
       <Item value="Dictionary&lt;string,EventListener&gt;" priority="0" />
       <Item value="class" priority="0" />
-      <Item value="RangeBasedPositioning" priority="5" />
-      <Item value="static" priority="2" />
-      <Item value="Point" priority="12" />
-      <Item value="Node" priority="3" />
-      <Item value="Math" priority="0" />
+      <Item value="RangeBasedPositioning" priority="11" />
+      <Item value="static" priority="4" />
+      <Item value="Point" priority="17" />
+      <Item value="Node" priority="9" />
+      <Item value="Math" priority="1" />
       <Item value="EventHandler" priority="3" />
       <Item value="EventMessage" priority="3" />
       <Item value="event" priority="0" />
@@ -136,24 +139,24 @@
       <Item value="ReturnTagBlink" priority="1" />
       <Item value="LocationUpdated" priority="1" />
       <Item value="QueriedEventMessage" priority="1" />
-      <Item value="List" priority="4" />
+      <Item value="List" priority="9" />
       <Item value="EventSubscription" priority="3" />
       <Item value="EventIDs" priority="0" />
       <Item value="eventMessage" priority="0" />
       <Item value="base" priority="1" />
       <Item value="controller" priority="2" />
       <Item value="Stack" priority="0" />
-      <Item value="double" priority="17" />
+      <Item value="double" priority="28" />
       <Item value="Queue" priority="5" />
-      <Item value="AnchorWsnId" priority="2" />
-      <Item value="AnchorNode" priority="2" />
+      <Item value="AnchorWsnId" priority="4" />
+      <Item value="AnchorNode" priority="9" />
       <Item value="Queue&lt;double&gt;" priority="1" />
-      <Item value="RSS" priority="6" />
+      <Item value="RSS" priority="7" />
       <Item value="Anchorlist" priority="12" />
       <Item value="Anchors" priority="0" />
       <Item value="TempNode" priority="0" />
-      <Item value="ANpos" priority="1" />
-      <Item value="AN" priority="6" />
+      <Item value="ANpos" priority="4" />
+      <Item value="AN" priority="7" />
       <Item value="TempANode" priority="0" />
       <Item value="index" priority="1" />
       <Item value="do" priority="0" />
@@ -166,10 +169,10 @@
       <Item value="radioButtonAverageFilter_CheckedChanged" priority="0" />
       <Item value="SelectedFilter" priority="0" />
       <Item value="FilterMethod" priority="9" />
-      <Item value="myFilter" priority="4" />
+      <Item value="myFilter" priority="5" />
       <Item value="DefaultValueAttribute" priority="0" />
       <Item value="default" priority="0" />
-      <Item value="filterMethod" priority="5" />
+      <Item value="filterMethod" priority="6" />
       <Item value="fRSS" priority="0" />
       <Item value="MinMax" priority="0" />
       <Item value="ITagInformationSource" priority="0" />
@@ -181,8 +184,8 @@
       <Item value="queryCmd" priority="0" />
       <Item value="Tag" priority="4" />
       <Item value="List&lt;Tag&gt;" priority="0" />
-      <Item value="DataRow" priority="0" />
-      <Item value="row" priority="3" />
+      <Item value="DataRow" priority="1" />
+      <Item value="row" priority="4" />
       <Item value="tagList" priority="2" />
       <Item value="tagId" priority="1" />
       <Item value="tag" priority="0" />
@@ -191,7 +194,7 @@
       <Item value="Exception" priority="0" />
       <Item value="String" priority="5" />
       <Item value="tagBlinks" priority="1" />
-      <Item value="null" priority="0" />
+      <Item value="null" priority="1" />
       <Item value="throw" priority="0" />
       <Item value="ValueType" priority="0" />
       <Item value="try" priority="0" />
@@ -209,7 +212,7 @@
       <Item value="tempY" priority="1" />
       <Item value="mapId" priority="0" />
       <Item value="in" priority="0" />
-      <Item value="BlindNode" priority="3" />
+      <Item value="BlindNode" priority="12" />
       <Item value="List&lt;Point&gt;" priority="0" />
       <Item value="centroidPoints" priority="3" />
       <Item value="shortest" priority="1" />
@@ -223,20 +226,45 @@
       <Item value="closest" priority="3" />
       <Item value="dist" priority="0" />
       <Item value="cluster" priority="10" />
-      <Item value="crossings" priority="4" />
+      <Item value="crossings" priority="5" />
       <Item value="ShortestDistanceBetweenCutPoints" priority="0" />
       <Item value="closestPoint" priority="1" />
       <Item value="tempCentroid" priority="5" />
       <Item value="point" priority="0" />
       <Item value="clusterPoint" priority="1" />
-      <Item value="position" priority="1" />
-      <Item value="Assert" priority="0" />
-      <Item value="using" priority="1" />
+      <Item value="position" priority="3" />
+      <Item value="Assert" priority="2" />
+      <Item value="using" priority="2" />
       <Item value="DatabaseConnection" priority="0" />
       <Item value="testContextInstance" priority="0" />
-      <Item value="void" priority="0" />
+      <Item value="void" priority="2" />
       <Item value="posx" priority="0" />
       <Item value="posy" priority="0" />
+      <Item value="Elab.Rtls.Engines.WsnEngine.Positioning" priority="0" />
+      <Item value="BnBox" priority="1" />
+      <Item value="AnBox" priority="0" />
+      <Item value="expected" priority="0" />
+      <Item value="actual" priority="0" />
+      <Item value="cmd" priority="0" />
+      <Item value="van" priority="3" />
+      <Item value="Convert" priority="0" />
+      <Item value="List&lt;Node&gt;" priority="0" />
+      <Item value="CurrentNode" priority="0" />
+      <Item value="ParseBlind" priority="0" />
+      <Item value="ParseAnchor" priority="0" />
+      <Item value="AnchorNodes" priority="2" />
+      <Item value="GetANPosition" priority="0" />
+      <Item value="RssDistancePair" priority="0" />
+      <Item value="Dictionary" priority="0" />
+      <Item value="anchorNode" priority="9" />
+      <Item value="node" priority="5" />
+      <Item value="tempPathLossExponent" priority="3" />
+      <Item value="GeometryHelper" priority="0" />
+      <Item value="pathlossExponent" priority="2" />
+      <Item value="bool" priority="0" />
+      <Item value="List&lt;AnchorNode&gt;" priority="0" />
+      <Item value="virtualAnchorList" priority="8" />
+      <Item value="anchorList" priority="9" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Windows.Forms.RadioButton">
       <Item value="Checked" priority="5" />
@@ -278,8 +306,8 @@
       <Item value="Keys" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
-      <Item value="Count" priority="9" />
-      <Item value="Add" priority="4" />
+      <Item value="Count" priority="17" />
+      <Item value="Add" priority="5" />
       <Item value="Remove" priority="1" />
       <Item value="Contains" priority="0" />
       <Item value="[]" priority="0" />
@@ -287,6 +315,7 @@
       <Item value="IndexOf" priority="1" />
       <Item value="Sort" priority="1" />
       <Item value="Average" priority="0" />
+      <Item value="Exists" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Text.StringBuilder">
       <Item value="Append" priority="1" />
@@ -327,13 +356,19 @@
       <Item value="ToList" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Elab.Rtls.Engines.WsnEngine.Positioning.AnchorNode">
-      <Item value="RSS" priority="8" />
-      <Item value="nodeid" priority="1" />
-      <Item value="fRSS" priority="2" />
+      <Item value="RSS" priority="9" />
+      <Item value="nodeid" priority="2" />
+      <Item value="fRSS" priority="6" />
+      <Item value="posx" priority="1" />
+      <Item value="van" priority="0" />
+      <Item value="posy" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Elab.Rtls.Engines.WsnEngine.Positioning.RangeBasedPositioning">
       <Item value="MedianFilter" priority="1" />
-      <Item value="AverageFilter" priority="1" />
+      <Item value="AverageFilter" priority="2" />
+      <Item value="baseLoss" priority="0" />
+      <Item value="pathLossExponent" priority="1" />
+      <Item value="CalibratePathloss" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Elab.Rtls.Engines.WsnEngine.Positioning.Node">
       <Item value="FilterMethod" priority="1" />
@@ -355,6 +390,7 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:@System.Convert">
       <Item value="ToDouble" priority="1" />
+      <Item value="ToInt16" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Elab.Rtls.Engines.WsnEngine.WsnEngine">
       <Item value="Instance" priority="0" />
@@ -367,20 +403,30 @@
       <Item value="Height" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Elab.Rtls.Engines.WsnEngine.Positioning.Node">
-      <Item value="Anchors" priority="2" />
+      <Item value="Anchors" priority="13" />
       <Item value="AddAnchor" priority="0" />
       <Item value="NewAnchor" priority="0" />
+      <Item value="WsnId" priority="0" />
+      <Item value="SetOwnPosition" priority="0" />
+      <Item value="Position" priority="2" />
+      <Item value="VirtualAnchors" priority="9" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Elab.Rtls.Engines.WsnEngine.Positioning.ClusterTrilateration+DistanceBetweenCutpoints">
       <Item value="point1" priority="1" />
       <Item value="point2" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Elab.Rtls.Engines.WsnEngine.Positioning.Point">
-      <Item value="x" priority="7" />
-      <Item value="y" priority="4" />
+      <Item value="x" priority="11" />
+      <Item value="y" priority="8" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Elab.Rtls.Engines.WsnEngine.Positioning.ClusterTrilateration+ClosestToCentroid">
       <Item value="intersectionPoint" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.VisualStudio.TestTools.UnitTesting.Assert">
+      <Item value="AreEqual" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Math">
+      <Item value="Log10" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>
