@@ -1,7 +1,0 @@
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\DatabaseConnection\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\DatabaseConnection\bin\Debug\DatabaseConnection.XML
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\DatabaseConnection\bin\Debug\DatabaseConnection.dll
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\DatabaseConnection\bin\Debug\DatabaseConnection.pdb
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\DatabaseConnection\bin\Debug\IBM.Data.DB2.dll
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\DatabaseConnection\obj\Debug\DatabaseConnection.dll
-C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\DatabaseConnection\obj\Debug\DatabaseConnection.pdb
