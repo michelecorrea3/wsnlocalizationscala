@@ -34,6 +34,9 @@
             this.radioButtonAverageFilter = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonClusteredTriLateration = new System.Windows.Forms.RadioButton();
+            this.checkBoxCalibration = new System.Windows.Forms.CheckBox();
+            this.checkBoxUseMultihop = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -55,10 +58,10 @@
             this.radioButtonMinMaxSimpleModel.AutoSize = true;
             this.radioButtonMinMaxSimpleModel.Location = new System.Drawing.Point(22, 55);
             this.radioButtonMinMaxSimpleModel.Name = "radioButtonMinMaxSimpleModel";
-            this.radioButtonMinMaxSimpleModel.Size = new System.Drawing.Size(122, 17);
+            this.radioButtonMinMaxSimpleModel.Size = new System.Drawing.Size(62, 17);
             this.radioButtonMinMaxSimpleModel.TabIndex = 2;
             this.radioButtonMinMaxSimpleModel.TabStop = true;
-            this.radioButtonMinMaxSimpleModel.Text = "MinMaxSimpleModel";
+            this.radioButtonMinMaxSimpleModel.Text = "MinMax";
             this.radioButtonMinMaxSimpleModel.UseVisualStyleBackColor = true;
             this.radioButtonMinMaxSimpleModel.CheckedChanged += new System.EventHandler(this.radioButtonMinMaxSimpleModel_CheckedChanged);
             // 
@@ -88,11 +91,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButtonClusteredTriLateration);
             this.groupBox1.Controls.Add(this.radioButtonCentroidLocalization);
             this.groupBox1.Controls.Add(this.radioButtonMinMaxSimpleModel);
             this.groupBox1.Location = new System.Drawing.Point(22, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.Size = new System.Drawing.Size(200, 110);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Choose your positioning algorithm";
@@ -101,18 +105,53 @@
             // 
             this.groupBox2.Controls.Add(this.radioButtonMedianFilter);
             this.groupBox2.Controls.Add(this.radioButtonAverageFilter);
-            this.groupBox2.Location = new System.Drawing.Point(22, 146);
+            this.groupBox2.Location = new System.Drawing.Point(22, 147);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 87);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Choose your RSS filter";
             // 
+            // radioButtonClusteredTriLateration
+            // 
+            this.radioButtonClusteredTriLateration.AutoSize = true;
+            this.radioButtonClusteredTriLateration.Location = new System.Drawing.Point(22, 79);
+            this.radioButtonClusteredTriLateration.Name = "radioButtonClusteredTriLateration";
+            this.radioButtonClusteredTriLateration.Size = new System.Drawing.Size(124, 17);
+            this.radioButtonClusteredTriLateration.TabIndex = 3;
+            this.radioButtonClusteredTriLateration.TabStop = true;
+            this.radioButtonClusteredTriLateration.Text = "ClusteredTrilateration";
+            this.radioButtonClusteredTriLateration.UseVisualStyleBackColor = true;
+            this.radioButtonClusteredTriLateration.CheckedChanged += new System.EventHandler(this.radioButtonClusteredTriLateration_CheckedChanged);
+            // 
+            // checkBoxCalibration
+            // 
+            this.checkBoxCalibration.AutoSize = true;
+            this.checkBoxCalibration.Location = new System.Drawing.Point(44, 249);
+            this.checkBoxCalibration.Name = "checkBoxCalibration";
+            this.checkBoxCalibration.Size = new System.Drawing.Size(134, 17);
+            this.checkBoxCalibration.TabIndex = 8;
+            this.checkBoxCalibration.Text = "Use Anchor Calibration";
+            this.checkBoxCalibration.UseVisualStyleBackColor = true;
+            this.checkBoxCalibration.CheckedChanged += new System.EventHandler(this.checkBoxCalibration_CheckedChanged);
+            // 
+            // checkBoxUseMultihop
+            // 
+            this.checkBoxUseMultihop.AutoSize = true;
+            this.checkBoxUseMultihop.Location = new System.Drawing.Point(44, 273);
+            this.checkBoxUseMultihop.Name = "checkBoxUseMultihop";
+            this.checkBoxUseMultihop.Size = new System.Drawing.Size(142, 17);
+            this.checkBoxUseMultihop.TabIndex = 9;
+            this.checkBoxUseMultihop.Text = "Use Multihop Positioning";
+            this.checkBoxUseMultihop.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 331);
+            this.ClientSize = new System.Drawing.Size(252, 309);
+            this.Controls.Add(this.checkBoxUseMultihop);
+            this.Controls.Add(this.checkBoxCalibration);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -122,6 +161,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -133,6 +173,9 @@
         private System.Windows.Forms.RadioButton radioButtonAverageFilter;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioButtonClusteredTriLateration;
+        private System.Windows.Forms.CheckBox checkBoxCalibration;
+        private System.Windows.Forms.CheckBox checkBoxUseMultihop;
     }
 }
 
