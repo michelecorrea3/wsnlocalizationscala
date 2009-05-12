@@ -1,0 +1,13 @@
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\obj\Debug\Elab.Rtls.WsnEngine.GUI.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\obj\Debug\Elab.Rtls.WsnEngine.GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\bin\Debug\Elab.Rtls.WsnEngine.GUI.xml
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\bin\Debug\Elab.Rtls.WsnEngine.GUI.exe
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\bin\Debug\Elab.Rtls.WsnEngine.GUI.pdb
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\bin\Debug\SocketConnection.xml
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\obj\Debug\Elab.Rtls.WsnEngine.GUI.exe
+C:\Documents and Settings\peter\Desktop\wsnlocalizationscala\WsnGui\GUI\obj\Debug\Elab.Rtls.WsnEngine.GUI.pdb
