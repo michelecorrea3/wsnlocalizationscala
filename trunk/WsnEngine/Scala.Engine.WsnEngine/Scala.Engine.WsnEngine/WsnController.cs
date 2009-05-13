@@ -85,6 +85,11 @@ namespace Elab.Rtls.Engines.WsnEngine
             get; set;
         }
 
+        public bool UseMultihop
+        {
+            get; set;
+        }
+
         #endregion
 
         #region Event variables
@@ -332,6 +337,13 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                     //TODO: switch on the bulletlist or whatever you use to select the algorithm
                     Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
+                    Node.RangingMethod myRanging;
+        
+                    if (UseCalibration)
+                        myRanging = new Node.RangingMethod(RangeBasedPositioning.Ranging);
+                    else
+                        myRanging = new Node.RangingMethod(RangeBasedPositioning.DefaultRanging);
+                    
 
                     switch (SelectedFilter)
                     {
@@ -350,14 +362,11 @@ namespace Elab.Rtls.Engines.WsnEngine
                                 pos = CentroidLocalization.CalculatePosition(CurrentNode);
                                 break;
                             case "MinMax":
-                                pos = MinMax.CalculatePosition(CurrentNode, myFilter, false);
+                                pos = MinMax.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                                 break;
                             //case "Trilateration":
-                            //    pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, false);
+                            //    pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter);
                         }
-
-                        //Console.WriteLine("Position succesfully calculated, x = {0}, y = {1}", pos.x.ToString(),
-                        //                  pos.y.ToString());
 
                         //Create the command that we send to the database to insert the new row.
                         cmd = "call addLocalizationData(" +

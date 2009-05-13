@@ -33,8 +33,8 @@
             this.radioButtonMedianFilter = new System.Windows.Forms.RadioButton();
             this.radioButtonAverageFilter = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButtonClusteredTriLateration = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxCalibration = new System.Windows.Forms.CheckBox();
             this.checkBoxUseMultihop = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
@@ -56,6 +56,7 @@
             // radioButtonMinMaxSimpleModel
             // 
             this.radioButtonMinMaxSimpleModel.AutoSize = true;
+            this.radioButtonMinMaxSimpleModel.Enabled = false;
             this.radioButtonMinMaxSimpleModel.Location = new System.Drawing.Point(22, 55);
             this.radioButtonMinMaxSimpleModel.Name = "radioButtonMinMaxSimpleModel";
             this.radioButtonMinMaxSimpleModel.Size = new System.Drawing.Size(62, 17);
@@ -101,6 +102,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Choose your positioning algorithm";
             // 
+            // radioButtonClusteredTriLateration
+            // 
+            this.radioButtonClusteredTriLateration.AutoSize = true;
+            this.radioButtonClusteredTriLateration.Enabled = false;
+            this.radioButtonClusteredTriLateration.Location = new System.Drawing.Point(22, 79);
+            this.radioButtonClusteredTriLateration.Name = "radioButtonClusteredTriLateration";
+            this.radioButtonClusteredTriLateration.Size = new System.Drawing.Size(124, 17);
+            this.radioButtonClusteredTriLateration.TabIndex = 3;
+            this.radioButtonClusteredTriLateration.TabStop = true;
+            this.radioButtonClusteredTriLateration.Text = "ClusteredTrilateration";
+            this.radioButtonClusteredTriLateration.UseVisualStyleBackColor = true;
+            this.radioButtonClusteredTriLateration.CheckedChanged += new System.EventHandler(this.radioButtonClusteredTriLateration_CheckedChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.radioButtonMedianFilter);
@@ -111,18 +125,6 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Choose your RSS filter";
-            // 
-            // radioButtonClusteredTriLateration
-            // 
-            this.radioButtonClusteredTriLateration.AutoSize = true;
-            this.radioButtonClusteredTriLateration.Location = new System.Drawing.Point(22, 79);
-            this.radioButtonClusteredTriLateration.Name = "radioButtonClusteredTriLateration";
-            this.radioButtonClusteredTriLateration.Size = new System.Drawing.Size(124, 17);
-            this.radioButtonClusteredTriLateration.TabIndex = 3;
-            this.radioButtonClusteredTriLateration.TabStop = true;
-            this.radioButtonClusteredTriLateration.Text = "ClusteredTrilateration";
-            this.radioButtonClusteredTriLateration.UseVisualStyleBackColor = true;
-            this.radioButtonClusteredTriLateration.CheckedChanged += new System.EventHandler(this.radioButtonClusteredTriLateration_CheckedChanged);
             // 
             // checkBoxCalibration
             // 
@@ -144,6 +146,7 @@
             this.checkBoxUseMultihop.TabIndex = 9;
             this.checkBoxUseMultihop.Text = "Use Multihop Positioning";
             this.checkBoxUseMultihop.UseVisualStyleBackColor = true;
+            this.checkBoxUseMultihop.CheckedChanged += new System.EventHandler(this.checkBoxUseMultihop_CheckedChanged);
             // 
             // Form1
             // 
