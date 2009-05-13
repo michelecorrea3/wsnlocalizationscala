@@ -43,6 +43,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
         public delegate double FilterMethod(Queue<double> RSS);
 
+        public delegate double RangingMethod(double fRSS);
+
         public Node(string WsnId, MySQLClass MyDb)
         {
             this.MyDb = MyDb;

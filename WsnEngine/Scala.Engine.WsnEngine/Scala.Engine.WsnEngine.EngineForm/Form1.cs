@@ -118,5 +118,13 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             else
                 WsnController.UseCalibration = false;
         }
+
+        private void checkBoxUseMultihop_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxUseMultihop.Checked)
+                WsnController.UseMultihop = true;
+            else
+                WsnController.UseMultihop = false;
+        }
     }
 }
