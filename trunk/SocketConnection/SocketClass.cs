@@ -79,7 +79,7 @@ namespace SocketConnection
             catch (Exception e)
             {
                 //If an error happens; write it to the logfile.
-                Logger.LogError(e, "LogClient.txt");
+                Logger.LogException(e);
             }
             tc.Close();
 
@@ -116,7 +116,7 @@ namespace SocketConnection
             catch (Exception e)
             {
                 //If an error happens; write it to the logfile.
-                Logger.LogError(e, "LogClient.txt");
+                Logger.LogException(e);
             }
             tc.Close();
 
@@ -129,6 +129,7 @@ namespace SocketConnection
 
             try
             {
+                
                 testclient.Connect(_RemoteLocation, _Port);
                 testclient.SendTimeout = 1000;
                 Console.WriteLine("Connection open, host active");
@@ -140,7 +141,6 @@ namespace SocketConnection
                 Console.WriteLine("Connection could not be established due to: \n" + ex.Message);
                 return false;
             }
-
         }
     }
 
@@ -196,7 +196,7 @@ namespace SocketConnection
             catch (Exception e)
             {
                 //If an error happens; write it to the logfile.
-                Logger.LogError(e, "LogServer.txt");
+                Logger.LogException(e);
             }
         }
     }

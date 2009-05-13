@@ -46,6 +46,12 @@
     <Compile Include="DBClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Logger\Elab.Rtls.Engines.WsnEngine.Logger.csproj">
+      <Project>{077929CD-F25F-4043-B612-5CD8BAB7C186}</Project>
+      <Name>Elab.Rtls.Engines.WsnEngine.Logger</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
