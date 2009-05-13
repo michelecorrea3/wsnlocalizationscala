@@ -6,6 +6,7 @@ using System.Data.Odbc;
 using System.Data;
 
 using IBM.Data.DB2;
+using Elab.Rtls.Engines.WsnEngine;
 
 namespace DatabaseConnection
 {
@@ -110,23 +111,22 @@ namespace DatabaseConnection
                 //fills the dataset
                 DataAdapter.Fill(TempDataSet);
             }
-            catch (SqlException e_dbconn_sql)
+            catch (OdbcException OdbcEx)
             {
-                Console.WriteLine("1st error");
-                //SocketClass.LogError(e_dbconn_sql, "LogServer.txt");
-                //Create an error message
+                Logger.LogOdbcException(OdbcEx, myquery);
+                
+                //OdbcEx.
+                //Return the Error Message
                 TempDataSet = new DataSet("Replies");
                 TempDataSet.Tables.Add("Reply");
                 TempDataSet.Tables[0].Columns.Add("INT");
                 DataRow newRow = TempDataSet.Tables[0].NewRow();
                 newRow[0] = -404;
-                TempDataSet.Tables[0].Rows.Add(newRow);
+                TempDataSet.Tables[0].Rows.Add(newRow);                
             }
-            catch (TimeoutException e_dbconn_conn)
+            catch (SqlException e_dbconn_sql)
             {
-                Console.WriteLine("2nd error");
-                //SocketClass.LogError(e_dbconn_conn, "LogServer.txt");
-                //Create an error message
+                //Return the Error Message
                 TempDataSet = new DataSet("Replies");
                 TempDataSet.Tables.Add("Reply");
                 TempDataSet.Tables[0].Columns.Add("INT");

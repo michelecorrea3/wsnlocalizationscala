@@ -105,10 +105,10 @@ namespace Elab.Rtls.Engines.WsnEngine
             LoadOptions();  //Load the config-file
             Console.WriteLine("config loaded");
 
-            //start the threads
+            //if (File.Exists("DBFaults.txt"))
+            //    File.Delete("DBFaults.txt");
+
             StartWsnEngine();
-            //else
-            //app should close then...
         }
 
         /// <summary>
@@ -122,7 +122,6 @@ namespace Elab.Rtls.Engines.WsnEngine
                 Options.ReadXml("config.txt"); //Read the options
                 //Try to set up the MySQL-database linker
                 MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
-
             }
             catch (Exception ex)
             {
@@ -246,7 +245,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                 }
                 catch (Exception e_mysql)
                 {
-                    Logger.LogError(e_mysql, "LogServer.txt");
+                    Logger.LogException(e_mysql);
                 }
 
                 #region add node to DB
@@ -256,14 +255,11 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                     try
                     {
-                        //Update the MySQL-database (if it is available)
                         returnSet = MySQLConn.Query(addTelosb);
-                        Console.WriteLine("Query OK");
                     }
                     catch (Exception e_mysql)
                     {
-                        Console.WriteLine("Failed to add node to the DB");
-                        Logger.LogError(e_mysql, "LogServer.txt");
+                        Logger.LogException(e_mysql);
                         //return Set;
                     }
                 }
@@ -365,8 +361,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                               "Centroid Localization" + "');";
 
                         //add the position to the position table
-                        string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
-                                               row["Time"].ToString() + ", " + "0, " + pos.x.ToString() + ", " +
+                        string AddToPosition = "insert into position (idPosition, Node, Time, AN, X, Y) values (NULL, " + row["ID"].ToString() + ", '" +
+                                               row["Time"].ToString() + "', " + "0, " + pos.x.ToString() + ", " +
                                                pos.y.ToString() + ")";
                         MySQLConn.Query(AddToPosition);
 
@@ -400,8 +396,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                               ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
                               "Centroid Localization" + "');";
 
-                        string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
-                                               row["Time"].ToString() + ", " + "0, null, null" + ")";
+                        string AddToPosition = "insert into position (idPosition, Node, Time, AN, X, Y) values (NULL, " + row["ID"].ToString() + ", '" +
+                                               row["Time"].ToString() + "', " + "0, null, null" + ")";
                         MySQLConn.Query(AddToPosition);
                     }
                 
@@ -478,8 +474,6 @@ namespace Elab.Rtls.Engines.WsnEngine
                       ((double.TryParse(row["LED7"].ToString(), out temp)) ? row["LED7"] : "null") + "','" +
                       ((double.TryParse(row["LED8"].ToString(), out temp)) ? row["LED8"] : "null") + "'," +
                       ((int.TryParse(row["Polling"].ToString(), out tempint)) ? row["Polling"] : "null") + ");";
-                Console.WriteLine("AddSensorMeasurements OK");
-                Console.WriteLine("WSNID is: \n" + row["ID"].ToString());
 
                 #region SensorDataEvents
                 //RTLSBlinkTime is generated in the TryQuery to reduce the code size
@@ -551,7 +545,6 @@ namespace Elab.Rtls.Engines.WsnEngine
             ((int.TryParse(row["Power"].ToString(), out tempint)) ? row["Power"] : "null") + "," +
             ((int.TryParse(row["Frequency"].ToString(), out tempint)) ? row["Frequency"] : "null") + "," +
             ((int.TryParse(row["Conn"].ToString(), out tempint)) ? row["Conn"] : "null") + ");";
-            Console.WriteLine("Add Status OK");
 
             string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
                row["Time"].ToString() + ", " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString() + ")";
@@ -605,7 +598,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                 }
                 catch (Exception e_cmd)
                 {
-                    Logger.LogError(e_cmd, "LogServer.txt");
+                    Logger.LogException(e_cmd);
                 }
             }
             cmd += ");";
@@ -624,7 +617,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                 }
                 catch (Exception e)
                 {
-                    Logger.LogError(e, "LogServer.txt");
+                    Logger.LogException(e);
                 }
             }
 
@@ -637,7 +630,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                 }
                 catch (Exception e_mysql)
                 {
-                    Logger.LogError(e_mysql, "LogServer.txt");
+                    Logger.LogException(e_mysql);
                 }
             #endregion
 
@@ -763,7 +756,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             }
             //catch (Exception e)
             //{
-            //    SocketServer.LogError(e, "LogServer.txt");
+            //    SocketServer.LogException(e, "LogServer.txt");
 
             //    //Create an error-xml-msg
             //    ReqSet = CreateReplyInt(0);
@@ -792,8 +785,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             SocketClient SendActionReq;
             int temp;
 
-            try
-            {
+
                 WSNActionWSNSet = MySQLConn.Query(cmd);
 
                 WSNActionSet.Tables["RequestAction"].Rows[0]["NodeID"] = WSNActionWSNSet.Tables[0].Rows[0][0];
@@ -872,6 +864,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                 OutMemStream.Position = 0;
                 StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
 
+            try
+            {
                 string replyWSN = SendActionReq.Connect(OutMemStreamReader.ReadToEnd().Replace("\r\n", ""), true, 10000);
                 if (replyWSN == null)
                     throw new ArgumentNullException("The WSN did not reply in time");
@@ -895,21 +889,17 @@ namespace Elab.Rtls.Engines.WsnEngine
             }
             catch (ArgumentNullException nullex)
             {
-                Console.WriteLine(nullex.Message);
-                Console.WriteLine(nullex.TargetSite);
+                Logger.LogException(nullex);
                 WSNActionWSNSet = CreateReplyInt(0);
                 return WSNActionWSNSet;
             }
             catch (XmlException xmlex)
             {
-                Console.Write(xmlex.Message);
-                Console.WriteLine(xmlex.StackTrace);
-                Console.WriteLine("The XML of the WSN reply was incorrect\n\n\n");
+                Logger.LogException(xmlex);
             }
             catch (SocketException sockex)
             {
-                Console.WriteLine(sockex.Message);
-                Console.WriteLine(sockex.TargetSite);
+                Logger.LogException(sockex);
             }
 
             return WSNActionWSNSet;
@@ -946,19 +936,18 @@ namespace Elab.Rtls.Engines.WsnEngine
                         //Check which type of incoming msg we have (if it is not in the list; we discard it)
                         if (IncMsg.DataSetName == "SensorMeasurements" || IncMsg.DataSetName == "LocationMessage" || IncMsg.DataSetName == "StatusMessage")
                         {   //SensorMeasurement
+                            Console.WriteLine("Received WSN message: " + IncMsg.DataSetName);
                             AddSensorMeasurements(IncMsg);
-                            Console.WriteLine("Received WSN message");
                             break;
                         }
                         else if (IncMsg.DataSetName == "Requests")
                         {   //Requests
-                            OutMsg = RequestsProcess(IncMsg);
                             Console.WriteLine("Received DB request");
+                            OutMsg = RequestsProcess(IncMsg);                            
                             break;
                         }
                         else if (IncMsg.DataSetName == "WSNReq")
-                        {   //WSNActionRequest; prepare to send it through to the (correct) WSN
-                            Console.WriteLine(incxml);
+                        {   
                             Console.WriteLine("Received WSN REQUEST");
                             OutMsg = WSNActionReqProcess(IncMsg);
                             Console.WriteLine("Received WSN REPLY");
@@ -1079,7 +1068,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     {
                         Console.WriteLine("Could not even send back an error message");
                     }
-                    Logger.LogError(e, "LogServer.txt");
+                    Logger.LogException(e);
                 }
             }
         }
@@ -1124,7 +1113,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             }
             catch (Exception e_mysql)
             {
-                Logger.LogError(e_mysql, "LogServer.txt");
+                Logger.LogException(e_mysql);
             }
 
             //foreach row.... SetState
@@ -1137,7 +1126,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                 }
                 catch (Exception e_mysql)
                 {
-                    Logger.LogError(e_mysql, "LogServer.txt");
+                    Logger.LogException(e_mysql);
                 }
             }
             //we then send the wsn id and nodeid to the GUI
@@ -1150,7 +1139,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             }
             catch (Exception e_mysql)
             {
-                Logger.LogError(e_mysql, "LogServer.txt");
+                Logger.LogException(e_mysql);
             }
             return ReturnSet;
         }
