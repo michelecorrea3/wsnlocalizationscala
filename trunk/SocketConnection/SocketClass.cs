@@ -7,6 +7,8 @@ using System.IO;
 using System.Data;
 using System.Xml;
 
+using Elab.Rtls.Engines.WsnEngine;
+
 namespace SocketConnection
 {
     /// <summary>
@@ -26,21 +28,6 @@ namespace SocketConnection
         public SocketClass(int Port)
         {
             _Port = Port;
-        }
-
-        /// <summary>
-        /// Global function that can be used to log errors (mostly from within a catch statement) to a log-file
-        /// </summary>
-        /// <param name="e">The Exception that has to be logged</param>
-        /// <param name="LogFilePath">The location of the logfile (including filename).</param>
-        public static void LogError(Exception e, string LogFilePath)
-        {
-            StreamWriter logger = new StreamWriter(LogFilePath, true); //Open the file and get ready to append the error-info to the file.
-            logger.WriteLine(e); //Write the error-data
-            logger.WriteLine(DateTime.Now); //Put a timestamp so we know when the error happened
-            logger.WriteLine("----------++++++++++----------"); //Make it clear this is the end of the error.
-            logger.Flush();
-            logger.Close();
         }
     }
 
@@ -92,7 +79,7 @@ namespace SocketConnection
             catch (Exception e)
             {
                 //If an error happens; write it to the logfile.
-                LogError(e, "LogClient.txt");
+                Logger.LogError(e, "LogClient.txt");
             }
             tc.Close();
 
@@ -129,7 +116,7 @@ namespace SocketConnection
             catch (Exception e)
             {
                 //If an error happens; write it to the logfile.
-                LogError(e, "LogClient.txt");
+                Logger.LogError(e, "LogClient.txt");
             }
             tc.Close();
 
@@ -209,7 +196,7 @@ namespace SocketConnection
             catch (Exception e)
             {
                 //If an error happens; write it to the logfile.
-                LogError(e, "LogServer.txt");
+                Logger.LogError(e, "LogServer.txt");
             }
         }
     }

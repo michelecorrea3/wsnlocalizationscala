@@ -42,13 +42,6 @@ namespace Elab.Rtls.Engines.WsnEngine
         private MySQLClass MySQLConn;
 
         /// <summary>
-        /// Do we have a MySQL-instance that we can connect to?
-        /// </summary>
-        private bool MySQLAllowedConn = true;
-
-        //Specific to positioning
-
-        /// <summary>
         /// BN's WsnId
         /// </summary>
         private string currentID;
@@ -113,8 +106,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             Console.WriteLine("config loaded");
 
             //start the threads
-            if (MySQLAllowedConn)
-                StartWsnEngine();
+            StartWsnEngine();
             //else
             //app should close then...
         }
@@ -125,19 +117,16 @@ namespace Elab.Rtls.Engines.WsnEngine
         /// </summary>
         private void LoadOptions()
         {
-            Options.ReadXml("config.txt"); //Read the options
             try
             {
+                Options.ReadXml("config.txt"); //Read the options
                 //Try to set up the MySQL-database linker
                 MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
-                MySQLAllowedConn = true;
+
             }
             catch (Exception ex)
             {
-                MySQLAllowedConn = false;
-                //MySQL connection not available...
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.TargetSite);
+                throw new ApplicationException("Could not connect to the db or load the config");
             }
         }
 
@@ -248,16 +237,16 @@ namespace Elab.Rtls.Engines.WsnEngine
 
             foreach (DataRow row in Set.Tables[0].Rows) //Run through every sensor in the xml-message
             {
+                #region check if node exist, else add it
                 string CheckIfNodeInDB = "call getNodeID('" + row["ID"].ToString() + "');";
 
                 try
                 {
-                    if (MySQLAllowedConn)
-                        tempSet = MySQLConn.Query(CheckIfNodeInDB);
+                    tempSet = MySQLConn.Query(CheckIfNodeInDB);
                 }
                 catch (Exception e_mysql)
                 {
-                    SocketServer.LogError(e_mysql, "LogServer.txt");
+                    Logger.LogError(e_mysql, "LogServer.txt");
                 }
 
                 #region add node to DB
@@ -268,19 +257,18 @@ namespace Elab.Rtls.Engines.WsnEngine
                     try
                     {
                         //Update the MySQL-database (if it is available)
-                        if (MySQLAllowedConn)
-                            returnSet = MySQLConn.Query(addTelosb);
+                        returnSet = MySQLConn.Query(addTelosb);
                         Console.WriteLine("Query OK");
                     }
                     catch (Exception e_mysql)
                     {
                         Console.WriteLine("Failed to add node to the DB");
-                        SocketServer.LogError(e_mysql, "LogServer.txt");
+                        Logger.LogError(e_mysql, "LogServer.txt");
                         //return Set;
                     }
                 }
                 #endregion
-
+#endregion
 
                 if (Set.DataSetName == "SensorMeasurements")
                     cmd = ParseSensor(row);
@@ -297,13 +285,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                 else if (Set.DataSetName == "StatusMessage")
                     cmd = ParseStatus(row);
 
-                //try
-                {
-                    //Update the MySQL-database (if it is available)
-                    if (MySQLAllowedConn)
-                        returnSet = MySQLConn.Query(cmd);
-                    Console.WriteLine("Query OK");
-                }
+
+                returnSet = MySQLConn.Query(cmd);
             }
             return returnSet;
         }
@@ -384,7 +367,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                         //add the position to the position table
                         string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
                                                row["Time"].ToString() + ", " + "0, " + pos.x.ToString() + ", " +
-                                               pos.y.ToString();
+                                               pos.y.ToString() + ")";
                         MySQLConn.Query(AddToPosition);
 
                         #region LocationUpdated
@@ -418,7 +401,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                               "Centroid Localization" + "');";
 
                         string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
-                                               row["Time"].ToString() + ", " + "0, null, null";
+                                               row["Time"].ToString() + ", " + "0, null, null" + ")";
                         MySQLConn.Query(AddToPosition);
                     }
                 
@@ -571,7 +554,8 @@ namespace Elab.Rtls.Engines.WsnEngine
             Console.WriteLine("Add Status OK");
 
             string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
-               row["Time"].ToString() + ", " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString();
+               row["Time"].ToString() + ", " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString() + ")";
+
             MySQLConn.Query(AddToPosition);
 
             return cmd;
@@ -621,7 +605,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                 }
                 catch (Exception e_cmd)
                 {
-                    SocketServer.LogError(e_cmd, "LogServer.txt");
+                    Logger.LogError(e_cmd, "LogServer.txt");
                 }
             }
             cmd += ");";
@@ -640,7 +624,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                 }
                 catch (Exception e)
                 {
-                    SocketServer.LogError(e, "LogServer.txt");
+                    Logger.LogError(e, "LogServer.txt");
                 }
             }
 
@@ -649,12 +633,11 @@ namespace Elab.Rtls.Engines.WsnEngine
             {
                 try
                 {
-                    if (MySQLAllowedConn)
-                        ReqSet = MySQLConn.Query(cmd);
+                    ReqSet = MySQLConn.Query(cmd);
                 }
                 catch (Exception e_mysql)
                 {
-                    SocketServer.LogError(e_mysql, "LogServer.txt");
+                    Logger.LogError(e_mysql, "LogServer.txt");
                 }
             #endregion
 
@@ -811,8 +794,7 @@ namespace Elab.Rtls.Engines.WsnEngine
 
             try
             {
-                if (MySQLAllowedConn)
-                    WSNActionWSNSet = MySQLConn.Query(cmd);
+                WSNActionWSNSet = MySQLConn.Query(cmd);
 
                 WSNActionSet.Tables["RequestAction"].Rows[0]["NodeID"] = WSNActionWSNSet.Tables[0].Rows[0][0];
 
@@ -955,16 +937,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                 {
                     incxml = reader.ReadLine(); //Read the incoming data
 
-                    //Set up a memory-stream to store the xml
-                    MemoryStream MemStream = new MemoryStream();
-                    //Write the msg to the memory stream
-                    StreamWriter SWriter = new StreamWriter(MemStream);
-                    SWriter.WriteLine(incxml);
-                    SWriter.Flush();
-                    MemStream.Position = 0; //Reset the position so we start reading at the start
-
-                    IncMsg.ReadXml(MemStream);  //Read the data into the dataset
-
+                    IncMsg = StringToDataSet(incxml);
 
                     #region incoming
                     do
@@ -1106,9 +1079,25 @@ namespace Elab.Rtls.Engines.WsnEngine
                     {
                         Console.WriteLine("Could not even send back an error message");
                     }
-                    SocketServer.LogError(e, "LogServer.txt");
+                    Logger.LogError(e, "LogServer.txt");
                 }
             }
+        }
+
+        private DataSet StringToDataSet(string incxml)
+        {
+            DataSet IncMsg = new DataSet();
+            //Set up a memory-stream to store the xml
+            MemoryStream MemStream = new MemoryStream();
+            //Write the msg to the memory stream
+            StreamWriter SWriter = new StreamWriter(MemStream);
+            SWriter.WriteLine(incxml);
+            SWriter.Flush();
+            MemStream.Position = 0; //Reset the position so we start reading at the start
+
+            IncMsg.ReadXml(MemStream);  //Read the data into the dataset
+
+            return IncMsg;
         }
 
         /// <summary>
@@ -1131,12 +1120,11 @@ namespace Elab.Rtls.Engines.WsnEngine
 
             try
             {
-                if (MySQLAllowedConn)
-                    TempSet = MySQLConn.Query(setNodesInactive);
+                TempSet = MySQLConn.Query(setNodesInactive);
             }
             catch (Exception e_mysql)
             {
-                SocketServer.LogError(e_mysql, "LogServer.txt");
+                Logger.LogError(e_mysql, "LogServer.txt");
             }
 
             //foreach row.... SetState
@@ -1145,12 +1133,11 @@ namespace Elab.Rtls.Engines.WsnEngine
                 string setNodeActive = "call setNodeState(1,'" + row["Nodeid"] + "');";
                 try
                 {
-                    if (MySQLAllowedConn)
                         TempSet = MySQLConn.Query(setNodeActive);
                 }
                 catch (Exception e_mysql)
                 {
-                    SocketServer.LogError(e_mysql, "LogServer.txt");
+                    Logger.LogError(e_mysql, "LogServer.txt");
                 }
             }
             //we then send the wsn id and nodeid to the GUI
@@ -1159,12 +1146,11 @@ namespace Elab.Rtls.Engines.WsnEngine
 
             try
             {
-                if (MySQLAllowedConn)
                     ReturnSet = MySQLConn.Query(getActiveTelosb);
             }
             catch (Exception e_mysql)
             {
-                SocketServer.LogError(e_mysql, "LogServer.txt");
+                Logger.LogError(e_mysql, "LogServer.txt");
             }
             return ReturnSet;
         }
