@@ -224,4 +224,20 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         public Point intersectionPoint;
         public double distance;
     }
+
+    public struct IntersectedAnchors
+    {
+        public double x1;
+        public double y1;
+        public double r1;
+        public double x2;
+        public double y2;
+        public double r2;
+    }
+
+    public struct Error
+    {
+        public int NumberSmall;
+        public int NumberWide;
+    }
 }
