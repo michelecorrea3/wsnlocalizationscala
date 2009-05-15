@@ -171,16 +171,17 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             center = new Point(Anchors[0].posx, Anchors[0].posy);
 
             //TEST: replace distance with constance
-            //
-            AnBox = new BoundingBox(center, 10);
+            //AnBox = new BoundingBox(center, 10);
+            AnBox = new BoundingBox(center, Ranging(Anchors[0].fRSS));
             BnBox = AnBox;
 
             for (int i = 1; i < Anchors.Count; i++)
             {
                 //disabled for testing
                 Anchors[i].fRSS = filterMethod(Anchors[i].RSS);
-                //distance = Ranging(Anchors[i].fRSS);
-                distance = 10;
+                distance = Ranging(Anchors[i].fRSS);
+                //TEST
+                //distance = 10;
 
                 center = new Point(Anchors[i].posx, Anchors[i].posy);
 
@@ -238,8 +239,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 for (int j = 0; j < BlindNode.Anchors.Count; j++)
                 {
                     BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
-//                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
-                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
+                   if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+//                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
                         count++;
                 }
                 if (count >= 3)
@@ -273,17 +274,17 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                     foreach (AnchorNode van in BlindNode.VirtualAnchors)
                         AllAnchors.Add(van);
 
-                    for (int i = 0; i < Anchors.Count - 1; i++)
+                    for (int i = 0; i < AllAnchors.Count; i++)
                     {
                         count = 0;
-                        for (int j = i + 1; j < Anchors.Count; j++)
+                        for (int j = 0; j < AllAnchors.Count; j++)
                         {
-  //                          if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, Ranging(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, Ranging(Anchors[j].fRSS)))
-                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
+                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, Ranging(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, Ranging(Anchors[j].fRSS)))
+  //                          if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
                                 count++;
                         }
                         if (count >= 3)
-                            Anchors.Add(BlindNode.Anchors[i]);
+                            Anchors.Add(AllAnchors[i]);
                     }
                     if (Anchors.Count < 3)
                     {
