@@ -15,7 +15,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
     /// </summary>
     public class MinMax : RangeBasedPositioning
     {
-<<<<<<< .mine
         /*
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multiHop)
 =======
@@ -172,14 +171,16 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             center = new Point(Anchors[0].posx, Anchors[0].posy);
 
             //TEST: replace distance with constance
-            AnBox = new BoundingBox(center, distance);
+            //
+            AnBox = new BoundingBox(center, 10);
             BnBox = AnBox;
 
             for (int i = 1; i < Anchors.Count; i++)
             {
                 //disabled for testing
                 Anchors[i].fRSS = filterMethod(Anchors[i].RSS);
-                distance = Ranging(Anchors[i].fRSS);
+                //distance = Ranging(Anchors[i].fRSS);
+                distance = 10;
 
                 center = new Point(Anchors[i].posx, Anchors[i].posy);
 
@@ -230,11 +231,11 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             //StreamWriter logger = new StreamWriter("MinMax.csv", false);
 
-            for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
+            for (int i = 0; i < BlindNode.Anchors.Count; i++)
             {
                 count = 0;
                 BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-                for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
+                for (int j = 0; j < BlindNode.Anchors.Count; j++)
                 {
                     BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
 //                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
