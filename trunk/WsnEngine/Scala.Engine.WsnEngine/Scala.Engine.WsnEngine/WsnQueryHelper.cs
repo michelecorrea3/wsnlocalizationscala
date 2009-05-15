@@ -189,7 +189,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                                 break;
                             case "Location/MapID":
                                 //hardcode this to floor two 
-                                tagBlink["Location/MapID"] = "3";
+                                tagBlink["Location/MapID"] = "WsnEngine1map3";
                                 break;
                             case "Accuracy":
                                 tempMap = WsnEngine.Instance.GetMap("3");
@@ -244,7 +244,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                                     tagBlink["Location/X"] = Row["X"].ToString();
                                     tagBlink["Location/Y"] = Row["Y"].ToString();
                                     //hardcode this to floor two 
-                                    tagBlink["Location/MapID"] = "3";
+                                    tagBlink["Location/MapID"] = "WsnEngine1map3";
 
                                     tempMap = WsnEngine.Instance.GetMap("3");
                                     tempImage = tempMap.MapImageBytes.ToImage();
@@ -276,7 +276,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     tagBlinks.Add(tagBlink);
                 }
             }
-            //Jerry won't like this...
+            //TODO: more specific exception
             catch (FaultException fex)
             {
                 Console.WriteLine(fex.Message);
