@@ -166,9 +166,9 @@ namespace Elab.Rtls.Engines.WsnEngine
                                     tagBlink["Location/X"] = Row["X"].ToString();
                                     tagBlink["Location/Y"] = Row["Y"].ToString();
                                     //hardcode this to floor two 
-                                    tagBlink["Location/MapID"] = "3";
+                                    tagBlink["Location/MapID"] = "1";
 
-                                    tempMap = WsnEngine.Instance.GetMap("3");
+                                    tempMap = WsnEngine.Instance.GetMap("1");
                                     tempImage = tempMap.MapImageBytes.ToImage();
                                     tempX = Convert.ToDouble(Row["X"]);
                                     tempY = Convert.ToDouble(Row["Y"]);
@@ -192,7 +192,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                                 tagBlink["Location/MapID"] = "WsnEngine1map3";
                                 break;
                             case "Accuracy":
-                                tempMap = WsnEngine.Instance.GetMap("3");
+                                tempMap = WsnEngine.Instance.GetMap("1");
                                 tempImage = tempMap.MapImageBytes.ToImage();
                                 tempX = Convert.ToDouble(Row["X"]);
                                 tempY = Convert.ToDouble(Row["Y"]);  
@@ -246,7 +246,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                                     //hardcode this to floor two 
                                     tagBlink["Location/MapID"] = "WsnEngine1map3";
 
-                                    tempMap = WsnEngine.Instance.GetMap("3");
+                                    tempMap = WsnEngine.Instance.GetMap("1");
                                     tempImage = tempMap.MapImageBytes.ToImage();
                                     tempX = Convert.ToDouble(Row["X"]);
                                     tempY = Convert.ToDouble(Row["Y"]);  

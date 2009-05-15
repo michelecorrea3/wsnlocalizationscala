@@ -15,6 +15,7 @@ namespace Elab.Rtls.Engines.WsnEngine
         {
             this.WsnEngine = WsnEngine.Instance;
             this.WsnEngine.EventRaised += this.WsnEngineEventRaised;
+            EventIDs = new List<string>();
         }
         
         public WsnEngine WsnEngine

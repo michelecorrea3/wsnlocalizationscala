@@ -135,13 +135,16 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         /// <summary>
         /// Simple struct to hold a 2D point
         /// </summary>
-        public struct Point
+        public class Point
         {
             /// <summary>
             /// X & Y coordinates
             /// </summary>
             public double x, y;
 
+            public Point()
+            {}
+            
             /// <summary>
             /// Constructor
             /// </summary>

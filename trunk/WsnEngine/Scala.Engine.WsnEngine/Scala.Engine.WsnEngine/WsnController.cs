@@ -318,75 +318,62 @@ namespace Elab.Rtls.Engines.WsnEngine
                             myFilter = new Node.FilterMethod(RangeBasedPositioning.AverageFilter);
                             break;
                     }
-                    try
+
+                    switch (SelectedAlgorithm)
                     {
-                        switch (SelectedAlgorithm)
-                        {
-                            case "CentroidLocalization":
-                                pos = CentroidLocalization.CalculatePosition(CurrentNode);
-                                break;
-                            case "MinMax":
-                                pos = MinMax.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
-                                break;
-                            //case "Trilateration":
-                            //    pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter);
-                        }
-
-                        //Create the command that we send to the database to insert the new row.
-                        cmd = "call addLocalizationData(" +
-                              ((int.TryParse(row["RSSI"].ToString(), out tempint)) ? row["RSSI"] : "null") + "," +
-
-                              pos.x.ToString() + ", " +
-                              pos.y.ToString() + ", " +
-
-                              ((int.TryParse(row["Z"].ToString(), out tempint)) ? row["Z"] : "null") + "," +
-                              row["ID"] + ",'" +
-                              row["Time"] + "'," +
-                              ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
-                              "Centroid Localization" + "');";
-
-                        //add the position to the position table
-                        string AddToPosition = "insert into position (idPosition, Node, Time, AN, X, Y) values (NULL, " + row["ID"].ToString() + ", '" +
-                                               row["Time"].ToString() + "', " + "0, " + pos.x.ToString() + ", " +
-                                               pos.y.ToString() + ")";
-                        MySQLConn.Query(AddToPosition);
-
-                        #region LocationUpdated
-
-                        if (LocationUpdated != null)
-                        {
-                            EventMessage EventData = new EventMessage();
-                            //EventData.EventType = "LocationUpdated";
-
-                            EventData.TagBlink["TagID"] = row["idnode"].ToString();
-                            EventData.TagBlink["X"] = pos.x.ToString();
-                            EventData.TagBlink["Y"] = pos.y.ToString();
-
-                            LocationUpdated(this, EventData);
-                        }
-
-                        #endregion
+                        case "CentroidLocalization":
+                            pos = CentroidLocalization.CalculatePosition(CurrentNode);
+                            break;
+                        //case "MinMax":
+                        //    pos = MinMax.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
+                        //    break;
+                        //case "Trilateration":
+                        //    pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter);
                     }
-                    catch
+
+                    //Create the command that we send to the database to insert the new row.
+                    cmd = "call addLocalizationData(" +
+                  ((int.TryParse(row["RSSI"].ToString(), out tempint)) ? row["RSSI"] : "null") + ",";
+
+                          if (pos != null)
+                              cmd += pos.x.ToString() + ", " + pos.y.ToString() + ", ";
+                          else
+                              cmd += "null, null, ";
+
+
+                          cmd += ((int.TryParse(row["Z"].ToString(), out tempint)) ? row["Z"] : "null") + "," +
+                          row["ID"] + ",'" +
+                          row["Time"] + "'," +
+                          ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
+                          "Centroid Localization" + "');";
+
+                    //add the position to the position table
+                     string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '" 
+                         + row["Time"].ToString() + "', " + "0, ";
+
+                     if (pos != null)
+                         AddPosition += pos.x.ToString() + ", " + pos.y.ToString() + ")";
+                     else
+                         AddPosition += "null, null, ";
+
+                    MySQLConn.Query(AddPosition);
+
+                    #region LocationUpdated
+
+                    if (LocationUpdated != null && pos != null)
                     {
-                        cmd = "call addLocalizationData(" +
-                              ((int.TryParse(row["RSSI"].ToString(), out tempint)) ? row["RSSI"] : "null") + "," +
+                        EventMessage EventData = new EventMessage();
+                        //EventData.EventType = "LocationUpdated";
 
-                              "null, " +
-                              "null, " +
+                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                        EventData.TagBlink["X"] = pos.x.ToString();
+                        EventData.TagBlink["Y"] = pos.y.ToString();
 
-                              ((int.TryParse(row["Z"].ToString(), out tempint)) ? row["Z"] : "null") + "," +
-                              row["ID"] + ",'" +
-                              row["Time"] + "'," +
-                              ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
-                              "Centroid Localization" + "');";
-
-                        string AddToPosition = "insert into position (idPosition, Node, Time, AN, X, Y) values (NULL, " + row["ID"].ToString() + ", '" +
-                                               row["Time"].ToString() + "', " + "0, null, null" + ")";
-                        MySQLConn.Query(AddToPosition);
+                        LocationUpdated(this, EventData);
                     }
+
+                    #endregion
                 
-                //nothing to be returned when this the node is an anchor...
                 return cmd;
         }
 
@@ -531,10 +518,10 @@ namespace Elab.Rtls.Engines.WsnEngine
             ((int.TryParse(row["Frequency"].ToString(), out tempint)) ? row["Frequency"] : "null") + "," +
             ((int.TryParse(row["Conn"].ToString(), out tempint)) ? row["Conn"] : "null") + ");";
 
-            string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
-               row["Time"].ToString() + ", " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString() + ")";
+             string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
+                 + row["Time"].ToString() + "', " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString() + ")";
 
-            MySQLConn.Query(AddToPosition);
+            MySQLConn.Query(AddPosition);
 
             return cmd;
         }
@@ -866,10 +853,10 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                 foreach (DataRow row in WSNActionWSNSet.Tables[0].Rows)
                 {
-                    string AddToPosition = "insert into position (NULL, " + row["ID"].ToString() + ", " +
-                    row["Time"].ToString() + ", " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString();
+                    string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
+                        + row["Time"].ToString() + "', " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString() + ")";
 
-                    MySQLConn.Query(AddToPosition);
+                    MySQLConn.Query(AddPosition);
                 }
             }
             catch (ArgumentNullException nullex)
