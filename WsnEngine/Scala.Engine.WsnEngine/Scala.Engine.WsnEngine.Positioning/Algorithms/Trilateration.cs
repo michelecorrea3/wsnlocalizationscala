@@ -11,15 +11,32 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
     public class ClusterTrilateration : RangeBasedPositioning
     {
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod)
+        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multihop)
         {
             List<Point> intersectionPoints = new List<Point>();
+            List<IntersectedAnchors> anchors = new List<IntersectedAnchors>();
+            IntersectedAnchors anchor = new IntersectedAnchors();
+
 
             if (BlindNode.Anchors.Count >= 3)
             {
                 foreach (AnchorNode AN in BlindNode.Anchors)
                 {
                     AN.fRSS = filterMethod(AN.RSS);
+                }
+
+                for(int j = 0; j<BlindNode.Anchors.Count-1; j++)
+                {
+                    for (int l = j+1; l<BlindNode.Anchors.Count;j++)
+                    {
+                        anchor.x1 = BlindNode.Anchors[j].posx;
+                        anchor.y1 = BlindNode.Anchors[j].posy;
+                        anchor.r1 = Ranging(BlindNode.Anchors[j].fRSS);
+                        anchor.x1 = BlindNode.Anchors[l].posx;
+                        anchor.x2 = BlindNode.Anchors[l].posy;
+                        anchor.r2 = Ranging(BlindNode.Anchors[l].fRSS);
+                    }
+                    anchors.Add(anchor);
                 }
 
                 for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
@@ -43,6 +60,29 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             }
             else
                 throw new ApplicationException("Less than three anchor nodes available");
+
+        }
+        private static Error Anchorsintersection(List<IntersectedAnchors> anchors)
+        {
+            Error fault = new Error();
+
+            double distance;
+            int inter=0;
+            int exter=0;
+
+            foreach (IntersectedAnchors ANs in anchors)
+            {
+                distance = Math.Pow((Math.Pow((ANs.x2 - ANs.x1), 2) + Math.Pow((ANs.y2 - ANs.y1), 2)), 0.5);
+                if (distance < Math.Abs(ANs.r1 - ANs.r2))
+                    inter++;
+                if (distance > (ANs.r1 + ANs.r2))
+                    exter++;
+
+            }
+            fault.NumberSmall = inter;
+            fault.NumberWide = exter;
+
+            return fault;
 
         }
 
