@@ -122,7 +122,9 @@ namespace DatabaseConnection
                 TempDataSet.Tables[0].Columns.Add("INT");
                 DataRow newRow = TempDataSet.Tables[0].NewRow();
                 newRow[0] = -404;
-                TempDataSet.Tables[0].Rows.Add(newRow);                
+                TempDataSet.Tables[0].Rows.Add(newRow);
+
+                throw;
             }
             catch (SqlException e_dbconn_sql)
             {
@@ -133,6 +135,8 @@ namespace DatabaseConnection
                 DataRow newRow = TempDataSet.Tables[0].NewRow();
                 newRow[0] = -404;
                 TempDataSet.Tables[0].Rows.Add(newRow);
+
+                throw;
             }
             return TempDataSet;
         }

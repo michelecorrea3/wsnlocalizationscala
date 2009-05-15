@@ -239,32 +239,17 @@ namespace Elab.Rtls.Engines.WsnEngine
                 #region check if node exist, else add it
                 string CheckIfNodeInDB = "call getNodeID('" + row["ID"].ToString() + "');";
 
-                try
-                {
-                    tempSet = MySQLConn.Query(CheckIfNodeInDB);
-                }
-                catch (Exception e_mysql)
-                {
-                    Logger.LogException(e_mysql);
-                }
+                tempSet = MySQLConn.Query(CheckIfNodeInDB);
 
-                #region add node to DB
                 if (tempSet.Tables[0].Rows.Count < 1)  //If the sensor is in the database, proceed with inserting the new measurements into the database.
                 {
                     string addTelosb = "call addSensorToDBTelosb('" + row["ID"] + "'," + "2);";
 
-                    try
-                    {
-                        returnSet = MySQLConn.Query(addTelosb);
-                    }
-                    catch (Exception e_mysql)
-                    {
-                        Logger.LogException(e_mysql);
-                        //return Set;
-                    }
+                    returnSet = MySQLConn.Query(addTelosb);
+
                 }
                 #endregion
-#endregion
+
 
                 if (Set.DataSetName == "SensorMeasurements")
                     cmd = ParseSensor(row);
@@ -1054,21 +1039,22 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                     //This is stupid, delete?
                     //Fatal error - send back a message to indicate a problem
-                    DataSet Error = CreateReplyInt(0);
-                    MemoryStream OutMemStream = new MemoryStream();
-                    Error.WriteXml(OutMemStream);
-                    OutMemStream.Position = 0;
-                    StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
-                    try
-                    {
-                        writer.WriteLine(OutMemStreamReader.ReadToEnd());
-                        writer.Flush();
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Could not even send back an error message");
-                    }
-                    Logger.LogException(e);
+                    //DataSet Error = CreateReplyInt(0);
+                    //MemoryStream OutMemStream = new MemoryStream();
+                    //Error.WriteXml(OutMemStream);
+                    //OutMemStream.Position = 0;
+                    //StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
+
+                    //try
+                    //{
+                    //    writer.WriteLine(OutMemStreamReader.ReadToEnd());
+                    //    writer.Flush();
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    Console.WriteLine("Could not even send back an error message");
+                    //}
+                    
                 }
             }
         }
@@ -1092,6 +1078,7 @@ namespace Elab.Rtls.Engines.WsnEngine
         /// <summary>
         /// Processes the discovery reply
         /// TODO: add further info
+        /// Possibly remove due to not tested OR test this of course..
         /// </summary>
         /// <param name="Set"></param>
         /// <returns></returns>
