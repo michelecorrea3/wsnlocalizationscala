@@ -49,10 +49,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Resources\NHibernate.dll</HintPath>
     </Reference>
-    <Reference Include="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Resources\Scala.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -107,6 +103,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Scala - Src\trunk\Scala.Core\Scala.Core.csproj">
+      <Project>{662AC005-4CEA-4106-AF80-92C1AE8E870A}</Project>
+      <Name>Scala.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Scala.Engine.WsnEngine\Elab.Rtls.Engines.WsnEngine.csproj">
       <Project>{C91B3347-B0FE-4AA9-AC1F-0547B7D62E60}</Project>
       <Name>Elab.Rtls.Engines.WsnEngine</Name>

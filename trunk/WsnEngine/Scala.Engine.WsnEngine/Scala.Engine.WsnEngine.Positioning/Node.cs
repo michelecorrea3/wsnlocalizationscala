@@ -178,9 +178,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         public double posy;
         public double fRSS;
         public Queue<double> RSS = new Queue<double>(20);
-
-        //NOT USED FOR NOW
-        public DateTime time;
+        public double range;
 
         public AnchorNode(string wsnid, double posx, double posy, double RSS)
         {
@@ -188,7 +186,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             this.posx = posx;
             this.posy = posy;
             this.RSS.Enqueue(RSS);
-            this.time = DateTime.UtcNow;
         }
     }
 }
