@@ -35,7 +35,10 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             double distance = Math.Pow((xdis + ydis), 0.5);
 
             if ((distance > (radius1 + radius2)) || (distance < Math.Abs(radius1 - radius2)))
-                throw new ApplicationException("Distance between circles to big/small to cut");
+            {
+                return points = null;
+                //throw new ApplicationException("Distance between circles to big/small to cut");
+            }
             else
             {
                 if (x1 == x2)
