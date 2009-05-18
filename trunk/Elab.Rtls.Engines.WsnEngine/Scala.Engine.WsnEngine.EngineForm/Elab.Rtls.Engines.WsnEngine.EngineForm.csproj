@@ -103,7 +103,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Scala - Src\trunk\Scala.Core\Scala.Core.csproj">
+    <ProjectReference Include="..\..\..\Scala - Src\trunk\Scala.Core\Scala.Core.csproj">
       <Project>{662AC005-4CEA-4106-AF80-92C1AE8E870A}</Project>
       <Name>Scala.Core</Name>
     </ProjectReference>
