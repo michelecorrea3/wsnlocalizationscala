@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scala.Core", "..\Scala - Src\trunk\Scala.Core\Scala.Core.csproj", "{662AC005-4CEA-4106-AF80-92C1AE8E870A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.WsnEngine.GUI", "Elab.Rtls.Engines.WsnEngine\Elab.Rtls.Engines.WsnEngine.Gui\Elab.Rtls.WsnEngine.GUI.csproj", "{5844E910-E08E-431B-838D-257864CBE4F3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6} = {25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Tools.Logger", "Elab.Rtls.Engines.WsnEngine\Elab.Rtls.Engines.WsnEngine.Tools.Logger\Elab.Rtls.Engines.WsnEngine.Tools.Logger.csproj", "{077929CD-F25F-4043-B612-5CD8BAB7C186}"
 EndProject
@@ -22,6 +25,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection", "Elab.Rtls.Engines.WsnEngine\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection.csproj", "{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine", "Elab.Rtls.Engines.WsnEngine\Scala.Engine.WsnEngine\Elab.Rtls.Engines.WsnEngine.csproj", "{C91B3347-B0FE-4AA9-AC1F-0547B7D62E60}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AD1B0220-33A6-46C6-96DB-0866851F745D} = {AD1B0220-33A6-46C6-96DB-0866851F745D}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.EngineForm", "Elab.Rtls.Engines.WsnEngine\Scala.Engine.WsnEngine.EngineForm\Elab.Rtls.Engines.WsnEngine.EngineForm.csproj", "{47E53925-70BC-41A3-806D-DE7CEC723509}"
 EndProject
