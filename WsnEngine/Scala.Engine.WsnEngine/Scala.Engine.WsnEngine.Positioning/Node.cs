@@ -71,9 +71,12 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         }
         
         //TEST
-        public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy)
+        public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy, int van)
         {
+            if(van == 1)
             anchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
+            else
+                virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
         }
 
         public void AddAnchor(string AnchorWsnId, double RSS, int van)
