@@ -7,6 +7,8 @@ using System.Data;
 using DatabaseConnection;
 using SocketConnection;
 
+using System.IO;
+
 namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
     /// <summary>
@@ -230,7 +232,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             List<AnchorNode> AllAnchors = new List<AnchorNode>();
             int count = 0;
 
-            //StreamWriter logger = new StreamWriter("MinMax.csv", false);
+            StreamWriter Log = new StreamWriter("MinMax.csv", false);
 
             for (int i = 0; i < BlindNode.Anchors.Count; i++)
             {
@@ -259,6 +261,9 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                     center.x = 0;
                     center.y = 0;
                 }
+                //Log.Write("
+                Log.Write(BlindNode.Anchors.Count.ToString());
+                Log.Write(Anchors.Count.ToString());
 
             }
             else
@@ -302,6 +307,10 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                     center.y = 0;
                     //return center;
                 }
+
+                Log.Write(BlindNode.Anchors.Count.ToString());
+                Log.Write(BlindNode.VirtualAnchors.Count.ToString());
+                Log.Write(AllAnchors.Count.ToString());
             }
 
                 //center = MinMaxCalc(Anchors, filterMethod);

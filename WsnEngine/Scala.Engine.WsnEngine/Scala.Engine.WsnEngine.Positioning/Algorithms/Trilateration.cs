@@ -7,6 +7,8 @@ using System.Data;
 using DatabaseConnection;
 using SocketConnection;
 
+using System.IO;
+
 namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
     public class ClusterTrilateration : RangeBasedPositioning
@@ -14,9 +16,12 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multihop)
         {
             List<Point> intersectionPoints = new List<Point>();
+            List<AnchorNode> AllAnchors = new List<AnchorNode>();
             List<IntersectedAnchors> anchors = new List<IntersectedAnchors>();
             IntersectedAnchors anchor = new IntersectedAnchors();
+            Point center = new Point();
 
+            StreamWriter Log = new StreamWriter("Trilateration.csv", false);
 
             if (BlindNode.Anchors.Count >= 3)
             {
@@ -25,6 +30,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                     AN.fRSS = filterMethod(AN.RSS);
                 }
 
+                /*
                 for(int j = 0; j<BlindNode.Anchors.Count-1; j++)
                 {
                     for (int l = j+1; l<BlindNode.Anchors.Count;j++)
@@ -38,24 +44,83 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                     }
                     anchors.Add(anchor);
                 }
-
-                for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
+                 */
+                if (!multihop)
                 {
-                    for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
+
+                    for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
                     {
-                        //returns 0, 1 or 2 Pointss
-                        //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
-                        //{
-                        //    intersectionPoints.Add(crossing);
-                        //}
-                        //TEST
-                        foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 1.41, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 1.41))
+                        for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
                         {
-                            intersectionPoints.Add(crossing);
+                            //returns 0, 1 or 2 Pointss
+                            //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+                            //{
+                            //    intersectionPoints.Add(crossing);
+                            //}
+                            //TEST
+                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 1.41, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 1.41))
+                            {
+                                intersectionPoints.Add(crossing);
+                            }
                         }
                     }
+                    if (intersectionPoints.Count >= 3)
+                        center = Cluster(intersectionPoints, BlindNode.Anchors.Count);
+                    else
+                    {
+                        center.x = 0;
+                        center.y = 0;
+                    }
+
                 }
-                return Cluster(intersectionPoints, BlindNode.Anchors.Count);
+                else
+                {
+                    for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
+                    {
+                        for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
+                        {
+                            //returns 0, 1 or 2 Pointss
+                            //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+                            //{
+                            //    intersectionPoints.Add(crossing);
+                            //}
+                            //TEST
+                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 1.41, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 1.41))
+                            {
+                                intersectionPoints.Add(crossing);
+                            }
+                        }
+                    }
+                    if (intersectionPoints.Count < 3)
+                    {
+                        foreach (AnchorNode an in BlindNode.Anchors)
+                            AllAnchors.Add(an);
+                        foreach (AnchorNode van in BlindNode.VirtualAnchors)
+                            AllAnchors.Add(van);
+
+                        for (int i = 0; i < AllAnchors.Count - 1; i++)
+                        {
+                            for (int j = i + 1; j < AllAnchors.Count; j++)
+                            {
+                                //returns 0, 1 or 2 Pointss
+                                //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+                                //{
+                                //    intersectionPoints.Add(crossing);
+                                //}
+                                //TEST
+                                foreach (Point crossing in GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 1.41, AllAnchors[j].posx, AllAnchors[j].posy, 1.41))
+                                {
+                                    intersectionPoints.Add(crossing);
+                                }
+                            }
+                        }
+
+                    }
+                    else
+                        center = Cluster(intersectionPoints, BlindNode.Anchors.Count);
+
+                }
+                return center;
 
             }
             else
