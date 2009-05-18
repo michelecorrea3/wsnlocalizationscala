@@ -378,7 +378,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                         //convert to the correct formats
                         //add the fields to the Query (select)
                         case "TagID":
-                            ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                            ReturnTagBlink["TagID"] = tagBlink["TagID"];
                             break;
                         case "Name":
                             ReturnTagBlink["Name"] = tagBlink["name"];
@@ -417,27 +417,27 @@ namespace Elab.Rtls.Engines.WsnEngine
                             switch (eventSubscription.EventType)
                             {
                                 case "TemperatureChanged":
-                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["TagID"] = tagBlink["TagID"];
                                     ReturnTagBlink["Temperature"] = tagBlink["Temperature"];
                                     ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
                                     break;
                                 case "LightChanged":
-                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["TagID"] = tagBlink["TagID"];
                                     ReturnTagBlink["Light"] = tagBlink["Light"];
                                     ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
                                     break;
                                 case "HumidityChanged":
-                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["TagID"] = tagBlink["TagID"];
                                     ReturnTagBlink["Humidity"] = tagBlink["Humidity"];
                                     ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
                                     break;
                                 case "ButtonPressed":
-                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["TagID"] = tagBlink["TagID"];
                                     ReturnTagBlink["Button"] = tagBlink["Button"];
                                     ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
                                     break;
                                 case "LocationUpdated":
-                                    ReturnTagBlink["TagID"] = tagBlink["idnode"];
+                                    ReturnTagBlink["TagID"] = tagBlink["TagID"];
                                     ReturnTagBlink["Location/X"] = tagBlink["X"];
                                     ReturnTagBlink["Location/Y"] = tagBlink["Y"];
                                     ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
