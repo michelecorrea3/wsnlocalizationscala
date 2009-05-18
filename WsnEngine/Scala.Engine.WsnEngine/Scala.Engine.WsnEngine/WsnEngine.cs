@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Xml;
@@ -10,12 +11,12 @@ using System.ComponentModel;
 using System.ServiceModel;
 using System.Diagnostics;
 using System.Xml.Linq;
+using System.Drawing.Imaging;
 
+using Elab.Toolkit.Imaging;
 using SocketConnection;
 using DatabaseConnection;
-
 using Elab.Rtls.Engines.WsnEngine.Positioning;
-
 using Elab.Toolkit.Core.Xml;
 
 using Scala.Core;
@@ -252,6 +253,40 @@ namespace Elab.Rtls.Engines.WsnEngine
         {
             //this.Logger.Trace("Ping method called in Ekahau4EngineAdapter");
             return "Hello " + word;
+        }
+
+        /// <summary>
+        /// Determines the accuracy and changes the coordinates to be bounded by the map
+        /// </summary>
+        /// <param name="x">The X-coordinate</param>
+        /// <param name="y">The Y-coordinate</param>
+        /// <param name="mapid">The ID of the map</param>
+        /// <returns>The accuracy, is 100 when the position is within bounds else 0</returns>
+        public static string CheckMapBounds(ref double x, ref double y, string mapid)
+        {
+            string accuracy;
+            
+            Map tempMap = WsnEngine.Instance.GetMap(mapid);
+            Image tempImage = tempMap.MapImageBytes.ToImage();
+
+            if (x < 0.0 || x > (tempImage.Width * tempMap.MapScale )|| y < 0 || y > ( tempImage.Height * tempMap.MapScale ))
+            {
+                accuracy = "0";
+                if (x < 0.0)
+                    x = 0.0;
+                else
+                    x = tempImage.Width * tempMap.MapScale;
+            }
+            else
+            {
+                accuracy = "100";
+                if (y < 0.0)
+                    y = 0.0;
+                else
+                    y = tempImage.Height*tempMap.MapScale;
+            }
+
+            return accuracy;
         }
     }
 }

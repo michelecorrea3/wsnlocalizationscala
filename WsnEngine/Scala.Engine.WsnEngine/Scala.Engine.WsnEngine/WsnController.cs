@@ -366,6 +366,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                         //EventData.EventType = "LocationUpdated";
 
                         EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                        EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "1");
+                        EventData.TagBlink["MapID"] = "WsnEngine1map1";
                         EventData.TagBlink["X"] = pos.x.ToString();
                         EventData.TagBlink["Y"] = pos.y.ToString();
 
@@ -489,9 +491,7 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                     ButtonPressed(this, EventData);
                 }
-
                 #endregion
-
             }
             return cmd;
         }
