@@ -50,10 +50,6 @@
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Scala.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2660d697f8d81a37, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Scala\Scala - Src\build\Scala.Core.dll</HintPath>
-    </Reference>
     <Reference Include="SocketConnection, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\SocketConnection\obj\Debug\SocketConnection.dll</HintPath>
@@ -91,6 +87,10 @@
     <Compile Include="WsnQueryHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Scala - Src\trunk\Scala.Core\Scala.Core.csproj">
+      <Project>{662AC005-4CEA-4106-AF80-92C1AE8E870A}</Project>
+      <Name>Scala.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\DatabaseConnection\DatabaseConnection.csproj">
       <Project>{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}</Project>
       <Name>DatabaseConnection</Name>

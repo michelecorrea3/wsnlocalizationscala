@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ServiceModel;
+using System.Globalization;
 
 using Scala.Core;
 
@@ -44,7 +45,6 @@ namespace Elab.Rtls.Engines.WsnEngine
 
         public void Subscribe(EventSubscription eventSubscription)
         {
-            //this.Logger.Trace("Subscribe method called on Ekahau4EngineAdapterService.");
             this.Callback = OperationContext.Current.GetCallbackChannel<IEventSourceCallback>();
             this.WsnEngine.Subscribe(eventSubscription);
             this.EventIDs.Add(eventSubscription.EventId);
@@ -52,7 +52,6 @@ namespace Elab.Rtls.Engines.WsnEngine
 
         public void Unsubscribe(string id)
         {
-            //this.Logger.Trace("Unsubscribe method called on Ekahau4EngineAdapterService.");
             this.WsnEngine.Unsubscribe(id);
             this.EventIDs.Remove(id);
         }
@@ -64,29 +63,7 @@ namespace Elab.Rtls.Engines.WsnEngine
         /// <returns></returns>
         public string Ping(string word)
         {
-            //this.Logger.Trace("Ping method called in Ekahau4EngineAdapterService");
             return this.WsnEngine.Ping(word);
-        }
-
-        public List<Map> GetAllMaps()
-        {
-            return this.WsnEngine.GetAllMaps();
-        }
-
-        public List<Zone> GetAllZones()
-        {
-            return this.WsnEngine.GetAllZones();
-        }
-
-        public Map GetMap(string mapId)
-        {
-            return this.WsnEngine.GetMap(mapId);
-            
-        }
-
-        public Zone GetZone(string zoneId)
-        {
-            return this.WsnEngine.GetZone(zoneId);
         }
 
         private void WsnEngineEventRaised(object sender, EventMessage eventMessage)
@@ -119,19 +96,79 @@ namespace Elab.Rtls.Engines.WsnEngine
 
         #region IMapService Members
 
-        public Map AssociateMiddlewareMapToEngineMaps(Map mapObject, params string[] engineMapIds)
-        {
-            throw new FaultException("This is an engine, not the middleware");
-        }
-
         public List<Site> GetAllSites()
         {
-            throw new FaultException("This is an engine, not the middleware");
+            throw new FaultException(
+                new FaultReason(
+                    new FaultReasonText(
+                        "Sites are not supported without a middleware.", CultureInfo.InvariantCulture)));
+
         }
 
         public void SaveSite(Site site)
         {
-            throw new FaultException("This is an engine, not the middleware");
+            throw new FaultException(
+               new FaultReason(
+                   new FaultReasonText(
+                       "Sites are not supported without a middleware.", CultureInfo.InvariantCulture)));
+
+        }
+
+        public Map AssociateMiddlewareMapToEngineMaps(MiddlewareToEngineMapLink mapObject)
+        {
+            throw new FaultException(
+                new FaultReason(
+                    new FaultReasonText(
+                        "Associating middleware map with enginemaps is not supported without a middleware.", CultureInfo.InvariantCulture)));
+
+        }
+
+        public void DeleteMap(string mapId)
+        {
+            throw new FaultException(
+                new FaultReason(
+                    new FaultReasonText(
+                        "Deleting a map is not supported without a middleware.", CultureInfo.InvariantCulture)));
+
+        }
+
+        public void DeleteSite(string siteId)
+        {
+            throw new FaultException(
+                new FaultReason(
+                    new FaultReasonText(
+                        "Sites are not supported without a middleware.", CultureInfo.InvariantCulture)));
+
+        }
+
+        public void SaveMap(Map map)
+        {
+            throw new FaultException(
+                new FaultReason(
+                    new FaultReasonText(
+                        "Saving of a map is not supported without a middleware.", CultureInfo.InvariantCulture)));
+
+        }
+
+        public List<Map> GetAllMaps()
+        {
+            return this.WsnEngine.GetAllMaps();
+        }
+
+        public List<Zone> GetAllZones()
+        {
+            return this.WsnEngine.GetAllZones();
+        }
+
+        public Map GetMap(string mapId)
+        {
+            return this.WsnEngine.GetMap(mapId);
+
+        }
+
+        public Zone GetZone(string zoneId)
+        {
+            return this.WsnEngine.GetZone(zoneId);
         }
 
         #endregion
