@@ -58,16 +58,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Algorithms\Trilateration.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection.csproj">
-      <Project>{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}</Project>
-      <Name>Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Tool.SocketConnection\Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection.csproj">
-      <Project>{AD1B0220-33A6-46C6-96DB-0866851F745D}</Project>
-      <Name>Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

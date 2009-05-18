@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine
 		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6} = {25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseConnection", "..\..\ControllerApp\DatabaseConnection\DatabaseConnection.csproj", "{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Positioning", "Scala.Engine.WsnEngine.Positioning\Elab.Rtls.Engines.WsnEngine.Positioning.csproj", "{2EC133F5-6F78-4166-AEE7-F730B4ED258F}"
 	ProjectSection(ProjectDependencies) = postProject
 		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6} = {25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}
@@ -20,12 +18,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine
 		{C91B3347-B0FE-4AA9-AC1F-0547B7D62E60} = {C91B3347-B0FE-4AA9-AC1F-0547B7D62E60}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scala.Engine.WsnEngine.EngineForm", "Scala.Engine.WsnEngine.EngineForm\Scala.Engine.WsnEngine.EngineForm.csproj", "{47E53925-70BC-41A3-806D-DE7CEC723509}"
-	ProjectSection(ProjectDependencies) = postProject
-		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382} = {9C4DE4C2-6532-46B8-8FD7-CE29065A2382}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.GUI", "Elab.Rtls.Engines.WsnEngine.Gui\Elab.Rtls.Engines.WsnEngine.GUI.csproj", "{5844E910-E08E-431B-838D-257864CBE4F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocketConnection", "..\..\SocketConnection\SocketConnection.csproj", "{AD1B0220-33A6-46C6-96DB-0866851F745D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Positioning.Tests", "Elab.Rtls.Engines.WsnEngine.Positioning.Tests\Elab.Rtls.Engines.WsnEngine.Positioning.Tests.csproj", "{2A02D430-4BB9-461D-BE96-16C5B2199BA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Simulation", "Elab.Rtls.Engines.WsnEngine.Simulation\Elab.Rtls.Engines.WsnEngine.Simulation.csproj", "{3190C01C-9A5B-403E-BD94-E98A752E4C2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection", "Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection.csproj", "{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Tools.Logger", "Elab.Rtls.Engines.WsnEngine.Tools.Logger\Elab.Rtls.Engines.WsnEngine.Tools.Logger.csproj", "{077929CD-F25F-4043-B612-5CD8BAB7C186}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection", "Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection\Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection.csproj", "{AD1B0220-33A6-46C6-96DB-0866851F745D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.EngineForm", "Scala.Engine.WsnEngine.EngineForm\Elab.Rtls.Engines.WsnEngine.EngineForm.csproj", "{47E53925-70BC-41A3-806D-DE7CEC723509}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +42,6 @@ Global
 		{C91B3347-B0FE-4AA9-AC1F-0547B7D62E60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C91B3347-B0FE-4AA9-AC1F-0547B7D62E60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C91B3347-B0FE-4AA9-AC1F-0547B7D62E60}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2EC133F5-6F78-4166-AEE7-F730B4ED258F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2EC133F5-6F78-4166-AEE7-F730B4ED258F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2EC133F5-6F78-4166-AEE7-F730B4ED258F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,14 +50,34 @@ Global
 		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}.Release|Any CPU.Build.0 = Release|Any CPU
-		{47E53925-70BC-41A3-806D-DE7CEC723509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47E53925-70BC-41A3-806D-DE7CEC723509}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47E53925-70BC-41A3-806D-DE7CEC723509}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47E53925-70BC-41A3-806D-DE7CEC723509}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5844E910-E08E-431B-838D-257864CBE4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5844E910-E08E-431B-838D-257864CBE4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5844E910-E08E-431B-838D-257864CBE4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5844E910-E08E-431B-838D-257864CBE4F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A02D430-4BB9-461D-BE96-16C5B2199BA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A02D430-4BB9-461D-BE96-16C5B2199BA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A02D430-4BB9-461D-BE96-16C5B2199BA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A02D430-4BB9-461D-BE96-16C5B2199BA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3190C01C-9A5B-403E-BD94-E98A752E4C2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3190C01C-9A5B-403E-BD94-E98A752E4C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3190C01C-9A5B-403E-BD94-E98A752E4C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3190C01C-9A5B-403E-BD94-E98A752E4C2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{077929CD-F25F-4043-B612-5CD8BAB7C186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{077929CD-F25F-4043-B612-5CD8BAB7C186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{077929CD-F25F-4043-B612-5CD8BAB7C186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{077929CD-F25F-4043-B612-5CD8BAB7C186}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AD1B0220-33A6-46C6-96DB-0866851F745D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AD1B0220-33A6-46C6-96DB-0866851F745D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD1B0220-33A6-46C6-96DB-0866851F745D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD1B0220-33A6-46C6-96DB-0866851F745D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47E53925-70BC-41A3-806D-DE7CEC723509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E53925-70BC-41A3-806D-DE7CEC723509}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E53925-70BC-41A3-806D-DE7CEC723509}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E53925-70BC-41A3-806D-DE7CEC723509}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
