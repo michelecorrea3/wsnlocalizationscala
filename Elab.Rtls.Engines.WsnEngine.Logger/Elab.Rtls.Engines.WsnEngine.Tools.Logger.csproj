@@ -8,8 +8,8 @@
     <ProjectGuid>{077929CD-F25F-4043-B612-5CD8BAB7C186}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Elab.Rtls.Engines.WsnEngine.Logger</RootNamespace>
-    <AssemblyName>Elab.Rtls.Engines.WsnEngine.Logger</AssemblyName>
+    <RootNamespace>Elab.Rtls.Engines.WsnEngine.Tools.Logger</RootNamespace>
+    <AssemblyName>Elab.Rtls.Engines.WsnEngine.Tools.Logger</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

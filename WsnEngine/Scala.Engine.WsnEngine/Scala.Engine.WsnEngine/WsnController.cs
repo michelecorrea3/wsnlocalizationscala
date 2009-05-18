@@ -365,7 +365,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                         EventMessage EventData = new EventMessage();
                         //EventData.EventType = "LocationUpdated";
 
-                        EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                        EventData.TagBlink["TagID"] = row["ID"].ToString();
                         EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "1");
                         EventData.TagBlink["MapID"] = "WsnEngine1map1";
                         EventData.TagBlink["X"] = pos.x.ToString();

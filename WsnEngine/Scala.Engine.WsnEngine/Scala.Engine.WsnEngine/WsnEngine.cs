@@ -29,7 +29,6 @@ namespace Elab.Rtls.Engines.WsnEngine
     /// Implements the service providing the ANSI RTLS API
     /// TODO: Implement services...
     /// Singleton
-    /// 
     /// </summary>
     public sealed class WsnEngine : IQueryable, IEventSource, IMappable, ITagInformationSource 
     {
