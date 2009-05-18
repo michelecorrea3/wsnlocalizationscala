@@ -276,15 +276,14 @@ namespace Elab.Rtls.Engines.WsnEngine
                     x = 0.0;
                 else
                     x = tempImage.Width * tempMap.MapScale;
-            }
-            else
-            {
-                accuracy = "100";
+
                 if (y < 0.0)
                     y = 0.0;
                 else
-                    y = tempImage.Height*tempMap.MapScale;
+                    y = tempImage.Height * tempMap.MapScale;
             }
+            else
+                accuracy = "100";
 
             return accuracy;
         }
