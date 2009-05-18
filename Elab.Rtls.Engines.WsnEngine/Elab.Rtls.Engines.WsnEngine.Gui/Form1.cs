@@ -15,6 +15,7 @@ using System.Xml.Schema;
 using System.Xml.Linq;
 using ZedGraph;
 using System.IO;
+
 using SocketConnection;
 
 namespace GUI
