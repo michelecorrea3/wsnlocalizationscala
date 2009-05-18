@@ -64,7 +64,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning.Tests
         //
         #endregion
 
-
+        /*
         /// <summary>
         ///A test for CalculatePosition
         ///</summary>
@@ -84,6 +84,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning.Tests
             Assert.AreEqual(expected, actual);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
+         */
 
         /// <summary>
         ///A test for CalculatePosition
@@ -94,9 +95,12 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning.Tests
             MySQLClass MyDB = new MySQLClass("DRIVER={MySQL ODBC 3.51 Driver};SERVER=localhost;DATABASE=senseless;UID=root;PASSWORD=admin;OPTION=3;");
 
             Node BlindNode = new Node("Test", MyDB);
-            BlindNode.NewAnchor("1", 50.00, 0.00, 0.00);
-            BlindNode.NewAnchor("2", 50.00, 2.00, 0.00);
-            BlindNode.NewAnchor("3", 50.00, 2.00, 2.00);
+            BlindNode.NewAnchor("1", 50.00, 0.00, 0.00, 1);
+            BlindNode.NewAnchor("2", 50.00, 15.00, 0.00, 1);
+            BlindNode.NewAnchor("3", 50.00, 15.00, 22.00, 1);
+            BlindNode.NewAnchor("4", 50.00, 15.00, 15.00, 2);
+
+            
             //BlindNode.NewAnchor("1", 50.00, 100, 100);
 
             Point expected = new Point(1, 1); 
@@ -104,13 +108,13 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning.Tests
 
             Point actual;
 
-            actual = MinMax.CalculatePosition(BlindNode, filterMethod, false);
+            actual = MinMax.CalculatePosition(BlindNode, filterMethod, true);
             Assert.AreEqual(expected.x, actual.x);
             Assert.AreEqual(expected.y, actual.y);
             //Assert.Inconclusive("Verify the correctness of this test method.");
         }
 
-
+        
         /// <summary>
         ///A test for CalculatePosition
         ///</summary>
@@ -120,18 +124,19 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning.Tests
             MySQLClass MyDB = new MySQLClass("DRIVER={MySQL ODBC 3.51 Driver};SERVER=localhost;DATABASE=senseless;UID=root;PASSWORD=admin;OPTION=3;");
 
             Node BlindNode = new Node("Test", MyDB);
-            BlindNode.NewAnchor("1", 50.00, 0.00, 0.00);
-            BlindNode.NewAnchor("2", 50.00, 2.00, 0.00);
-            BlindNode.NewAnchor("3", 50.00, 2.00, 2.00);
+            BlindNode.NewAnchor("1", 50.00, 0.00, 0.00, 1);
+            BlindNode.NewAnchor("2", 50.00, 2.00, 0.00, 1);
+            BlindNode.NewAnchor("3", 50.00, 2.00, 2.00, 1);
 
             Node.FilterMethod filterMethod = RangeBasedPositioning.AverageFilter; 
             Point expected = new Point(1,1); 
 
             Point actual;
 
-            actual = ClusterTrilateration.CalculatePosition(BlindNode, filterMethod);
-            Assert.AreEqual(expected, actual);
+            actual = ClusterTrilateration.CalculatePosition(BlindNode, filterMethod, false);
+            //Assert.AreEqual(expected, actual);
             Assert.Inconclusive("Verify the correctness of this test method.");
         }
+         
     }
 }
