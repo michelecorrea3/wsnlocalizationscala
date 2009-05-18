@@ -137,10 +137,10 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                     //if ( !String.IsNullOrEmpty(Row["X"].ToString()) && !String.IsNullOrEmpty(Row["Y"].ToString()))
                     //{
-                    Map tempMap; //= WsnEngine.Instance.GetMap("3");
-                    Image tempImage;// = tempMap.MapImageBytes.ToImage();
-                    double tempX;// = (double)Row["X"];
-                    double tempY;// = (double)Row["Y"];   
+                    //Map tempMap; //= WsnEngine.Instance.GetMap("3");
+                    //Image tempImage;// = tempMap.MapImageBytes.ToImage();
+                    //double tempX;// = (double)Row["X"];
+                    //double tempY;// = (double)Row["Y"];   
                     //}
 
                     foreach (string field in query.QueryFields)
@@ -163,44 +163,62 @@ namespace Elab.Rtls.Engines.WsnEngine
                             case "Location":
                                 if ( !String.IsNullOrEmpty(Row["X"].ToString()) && !String.IsNullOrEmpty(Row["Y"].ToString()))
                                 {
-                                    tagBlink["Location/X"] = Row["X"].ToString();
-                                    tagBlink["Location/Y"] = Row["Y"].ToString();
-                                    //hardcode this to floor two 
-                                    tagBlink["Location/MapID"] = "1";
+                                    //tagBlink["Location/X"] = Row["X"].ToString();
+                                    //tagBlink["Location/Y"] = Row["Y"].ToString();
+                                    ////hardcode this to floor two 
+                                    //tagBlink["Location/MapID"] = "WsnEngine1map1";
 
-                                    tempMap = WsnEngine.Instance.GetMap("1");
-                                    tempImage = tempMap.MapImageBytes.ToImage();
-                                    tempX = Convert.ToDouble(Row["X"]);
-                                    tempY = Convert.ToDouble(Row["Y"]);
+                                    //tempMap = WsnEngine.Instance.GetMap("1");
+                                    //tempImage = tempMap.MapImageBytes.ToImage();
+                                    //tempX = Convert.ToDouble(Row["X"]);
+                                    //tempY = Convert.ToDouble(Row["Y"]);
 
-                                    if (tempX < 0 || tempX > tempImage.Width || tempY < 0 || tempY > tempImage.Height)
-                                        tagBlink["Location/Accuracy"] = "0";
-                                    else
-                                        tagBlink["Location/Accuracy"] = "100";
+                                    //if (tempX < 0 || tempX > tempImage.Width || tempY < 0 || tempY > tempImage.Height)
+                                    //    tagBlink["Location/Accuracy"] = "0";
+                                    //else
+                                    //    tagBlink["Location/Accuracy"] = "100";
+                                    double tempX = (double)Row["X"];
+                                    double tempY = (double)Row["Y"];
+
+                                    tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "1");
+                                    tagBlink["Location/MapID"] = "WsnEngine1map1";
+                                    tagBlink["Location/X"] = tempX.ToString();
+                                    tagBlink["Location/Y"] = tempY.ToString();
+
                                 }
                                 break;
                             case "Location/X":
                                 if (!string.IsNullOrEmpty(Row["X"].ToString()))
-                                tagBlink["Location/X"] = Row["X"].ToString();
+                                {
+                                    double tempX = (double)Row["X"];
+                                    double tempY = (double)Row["Y"];
+
+                                    WsnEngine.CheckMapBounds(ref tempX, ref tempY, "1");
+                                    tagBlink["Location/X"] = tempX.ToString();
+                                }
                                 break;
                             case "Location/Y":
                                 if (!String.IsNullOrEmpty(Row["Y"].ToString()))
-                                tagBlink["Location/Y"] = Row["Y"].ToString();
+                                {
+                                    double tempX = (double)Row["X"];
+                                    double tempY = (double)Row["Y"];
+
+                                    WsnEngine.CheckMapBounds(ref tempX, ref tempY, "1");
+                                    tagBlink["Location/Y"] = tempX.ToString();
+                                }
                                 break;
                             case "Location/MapID":
                                 //hardcode this to floor two 
-                                tagBlink["Location/MapID"] = "WsnEngine1map3";
+                                tagBlink["Location/MapID"] = "WsnEngine1map1";
                                 break;
                             case "Accuracy":
-                                tempMap = WsnEngine.Instance.GetMap("1");
-                                tempImage = tempMap.MapImageBytes.ToImage();
-                                tempX = Convert.ToDouble(Row["X"]);
-                                tempY = Convert.ToDouble(Row["Y"]);  
+                                if (!String.IsNullOrEmpty(Row["X"].ToString()) && !String.IsNullOrEmpty(Row["Y"].ToString()))
+                                {
+                                    double tempX = (double) Row["X"];
+                                    double tempY = (double) Row["Y"];
 
-                                if (tempX < 0 || tempX > tempImage.Width || tempY < 0 || tempY > tempImage.Height)
-                                    tagBlink["Location/Accuracy"] = "0";
-                                else
-                                    tagBlink["Location/Accuracy"] = "100";
+                                    tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "1");
+                                }
                                 break;
                             case "Buttons":
                                 //skip if this boolean is 0
@@ -241,20 +259,28 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                                 if (!String.IsNullOrEmpty(Row["X"].ToString()) && !String.IsNullOrEmpty(Row["Y"].ToString()))
                                 {
-                                    tagBlink["Location/X"] = Row["X"].ToString();
-                                    tagBlink["Location/Y"] = Row["Y"].ToString();
-                                    //hardcode this to floor two 
-                                    tagBlink["Location/MapID"] = "WsnEngine1map3";
+                                    //tagBlink["Location/X"] = Row["X"].ToString();
+                                    //tagBlink["Location/Y"] = Row["Y"].ToString();
+                                    ////hardcode this to floor two 
+                                    //tagBlink["Location/MapID"] = "WsnEngine1map1";
 
-                                    tempMap = WsnEngine.Instance.GetMap("1");
-                                    tempImage = tempMap.MapImageBytes.ToImage();
-                                    tempX = Convert.ToDouble(Row["X"]);
-                                    tempY = Convert.ToDouble(Row["Y"]);  
+                                    //tempMap = WsnEngine.Instance.GetMap("1");
+                                    //tempImage = tempMap.MapImageBytes.ToImage();
+                                    //tempX = Convert.ToDouble(Row["X"]);
+                                    //tempY = Convert.ToDouble(Row["Y"]);  
 
-                                    if (tempX < 0 || tempX > tempImage.Width || tempY < 0 || tempY > tempImage.Height)
-                                        tagBlink["Location/Accuracy"] = "0";
-                                    else
-                                        tagBlink["Location/Accuracy"] = "100";
+                                    //if (tempX < 0 || tempX > tempImage.Width || tempY < 0 || tempY > tempImage.Height)
+                                    //    tagBlink["Location/Accuracy"] = "0";
+                                    //else
+                                    //    tagBlink["Location/Accuracy"] = "100";
+
+                                    double tempX = (double)Row["X"];
+                                    double tempY = (double)Row["Y"];
+
+                                    tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "1");
+                                    tagBlink["Location/MapID"] = "WsnEngine1map1";
+                                    tagBlink["Location/X"] = tempX.ToString();
+                                    tagBlink["Location/Y"] = tempY.ToString();
                                 }
 
                                 if (!String.IsNullOrEmpty(Row["button1"].ToString()))
