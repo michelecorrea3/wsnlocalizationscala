@@ -41,20 +41,7 @@ namespace Elab.Rtls.Engines.WsnEngine
         public QueryResponse Query(Query query)
         {
             return this.WsnEngine.Query(query);
-        }
-
-        public void Subscribe(EventSubscription eventSubscription)
-        {
-            this.Callback = OperationContext.Current.GetCallbackChannel<IEventSourceCallback>();
-            this.WsnEngine.Subscribe(eventSubscription);
-            this.EventIDs.Add(eventSubscription.EventId);
-        }
-
-        public void Unsubscribe(string id)
-        {
-            this.WsnEngine.Unsubscribe(id);
-            this.EventIDs.Remove(id);
-        }
+        }    
 
         /// <summary>
         /// Sends a trivial word to a service and returns a trivial phrase.
@@ -170,6 +157,29 @@ namespace Elab.Rtls.Engines.WsnEngine
         {
             return this.WsnEngine.GetZone(zoneId);
         }
+
+        #endregion
+
+        #region IEventService Members
+
+        public void UnsubscribeAll()
+        {
+            this.WsnEngine.UnsubscribeAll();
+            this.EventIDs.Clear();
+        }
+
+        public void Subscribe(EventSubscription eventSubscription)
+        {
+            this.Callback = OperationContext.Current.GetCallbackChannel<IEventSourceCallback>();
+            this.WsnEngine.Subscribe(eventSubscription);
+            this.EventIDs.Add(eventSubscription.EventId);
+        }
+
+        public void Unsubscribe(string id)
+        {
+            this.WsnEngine.Unsubscribe(id);
+            this.EventIDs.Remove(id);
+        }  
 
         #endregion
     }

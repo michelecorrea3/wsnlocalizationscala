@@ -703,7 +703,9 @@ namespace GUI
                 //return the nodeid with sensor as input
                 try
                 {
-                    string selected = listBoxControl.SelectedItem.ToString();
+                    if (listBoxControl.SelectedItem != null)
+                    {
+                        string selected = listBoxControl.SelectedItem.ToString();
                     string nodeid;
                     nodeid = getNodeID(selected);
                     xml_send += "<NodeID>" + nodeid + "</NodeID>";
@@ -727,9 +729,10 @@ namespace GUI
                             xml_send += "<Y>" + textBoxControlY.Text + "</Y>";
                             xml_send += "<LocRate>" + textBoxLocRate.Text + "</LocRate>";
 
-                            result = MessageBox.Show("Make this node an Anchor Node with these parameters?","Check parameters",MessageBoxButtons.OKCancel);
+                            result = MessageBox.Show("Make this node an Anchor Node with these parameters?",
+                                                     "Check parameters", MessageBoxButtons.OKCancel);
                         }
-                        // if the node was an AN already we should still check if any of the parameters has changed
+                            // if the node was an AN already we should still check if any of the parameters has changed
                         else if (AnchorProperty == "1")
                         {
                             if (oldChanges.X != textBoxControlX.Text)
@@ -758,74 +761,75 @@ namespace GUI
 
                     if (result == DialogResult.OK)
                     {
-                    //we can now send the request, we will receive a status message as a response
-                    SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
-                    // Sends: ActionRequest
-                    // Receives: Status
-                    string xml_receive = socket_client.Connect(xml_send, true);
+                        //we can now send the request, we will receive a status message as a response
+                        SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
+                        // Sends: ActionRequest
+                        // Receives: Status
+                        string xml_receive = socket_client.Connect(xml_send, true);
 
-                    XmlDocument tempdoc = new XmlDocument();
-                    tempdoc.LoadXml(xml_receive);
+                        XmlDocument tempdoc = new XmlDocument();
+                        tempdoc.LoadXml(xml_receive);
 
-                    if (tempdoc.DocumentElement.Name.ToString() == "Replies") 
-                    {
-                        DiscardChanges();
-                        MessageBox.Show("The WSN did not reply in time");
-                        timerStatus.Enabled = true;
-                        buttonWSNControl.Enabled = true;
-                        return;
-                    }
-
-                    XmlNodeList bookList = tempdoc.GetElementsByTagName("WSNReply");
-                    foreach (XmlNode node in bookList)
-                    {
-                        XmlElement ID = (XmlElement)(node);
-                        try
+                        if (tempdoc.DocumentElement.Name.ToString() == "Replies")
                         {
-                            if (
-                            ActiveProperty == ID.GetElementsByTagName("active")[0].InnerText &&
-                            AnchorProperty == ID.GetElementsByTagName("AN")[0].InnerText &&
-                            textBoxControlX.Text == ID.GetElementsByTagName("X")[0].InnerText &&
-                            textBoxControlY.Text == ID.GetElementsByTagName("Y")[0].InnerText &&
-                            textBoxSampleRate.Text == ID.GetElementsByTagName("Samplerate")[0].InnerText &&
-                            textBoxLocRate.Text == ID.GetElementsByTagName("LocRate")[0].InnerText &&
-                            LedsProperty == ID.GetElementsByTagName("Leds")[0].InnerText &&
-                            PowerProperty == ID.GetElementsByTagName("Power")[0].InnerText &&
-                            FrequencyProperty == ID.GetElementsByTagName("Frequency")[0].InnerText)
-                            {
-                                //WSN Succesfully replied to our request
-                                //changes struct
-                                oldChanges.Active = ActiveProperty;
-                                oldChanges.AN = AnchorProperty;
-                                oldChanges.X = textBoxControlX.Text;
-                                oldChanges.Y = textBoxControlY.Text;
-                                oldChanges.samplerate = textBoxSampleRate.Text;
-                                oldChanges.locrate = textBoxLocRate.Text;
-                                oldChanges.power = PowerProperty;
-                                oldChanges.frequency = FrequencyProperty;
-                                oldChanges.conn = textBoxConn.Text;
-                                oldChanges.leds = LedsProperty;
-
-                                Console.WriteLine("WSN succesfully replied");
-                                MessageBox.Show("WSN succesfully replied");
-                            }
-                            else
-                            {
-                                //WSN did NOT! Succesfully replied to our request
-                                //roll back to previous state;
-                                DiscardChanges();
-
-                                Console.WriteLine("WSN did not succesfully reply");
-                                MessageBox.Show("WSN did not succesfully reply");
-                            }
+                            DiscardChanges();
+                            MessageBox.Show("The WSN did not reply in time or is unavailaible");
+                            timerStatus.Enabled = true;
+                            buttonWSNControl.Enabled = true;
+                            return;
                         }
-                        catch
+
+                        XmlNodeList bookList = tempdoc.GetElementsByTagName("WSNReply");
+                        foreach (XmlNode node in bookList)
                         {
-                            Console.WriteLine("Some field is not available");
+                            XmlElement ID = (XmlElement) (node);
+                            try
+                            {
+                                if (
+                                    ActiveProperty == ID.GetElementsByTagName("active")[0].InnerText &&
+                                    AnchorProperty == ID.GetElementsByTagName("AN")[0].InnerText &&
+                                    textBoxControlX.Text == ID.GetElementsByTagName("X")[0].InnerText &&
+                                    textBoxControlY.Text == ID.GetElementsByTagName("Y")[0].InnerText &&
+                                    textBoxSampleRate.Text == ID.GetElementsByTagName("Samplerate")[0].InnerText &&
+                                    textBoxLocRate.Text == ID.GetElementsByTagName("LocRate")[0].InnerText &&
+                                    LedsProperty == ID.GetElementsByTagName("Leds")[0].InnerText &&
+                                    PowerProperty == ID.GetElementsByTagName("Power")[0].InnerText &&
+                                    FrequencyProperty == ID.GetElementsByTagName("Frequency")[0].InnerText)
+                                {
+                                    //WSN Succesfully replied to our request
+                                    //changes struct
+                                    oldChanges.Active = ActiveProperty;
+                                    oldChanges.AN = AnchorProperty;
+                                    oldChanges.X = textBoxControlX.Text;
+                                    oldChanges.Y = textBoxControlY.Text;
+                                    oldChanges.samplerate = textBoxSampleRate.Text;
+                                    oldChanges.locrate = textBoxLocRate.Text;
+                                    oldChanges.power = PowerProperty;
+                                    oldChanges.frequency = FrequencyProperty;
+                                    oldChanges.conn = textBoxConn.Text;
+                                    oldChanges.leds = LedsProperty;
+
+                                    Console.WriteLine("WSN succesfully replied");
+                                    MessageBox.Show("WSN succesfully replied");
+                                }
+                                else
+                                {
+                                    //WSN did NOT! Succesfully replied to our request
+                                    //roll back to previous state;
+                                    DiscardChanges();
+
+                                    Console.WriteLine("WSN did not succesfully reply");
+                                    MessageBox.Show("WSN did not succesfully reply");
+                                }
+                            }
+                            catch
+                            {
+                                Console.WriteLine("Some field is not available");
+                            }
                         }
                     }
                 }
-                }
+            }
                 //good ol' catches
                 catch (ArgumentNullException nullex)
                 {
@@ -889,7 +893,7 @@ namespace GUI
             //return the nodeid with sensor as input
             try
             {
-                if (listBoxControl.SelectedItem.ToString() != null)
+                if (listBoxControl.SelectedItem != null)
                 {
                     //make the XML string to send
                     string selected = listBoxControl.SelectedItem.ToString();
