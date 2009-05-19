@@ -209,7 +209,7 @@
             // 
             this.timerSensorFetch.Interval = 60000;
             this.timerSensorFetch.Tag = "timer for the discovery update";
-            this.timerSensorFetch.Tick += new System.EventHandler(this.timerDiscovery_Tick);
+            this.timerSensorFetch.Tick += new System.EventHandler(this.timerSensorFetch_Tick);
             // 
             // statusStrip1
             // 

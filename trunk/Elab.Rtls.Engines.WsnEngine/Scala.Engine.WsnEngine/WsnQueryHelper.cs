@@ -44,7 +44,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             //Ignore the fields in the SQL request, just request them all for now...
             //Fields
             QueryCmd.Append(
-                "select * from (select idnode, sensor, name from node) as nd left outer join (select * from (select button1, temperature, light, humidity, max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens left outer join (select X, Y, max(time) as loctime, node as locnode from position group by node) as loc on sens.sensnode = loc.locnode union select * from(select button1, temperature, light, humidity,max(time) as senstime, node as sensnode from sensormeasurements group by node) as sens right outer join (select X, Y, max(time) as loctime, node as locnode from position group by node) as loc on sens.sensnode = loc.locnode) as sq on nd.idnode = sq.sensnode");
+                "select * from (select idnode, sensor, name from node) as nd left outer join(select * from(select button1, temperature, light, humidity, time as senstime, node as sensnode from sensormeasurements group by node desc) as sens left outer join (select X, Y, time as loctime, node as locnode from position group by node desc) as loc on sens.sensnode = loc.locnode union select * from (select button1, temperature, light, humidity, time as senstime, node as sensnode from sensormeasurements group by node desc) as sens right outer join (select X, Y, time as loctime, node as locnode from position group by node desc) as loc on sens.sensnode = loc.locnode) as sq on nd.idnode = sq.sensnode");
 
             if (query.Filters != null)
             {

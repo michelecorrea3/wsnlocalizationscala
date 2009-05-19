@@ -330,6 +330,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                         //case "Trilateration":
                         //    pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter);
                     }
+                    
+                    Console.WriteLine("Position was calculated for node: " + row["ID"] + " X = " + pos.x.ToString() + " Y = " + pos.y.ToString());
 
                     //Create the command that we send to the database to insert the new row.
                     cmd = "call addLocalizationData(" +
