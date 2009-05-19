@@ -889,46 +889,49 @@ namespace GUI
             //return the nodeid with sensor as input
             try
             {
-                //make the XML string to send
-                string selected = listBoxControl.SelectedItem.ToString();
-                string nodeid = getNodeID(selected);
-
-                xml_send += "<arg>" + nodeid + "</arg></Request></Requests>";
-
-                SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
-                // Receiving data
-                string xml_receive = socket_client.Connect(xml_send, true);
-
-                //set the textfields to the received XML nodes
-                XmlDocument tempdoc = new XmlDocument();
-                tempdoc.LoadXml(xml_receive);
-
-                XmlNodeList bookList = tempdoc.GetElementsByTagName("Status");
-                foreach (XmlNode node in bookList)
+                if (listBoxControl.SelectedItem.ToString() != null)
                 {
-                    XmlElement ID = (XmlElement)(node);
-                    try
+                    //make the XML string to send
+                    string selected = listBoxControl.SelectedItem.ToString();
+                    string nodeid = getNodeID(selected);
+
+                    xml_send += "<arg>" + nodeid + "</arg></Request></Requests>";
+
+                    SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
+                    // Receiving data
+                    string xml_receive = socket_client.Connect(xml_send, true);
+
+                    //set the textfields to the received XML nodes
+                    XmlDocument tempdoc = new XmlDocument();
+                    tempdoc.LoadXml(xml_receive);
+
+                    XmlNodeList bookList = tempdoc.GetElementsByTagName("Status");
+                    foreach (XmlNode node in bookList)
                     {
-                        //compare status to changes
-                        if (
-                            oldChanges.Active == ID.GetElementsByTagName("active")[0].InnerText &&
-                            oldChanges.AN == ID.GetElementsByTagName("AN")[0].InnerText &&
-                            oldChanges.X == ID.GetElementsByTagName("X")[0].InnerText &&
-                            oldChanges.Y == ID.GetElementsByTagName("Y")[0].InnerText &&
-                            oldChanges.samplerate == ID.GetElementsByTagName("Samplerate")[0].InnerText &&
-                            oldChanges.locrate == ID.GetElementsByTagName("LocRate")[0].InnerText &&
-                            oldChanges.leds == ID.GetElementsByTagName("Leds")[0].InnerText &&
-                            oldChanges.power == ID.GetElementsByTagName("Power")[0].InnerText &&
-                            oldChanges.frequency == ID.GetElementsByTagName("Frequency")[0].InnerText)
-                            return false;
-                        else
-                            return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                        Console.WriteLine(ex.StackTrace);
-                        Console.WriteLine("Some field is not available");
+                        XmlElement ID = (XmlElement)(node);
+                        try
+                        {
+                            //compare status to changes
+                            if (
+                                oldChanges.Active == ID.GetElementsByTagName("active")[0].InnerText &&
+                                oldChanges.AN == ID.GetElementsByTagName("AN")[0].InnerText &&
+                                oldChanges.X == ID.GetElementsByTagName("X")[0].InnerText &&
+                                oldChanges.Y == ID.GetElementsByTagName("Y")[0].InnerText &&
+                                oldChanges.samplerate == ID.GetElementsByTagName("Samplerate")[0].InnerText &&
+                                oldChanges.locrate == ID.GetElementsByTagName("LocRate")[0].InnerText &&
+                                oldChanges.leds == ID.GetElementsByTagName("Leds")[0].InnerText &&
+                                oldChanges.power == ID.GetElementsByTagName("Power")[0].InnerText &&
+                                oldChanges.frequency == ID.GetElementsByTagName("Frequency")[0].InnerText)
+                                return false;
+                            else
+                                return true;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine(ex.Message);
+                            Console.WriteLine(ex.StackTrace);
+                            Console.WriteLine("Some field is not available");
+                        }
                     }
                 }
             }
