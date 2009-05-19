@@ -771,6 +771,7 @@ namespace GUI
                     {
                         DiscardChanges();
                         MessageBox.Show("The WSN did not reply in time");
+                        timerStatus.Enabled = true;
                         buttonWSNControl.Enabled = true;
                         return;
                     }
