@@ -119,7 +119,7 @@ namespace Elab.Rtls.Engines.WsnEngine
         {
             try
             {
-                Options.ReadXml("config.txt"); //Read the options
+                Options.ReadXml("app.config"); //Read the options
                 //Try to set up the MySQL-database linker
                 MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
             }
