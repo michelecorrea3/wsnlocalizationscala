@@ -107,6 +107,12 @@ namespace Elab.Rtls.Engines.WsnEngine
 
             //if (File.Exists("DBFaults.txt"))
             //    File.Delete("DBFaults.txt");
+            this.SelectedAlgorithm = "CentroidLocalization";
+            this.SelectedFilter = "Average";
+
+            this.UseCalibration = false;
+            this.UseMultihop = false;
+
 
             StartWsnEngine();
         }
