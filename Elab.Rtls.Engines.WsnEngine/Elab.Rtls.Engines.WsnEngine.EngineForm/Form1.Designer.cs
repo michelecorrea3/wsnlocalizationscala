@@ -44,6 +44,7 @@
             // radioButtonCentroidLocalization
             // 
             this.radioButtonCentroidLocalization.AutoSize = true;
+            this.radioButtonCentroidLocalization.Checked = true;
             this.radioButtonCentroidLocalization.Location = new System.Drawing.Point(22, 32);
             this.radioButtonCentroidLocalization.Name = "radioButtonCentroidLocalization";
             this.radioButtonCentroidLocalization.Size = new System.Drawing.Size(123, 17);
@@ -61,7 +62,6 @@
             this.radioButtonMinMaxSimpleModel.Name = "radioButtonMinMaxSimpleModel";
             this.radioButtonMinMaxSimpleModel.Size = new System.Drawing.Size(62, 17);
             this.radioButtonMinMaxSimpleModel.TabIndex = 2;
-            this.radioButtonMinMaxSimpleModel.TabStop = true;
             this.radioButtonMinMaxSimpleModel.Text = "MinMax";
             this.radioButtonMinMaxSimpleModel.UseVisualStyleBackColor = true;
             this.radioButtonMinMaxSimpleModel.CheckedChanged += new System.EventHandler(this.radioButtonMinMaxSimpleModel_CheckedChanged);
@@ -69,6 +69,7 @@
             // radioButtonMedianFilter
             // 
             this.radioButtonMedianFilter.AutoSize = true;
+            this.radioButtonMedianFilter.Checked = true;
             this.radioButtonMedianFilter.Location = new System.Drawing.Point(22, 30);
             this.radioButtonMedianFilter.Name = "radioButtonMedianFilter";
             this.radioButtonMedianFilter.Size = new System.Drawing.Size(60, 17);
@@ -85,7 +86,6 @@
             this.radioButtonAverageFilter.Name = "radioButtonAverageFilter";
             this.radioButtonAverageFilter.Size = new System.Drawing.Size(65, 17);
             this.radioButtonAverageFilter.TabIndex = 5;
-            this.radioButtonAverageFilter.TabStop = true;
             this.radioButtonAverageFilter.Text = "Average";
             this.radioButtonAverageFilter.UseVisualStyleBackColor = true;
             this.radioButtonAverageFilter.CheckedChanged += new System.EventHandler(this.radioButtonAverageFilter_CheckedChanged);
@@ -110,7 +110,6 @@
             this.radioButtonClusteredTriLateration.Name = "radioButtonClusteredTriLateration";
             this.radioButtonClusteredTriLateration.Size = new System.Drawing.Size(124, 17);
             this.radioButtonClusteredTriLateration.TabIndex = 3;
-            this.radioButtonClusteredTriLateration.TabStop = true;
             this.radioButtonClusteredTriLateration.Text = "ClusteredTrilateration";
             this.radioButtonClusteredTriLateration.UseVisualStyleBackColor = true;
             this.radioButtonClusteredTriLateration.CheckedChanged += new System.EventHandler(this.radioButtonClusteredTriLateration_CheckedChanged);
