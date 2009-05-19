@@ -193,8 +193,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
                 //TEST
                 //AnBox = new BoundingBox(center, 1);
-                if ( ( (BnBox.Xmin <= AnBox.Xmax) && (AnBox.Xmax <= BnBox.Xmax) ) || ( (BnBox.Xmin <= AnBox.Xmin) && ( AnBox.Xmin <= BnBox.Xmax)) )
-                    if ( ((BnBox.Ymin <= AnBox.Ymax) && (AnBox.Ymax <= BnBox.Ymax)) || ((BnBox.Ymin <= AnBox.Ymin) && (AnBox.Ymin <= BnBox.Ymax)) )
+                if (((BnBox.Xmin <= AnBox.Xmax) && (AnBox.Xmax <= BnBox.Xmax)) || ((BnBox.Xmin <= AnBox.Xmin) && (AnBox.Xmin <= BnBox.Xmax)))
+                    if (((BnBox.Ymin <= AnBox.Ymax) && (AnBox.Ymax <= BnBox.Ymax)) || ((BnBox.Ymin <= AnBox.Ymin) && (AnBox.Ymin <= BnBox.Ymax)))
                     {
                         BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
                         BnBox.Xmax = Math.Min(BnBox.Xmax, AnBox.Xmax);
@@ -210,17 +210,17 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
         private static bool BelongsToAllBoxes(double x1, double y1, double r1, double x2, double y2, double r2)
         {
-            Point a1,a2;
-            a1 = new Point(x1,y1);
-            a2 = new Point(x2,y2);
+            Point a1, a2;
+            a1 = new Point(x1, y1);
+            a2 = new Point(x2, y2);
             BoundingBox bn1, bn2;
             bn1 = new BoundingBox(a1, r1);
             bn2 = new BoundingBox(a2, r2);
 
-            if (     ( ((bn1.Xmin <= bn2.Xmax) && (bn2.Xmax <= bn1.Xmax)) || ( (bn1.Xmin <= bn2.Xmin) && (bn2.Xmin <= bn1.Xmax)) ) && ( ( (bn1.Ymin <= bn2.Ymax) && (bn2.Ymax <= bn1.Ymax) ) || ( (bn1.Ymin <= bn2.Ymin) && (bn2.Ymin <= bn1.Ymax) ) )   )
-                    return true;
-                else
-                    return false;
+            if ((((bn1.Xmin <= bn2.Xmax) && (bn2.Xmax <= bn1.Xmax)) || ((bn1.Xmin <= bn2.Xmin) && (bn2.Xmin <= bn1.Xmax))) && (((bn1.Ymin <= bn2.Ymax) && (bn2.Ymax <= bn1.Ymax)) || ((bn1.Ymin <= bn2.Ymin) && (bn2.Ymin <= bn1.Ymax))))
+                return true;
+            else
+                return false;
         }
 
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multiHop)
@@ -241,8 +241,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 for (int j = 0; j < BlindNode.Anchors.Count; j++)
                 {
                     BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
-                   if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
-//                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
+                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+                        //if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
                         count++;
                 }
                 if (count >= 3)
@@ -284,8 +284,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                         count = 0;
                         for (int j = 0; j < AllAnchors.Count; j++)
                         {
-                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, Ranging(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, Ranging(Anchors[j].fRSS)))
-  //                          if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
+                            //if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, Ranging(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, Ranging(Anchors[j].fRSS)))
+                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
                                 count++;
                         }
                         if (count >= 3)
@@ -313,9 +313,9 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 Log.Write(AllAnchors.Count.ToString());
             }
 
-                //center = MinMaxCalc(Anchors, filterMethod);
+            //center = MinMaxCalc(Anchors, filterMethod);
 
-                return center;
+            return center;
         }
 
     }

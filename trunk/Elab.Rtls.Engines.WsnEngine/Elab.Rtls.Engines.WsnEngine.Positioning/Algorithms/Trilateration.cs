@@ -58,7 +58,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                             //    intersectionPoints.Add(crossing);
                             //}
                             //TEST
-                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 1.41, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 1.41))
+                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10))
                             {
                                 intersectionPoints.Add(crossing);
                             }
@@ -85,7 +85,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                             //    intersectionPoints.Add(crossing);
                             //}
                             //TEST
-                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 1.41, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 1.41))
+                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10))
                             {
                                 intersectionPoints.Add(crossing);
                             }
@@ -108,7 +108,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                                 //    intersectionPoints.Add(crossing);
                                 //}
                                 //TEST
-                                foreach (Point crossing in GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 1.41, AllAnchors[j].posx, AllAnchors[j].posy, 1.41))
+                                foreach (Point crossing in GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
                                 {
                                     intersectionPoints.Add(crossing);
                                 }
@@ -132,8 +132,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             Error fault = new Error();
 
             double distance;
-            int inter=0;
-            int exter=0;
+            int inter = 0;
+            int exter = 0;
 
             foreach (IntersectedAnchors ANs in anchors)
             {
