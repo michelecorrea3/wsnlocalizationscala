@@ -168,13 +168,15 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             //comment for the test
             Anchors[0].fRSS = filterMethod(Anchors[0].RSS);
             double distance = Ranging(Anchors[0].fRSS);
+            //TEST
+            //double distance = 10;
             Point center;
 
             center = new Point(Anchors[0].posx, Anchors[0].posy);
 
             //TEST: replace distance with constance
-            //AnBox = new BoundingBox(center, 10);
-            AnBox = new BoundingBox(center, Ranging(Anchors[0].fRSS));
+            AnBox = new BoundingBox(center, 10);
+            //AnBox = new BoundingBox(center, Ranging(Anchors[0].fRSS));
             BnBox = AnBox;
 
             for (int i = 1; i < Anchors.Count; i++)
@@ -236,6 +238,13 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             StreamWriter Log = new StreamWriter("ExtendedMinMax.csv", false);
 
+            foreach (AnchorNode an in BlindNode.Anchors)
+            {
+                an.fRSS = filterMethod(an.RSS);
+                an.range = Ranging(an.fRSS);
+                //TEST
+                //an.range = 10;
+            }
 
 
             if (!multiHop)
@@ -246,24 +255,25 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                     for (int i = 0; i < BlindNode.Anchors.Count; i++)
                     {
                         count = 0;
-                        BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-                        BlindNode.Anchors[i].range = Ranging(BlindNode.Anchors[i].fRSS);
+                        //BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
+                        //BlindNode.Anchors[i].range = Ranging(BlindNode.Anchors[i].fRSS);
+                        //BlindNode.Anchors[i].range = 10;
                         for (int j = 0; j < BlindNode.Anchors.Count; j++)
                         {
-                            BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
-                            BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
-                            if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].range))
-                                //                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
+                            //BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
+                            //BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
+                            if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
+                                //if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
                                 count++;
                         }
-                        
+
                         ListOfCounts.Add(count);
                     }
-                    if(ListOfCounts.Average() != BlindNode.Anchors.Count)
+                    if (ListOfCounts.Average() != BlindNode.Anchors.Count)
                     {
                         ListOfCounts.Clear();
-                        foreach(AnchorNode an in BlindNode.Anchors)
-                                an.range *= 1.1;
+                        foreach (AnchorNode an in BlindNode.Anchors)
+                            an.range *= 1.1;
                     }
                     else
                         AllBoxesIntersected = true;
@@ -320,7 +330,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 }
                 else
                 {
-                    center.x = 0;
+                    center.x = 0; 
                     center.y = 0;
                     //return center;
                 }
