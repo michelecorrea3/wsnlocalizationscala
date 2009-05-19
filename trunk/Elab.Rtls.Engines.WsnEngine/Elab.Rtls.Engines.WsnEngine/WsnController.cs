@@ -119,7 +119,7 @@ namespace Elab.Rtls.Engines.WsnEngine
         {
             try
             {
-                Options.ReadXml("app.config"); //Read the options
+                Options.ReadXml("config.txt"); //Read the options
                 //Try to set up the MySQL-database linker
                 MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
             }
@@ -840,7 +840,7 @@ namespace Elab.Rtls.Engines.WsnEngine
 
             try
             {
-                string replyWSN = SendActionReq.Connect(OutMemStreamReader.ReadToEnd().Replace("\r\n", ""), true, 10000);
+                string replyWSN = SendActionReq.Connect(OutMemStreamReader.ReadToEnd().Replace("\r\n", ""), true, 30000);
                 if (replyWSN == null)
                     throw new ArgumentNullException("The WSN did not reply in time");
 

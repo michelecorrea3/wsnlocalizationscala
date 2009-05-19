@@ -114,6 +114,14 @@ namespace Elab.Rtls.Engines.WsnEngine
             }
         }
 
+        public void UnsubscribeAll()
+        {
+            foreach (string key in this.EventListeners.Keys)
+            {
+                this.Unsubscribe(key);
+            }
+        }
+
         private void EventListenerEventReceived(object sender, EventMessage eventMessage)
         {
             // Make a temporary copy of the event to avoid possibility of
