@@ -80,11 +80,11 @@
     <Compile Include="EventListeners\EventListener.cs" />
     <Compile Include="EventListeners\PositionEventListener.cs" />
     <Compile Include="EventListeners\SensorDataEventListener.cs" />
-    <Compile Include="WsnController.cs" />
-    <Compile Include="WsnEngine.cs" />
+    <Compile Include="WsnController\WsnController.cs" />
+    <Compile Include="WsnEngine\WsnEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WsnEngineService.cs" />
-    <Compile Include="WsnQueryHelper.cs" />
+    <Compile Include="WsnEngine\WsnEngineService.cs" />
+    <Compile Include="WsnEngine\WsnQueryHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Scala - Src\trunk\Scala.Core\Scala.Core.csproj">
