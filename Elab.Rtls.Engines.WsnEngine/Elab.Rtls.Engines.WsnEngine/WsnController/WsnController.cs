@@ -355,11 +355,18 @@ namespace Elab.Rtls.Engines.WsnEngine
                         case "CentroidLocalization":
                             pos = CentroidLocalization.CalculatePosition(CurrentNode);
                             break;
-                        //case "MinMax":
-                        //    pos = MinMax.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
-                        //    break;
-                        //case "Trilateration":
-                        //    pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter);
+                        case "MinMax":
+                            pos = MinMax.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            break;
+                        case "Trilateration":
+                            pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            break;
+                        case "ExtendedTrilateration":
+                            pos = ExtendedTrilateration.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            break;
+                        case "ExtendedMinMax":
+                            pos = MinMaxExtended.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            break;
                     }
                     
                     Console.WriteLine("Position was calculated for node: " + row["ID"] + " X = " + pos.x.ToString() + " Y = " + pos.y.ToString());
@@ -996,19 +1003,19 @@ namespace Elab.Rtls.Engines.WsnEngine
                                     }
                                 }
                             }
-                            else if (OutMsg.DataSetName == "DiscoveryReply")
-                            {
-                                //in: list with all the WSN id's
-                                //proces: sets all other nodes to inactive
-                                //out: list with all the WSN id's and 
-                                OutMsg = Discovery(OutMsg);
+                            //else if (OutMsg.DataSetName == "DiscoveryReply")
+                            //{
+                            //    //in: list with all the WSN id's
+                            //    //proces: sets all other nodes to inactive
+                            //    //out: list with all the WSN id's and 
+                            //    OutMsg = Discovery(OutMsg);
 
-                                OutMsg.WriteXml(OutMemStream);
-                                OutMemStream.Position = 0;
-                                StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
-                                writer.WriteLine(OutMemStreamReader.ReadToEnd());
-                                writer.Flush();
-                            }
+                            //    OutMsg.WriteXml(OutMemStream);
+                            //    OutMemStream.Position = 0;
+                            //    StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
+                            //    writer.WriteLine(OutMemStreamReader.ReadToEnd());
+                            //    writer.Flush();
+                            //}
                             else if (OutMsg.DataSetName == "WSNReply")
                             {
                                 //needed so that AddSensorMeasurements parses the message correct
@@ -1095,60 +1102,60 @@ namespace Elab.Rtls.Engines.WsnEngine
             return IncMsg;
         }
 
-        /// <summary>
-        /// Processes the discovery reply
-        /// TODO: add further info
-        /// Possibly remove due to not tested OR test this of course..
-        /// </summary>
-        /// <param name="Set"></param>
-        /// <returns></returns>
-        private DataSet Discovery(DataSet Set)
-        {
-            DataSet TempSet = new DataSet();
-            DataSet ReturnSet = new DataSet();
+        ///// <summary>
+        ///// Processes the discovery reply
+        ///// TODO: add further info
+        ///// Possibly remove due to not tested OR test this of course..
+        ///// </summary>
+        ///// <param name="Set"></param>
+        ///// <returns></returns>
+        //private DataSet Discovery(DataSet Set)
+        //{
+        //    DataSet TempSet = new DataSet();
+        //    DataSet ReturnSet = new DataSet();
 
 
-            //here we process the discovery reply
-            //we set the received node id's to active and the rest to inactive in the DB
+        //    //here we process the discovery reply
+        //    //we set the received node id's to active and the rest to inactive in the DB
 
-            //SetNodesInactive
-            string setNodesInactive = "call setAllNodesState(0);";
+        //    //SetNodesInactive
+        //    string setNodesInactive = "call setAllNodesState(0);";
 
-            try
-            {
-                TempSet = MySQLConn.Query(setNodesInactive);
-            }
-            catch (Exception e_mysql)
-            {
-                Logger.LogException(e_mysql);
-            }
+        //    try
+        //    {
+        //        TempSet = MySQLConn.Query(setNodesInactive);
+        //    }
+        //    catch (Exception e_mysql)
+        //    {
+        //        Logger.LogException(e_mysql);
+        //    }
 
-            //foreach row.... SetState
-            foreach (DataRow row in Set.Tables[0].Rows) //Run through every sensor in the xml-message
-            {
-                string setNodeActive = "call setNodeState(1,'" + row["Nodeid"] + "');";
-                try
-                {
-                        TempSet = MySQLConn.Query(setNodeActive);
-                }
-                catch (Exception e_mysql)
-                {
-                    Logger.LogException(e_mysql);
-                }
-            }
-            //we then send the wsn id and nodeid to the GUI
-            //GetActiveSensors
-            string getActiveTelosb = "call getActiveTelosb();";
+        //    //foreach row.... SetState
+        //    foreach (DataRow row in Set.Tables[0].Rows) //Run through every sensor in the xml-message
+        //    {
+        //        string setNodeActive = "call setNodeState(1,'" + row["Nodeid"] + "');";
+        //        try
+        //        {
+        //                TempSet = MySQLConn.Query(setNodeActive);
+        //        }
+        //        catch (Exception e_mysql)
+        //        {
+        //            Logger.LogException(e_mysql);
+        //        }
+        //    }
+        //    //we then send the wsn id and nodeid to the GUI
+        //    //GetActiveSensors
+        //    string getActiveTelosb = "call getActiveTelosb();";
 
-            try
-            {
-                    ReturnSet = MySQLConn.Query(getActiveTelosb);
-            }
-            catch (Exception e_mysql)
-            {
-                Logger.LogException(e_mysql);
-            }
-            return ReturnSet;
-        }
+        //    try
+        //    {
+        //            ReturnSet = MySQLConn.Query(getActiveTelosb);
+        //    }
+        //    catch (Exception e_mysql)
+        //    {
+        //        Logger.LogException(e_mysql);
+        //    }
+        //    return ReturnSet;
+        //}
     }
 }

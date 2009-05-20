@@ -35,10 +35,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Scala\Scala - Src\build\Castle.ActiveRecord.dll</HintPath>
     </Reference>
-    <Reference Include="Elab.Rtls.Engines.WsnEngine.Positioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Scala.Engine.WsnEngine.Positioning\bin\Debug\Elab.Rtls.Engines.WsnEngine.Positioning.dll</HintPath>
-    </Reference>
     <Reference Include="Elab.Toolkit.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37c3a49e34abacd0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Scala\Scala - Src\trunk\Elab.Toolkit.Core\obj\Debug\Elab.Toolkit.Core.dll</HintPath>
@@ -90,6 +86,10 @@
     <ProjectReference Include="..\..\..\Scala - Src\trunk\Scala.Core\Scala.Core.csproj">
       <Project>{662AC005-4CEA-4106-AF80-92C1AE8E870A}</Project>
       <Name>Scala.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Positioning\Elab.Rtls.Engines.WsnEngine.Positioning.csproj">
+      <Project>{2EC133F5-6F78-4166-AEE7-F730B4ED258F}</Project>
+      <Name>Elab.Rtls.Engines.WsnEngine.Positioning</Name>
     </ProjectReference>
     <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection.csproj">
       <Project>{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}</Project>
