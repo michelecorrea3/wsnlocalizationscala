@@ -332,7 +332,7 @@ namespace Elab.Rtls.Engines.WsnEngine
         /// <returns>Whether the Query succeeded or not</returns>
         public static bool TryQuery(EventSubscription eventSubscription, TagBlink tagBlink, out TagBlink ReturnTagBlink)
         {
-            ReturnTagBlink = null;
+            ReturnTagBlink = new TagBlink();
             int hours = TimeZoneInfo.Local.BaseUtcOffset.Hours;
             string timezone = hours >= 0 ? " +" + hours : " " + hours;
 
@@ -346,7 +346,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     switch (filterKey)
                     {
 
-                        case "TagId" :
+                        case "TagID" :
                             foreach (string filterValue in filterValues)
                             {
                                 if (tagBlink["TagID"] == filterValue)

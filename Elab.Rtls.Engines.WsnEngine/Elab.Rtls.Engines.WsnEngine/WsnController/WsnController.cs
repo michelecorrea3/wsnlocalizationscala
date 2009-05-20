@@ -113,7 +113,6 @@ namespace Elab.Rtls.Engines.WsnEngine
             this.UseCalibration = false;
             this.UseMultihop = false;
 
-
             StartWsnEngine();
         }
 
@@ -161,6 +160,25 @@ namespace Elab.Rtls.Engines.WsnEngine
             Console.WriteLine("\tStarting up SocketServer for GUI...");
             SocketServerListenerGUI.RunWorkerAsync(int.Parse(Options.Tables["SocketServer"].Select("[Use] = 'GUI'")[0]["Port"].ToString()));
             Console.WriteLine("\tSocketServer for GUI started");
+
+            Timer dummyTimer = new Timer(new TimerCallback(TimerTick));
+            dummyTimer.Change(5000, 2500);
+        }
+
+        private void TimerTick(object state)
+        {
+            if (ButtonPressed != null)
+            {
+                EventMessage EventData = new EventMessage();
+                //EventData.EventType = "ButtonPressed";
+
+                EventData.TagBlink["TagID"] = "9";
+                EventData.TagBlink["Button"] = "1";
+
+                ButtonPressed(this, EventData);
+                Console.WriteLine("ButtonPressed event sent!");
+            }
+            Console.WriteLine("Timer fired");
         }
 
         /// <summary>
@@ -238,7 +256,7 @@ namespace Elab.Rtls.Engines.WsnEngine
 
             double temp;
             int tempint;
-            string cmd = "";
+            string cmd = "", nodeId;
 
             foreach (DataRow row in Set.Tables[0].Rows) //Run through every sensor in the xml-message
             {
@@ -253,12 +271,19 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                     returnSet = MySQLConn.Query(addTelosb);
 
+                    nodeId = returnSet.Tables[0].Rows[0][0].ToString();
+
                 }
+                else
+                {
+                    nodeId = tempSet.Tables[0].Rows[0]["idnode"].ToString();
+                }
+
                 #endregion
 
 
                 if (Set.DataSetName == "SensorMeasurements")
-                    cmd = ParseSensor(row);
+                    cmd = ParseSensor(row, nodeId);
                 else if (Set.DataSetName == "LocationMessage")
                 {
                     if (Convert.ToInt16(row["VANr"]) == 1)
@@ -267,7 +292,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                         return null;
                     }
                     else
-                        cmd = ParseBlind(row);
+                        cmd = ParseBlind(row, nodeId);
                 }
                 else if (Set.DataSetName == "StatusMessage")
                     cmd = ParseStatus(row);
@@ -278,7 +303,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             return returnSet;
         }
 
-        private string ParseBlind(DataRow row)
+        private string ParseBlind(DataRow row, string nodeId)
         {
             string cmd;
             int tempint;
@@ -373,7 +398,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                         EventMessage EventData = new EventMessage();
                         //EventData.EventType = "LocationUpdated";
 
-                        EventData.TagBlink["TagID"] = row["ID"].ToString();
+                        EventData.TagBlink["TagID"] = nodeId;
                         EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "1");
                         EventData.TagBlink["MapID"] = "WsnEngine1map1";
                         EventData.TagBlink["X"] = pos.x.ToString();
@@ -421,7 +446,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             }
         }
 
-        private string ParseSensor(DataRow row)
+        private string ParseSensor(DataRow row, string nodeId)
         {
             string cmd;
             double temp;
@@ -464,7 +489,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     EventMessage EventData = new EventMessage();
                     //EventData.EventType = "TemperatureChanged";
 
-                    EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                    EventData.TagBlink["TagID"] = nodeId;
                     EventData.TagBlink["Temperature"] = row["Temp"].ToString();
 
                     TemperatureChanged(this, EventData);
@@ -474,7 +499,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     EventMessage EventData = new EventMessage();
                     //EventData.EventType = "LightChanged";
 
-                    EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                    EventData.TagBlink["TagID"] = nodeId;
                     EventData.TagBlink["Light"] = row["Light"].ToString();
 
                     LightChanged(this, EventData);
@@ -484,7 +509,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     EventMessage EventData = new EventMessage();
                     //EventData.EventType = "HumidityChanged";
 
-                    EventData.TagBlink["TagID"] = row["idnode"].ToString();
+                    EventData.TagBlink["TagID"] = nodeId;
                     EventData.TagBlink["Humidity"] = row["Humidity"].ToString();
 
                     HumidityChanged(this, EventData);
@@ -494,8 +519,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                     EventMessage EventData = new EventMessage();
                     //EventData.EventType = "ButtonPressed";
 
-                    EventData.TagBlink["TagID"] = row["idnode"].ToString();
-                    EventData.TagBlink["Button"] = row["temperature"].ToString();
+                    EventData.TagBlink["TagID"] = nodeId;
+                    EventData.TagBlink["Button"] = row["button1"].ToString();
 
                     ButtonPressed(this, EventData);
                 }
