@@ -1,30 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
-using System.Threading;
-using System.Xml;
-using System.IO;
-using System.Net.Sockets;
-using System.Data;
-using System.ComponentModel;
-using System.ServiceModel;
-using System.Diagnostics;
-using System.Xml.Linq;
-using System.Drawing.Imaging;
-
-using SocketConnection;
-using DatabaseConnection;
-using Elab.Rtls.Engines.WsnEngine.Positioning;
-
-using Elab.Toolkit.Core.Xml;
-using Elab.Toolkit.Imaging;
-using Scala.Core;
-
-namespace Elab.Rtls.Engines.WsnEngine
+﻿namespace Elab.Rtls.Engines.WsnEngine
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Diagnostics;
+    using System.Drawing;
+    using System.Drawing.Imaging;
+    using System.IO;
+    using System.Net.Sockets;
+    using System.ServiceModel;
+    using System.Text;
+    using System.Threading;
+    using System.Xml;
+    using System.Xml.Linq;
+
+    using DatabaseConnection;
+
+    using Elab.Rtls.Engines.WsnEngine.Positioning;
+    using Elab.Toolkit.Core.Xml;
+    using Elab.Toolkit.Imaging;
+
+    using Scala.Core;
+
+    using SocketConnection;
+
     public static class WsnQueryHelper
     {
+        #region Methods
+
         /// <summary>
         /// Processes the Query 
         /// Retreives the data from database
@@ -38,7 +42,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             StringBuilder QueryCmd = new StringBuilder("", 3000);
             DataSet ReturnSet;
 
-            //Query consists of 4 elements: 
+            //Query consists of 4 elements:
             //QueryName: this is always the same in the API and can be ignored for now
 
             //Ignore the fields in the SQL request, just request them all for now...
@@ -107,7 +111,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     QueryCmd.Append(" AND ");
                 i++;
             }
-        }
+            }
 
             //Sortby
             if (query.SortBy != null && query.SortBy != "" && query.SortBy != "asc" && query.SortBy != "desc")
@@ -140,7 +144,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                     //Map tempMap; //= WsnEngine.Instance.GetMap("3");
                     //Image tempImage;// = tempMap.MapImageBytes.ToImage();
                     //double tempX;// = (double)Row["X"];
-                    //double tempY;// = (double)Row["Y"];   
+                    //double tempY;// = (double)Row["Y"];
                     //}
 
                     foreach (string field in query.QueryFields)
@@ -165,7 +169,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                                 {
                                     //tagBlink["Location/X"] = Row["X"].ToString();
                                     //tagBlink["Location/Y"] = Row["Y"].ToString();
-                                    ////hardcode this to floor two 
+                                    ////hardcode this to floor two
                                     //tagBlink["Location/MapID"] = "WsnEngine1map1";
 
                                     //tempMap = WsnEngine.Instance.GetMap("1");
@@ -208,7 +212,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                                 }
                                 break;
                             case "Location/MapID":
-                                //hardcode this to floor two 
+                                //hardcode this to floor two
                                 tagBlink["Location/MapID"] = "WsnEngine1map1";
                                 break;
                             case "Accuracy":
@@ -261,13 +265,13 @@ namespace Elab.Rtls.Engines.WsnEngine
                                 {
                                     //tagBlink["Location/X"] = Row["X"].ToString();
                                     //tagBlink["Location/Y"] = Row["Y"].ToString();
-                                    ////hardcode this to floor two 
+                                    ////hardcode this to floor two
                                     //tagBlink["Location/MapID"] = "WsnEngine1map1";
 
                                     //tempMap = WsnEngine.Instance.GetMap("1");
                                     //tempImage = tempMap.MapImageBytes.ToImage();
                                     //tempX = Convert.ToDouble(Row["X"]);
-                                    //tempY = Convert.ToDouble(Row["Y"]);  
+                                    //tempY = Convert.ToDouble(Row["Y"]);
 
                                     //if (tempX < 0 || tempX > tempImage.Width || tempY < 0 || tempY > tempImage.Height)
                                     //    tagBlink["Location/Accuracy"] = "0";
@@ -338,7 +342,7 @@ namespace Elab.Rtls.Engines.WsnEngine
 
             //filters
             foreach (string filterKey in eventSubscription.Filters.Keys)
-            {   
+            {
                 List<string> filterValues = eventSubscription.Filters[filterKey];
                 bool availaible = false;
                 try
@@ -456,5 +460,7 @@ namespace Elab.Rtls.Engines.WsnEngine
             }
             return true;
         }
+
+        #endregion Methods
     }
 }

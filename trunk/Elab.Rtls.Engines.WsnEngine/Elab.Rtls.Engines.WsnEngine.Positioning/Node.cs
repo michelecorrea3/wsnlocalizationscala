@@ -1,49 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-
-using DatabaseConnection;
-
-
-
-namespace Elab.Rtls.Engines.WsnEngine.Positioning
+﻿namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
-    public class Node //: Elab.Rtls.Engines.WsnEngine.Positioning.INode
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Linq;
+    using System.Text;
+
+    using DatabaseConnection;
+
+    /// <summary>
+    /// Struct that holds information about the anchors, including RSS!
+    /// </summary>
+    public class AnchorNode
     {
+        #region Fields
+
+        public Queue<double> RSS = new Queue<double>(20);
+        public double fRSS;
+        public string nodeid;
+        public double posx;
+        public double posy;
+        public double range;
+
+        #endregion Fields
+
+        #region Constructors
+
+        public AnchorNode(string wsnid, double posx, double posy, double RSS)
+        {
+            this.nodeid = wsnid;
+            this.posx = posx;
+            this.posy = posy;
+            this.RSS.Enqueue(RSS);
+        }
+
+        #endregion Constructors
+    }
+
+    //: Elab.Rtls.Engines.WsnEngine.Positioning.INode
+    public class Node
+    {
+        #region Fields
+
         private MySQLClass MyDb;
         private string WsnId;
         private List<AnchorNode> anchorList = new List<AnchorNode>();
-        private List<AnchorNode> virtualAnchorList = new List<AnchorNode>();
         private Point position;
+        private List<AnchorNode> virtualAnchorList = new List<AnchorNode>();
 
-        public Point Position
-        { 
-            get
-                {
-                    return position;
-                }
-        }
+        #endregion Fields
 
-        public List<AnchorNode> Anchors
-        {
-            get { return anchorList; }
-        }
-
-        public List<AnchorNode> VirtualAnchors
-        {
-            get { return virtualAnchorList; }
-        }
-
-        public string WsnIdProperty
-        {
-            get { return WsnId; }
-        }
-
-        public delegate double FilterMethod(Queue<double> RSS);
-
-        public delegate double RangingMethod(double fRSS);
+        #region Constructors
 
         public Node(string WsnId, MySQLClass MyDb)
         {
@@ -58,36 +65,44 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             NewAnchor(AnchorWsnId, RSS, van);
         }
 
-        private void NewAnchor(string AnchorWsnId, double RSS, int van)
+        #endregion Constructors
+
+        #region Delegates
+
+        public delegate double FilterMethod(Queue<double> RSS);
+
+        public delegate double RangingMethod(double fRSS);
+
+        #endregion Delegates
+
+        #region Properties
+
+        public List<AnchorNode> Anchors
         {
-            Point ANpos = new Point();
-
-            ANpos = GetANPosition(AnchorWsnId);
-
-            if (van == 1)
-                anchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
-            else 
-                virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
-            }
-        
-        //TEST
-        //public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy, int van)
-        //{
-        //    if(van == 1)
-        //    anchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
-        //    else
-        //        virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
-        //}
-        public void UpdateAnchorPositions()
-        {
-            foreach (AnchorNode AN in this.Anchors)
-            {
-                Point newPosition = GetANPosition(AN.nodeid);
-
-                AN.posx = newPosition.x;
-                AN.posy = newPosition.y;
-            }
+            get { return anchorList; }
         }
+
+        public Point Position
+        {
+            get
+                {
+                    return position;
+                }
+        }
+
+        public List<AnchorNode> VirtualAnchors
+        {
+            get { return virtualAnchorList; }
+        }
+
+        public string WsnIdProperty
+        {
+            get { return WsnId; }
+        }
+
+        #endregion Properties
+
+        #region Methods
 
         public void AddAnchor(string AnchorWsnId, double RSS, int van)
         {
@@ -97,14 +112,13 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             ANpos = GetANPosition(AnchorWsnId);
 
-
             if (anchorList.Exists(AN => AN.nodeid == AnchorWsnId) || virtualAnchorList.Exists(VAN => VAN.nodeid == AnchorWsnId))
             {
                 if (van == 1)
                 {
                     AnchorNode TempANode = anchorList.Find(AN => AN.nodeid == AnchorWsnId);
                     int index = anchorList.IndexOf(TempANode);
-                    
+
                     anchorList[index].RSS.Enqueue(RSS);
 
                     if (anchorList[index].RSS.Count > 20)
@@ -136,12 +150,35 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 if (van == 1)
                     anchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
                 else
-                    virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));                
+                    virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
             }
         }
 
+        public void SetOwnPosition()
+        {
+            position = GetANPosition(this.WsnId);
+        }
 
-        //OUTDATED....  
+        //TEST
+        //public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy, int van)
+        //{
+        //    if(van == 1)
+        //    anchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
+        //    else
+        //        virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
+        //}
+        public void UpdateAnchorPositions()
+        {
+            foreach (AnchorNode AN in this.Anchors)
+            {
+                Point newPosition = GetANPosition(AN.nodeid);
+
+                AN.posx = newPosition.x;
+                AN.posy = newPosition.y;
+            }
+        }
+
+        //OUTDATED....
         /// <summary>
         /// Retrieves the position of the specified node from the DB  
         /// </summary>
@@ -175,30 +212,18 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             return pos;
         }
 
-        public void SetOwnPosition()
+        private void NewAnchor(string AnchorWsnId, double RSS, int van)
         {
-            position = GetANPosition(this.WsnId);
-        }
-    }
+            Point ANpos = new Point();
 
-    /// <summary>
-    /// Struct that holds information about the anchors, including RSS!
-    /// </summary>
-    public class AnchorNode
-    {
-        public string nodeid;
-        public double posx;
-        public double posy;
-        public double fRSS;
-        public Queue<double> RSS = new Queue<double>(20);
-        public double range;
+            ANpos = GetANPosition(AnchorWsnId);
 
-        public AnchorNode(string wsnid, double posx, double posy, double RSS)
-        {
-            this.nodeid = wsnid;
-            this.posx = posx;
-            this.posy = posy;
-            this.RSS.Enqueue(RSS);
+            if (van == 1)
+                anchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
+            else
+                virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
         }
+
+        #endregion Methods
     }
 }

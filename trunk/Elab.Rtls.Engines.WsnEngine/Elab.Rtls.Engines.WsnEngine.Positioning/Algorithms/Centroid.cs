@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-
-using DatabaseConnection;
-
-
-namespace Elab.Rtls.Engines.WsnEngine.Positioning
+﻿namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Linq;
+    using System.Text;
+
+    using DatabaseConnection;
+
     /// <summary>
     /// Centroid Localization algorithm, the position is the centroid of the anchor nodes position
     /// </summary>
     public class CentroidLocalization : ConnectivityBasedPositioning
     {
+        #region Methods
+
         /// <summary>
         /// Calculates the position
         /// </summary>
@@ -34,5 +35,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             return position;
         }
+
+        #endregion Methods
     }
 }

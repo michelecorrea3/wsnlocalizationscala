@@ -6,6 +6,7 @@ namespace Elab.Rtls.Engines.WsnEngine
 {
     using System;
     using System.Net;
+
     using Scala.Core;
 
     public abstract class EventListener
@@ -52,6 +53,10 @@ namespace Elab.Rtls.Engines.WsnEngine
             throw new ArgumentOutOfRangeException("eventSubscription", "EventType does not exist.");
         }
 
+        public abstract void Advise(Controller controller);
+
+        public abstract void UnAdvise(Controller controller);
+
         protected void OnEventReceived(object sender, EventMessage eventMessage)
         {
             EventMessage QueriedEventMessage = new EventMessage();
@@ -68,10 +73,6 @@ namespace Elab.Rtls.Engines.WsnEngine
                 this.EventReceived(sender, QueriedEventMessage);
             }
         }
-
-        public abstract void Advise(Controller controller);
-
-        public abstract void UnAdvise(Controller controller);
 
         #endregion Methods
     }

@@ -1,25 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net;
-using System.Net.Sockets;
-using System.IO;
-using System.Data;
-using System.Xml;
-
-using Elab.Rtls.Engines.WsnEngine;
-
-namespace SocketConnection
+﻿namespace SocketConnection
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.IO;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.Text;
+    using System.Xml;
+
+    using Elab.Rtls.Engines.WsnEngine;
+
     /// <summary>
     /// Baseclass that can be used for other socket-level classes.
     /// </summary>
     public abstract class SocketClass
     {
+        #region Fields
+
         /// <summary>
         /// Attribute to save the port for the socket to.
         /// </summary>
         protected int _Port;
+
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
         /// Constructor for this class, it saves the given port to the private/protected member.
@@ -29,27 +35,40 @@ namespace SocketConnection
         {
             _Port = Port;
         }
+
+        #endregion Constructors
     }
 
     /// <summary>
     /// Class that can be used to set up a socket-client (sender/activator).
     /// </summary>
-    public class SocketClient: SocketClass
+    public class SocketClient : SocketClass
     {
+        #region Fields
+
         /// <summary>
         /// Hostname or ip of the target computer/system.
         /// </summary>
         private string _RemoteLocation;
+
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
         /// Constructor for the SocketClient-class.
         /// </summary>
         /// <param name="Port">The port to which we want to open a connection.</param>
         /// <param name="RemoteLocation">The hostname or ip-address of the target of our connection.</param>
-        public SocketClient(int Port, string RemoteLocation):base(Port)
+        public SocketClient(int Port, string RemoteLocation)
+            : base(Port)
         {
             _RemoteLocation = RemoteLocation;
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         /// <summary>
         /// This function will open a connection to the target (given in the constructor) and will send the string of xml over the connection.
@@ -64,7 +83,7 @@ namespace SocketConnection
             TcpClient tc = new TcpClient(_RemoteLocation, _Port);// Create a client that will send messages to the given _RemoteLocation (hostname) and _Port.
 
             try
-            {            
+            {
                 NetworkStream ns = tc.GetStream(); //Get the stream so we can use it to communicate
                 StreamWriter sw = new StreamWriter(ns);
                 sw.WriteLine(xmlstream); //Write the info to the stream (a.k.a. send the data over the connection
@@ -129,7 +148,7 @@ namespace SocketConnection
 
             try
             {
-                
+
                 testclient.Connect(_RemoteLocation, _Port);
                 testclient.SendTimeout = 1000;
                 Console.WriteLine("Connection open, host active");
@@ -142,23 +161,32 @@ namespace SocketConnection
                 return false;
             }
         }
+
+        #endregion Methods
     }
 
     /// <summary>
     /// Class that can be used to set up a socket-server (listener/react).
     /// </summary>
-    public class SocketServer: SocketClass
+    public class SocketServer : SocketClass
     {
+        #region Fields
+
         /// <summary>
         /// Maximum number of connections that are waiting to be processed.
         /// </summary>
         private int _BackLogQueue;
 
+        #endregion Fields
+
+        #region Constructors
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="Port">Port on which we want the server to listen</param>
-        public SocketServer(int Port):base(Port)
+        public SocketServer(int Port)
+            : base(Port)
         {
             _BackLogQueue = 3;
         }
@@ -173,6 +201,10 @@ namespace SocketConnection
         {
             _BackLogQueue = BackLogQueue;
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         /// <summary>
         /// This function starts up and keeps running indefinatly, constantly listening and putting incoming connections in the 'to process' threadpool. (do not run this in your mainthread, as this is a BLOCKING function, indefinatly)
@@ -199,6 +231,7 @@ namespace SocketConnection
                 Logger.LogException(e);
             }
         }
-    }
 
+        #endregion Methods
+    }
 }

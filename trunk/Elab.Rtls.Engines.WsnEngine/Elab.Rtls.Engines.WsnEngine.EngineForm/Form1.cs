@@ -1,22 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.ServiceModel;
-
-using Elab.Rtls.Engines.WsnEngine;
-//using Elab.Rtls.Engines.WsnEngine.Hosts;
-
+﻿//using Elab.Rtls.Engines.WsnEngine.Hosts;
 namespace Elab.Rtls.Engines.WsnEngine.EngineForm
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.ServiceModel;
+    using System.Text;
+    using System.Windows.Forms;
+
+    using Elab.Rtls.Engines.WsnEngine;
+
     public partial class Form1 : Form
     {
+        #region Fields
+
         private Controller WsnController;
         private ServiceHost host;
+
+        #endregion Fields
+
+        #region Constructors
 
         public Form1()
         {
@@ -32,8 +38,9 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             host = HostService(typeof(Elab.Rtls.Engines.WsnEngine.WsnEngineService));
         }
 
-        #region Methods
+        #endregion Constructors
 
+        #region Methods
 
         /// <summary>
         /// Constructor
@@ -79,38 +86,6 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             return host;
         }
 
-        #endregion Methods
-
-        private void radioButtonMedianFilter_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonAverageFilter.Checked)
-                WsnController.SelectedFilter = "Median";
-        }
-
-        private void radioButtonAverageFilter_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonAverageFilter.Checked)
-                WsnController.SelectedFilter = "Average";
-        }
-
-        private void radioButtonClusteredTriLateration_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonClusteredTriLateration.Checked)
-                WsnController.SelectedAlgorithm = "Trilateration";
-        }
-
-        private void radioButtonCentroidLocalization_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonCentroidLocalization.Checked)
-                WsnController.SelectedAlgorithm = "CentroidLocalization";
-        }
-
-        private void radioButtonMinMaxSimpleModel_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonMinMaxSimpleModel.Checked)
-                WsnController.SelectedAlgorithm = "MinMax";
-        }
-
         private void checkBoxCalibration_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxCalibration.Checked)
@@ -127,6 +102,24 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
                 WsnController.UseMultihop = false;
         }
 
+        private void radioButtonAverageFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAverageFilter.Checked)
+                WsnController.SelectedFilter = "Average";
+        }
+
+        private void radioButtonCentroidLocalization_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonCentroidLocalization.Checked)
+                WsnController.SelectedAlgorithm = "CentroidLocalization";
+        }
+
+        private void radioButtonClusteredTriLateration_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonClusteredTriLateration.Checked)
+                WsnController.SelectedAlgorithm = "Trilateration";
+        }
+
         private void radioButtonExtendedClusteredTrilateration_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonExtendedClusteredTrilateration.Checked)
@@ -138,5 +131,19 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             if (radioButtonExtendedMinMax.Checked)
                 WsnController.SelectedAlgorithm = "ExtendedMinMax";
         }
+
+        private void radioButtonMedianFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAverageFilter.Checked)
+                WsnController.SelectedFilter = "Median";
+        }
+
+        private void radioButtonMinMaxSimpleModel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonMinMaxSimpleModel.Checked)
+                WsnController.SelectedAlgorithm = "MinMax";
+        }
+
+        #endregion Methods
     }
 }

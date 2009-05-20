@@ -1,15 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Elab.Rtls.Engines.WsnEngine.Positioning
+﻿namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
+    public struct ClosestPointPair
+    {
+        #region Fields
+
+        public double distance;
+        public Point point1;
+        public Point point2;
+
+        #endregion Fields
+    }
+
+    public struct ClosestToCentroid
+    {
+        #region Fields
+
+        public double distance;
+        public Point intersectionPoint;
+
+        #endregion Fields
+    }
+
+    public struct Error
+    {
+        #region Fields
+
+        public int NumberSmall;
+        public int NumberWide;
+
+        #endregion Fields
+    }
+
+    public struct IntersectedAnchors
+    {
+        #region Fields
+
+        public double r1;
+        public double r2;
+        public double x1;
+        public double x2;
+        public double y1;
+        public double y2;
+
+        #endregion Fields
+    }
+
     static class GeometryHelper
     {
+        #region Methods
+
+        //public static Dictionary<double, double> AnchorNodeDistance
+        public static bool BelongTo(double x1, double y1, double radius1, double x2, double y2, double radius2)
+        {
+            double distance = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
+
+            if ( distance < Math.Abs(radius1-radius2) || distance > (radius1 + radius2 ) )
+                return false;
+            else
+                return true;
+        }
+
         public static List<Point> Intersect(double x1, double y1, double radius1, double x2, double y2, double radius2)
         {
-
             Point position1 = new Point();
             Point position2 = new Point();
             List<Point> points = new List<Point>();
@@ -29,7 +86,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             double xdis = Math.Pow((x1 - x2), 2);
             double ydis = Math.Pow((y1 - y2), 2);
-
 
             //            double distance = Math.Pow(     (    Math.Pow(     (x1 - x2),2    ) + Math.Pow(   (y1 - y2),2     )   )     ,0.5);
             double distance = Math.Pow((xdis + ydis), 0.5);
@@ -153,7 +209,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 }
 
             }
-
         }
 
         public static ClosestPointPair ShortestDistanceBetweenCutPoints(List<Point> intersectionPoints)
@@ -215,45 +270,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             return closest.intersectionPoint;
         }
 
-        //public static Dictionary<double, double> AnchorNodeDistance
-
-        public static bool BelongTo(double x1, double y1, double radius1, double x2, double y2, double radius2)
-        {
-            double distance = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
-
-            if ( distance < Math.Abs(radius1-radius2) || distance > (radius1 + radius2 ) )
-                return false;
-            else
-                return true;
-        }
-    }
-
-    public struct ClosestPointPair
-    {
-        public Point point1;
-        public Point point2;
-        public double distance;
-    }
-
-    public struct ClosestToCentroid
-    {
-        public Point intersectionPoint;
-        public double distance;
-    }
-
-    public struct IntersectedAnchors
-    {
-        public double x1;
-        public double y1;
-        public double r1;
-        public double x2;
-        public double y2;
-        public double r2;
-    }
-
-    public struct Error
-    {
-        public int NumberSmall;
-        public int NumberWide;
+        #endregion Methods
     }
 }

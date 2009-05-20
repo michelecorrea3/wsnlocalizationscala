@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-using System.IO;
-
-using DatabaseConnection;
-
-using Elab.Rtls.Engines.WsnEngine.Positioning;
-
-namespace LocalizationAlgorithmsRunner
+﻿namespace LocalizationAlgorithmsRunner
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+
+    using DatabaseConnection;
+
+    using Elab.Rtls.Engines.WsnEngine.Positioning;
+
     class AlgorithmsCalculator
     {
+        #region Fields
+
+        /// <summary>
+        /// List with all the node that should be positioned
+        /// </summary>
+        private List<Node> BlindNodes = new List<Node>();
         private MySQLClass MyDb;
 
         /// <summary>
@@ -20,10 +26,9 @@ namespace LocalizationAlgorithmsRunner
         /// </summary>
         private string currentID;
 
-        /// <summary>
-        /// List with all the node that should be positioned
-        /// </summary>
-        private List<Node> BlindNodes = new List<Node>();
+        #endregion Fields
+
+        #region Constructors
 
         public AlgorithmsCalculator()
         {
@@ -38,22 +43,9 @@ namespace LocalizationAlgorithmsRunner
             Console.ReadLine();
         }
 
-        private DataSet FetchData()
-        {
-            string LowerBound, UpperBound, MyQuery;
-            DataSet Set;
+        #endregion Constructors
 
-            Console.WriteLine("Enter the starting value of idLocalization: ");
-            LowerBound = Console.ReadLine();
-            Console.WriteLine("Enter the ending value of idLocalization: ");
-            UpperBound = Console.ReadLine();
-
-            MyQuery =  "SELECT * FROM localization l where idLocalization between " + LowerBound +  " and " + UpperBound + ";";
-            Set = MyDb.Query(MyQuery);
-            Console.WriteLine("Retreived the data from the database");
-
-            return Set;
-        }
+        #region Methods
 
         private void ExecuteAlgorithms(DataSet Set)
         {
@@ -138,5 +130,24 @@ namespace LocalizationAlgorithmsRunner
             else
                 return false;
         }
+
+        private DataSet FetchData()
+        {
+            string LowerBound, UpperBound, MyQuery;
+            DataSet Set;
+
+            Console.WriteLine("Enter the starting value of idLocalization: ");
+            LowerBound = Console.ReadLine();
+            Console.WriteLine("Enter the ending value of idLocalization: ");
+            UpperBound = Console.ReadLine();
+
+            MyQuery =  "SELECT * FROM localization l where idLocalization between " + LowerBound +  " and " + UpperBound + ";";
+            Set = MyDb.Query(MyQuery);
+            Console.WriteLine("Retreived the data from the database");
+
+            return Set;
+        }
+
+        #endregion Methods
     }
 }

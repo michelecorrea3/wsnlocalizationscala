@@ -1,28 +1,29 @@
-﻿using System;
-using System.Net.Sockets;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using System.Xml;
-using System.Xml.XPath;
-using System.Xml.Serialization;
-using System.Xml.Schema;
-using System.Xml.Linq;
-using ZedGraph;
-using System.IO;
-
-using SocketConnection;
-
-namespace GUI
+﻿namespace GUI
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.IO;
+    using System.Linq;
+    using System.Net.Sockets;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Windows.Forms;
+    using System.Xml;
+    using System.Xml.Linq;
+    using System.Xml.Schema;
+    using System.Xml.Serialization;
+    using System.Xml.XPath;
+
+    using SocketConnection;
+
+    using ZedGraph;
+
     public partial class Form1 : Form
     {
-        #region private variables
+        #region Fields
 
         //Port of the controller
         private int Port;
@@ -37,9 +38,10 @@ namespace GUI
         //temp struct for the control changes
         private Changes oldChanges;
 
-        #endregion
+        #endregion Fields
 
-        #region Form methods
+        #region Constructors
+
         /// <summary>
         /// Constructor for the form
         /// </summary>
@@ -47,360 +49,151 @@ namespace GUI
         {
             InitializeComponent();
         }
-      
-        /// <summary>
-        /// Initializes variables, called when the form loads
-        /// Conenction parameters, parameter for the plot function
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            SetSize();
 
-            //initialize fields
-            controllerIP.Text = "localhost";
-            controllerPort.Text = "1900";
+        #endregion Constructors
 
-            textLocRefresh.Text = "1000";
-            textSensRefresh.Text = "5000";
-            textBoxGraphUpdateInterval.Text = "10000";
-            textBoxSensorFetchUpdateInterval.Text = "60000";
-
-            //maskedTextBox1.ValidatingType = typeof(System.TimeSpan);
-            maskedTextBox1.Text = "10 10:00:00";
-
-            textBoxXmin.Text = "0";
-            textBoxXmax.Text = "1000";
-            textBoxYmin.Text = "0";
-            textBoxYmax.Text = "1000";
-            textBoxSensorRateMax.Text = "60000";
-            textBoxSensorRateMin.Text = "1000";
-            textBoxLocRateMin.Text = "100";
-            textBoxLocRateMax.Text = "50000";
-
-            buttonDisconnect.Enabled = false;
-
-            // Add the graph parameters
-            List<Metingen>ComboMet = new List<Metingen>();
-            ComboMet.Add(new Metingen());
-            ComboMet.ForEach(delegate(Metingen M)
-            {
-                comboBox1.Items.Add(M.temperature);
-                comboBox1.Items.Add(M.light);
-                comboBox1.Items.Add(M.humidity);
-                comboBox1.Items.Add(M.power);
-                comboBox1.Items.Add(M.RSSI);
-            });
-        }
+        #region Properties
 
         /// <summary>
-        /// Event that fires when the user resizes the form
-        /// Resized the graph area
+        /// Property of checkboxActive
+        /// input: 0 or 1 string
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Form1_Resize_1(object sender, EventArgs e)
+        public string ActiveProperty
         {
-            SetSize();
-        }
-        #endregion
-
-        #region helper methods
-        ///<summary>
-        ///Helper method for retreiving the nodeid of the framework
-        /// </summary>
-        /// <param name="selected">
-        /// The MAC or TOSid of the mote
-        /// </param>
-        /// <returns>
-        /// node id, unique identifier within Senseless
-        /// </returns>
-        private string getNodeID(string selected)
-        {
-            //first search local for the nodeid
-            string nodeid;
-            foreach (SensorNames telosb in Sensorlijst)
-            {
-                if (telosb.Sensorname == selected)
-                {
-                    nodeid = telosb.id;
-                    return nodeid;
-                }
-            }
-            try
-            {
-                //generate string
-                string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>getNodeid</RequestName><arg>" + selected + "</arg></Request></Requests>";
-
-                SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
-                // Receiving data
-                string xml_receive = socket_client.Connect(xml_send, true);
-
-
-                //process reply
-                XmlDocument tempdoc = new XmlDocument();
-                tempdoc.LoadXml(xml_receive);
-
-                XmlNodeList bookList = tempdoc.GetElementsByTagName("NodeIDs");
-                foreach (XmlNode node in bookList)
-                {
-                    XmlElement ID = (XmlElement)(node);
-                    try
-                    {
-                        string idnode = ID.GetElementsByTagName("idnode")[0].InnerText;
-                        Sensorlijst.Add(new SensorNames(selected, idnode));
-                        return idnode;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                        Console.WriteLine("Node id not found in DB");
-                    }
-                }
-            }
-            catch (ArgumentNullException nullex)
-            {
-                Console.WriteLine(nullex.Message);
-                Console.WriteLine(nullex.TargetSite);
-                SocketClient sc = new SocketClient(Port, controllerIP.Text);
-                if (!sc.TryConnection())
-                    Disconnect();
-                MessageBox.Show("Lost connection to the controller");
-            }
-            catch { }
-            return "N/A";
-
-        }
-
-        /// <summary>
-        /// Helper method for retreiving the WSNid of the framework
-        /// </summary>
-        /// <param name="selected">
-        /// node id, unique identifier within Senseless
-        /// </param>
-        /// <returns>
-        /// The MAC or TOSid of the mote
-        /// </returns>
-        private string getTelosbId(string selected)
-        {
-            string sensorname;
-            foreach (SensorNames telosb in Sensorlijst)
-            {
-                if (telosb.id == selected)
-                {
-                    sensorname = telosb.Sensorname;
-                    return sensorname;
-                }
-            }
-            try
-            {
-                string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>getWSNID</RequestName><arg>" + selected + "</arg></Request></Requests>";
-
-                SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
-                // Receiving data
-                string xml_receive = socket_client.Connect(xml_send, true);
-
-                XmlDocument tempdoc = new XmlDocument();
-                tempdoc.LoadXml(xml_receive);
-
-                XmlNodeList bookList = tempdoc.GetElementsByTagName("WSNID");
-                foreach (XmlNode node in bookList)
-                {
-                    XmlElement ID = (XmlElement)(node);
-                    try
-                    {
-                        string sensor = ID.GetElementsByTagName("sensor")[0].InnerText;
-                        Sensorlijst.Add(new SensorNames(sensor, selected));
-                        return sensor;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                        Console.WriteLine("Node id not found in DB");
-                    }
-                }
-            }
-            catch (ArgumentNullException nullex)
-            {
-                Console.WriteLine(nullex.Message);
-                Console.WriteLine(nullex.TargetSite);
-                SocketClient sc = new SocketClient(Port, controllerIP.Text);
-                if (!sc.TryConnection())
-                    Disconnect();
-                MessageBox.Show("Lost connection to the controller");
-            }
-            catch { }
-            return "N/A";
-        }
-        #endregion
-
-        #region Plot graph
-
-        /// <summary>
-        /// Resizes the graph area when the user resizes the form
-        /// </summary>
-        private void SetSize()
-        {
-            zg1.Location = new Point(250, 25);
-            // Leave a small margin around the outside of the control
-            zg1.Size = new Size(this.ClientRectangle.Width - 290, this.ClientRectangle.Height - 90);
-            //scale the size of the parent control
-            tabControl1.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 20);
-        }
-
-        /// <summary>
-        /// Draws the graph 
-        /// </summary>
-        /// <param name="zgc">
-        /// The control for the graph element
-        /// </param>
-        /// <param name="measurements">
-        /// Points of the graph
-        /// </param>
-        private void CreateGraph(ZedGraphControl zgc, string measurements, string xaxis, string yaxis)
-        {
-            GraphPane myPane = zgc.GraphPane;
-            myPane.CurveList.Clear();
-            PointPairList list = new PointPairList();
-
-            myPane.Title.Text = "TelosB Graph";
-
-            //put the received data in the graph
-            XmlDocument tempdoc = new XmlDocument();
-            tempdoc.LoadXml(measurements);
-
-            XmlNodeList bookList = tempdoc.GetElementsByTagName("MeasurementValue");
-
-            double x = 1;
-            foreach (XmlNode node in bookList)
-            {
-                string yyyy = node.InnerText.ToString();
-                double y = Convert.ToDouble(yyyy);
-                x = x + 1;
-                list.Add(x, y);
-            }
-
-            myPane.AddCurve("MyCurve", list, Color.Red, SymbolType.Square);
-            myPane.XAxis.Title.Text = xaxis;
-            myPane.YAxis.Title.Text = yaxis;
-
-            zgc.AxisChange();
-            zgc.Invalidate();
-        }
-
-        /// <summary>
-        /// Retreives the graph data from the controller
-        /// </summary>
-        private void GetGraphData()
-        {
-                //static part
-                string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>";
-
-                //dynamic part
-                if (comboBox1.SelectedItem.ToString() == "RSSI" || comboBox1.SelectedItem.ToString() == "Position")
-                    xml_send += "getLocHistoryLast</RequestName>";
+            get{
+                if (checkBoxActive.Checked)
+                    return "1";
                 else
-                    xml_send += "getHistoryLast</RequestName>";
+                    return "0";
+            }
+            set {
+                if (value == "1")
+                    checkBoxActive.Checked = true;
+                else
+                    checkBoxActive.Checked = false;
+            }
+        }
 
-                //return the nodeid with sensor as input
-                try
+        /// <summary>
+        /// Property of checkBoxAnchorNode
+        /// input: 0 or 1 string
+        /// </summary>
+        public string AnchorProperty
+        {
+            get {
+                if (checkBoxAnchorNode.Checked)
+                    return "1";
+                else
+                    return "0";
+            }
+            set {
+                if (value == "1")
+                    checkBoxAnchorNode.Checked = true;
+                else
+                    checkBoxAnchorNode.Checked = false;
+            }
+        }
+
+        /// <summary>
+        /// Set or Gets the Frequency value
+        /// </summary>
+        public string FrequencyProperty
+        {
+            get { return numericUpDownFrequency.Value.ToString();  }
+            set { numericUpDownFrequency.Value = Convert.ToDecimal(value);  }
+        }
+
+        /// <summary>
+        /// Property of the three leds 
+        /// Input & Output: Bitmask of the leds
+        /// </summary>
+        public string LedsProperty
+        {
+            get{
+                int ledsmask = 0;
+                if (checkBoxLedRed.Checked)
+                    ledsmask += 4;
+                if (checkBoxLedGreen.Checked)
+                    ledsmask += 2;
+                if (checkBoxLedBlue.Checked)
+                    ledsmask += 1;
+                return ledsmask.ToString();
+            }
+            set {
+                int mask = Convert.ToInt16(value);
+                int remainder;
+
+                remainder = mask;
+                if (remainder >= 4)
                 {
-                    if (comboBox2.SelectedItem != null)
+                    checkBoxLedRed.Checked = true;
+                    remainder = remainder % 4;
+                    if (remainder >= 2)
                     {
-                        string nodeid = getNodeID(comboBox2.SelectedItem.ToString()); ;
-
-                        xml_send += "<arg>" + nodeid + "</arg>";
-
-                        if (comboBox1.SelectedItem != null)
+                        checkBoxLedGreen.Checked = true;
+                        remainder %= 2;
+                        if (remainder == 1)
                         {
-                            xml_send += "<arg>" + comboBox1.SelectedItem.ToString() + "</arg><arg>" + comboBoxGraphNumMeasurements.Text + "</arg></Request></Requests>";
+                            checkBoxLedBlue.Checked = true;
                         }
                         else
-                            return;
+                            checkBoxLedBlue.Checked = false;
                     }
                     else
-                        return;
-
-                    //communication: send the command string to the controller and receive a response
-                    SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
-                    string xml_receive = socket_client.Connect(xml_send, true);
-
-
-                    //process the reply
-                    XmlDocument tempdoc = new XmlDocument();
-                    tempdoc.LoadXml(xml_receive);
-
-                    //put the received values in the graph list
-                    listViewGraphValues.Items.Clear();
-                    XmlNodeList bookList = tempdoc.GetElementsByTagName("MeasurementValue");
-
-                    foreach (XmlNode node in bookList)
                     {
-                        string id_Measurement = node.InnerText.ToString();
-                        listViewGraphValues.Items.Add(id_Measurement);
+                        checkBoxLedGreen.Checked = false;
+                        remainder %= 2;
+                        if (remainder == 1)
+                        {
+                            checkBoxLedBlue.Checked = true;
+                        }
+                        else
+                            checkBoxLedBlue.Checked = false;
+                    }
+                }
+                else
+                {
+                    checkBoxLedRed.Checked = false;
+                    remainder = remainder % 4;
+                    if (remainder >= 2)
+                    {
+                        checkBoxLedGreen.Checked = true;
+                        remainder %= 2;
+                        if (remainder == 1)
+                        {
+                            checkBoxLedBlue.Checked = true;
+                        }
+                        else
+                            checkBoxLedBlue.Checked = false;
+                    }
+                    else
+                    {
+                        checkBoxLedGreen.Checked = false;
+                        remainder %= 2;
+                        if (remainder == 1)
+                        {
+                            checkBoxLedBlue.Checked = true;
+                        }
+                        else
+                            checkBoxLedBlue.Checked = false;
                     }
 
-                    CreateGraph(zg1, xml_receive, "number of measurements", comboBox1.SelectedItem.ToString());
-                    SetSize();
                 }
-                catch (ArgumentNullException nullex)
-                {
-                    Console.WriteLine(nullex.Message);
-                    Console.WriteLine(nullex.TargetSite);
-                    SocketClient sc = new SocketClient(Port, controllerIP.Text);
-                    if (!sc.TryConnection())
-                        Disconnect();
-                    MessageBox.Show("Lost connection to the controller");
-                }
+            }
         }
 
         /// <summary>
-        /// Occurs when the user clicks the plot button
+        /// Set or Gets the Power value
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button2_Click_1(object sender, EventArgs e)
+        public string PowerProperty
         {
-            GetGraphData();
+            get { return numericUpDownPower.Value.ToString();  }
+            set { numericUpDownPower.Value = Convert.ToDecimal(value);  }
         }
 
-        /// <summary>
-        /// Occurs when timerGraph fires
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timerGraph_Tick(object sender, EventArgs e)
-        {
-            GetGraphData();
-        }
+        #endregion Properties
 
-        /// <summary>
-        /// Occurs when the user changes the check on checkboxPlotUpdate
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void checkBoxPlotUpdate_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxPlotUpdate.Checked == true)
-                timerGraph.Enabled = true;
-            else
-                timerGraph.Enabled = false;
-        }
-
-        #endregion
-
-        #region Environment tab
-        
-        /// <summary>
-        /// Event-handler for the timer which controls the polling for the sensordata
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            GetSensorData();
-        }
+        #region Methods
 
         /// <summary>
         /// Retreives the sensordata from the controller
@@ -422,7 +215,6 @@ namespace GUI
                     SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
                     // Receiving data
                     string xml_receive = socket_client.Connect(xml_send, true);
-
 
                     XmlDocument tempdoc = new XmlDocument();
                     tempdoc.LoadXml(xml_receive);
@@ -469,209 +261,6 @@ namespace GUI
                 if (!sc.TryConnection())
                     Disconnect();
                 MessageBox.Show("Lost connection to the controller");
-            }
-
-        }
-        #endregion
-
-        #region Localization tab
-
-        /// <summary>
-        /// Occurs when timerLoc fires
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timerLoc_Tick(object sender, EventArgs e)
-        {
-            GetLocData();
-        }
-
-        /// <summary>
-        /// Retreives the localization data of the selected node from the controller
-        /// </summary>
-        private void GetLocData()
-        {
-            //static part of the message
-            string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>getnodeLocInfo</RequestName>";
-
-            //return the nodeid with sensor as input
-            try
-            {
-
-                if (listBoxLoc.SelectedItem != null)
-                {
-                    string nodeid;
-                    nodeid = getNodeID(listBoxLoc.SelectedItem.ToString());
-
-                    xml_send += "<arg>" + nodeid + "</arg></Request></Requests>";
-
-                    SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
-                    // Receiving data
-                    string xml_receive = socket_client.Connect(xml_send, true);
-
-
-                    XmlDocument tempdoc = new XmlDocument();
-                    tempdoc.LoadXml(xml_receive);
-
-                    XmlNodeList bookList = tempdoc.GetElementsByTagName("Position");
-                    foreach (XmlNode node in bookList)
-                    {
-                        XmlElement ID = (XmlElement)(node);
-                        try
-                        {
-                            textBoxNodeID.Text = ID.GetElementsByTagName("node")[0].InnerText;
-                            textBoxANodeID.Text = getTelosbId(ID.GetElementsByTagName("ANode")[0].InnerText);
-                            textBoxRSSI.Text = ID.GetElementsByTagName("RSSI")[0].InnerText;
-                            textBoxX.Text = ID.GetElementsByTagName("X")[0].InnerText;
-                            textBoxY.Text = ID.GetElementsByTagName("Y")[0].InnerText;
-
-                            try
-                            {
-                                int index = ID.GetElementsByTagName("Time")[0].InnerText.IndexOf('T');
-                                textBoxLocUpdate.Text = ID.GetElementsByTagName("Time")[0].InnerText.Substring(index);
-                            }
-                            catch
-                            {
-                                Console.WriteLine("No time available for loc info");
-                            }
-
-                            try
-                            {
-                                textBoxZ.Text = ID.GetElementsByTagName("Z")[0].InnerText;
-                            }
-                            catch
-                            {
-                                textBoxZ.Text = "N/A";
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine("Some field is not available");
-                            Console.WriteLine(ex.Message);
-                            Console.WriteLine(ex.TargetSite);
-                        }
-                    }
-                }
-                else
-                    return;
-            }
-            catch (ArgumentNullException nullex)
-            {
-                Console.WriteLine(nullex.Message);
-                Console.WriteLine(nullex.TargetSite);
-                SocketClient sc = new SocketClient(Port, controllerIP.Text);
-                if (!sc.TryConnection())
-                    Disconnect();
-                MessageBox.Show("Lost connection to the controller");
-            }
-        }
-        #endregion
-
-        #region Control tab
-
-        /// <summary>
-        /// Occurs when the active sensor is changed in listBoxControl, calls GetStatData
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void listBoxControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GetStatData();
-            timerStatus.Enabled = true;
-        }
-
-        /// <summary>
-        /// Gets the statusdata off the selected node from the controller
-        /// </summary>
-        private void GetStatData()
-        {
-            //static part of the message
-            string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>getStatus</RequestName>";
-
-            //return the nodeid with sensor as input
-            try
-            {
-                //make the XML string to send
-                string selected = listBoxControl.SelectedItem.ToString();
-                string nodeid = getNodeID(selected);
-
-                xml_send += "<arg>" + nodeid + "</arg></Request></Requests>";
-
-                SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
-                // Receiving data
-                string xml_receive = socket_client.Connect(xml_send, true);
-
-                //set the textfields to the received XML nodes
-                XmlDocument tempdoc = new XmlDocument();
-                tempdoc.LoadXml(xml_receive);
-
-                XmlNodeList bookList = tempdoc.GetElementsByTagName("Status");
-                foreach (XmlNode node in bookList)
-                {
-                    XmlElement ID = (XmlElement)(node);
-                    try
-                    {
-                        //assign the values of the textboxes
-                        ActiveProperty = ID.GetElementsByTagName("active")[0].InnerText;
-                        AnchorProperty = ID.GetElementsByTagName("AN")[0].InnerText;
-                        textBoxControlX.Text = ID.GetElementsByTagName("X")[0].InnerText;
-                        textBoxControlY.Text = ID.GetElementsByTagName("Y")[0].InnerText;
-                        textBoxSampleRate.Text = ID.GetElementsByTagName("Samplerate")[0].InnerText;
-                        textBoxLocRate.Text = ID.GetElementsByTagName("LocRate")[0].InnerText;
-                        LedsProperty = ID.GetElementsByTagName("Leds")[0].InnerText;
-                        PowerProperty = ID.GetElementsByTagName("Power")[0].InnerText;
-                        FrequencyProperty = ID.GetElementsByTagName("Frequency")[0].InnerText;
-                        textBoxConn.Text = ID.GetElementsByTagName("Conn")[0].InnerText;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
-                        Console.WriteLine(ex.StackTrace);
-                        Console.WriteLine("Some field is not available");
-                    }
-
-                    //backup these values in the changes struct
-                    oldChanges.Active = ActiveProperty;
-                    oldChanges.AN = AnchorProperty;
-
-                    oldChanges.X = textBoxControlX.Text;
-                    oldChanges.Y = textBoxControlY.Text;
-                    oldChanges.samplerate = textBoxSampleRate.Text;
-                    oldChanges.locrate = textBoxLocRate.Text;
-
-                    oldChanges.power = PowerProperty;
-                    oldChanges.frequency = FrequencyProperty;
-                    oldChanges.conn = textBoxConn.Text;
-
-                    oldChanges.leds = LedsProperty;
-                }
-            }
-            //catch the exceptions
-            catch (ArgumentNullException nullex)
-            {
-                Console.WriteLine(nullex.Message);
-                Console.WriteLine(nullex.TargetSite);
-                SocketClient sc = new SocketClient(Port, controllerIP.Text);
-                if (!sc.TryConnection())
-                {
-                    Disconnect();
-                    MessageBox.Show("Lost connection to the controller");
-                    tabPage4.Select();
-                }
-            }
-            catch (SocketException sockex)
-            {
-                Console.WriteLine(sockex.Message);
-                Console.WriteLine(sockex.TargetSite);
-                SocketClient sc = new SocketClient(Port, controllerIP.Text);
-                if (!sc.TryConnection())
-                {
-                    buttonDisconnect_Click(this, EventArgs.Empty);
-                    MessageBox.Show("Lost connection to the controller");
-                    tabPage4.Select();
-                }
-                else
-                    MessageBox.Show("The WSN took to long to respond");
             }
         }
 
@@ -850,33 +439,8 @@ namespace GUI
                 }
             }
 
-
             timerStatus.Enabled = true;
             buttonWSNControl.Enabled = true;
-        }
-
-        /// <summary>
-        /// Occurs when the user clicks the Discard Changes Button
-        /// The textfields are set to the values in oldchanges, the backup struct
-        /// </summary>
-        private void DiscardChanges()
-        {
-            //roll back to previous state;
-
-            ActiveProperty = oldChanges.Active;
-            AnchorProperty = oldChanges.AN;
-
-            textBoxControlX.Text = oldChanges.X;
-            textBoxControlY.Text = oldChanges.Y;
-            textBoxSampleRate.Text = oldChanges.samplerate;
-            textBoxLocRate.Text = oldChanges.locrate;
-
-            PowerProperty = oldChanges.power;
-            FrequencyProperty = oldChanges.frequency;
-
-            LedsProperty = oldChanges.leds;
-
-            textBoxConn.Text = oldChanges.conn;
         }
 
         /// <summary>
@@ -964,14 +528,553 @@ namespace GUI
             return false;
         }
 
+        private void Connect()
+        {
+            Port = Convert.ToInt32(controllerPort.Text);
+            SocketClient sc = new SocketClient(Port, controllerIP.Text);
+
+            if (sc.TryConnection())
+            {
+                timerSensor.Enabled = true;
+                timerLoc.Enabled = true;
+                timerSensorFetch.Enabled = true;
+
+                //GUI tasks
+                buttonConnect.Enabled = false;
+                buttonDisconnect.Enabled = true;
+
+                //Disable the connection fields
+                controllerIP.Enabled = false;
+                controllerPort.Enabled = false;
+
+                toolStripStatusLabel.Text = "Connected to controller at IP " + controllerIP.Text + ", port " + controllerPort.Text;
+
+                //Sensorfetch
+                if (radioButtonGetSensors.Checked == true)
+                    GetSensors();
+                else if (radioButtonDiscovery.Checked == true)
+                    timerSensorFetch.Enabled = true;
+                else
+                    SensorsTimeOut();
+            }
+            else
+            {
+                Console.WriteLine("Incorrect connection parameters");
+                MessageBox.Show("Could not reach the controller!\n Are the connection parameters correct?");
+            }
+        }
+
         /// <summary>
-        /// Occurs when the apply changes button is clicked
+        /// Draws the graph 
+        /// </summary>
+        /// <param name="zgc">
+        /// The control for the graph element
+        /// </param>
+        /// <param name="measurements">
+        /// Points of the graph
+        /// </param>
+        private void CreateGraph(ZedGraphControl zgc, string measurements, string xaxis, string yaxis)
+        {
+            GraphPane myPane = zgc.GraphPane;
+            myPane.CurveList.Clear();
+            PointPairList list = new PointPairList();
+
+            myPane.Title.Text = "TelosB Graph";
+
+            //put the received data in the graph
+            XmlDocument tempdoc = new XmlDocument();
+            tempdoc.LoadXml(measurements);
+
+            XmlNodeList bookList = tempdoc.GetElementsByTagName("MeasurementValue");
+
+            double x = 1;
+            foreach (XmlNode node in bookList)
+            {
+                string yyyy = node.InnerText.ToString();
+                double y = Convert.ToDouble(yyyy);
+                x = x + 1;
+                list.Add(x, y);
+            }
+
+            myPane.AddCurve("MyCurve", list, Color.Red, SymbolType.Square);
+            myPane.XAxis.Title.Text = xaxis;
+            myPane.YAxis.Title.Text = yaxis;
+
+            zgc.AxisChange();
+            zgc.Invalidate();
+        }
+
+        /// <summary>
+        /// Occurs when the user clicks the Discard Changes Button
+        /// The textfields are set to the values in oldchanges, the backup struct
+        /// </summary>
+        private void DiscardChanges()
+        {
+            //roll back to previous state;
+
+            ActiveProperty = oldChanges.Active;
+            AnchorProperty = oldChanges.AN;
+
+            textBoxControlX.Text = oldChanges.X;
+            textBoxControlY.Text = oldChanges.Y;
+            textBoxSampleRate.Text = oldChanges.samplerate;
+            textBoxLocRate.Text = oldChanges.locrate;
+
+            PowerProperty = oldChanges.power;
+            FrequencyProperty = oldChanges.frequency;
+
+            LedsProperty = oldChanges.leds;
+
+            textBoxConn.Text = oldChanges.conn;
+        }
+
+        private void Disconnect()
+        {
+            timerSensor.Enabled = false;
+            timerLoc.Enabled = false;
+            timerSensorFetch.Enabled = false;
+
+            buttonConnect.Enabled = true;
+            buttonDisconnect.Enabled = false;
+
+            controllerIP.Enabled = true;
+            controllerPort.Enabled = true;
+
+            Sensorlijst.Clear();
+            listBoxControl.Items.Clear();
+            listBoxLoc.Items.Clear();
+            comboBox2.Items.Clear();
+
+            toolStripStatusLabel.Text = "No connection";
+        }
+
+        /// <summary>
+        /// Initializes variables, called when the form loads
+        /// Conenction parameters, parameter for the plot function
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonWSNControl_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            AcceptChanges();
+            SetSize();
+
+            //initialize fields
+            controllerIP.Text = "localhost";
+            controllerPort.Text = "1900";
+
+            textLocRefresh.Text = "1000";
+            textSensRefresh.Text = "5000";
+            textBoxGraphUpdateInterval.Text = "10000";
+            textBoxSensorFetchUpdateInterval.Text = "60000";
+
+            //maskedTextBox1.ValidatingType = typeof(System.TimeSpan);
+            maskedTextBox1.Text = "10 10:00:00";
+
+            textBoxXmin.Text = "0";
+            textBoxXmax.Text = "1000";
+            textBoxYmin.Text = "0";
+            textBoxYmax.Text = "1000";
+            textBoxSensorRateMax.Text = "60000";
+            textBoxSensorRateMin.Text = "1000";
+            textBoxLocRateMin.Text = "100";
+            textBoxLocRateMax.Text = "50000";
+
+            buttonDisconnect.Enabled = false;
+
+            // Add the graph parameters
+            List<Metingen>ComboMet = new List<Metingen>();
+            ComboMet.Add(new Metingen());
+            ComboMet.ForEach(delegate(Metingen M)
+            {
+                comboBox1.Items.Add(M.temperature);
+                comboBox1.Items.Add(M.light);
+                comboBox1.Items.Add(M.humidity);
+                comboBox1.Items.Add(M.power);
+                comboBox1.Items.Add(M.RSSI);
+            });
+        }
+
+        /// <summary>
+        /// Event that fires when the user resizes the form
+        /// Resized the graph area
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_Resize_1(object sender, EventArgs e)
+        {
+            SetSize();
+        }
+
+        /// <summary>
+        /// Retreives the graph data from the controller
+        /// </summary>
+        private void GetGraphData()
+        {
+            //static part
+                string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>";
+
+                //dynamic part
+                if (comboBox1.SelectedItem.ToString() == "RSSI" || comboBox1.SelectedItem.ToString() == "Position")
+                    xml_send += "getLocHistoryLast</RequestName>";
+                else
+                    xml_send += "getHistoryLast</RequestName>";
+
+                //return the nodeid with sensor as input
+                try
+                {
+                    if (comboBox2.SelectedItem != null)
+                    {
+                        string nodeid = getNodeID(comboBox2.SelectedItem.ToString()); ;
+
+                        xml_send += "<arg>" + nodeid + "</arg>";
+
+                        if (comboBox1.SelectedItem != null)
+                        {
+                            xml_send += "<arg>" + comboBox1.SelectedItem.ToString() + "</arg><arg>" + comboBoxGraphNumMeasurements.Text + "</arg></Request></Requests>";
+                        }
+                        else
+                            return;
+                    }
+                    else
+                        return;
+
+                    //communication: send the command string to the controller and receive a response
+                    SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
+                    string xml_receive = socket_client.Connect(xml_send, true);
+
+                    //process the reply
+                    XmlDocument tempdoc = new XmlDocument();
+                    tempdoc.LoadXml(xml_receive);
+
+                    //put the received values in the graph list
+                    listViewGraphValues.Items.Clear();
+                    XmlNodeList bookList = tempdoc.GetElementsByTagName("MeasurementValue");
+
+                    foreach (XmlNode node in bookList)
+                    {
+                        string id_Measurement = node.InnerText.ToString();
+                        listViewGraphValues.Items.Add(id_Measurement);
+                    }
+
+                    CreateGraph(zg1, xml_receive, "number of measurements", comboBox1.SelectedItem.ToString());
+                    SetSize();
+                }
+                catch (ArgumentNullException nullex)
+                {
+                    Console.WriteLine(nullex.Message);
+                    Console.WriteLine(nullex.TargetSite);
+                    SocketClient sc = new SocketClient(Port, controllerIP.Text);
+                    if (!sc.TryConnection())
+                        Disconnect();
+                    MessageBox.Show("Lost connection to the controller");
+                }
+        }
+
+        /// <summary>
+        /// Retreives the localization data of the selected node from the controller
+        /// </summary>
+        private void GetLocData()
+        {
+            //static part of the message
+            string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>getnodeLocInfo</RequestName>";
+
+            //return the nodeid with sensor as input
+            try
+            {
+
+                if (listBoxLoc.SelectedItem != null)
+                {
+                    string nodeid;
+                    nodeid = getNodeID(listBoxLoc.SelectedItem.ToString());
+
+                    xml_send += "<arg>" + nodeid + "</arg></Request></Requests>";
+
+                    SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
+                    // Receiving data
+                    string xml_receive = socket_client.Connect(xml_send, true);
+
+                    XmlDocument tempdoc = new XmlDocument();
+                    tempdoc.LoadXml(xml_receive);
+
+                    XmlNodeList bookList = tempdoc.GetElementsByTagName("Position");
+                    foreach (XmlNode node in bookList)
+                    {
+                        XmlElement ID = (XmlElement)(node);
+                        try
+                        {
+                            textBoxNodeID.Text = ID.GetElementsByTagName("node")[0].InnerText;
+                            textBoxANodeID.Text = getTelosbId(ID.GetElementsByTagName("ANode")[0].InnerText);
+                            textBoxRSSI.Text = ID.GetElementsByTagName("RSSI")[0].InnerText;
+                            textBoxX.Text = ID.GetElementsByTagName("X")[0].InnerText;
+                            textBoxY.Text = ID.GetElementsByTagName("Y")[0].InnerText;
+
+                            try
+                            {
+                                int index = ID.GetElementsByTagName("Time")[0].InnerText.IndexOf('T');
+                                textBoxLocUpdate.Text = ID.GetElementsByTagName("Time")[0].InnerText.Substring(index);
+                            }
+                            catch
+                            {
+                                Console.WriteLine("No time available for loc info");
+                            }
+
+                            try
+                            {
+                                textBoxZ.Text = ID.GetElementsByTagName("Z")[0].InnerText;
+                            }
+                            catch
+                            {
+                                textBoxZ.Text = "N/A";
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Some field is not available");
+                            Console.WriteLine(ex.Message);
+                            Console.WriteLine(ex.TargetSite);
+                        }
+                    }
+                }
+                else
+                    return;
+            }
+            catch (ArgumentNullException nullex)
+            {
+                Console.WriteLine(nullex.Message);
+                Console.WriteLine(nullex.TargetSite);
+                SocketClient sc = new SocketClient(Port, controllerIP.Text);
+                if (!sc.TryConnection())
+                    Disconnect();
+                MessageBox.Show("Lost connection to the controller");
+            }
+        }
+
+        /// <summary>
+        /// Gets the statusdata off the selected node from the controller
+        /// </summary>
+        private void GetStatData()
+        {
+            //static part of the message
+            string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>getStatus</RequestName>";
+
+            //return the nodeid with sensor as input
+            try
+            {
+                //make the XML string to send
+                string selected = listBoxControl.SelectedItem.ToString();
+                string nodeid = getNodeID(selected);
+
+                xml_send += "<arg>" + nodeid + "</arg></Request></Requests>";
+
+                SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
+                // Receiving data
+                string xml_receive = socket_client.Connect(xml_send, true);
+
+                //set the textfields to the received XML nodes
+                XmlDocument tempdoc = new XmlDocument();
+                tempdoc.LoadXml(xml_receive);
+
+                XmlNodeList bookList = tempdoc.GetElementsByTagName("Status");
+                foreach (XmlNode node in bookList)
+                {
+                    XmlElement ID = (XmlElement)(node);
+                    try
+                    {
+                        //assign the values of the textboxes
+                        ActiveProperty = ID.GetElementsByTagName("active")[0].InnerText;
+                        AnchorProperty = ID.GetElementsByTagName("AN")[0].InnerText;
+                        textBoxControlX.Text = ID.GetElementsByTagName("X")[0].InnerText;
+                        textBoxControlY.Text = ID.GetElementsByTagName("Y")[0].InnerText;
+                        textBoxSampleRate.Text = ID.GetElementsByTagName("Samplerate")[0].InnerText;
+                        textBoxLocRate.Text = ID.GetElementsByTagName("LocRate")[0].InnerText;
+                        LedsProperty = ID.GetElementsByTagName("Leds")[0].InnerText;
+                        PowerProperty = ID.GetElementsByTagName("Power")[0].InnerText;
+                        FrequencyProperty = ID.GetElementsByTagName("Frequency")[0].InnerText;
+                        textBoxConn.Text = ID.GetElementsByTagName("Conn")[0].InnerText;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.WriteLine(ex.StackTrace);
+                        Console.WriteLine("Some field is not available");
+                    }
+
+                    //backup these values in the changes struct
+                    oldChanges.Active = ActiveProperty;
+                    oldChanges.AN = AnchorProperty;
+
+                    oldChanges.X = textBoxControlX.Text;
+                    oldChanges.Y = textBoxControlY.Text;
+                    oldChanges.samplerate = textBoxSampleRate.Text;
+                    oldChanges.locrate = textBoxLocRate.Text;
+
+                    oldChanges.power = PowerProperty;
+                    oldChanges.frequency = FrequencyProperty;
+                    oldChanges.conn = textBoxConn.Text;
+
+                    oldChanges.leds = LedsProperty;
+                }
+            }
+            //catch the exceptions
+            catch (ArgumentNullException nullex)
+            {
+                Console.WriteLine(nullex.Message);
+                Console.WriteLine(nullex.TargetSite);
+                SocketClient sc = new SocketClient(Port, controllerIP.Text);
+                if (!sc.TryConnection())
+                {
+                    Disconnect();
+                    MessageBox.Show("Lost connection to the controller");
+                    tabPage4.Select();
+                }
+            }
+            catch (SocketException sockex)
+            {
+                Console.WriteLine(sockex.Message);
+                Console.WriteLine(sockex.TargetSite);
+                SocketClient sc = new SocketClient(Port, controllerIP.Text);
+                if (!sc.TryConnection())
+                {
+                    buttonDisconnect_Click(this, EventArgs.Empty);
+                    MessageBox.Show("Lost connection to the controller");
+                    tabPage4.Select();
+                }
+                else
+                    MessageBox.Show("The WSN took to long to respond");
+            }
+        }
+
+        /// <summary>
+        /// Resizes the graph area when the user resizes the form
+        /// </summary>
+        private void SetSize()
+        {
+            zg1.Location = new Point(250, 25);
+            // Leave a small margin around the outside of the control
+            zg1.Size = new Size(this.ClientRectangle.Width - 290, this.ClientRectangle.Height - 90);
+            //scale the size of the parent control
+            tabControl1.Size = new Size(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 20);
+        }
+
+        private bool ValidLocRate(string LocRate, out string errorMessage)
+        {
+            int result;
+            //if (Int16.TryParse(
+            if (!Int32.TryParse(LocRate, out result))
+            {
+                errorMessage = "LocRate is not numeric";
+                return false;
+            }
+
+            if ((Convert.ToInt32(LocRate)) < (Convert.ToInt32(textBoxLocRateMin.Text)))
+            {
+                errorMessage = "LocRate is too small";
+                return false;
+            }
+            else if ((Convert.ToInt32(LocRate)) > (Convert.ToInt32(textBoxLocRateMax.Text)))
+            {
+                errorMessage = "LocRate is too large";
+                return false;
+            }
+
+            errorMessage = "";
+            return true;
+        }
+
+        private bool ValidSampleRate(string SampleRate, out string errorMessage)
+        {
+            int result;
+            //if (Int16.TryParse(
+            if (!Int32.TryParse(SampleRate, out result))
+            {
+                errorMessage = "SampleRate is not numeric";
+                return false;
+            }
+
+            if ((Convert.ToInt32(SampleRate)) < (Convert.ToInt32(textBoxSampleRate.Text)))
+            {
+                errorMessage = "SampleRate is too small";
+                return false;
+            }
+            else if ((Convert.ToInt32(SampleRate)) > (Convert.ToInt32(textBoxSensorRateMax.Text)))
+            {
+                errorMessage = "SampleRate is too large";
+                return false;
+            }
+
+            errorMessage = "";
+            return true;
+        }
+
+        private bool ValidX(string X, out string errorMessage)
+        {
+            short result;
+
+            if (!Int16.TryParse(X, out result))
+            {
+                errorMessage = "X is not numeric";
+                return false;
+            }
+
+            if ((Convert.ToInt32(X)) < (Convert.ToInt32(textBoxXmin.Text)))
+            {
+                errorMessage = "X is too small";
+                return false;
+            }
+            else if ((Convert.ToInt32(X)) > (Convert.ToInt32(textBoxXmax.Text)))
+            {
+                    errorMessage = "X is too large";
+                    return false;
+            }
+
+            errorMessage = "";
+            return true;
+        }
+
+        private bool ValidY(string Y, out string errorMessage)
+        {
+            short result;
+            //if (Int16.TryParse(
+            if (!Int16.TryParse(Y, out result))
+            {
+                errorMessage = "Y is not numeric";
+                return false;
+            }
+
+            if ((Convert.ToInt32(Y)) < (Convert.ToInt32(textBoxYmin.Text)))
+            {
+                errorMessage = "Y is too small";
+                return false;
+            }
+            else if ((Convert.ToInt32(Y)) > (Convert.ToInt32(textBoxYmax.Text)))
+            {
+                errorMessage = "Y is too large";
+                return false;
+            }
+
+            errorMessage = "";
+            return true;
+        }
+
+        /// <summary>
+        /// Occurs when the user clicks the plot button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            GetGraphData();
+        }
+
+        /// <summary>
+        /// Occurs when the user clicks the connect button on the options tab
+        /// Allows the user to connect & disconnect to the controller and set various parameters
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonConnect_Click(object sender, EventArgs e)
+        {
+            Connect();
         }
 
         /// <summary>
@@ -986,22 +1089,23 @@ namespace GUI
         }
 
         /// <summary>
-        /// Occurs when the timer to get the status fires
-        /// Calls CheckStatus() which gets the nodes status and compares it to the currently stored status.
-        /// If these statuses are not the same, the current status is updated from the DB
+        /// Event for the disconnect button in the options tab
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void timerStatus_Tick(object sender, EventArgs e)
+        private void buttonDisconnect_Click(object sender, EventArgs e)
         {
-            //GetStatData();
-            //compare the status from a get to the changes struct
-            bool statusChanged = CheckStatus();
-            if (statusChanged)
-            {
-                MessageBox.Show("Status has changed\n Discarding any changes made and showing the newest status");
-                GetStatData();
-            }
+            Disconnect();
+        }
+
+        /// <summary>
+        /// Occurs when the apply changes button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonWSNControl_Click(object sender, EventArgs e)
+        {
+            AcceptChanges();
         }
 
         /// <summary>
@@ -1061,105 +1165,195 @@ namespace GUI
             }
         }
 
-        #endregion
-
-        #region Options tab
-        
         /// <summary>
-        /// Occurs when the user clicks the connect button on the options tab
-        /// Allows the user to connect & disconnect to the controller and set various parameters
+        /// Occurs when the user changes the check on checkboxPlotUpdate
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonConnect_Click(object sender, EventArgs e)
+        private void checkBoxPlotUpdate_CheckedChanged(object sender, EventArgs e)
         {
-            Connect(); 
-        }
-
-        private void Connect()
-        {
-            Port = Convert.ToInt32(controllerPort.Text);
-            SocketClient sc = new SocketClient(Port, controllerIP.Text);
-
-            if (sc.TryConnection())
-            {
-                timerSensor.Enabled = true;
-                timerLoc.Enabled = true;
-                timerSensorFetch.Enabled = true;
-
-                //GUI tasks
-                buttonConnect.Enabled = false;
-                buttonDisconnect.Enabled = true;
-
-                //Disable the connection fields
-                controllerIP.Enabled = false;
-                controllerPort.Enabled = false;
-
-                toolStripStatusLabel.Text = "Connected to controller at IP " + controllerIP.Text + ", port " + controllerPort.Text;
-
-                //Sensorfetch
-                if (radioButtonGetSensors.Checked == true)
-                    GetSensors();
-                else if (radioButtonDiscovery.Checked == true)
-                    timerSensorFetch.Enabled = true;
-                else
-                    SensorsTimeOut();
-            }
+            if (checkBoxPlotUpdate.Checked == true)
+                timerGraph.Enabled = true;
             else
+                timerGraph.Enabled = false;
+        }
+
+        ///<summary>
+        ///Helper method for retreiving the nodeid of the framework
+        /// </summary>
+        /// <param name="selected">
+        /// The MAC or TOSid of the mote
+        /// </param>
+        /// <returns>
+        /// node id, unique identifier within Senseless
+        /// </returns>
+        private string getNodeID(string selected)
+        {
+            //first search local for the nodeid
+            string nodeid;
+            foreach (SensorNames telosb in Sensorlijst)
             {
-                Console.WriteLine("Incorrect connection parameters");
-                MessageBox.Show("Could not reach the controller!\n Are the connection parameters correct?");
+                if (telosb.Sensorname == selected)
+                {
+                    nodeid = telosb.id;
+                    return nodeid;
+                }
+            }
+            try
+            {
+                //generate string
+                string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>getNodeid</RequestName><arg>" + selected + "</arg></Request></Requests>";
+
+                SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
+                // Receiving data
+                string xml_receive = socket_client.Connect(xml_send, true);
+
+                //process reply
+                XmlDocument tempdoc = new XmlDocument();
+                tempdoc.LoadXml(xml_receive);
+
+                XmlNodeList bookList = tempdoc.GetElementsByTagName("NodeIDs");
+                foreach (XmlNode node in bookList)
+                {
+                    XmlElement ID = (XmlElement)(node);
+                    try
+                    {
+                        string idnode = ID.GetElementsByTagName("idnode")[0].InnerText;
+                        Sensorlijst.Add(new SensorNames(selected, idnode));
+                        return idnode;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Node id not found in DB");
+                    }
+                }
+            }
+            catch (ArgumentNullException nullex)
+            {
+                Console.WriteLine(nullex.Message);
+                Console.WriteLine(nullex.TargetSite);
+                SocketClient sc = new SocketClient(Port, controllerIP.Text);
+                if (!sc.TryConnection())
+                    Disconnect();
+                MessageBox.Show("Lost connection to the controller");
+            }
+            catch { }
+            return "N/A";
+        }
+
+        /// <summary>
+        /// Helper method for retreiving the WSNid of the framework
+        /// </summary>
+        /// <param name="selected">
+        /// node id, unique identifier within Senseless
+        /// </param>
+        /// <returns>
+        /// The MAC or TOSid of the mote
+        /// </returns>
+        private string getTelosbId(string selected)
+        {
+            string sensorname;
+            foreach (SensorNames telosb in Sensorlijst)
+            {
+                if (telosb.id == selected)
+                {
+                    sensorname = telosb.Sensorname;
+                    return sensorname;
+                }
+            }
+            try
+            {
+                string xml_send = @"<?xml version=""1.0"" standalone=""yes""?><Requests xmlns:xsi=""='http://www.w3.org/2001/XMLSchema-instance'""  xmlns=""xmlns='http://tempuri.org/Requests.xsd\'""><Request><RequestName>getWSNID</RequestName><arg>" + selected + "</arg></Request></Requests>";
+
+                SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
+                // Receiving data
+                string xml_receive = socket_client.Connect(xml_send, true);
+
+                XmlDocument tempdoc = new XmlDocument();
+                tempdoc.LoadXml(xml_receive);
+
+                XmlNodeList bookList = tempdoc.GetElementsByTagName("WSNID");
+                foreach (XmlNode node in bookList)
+                {
+                    XmlElement ID = (XmlElement)(node);
+                    try
+                    {
+                        string sensor = ID.GetElementsByTagName("sensor")[0].InnerText;
+                        Sensorlijst.Add(new SensorNames(sensor, selected));
+                        return sensor;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Node id not found in DB");
+                    }
+                }
+            }
+            catch (ArgumentNullException nullex)
+            {
+                Console.WriteLine(nullex.Message);
+                Console.WriteLine(nullex.TargetSite);
+                SocketClient sc = new SocketClient(Port, controllerIP.Text);
+                if (!sc.TryConnection())
+                    Disconnect();
+                MessageBox.Show("Lost connection to the controller");
+            }
+            catch { }
+            return "N/A";
+        }
+
+        /// <summary>
+        /// Occurs when the active sensor is changed in listBoxControl, calls GetStatData
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void listBoxControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetStatData();
+            timerStatus.Enabled = true;
+        }
+
+        private void textBoxControlX_Validated(object sender, EventArgs e)
+        {
+            // If all conditions have been met, clear the ErrorProvider of errors.
+            errorProvider1.SetError(textBox1, "");
+            errorProvider1.Clear();
+        }
+
+        private void textBoxControlX_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidX(textBoxControlX.Text, out errorMsg))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                textBoxControlX.Select(0, textBoxControlX.Text.Length);
+
+                // Set the ErrorProvider error with the text to display.
+                this.errorProvider1.SetError(textBoxControlX, errorMsg);
             }
         }
 
-        /// <summary>
-        /// Event for the disconnect button in the options tab
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void buttonDisconnect_Click(object sender, EventArgs e)
+        private void textBoxControlY_Validated(object sender, EventArgs e)
         {
-            Disconnect();
+            // If all conditions have been met, clear the ErrorProvider of errors.
+            errorProvider1.SetError(textBox1, "");
+            errorProvider1.Clear();
         }
 
-        private void Disconnect()
+        private void textBoxControlY_Validating(object sender, CancelEventArgs e)
         {
-            timerSensor.Enabled = false;
-            timerLoc.Enabled = false;
-            timerSensorFetch.Enabled = false;
+            string errorMsg;
+            if (!ValidY(textBoxControlY.Text, out errorMsg))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                textBoxControlY.Select(0, textBoxControlY.Text.Length);
 
-            buttonConnect.Enabled = true;
-            buttonDisconnect.Enabled = false;
-
-            controllerIP.Enabled = true;
-            controllerPort.Enabled = true;
-
-            Sensorlijst.Clear();
-            listBoxControl.Items.Clear();
-            listBoxLoc.Items.Clear();
-            comboBox2.Items.Clear();
-
-            toolStripStatusLabel.Text = "No connection";
-        }
-
-        /// <summary>
-        /// Occurs when the refreshrate of the Sensordata is changed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textSensRefresh_TextChanged(object sender, EventArgs e)
-        {
-            timerSensor.Interval = Convert.ToInt32(textSensRefresh.Text);
-        }
-
-        /// <summary>
-        /// Occurs when the refreshrate of the LocData is changed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textLocRefresh_TextChanged(object sender, EventArgs e)
-        {
-            timerLoc.Interval = Convert.ToInt32(textLocRefresh.Text);
+                // Set the ErrorProvider error with the text to display.
+                this.errorProvider1.SetError(textBoxControlY, errorMsg);
+            }
         }
 
         /// <summary>
@@ -1172,241 +1366,11 @@ namespace GUI
             timerGraph.Interval = Convert.ToInt32(textBoxGraphUpdateInterval.Text);
         }
 
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Property of checkboxActive
-        /// input: 0 or 1 string
-        /// </summary>
-        public string ActiveProperty
-        {
-            get{
-                if (checkBoxActive.Checked)
-                    return "1";
-                else
-                    return "0";
-            }
-            set {
-                if (value == "1")
-                    checkBoxActive.Checked = true;
-                else
-                    checkBoxActive.Checked = false;
-            }
-        }
-
-        /// <summary>
-        /// Property of checkBoxAnchorNode
-        /// input: 0 or 1 string
-        /// </summary>
-        public string AnchorProperty
-        {
-            get {
-                if (checkBoxAnchorNode.Checked)
-                    return "1";
-                else
-                    return "0";
-            }
-            set {
-                if (value == "1")
-                    checkBoxAnchorNode.Checked = true;
-                else
-                    checkBoxAnchorNode.Checked = false;
-            }
-        }
-
-        /// <summary>
-        /// Property of the three leds 
-        /// Input & Output: Bitmask of the leds
-        /// </summary>
-        public string LedsProperty
-        {
-            get{
-                int ledsmask = 0;
-                if (checkBoxLedRed.Checked)
-                    ledsmask += 4;
-                if (checkBoxLedGreen.Checked)
-                    ledsmask += 2;
-                if (checkBoxLedBlue.Checked)
-                    ledsmask += 1;
-                return ledsmask.ToString();
-            }
-            set {
-                int mask = Convert.ToInt16(value);
-                int remainder;
-
-                remainder = mask;
-                if (remainder >= 4)
-                {
-                    checkBoxLedRed.Checked = true;
-                    remainder = remainder % 4;
-                    if (remainder >= 2)
-                    {
-                        checkBoxLedGreen.Checked = true;
-                        remainder %= 2;
-                        if (remainder == 1)
-                        {
-                            checkBoxLedBlue.Checked = true;
-                        }
-                        else
-                            checkBoxLedBlue.Checked = false;
-                    }
-                    else
-                    {
-                        checkBoxLedGreen.Checked = false;
-                        remainder %= 2;
-                        if (remainder == 1)
-                        {
-                            checkBoxLedBlue.Checked = true;
-                        }
-                        else
-                            checkBoxLedBlue.Checked = false;
-                    }
-                }
-                else
-                {
-                    checkBoxLedRed.Checked = false;
-                    remainder = remainder % 4;
-                    if (remainder >= 2)
-                    {
-                        checkBoxLedGreen.Checked = true;
-                        remainder %= 2;
-                        if (remainder == 1)
-                        {
-                            checkBoxLedBlue.Checked = true;
-                        }
-                        else
-                            checkBoxLedBlue.Checked = false;
-                    }
-                    else
-                    {
-                        checkBoxLedGreen.Checked = false;
-                        remainder %= 2;
-                        if (remainder == 1)
-                        {
-                            checkBoxLedBlue.Checked = true;
-                        }
-                        else
-                            checkBoxLedBlue.Checked = false;
-                    }
-
-                }
-            }
-        }
-
-        /// <summary>
-        /// Set or Gets the Power value
-        /// </summary>
-        public string PowerProperty
-        {
-            get { return numericUpDownPower.Value.ToString();  }
-            set { numericUpDownPower.Value = Convert.ToDecimal(value);  }
-        }
-
-        /// <summary>
-        /// Set or Gets the Frequency value
-        /// </summary>
-        public string FrequencyProperty
-        {
-            get { return numericUpDownFrequency.Value.ToString();  }
-            set { numericUpDownFrequency.Value = Convert.ToDecimal(value);  }
-        }
-
-
-        #endregion
-
-        #region Control validation
-        private void textBoxControlX_Validating(object sender, CancelEventArgs e)
-        {
-            string errorMsg;
-            if (!ValidX(textBoxControlX.Text, out errorMsg))
-            {
-                // Cancel the event and select the text to be corrected by the user.
-                e.Cancel = true;
-                textBoxControlX.Select(0, textBoxControlX.Text.Length);
-
-                // Set the ErrorProvider error with the text to display. 
-                this.errorProvider1.SetError(textBoxControlX, errorMsg);
-            }
-        }
-
-        private void textBoxControlX_Validated(object sender, EventArgs e)
+        private void textBoxLocRate_Validated(object sender, EventArgs e)
         {
             // If all conditions have been met, clear the ErrorProvider of errors.
             errorProvider1.SetError(textBox1, "");
             errorProvider1.Clear();
-        }
-
-        private bool ValidX(string X, out string errorMessage)
-        {   
-            short result;
-
-            if (!Int16.TryParse(X, out result))
-            {
-                errorMessage = "X is not numeric";
-                return false;
-            }
-            
-            if ((Convert.ToInt32(X)) < (Convert.ToInt32(textBoxXmin.Text)))
-            {
-                errorMessage = "X is too small";
-                return false; 
-            }
-            else if ((Convert.ToInt32(X)) > (Convert.ToInt32(textBoxXmax.Text)))
-            {
-                    errorMessage = "X is too large";
-                    return false;
-            }
-
-            errorMessage = "";
-            return true;
-        }
-
-        private void textBoxControlY_Validating(object sender, CancelEventArgs e)
-        {
-            string errorMsg;
-            if (!ValidY(textBoxControlY.Text, out errorMsg))
-            {
-                // Cancel the event and select the text to be corrected by the user.
-                e.Cancel = true;
-                textBoxControlY.Select(0, textBoxControlY.Text.Length);
-
-                // Set the ErrorProvider error with the text to display. 
-                this.errorProvider1.SetError(textBoxControlY, errorMsg);
-            }
-        }
-
-        private void textBoxControlY_Validated(object sender, EventArgs e)
-        {
-            // If all conditions have been met, clear the ErrorProvider of errors.
-            errorProvider1.SetError(textBox1, "");
-            errorProvider1.Clear();
-        }
-
-        private bool ValidY(string Y, out string errorMessage)
-        {
-            short result;
-            //if (Int16.TryParse(
-            if (!Int16.TryParse(Y, out result))
-            {
-                errorMessage = "Y is not numeric";
-                return false;
-            }
-
-            if ((Convert.ToInt32(Y)) < (Convert.ToInt32(textBoxYmin.Text)))
-            {
-                errorMessage = "Y is too small";
-                return false;
-            }
-            else if ((Convert.ToInt32(Y)) > (Convert.ToInt32(textBoxYmax.Text)))
-            {
-                errorMessage = "Y is too large";
-                return false;
-            }
-
-            errorMessage = "";
-            return true;
         }
 
         private void textBoxLocRate_Validating(object sender, CancelEventArgs e)
@@ -1418,37 +1382,12 @@ namespace GUI
                 e.Cancel = true;
                 textBoxLocRate.Select(0, textBoxLocRate.Text.Length);
 
-                // Set the ErrorProvider error with the text to display. 
+                // Set the ErrorProvider error with the text to display.
                 this.errorProvider1.SetError(textBoxLocRate, errorMsg);
             }
         }
 
-        private bool ValidLocRate(string LocRate, out string errorMessage)
-        {
-            int result;
-            //if (Int16.TryParse(
-            if (!Int32.TryParse(LocRate, out result))
-            {
-                errorMessage = "LocRate is not numeric";
-                return false;
-            }
-
-            if ((Convert.ToInt32(LocRate)) < (Convert.ToInt32(textBoxLocRateMin.Text)))
-            {
-                errorMessage = "LocRate is too small";
-                return false;
-            }
-            else if ((Convert.ToInt32(LocRate)) > (Convert.ToInt32(textBoxLocRateMax.Text)))
-            {
-                errorMessage = "LocRate is too large";
-                return false;
-            }
-
-            errorMessage = "";
-            return true;
-        }
-
-        private void textBoxLocRate_Validated(object sender, EventArgs e)
+        private void textBoxSampleRate_Validated(object sender, EventArgs e)
         {
             // If all conditions have been met, clear the ErrorProvider of errors.
             errorProvider1.SetError(textBox1, "");
@@ -1464,44 +1403,80 @@ namespace GUI
                 e.Cancel = true;
                 textBoxLocRate.Select(0, textBoxSampleRate.Text.Length);
 
-                // Set the ErrorProvider error with the text to display. 
+                // Set the ErrorProvider error with the text to display.
                 this.errorProvider1.SetError(textBoxSampleRate, errorMsg);
             }
         }
 
-        private bool ValidSampleRate(string SampleRate, out string errorMessage)
+        /// <summary>
+        /// Occurs when the refreshrate of the LocData is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textLocRefresh_TextChanged(object sender, EventArgs e)
         {
-            int result;
-            //if (Int16.TryParse(
-            if (!Int32.TryParse(SampleRate, out result))
-            {
-                errorMessage = "SampleRate is not numeric";
-                return false;
-            }
-
-            if ((Convert.ToInt32(SampleRate)) < (Convert.ToInt32(textBoxSampleRate.Text)))
-            {
-                errorMessage = "SampleRate is too small";
-                return false;
-            }
-            else if ((Convert.ToInt32(SampleRate)) > (Convert.ToInt32(textBoxSensorRateMax.Text)))
-            {
-                errorMessage = "SampleRate is too large";
-                return false;
-            }
-
-            errorMessage = "";
-            return true;
+            timerLoc.Interval = Convert.ToInt32(textLocRefresh.Text);
         }
 
-        private void textBoxSampleRate_Validated(object sender, EventArgs e)
+        /// <summary>
+        /// Occurs when the refreshrate of the Sensordata is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textSensRefresh_TextChanged(object sender, EventArgs e)
         {
-            // If all conditions have been met, clear the ErrorProvider of errors.
-            errorProvider1.SetError(textBox1, "");
-            errorProvider1.Clear();
+            timerSensor.Interval = Convert.ToInt32(textSensRefresh.Text);
         }
-        #endregion
 
+        /// <summary>
+        /// Event-handler for the timer which controls the polling for the sensordata
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            GetSensorData();
+        }
 
+        /// <summary>
+        /// Occurs when timerGraph fires
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timerGraph_Tick(object sender, EventArgs e)
+        {
+            GetGraphData();
+        }
+
+        /// <summary>
+        /// Occurs when timerLoc fires
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timerLoc_Tick(object sender, EventArgs e)
+        {
+            GetLocData();
+        }
+
+        /// <summary>
+        /// Occurs when the timer to get the status fires
+        /// Calls CheckStatus() which gets the nodes status and compares it to the currently stored status.
+        /// If these statuses are not the same, the current status is updated from the DB
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timerStatus_Tick(object sender, EventArgs e)
+        {
+            //GetStatData();
+            //compare the status from a get to the changes struct
+            bool statusChanged = CheckStatus();
+            if (statusChanged)
+            {
+                MessageBox.Show("Status has changed\n Discarding any changes made and showing the newest status");
+                GetStatData();
+            }
+        }
+
+        #endregion Methods
     }
 }

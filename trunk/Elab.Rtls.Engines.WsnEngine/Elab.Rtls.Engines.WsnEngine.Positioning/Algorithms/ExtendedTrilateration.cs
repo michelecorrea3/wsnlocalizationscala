@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-
-using DatabaseConnection;
-
-using System.IO;
-
-namespace Elab.Rtls.Engines.WsnEngine.Positioning
+﻿namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+
+    using DatabaseConnection;
+
     public class ExtendedTrilateration : RangeBasedPositioning
     {
+        #region Methods
+
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multihop)
         {
             List<Point> intersectionPoints = new List<Point>();
@@ -73,7 +74,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                             intersectionPoints.Add(crossing);
                         }
 
-
                     }
                 }
                 if (intersectionPoints.Count >= 3)
@@ -132,8 +132,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             }
             return center;
-
-
         }
 
         private static Error Anchorsintersection(List<IntersectedAnchors> anchors)
@@ -157,7 +155,16 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             fault.NumberWide = exter;
 
             return fault;
+        }
 
+        private static bool BelongsToAllCircles(double x1, double y1, double r1, double x2, double y2, double r2)
+        {
+            double distance1 = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
+
+            if (distance1 <= (r1 + r2))
+                return true;
+            else
+                return false;
         }
 
         private static Point Cluster(List<Point> crossings, int anchors)
@@ -208,15 +215,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             return centroid;
         }
 
-        private static bool BelongsToAllCircles(double x1, double y1, double r1, double x2, double y2, double r2)
-        {
-            double distance1 = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
-
-            if (distance1 <= (r1 + r2))
-                return true;
-            else
-                return false;
-        }
-
+        #endregion Methods
     }
 }

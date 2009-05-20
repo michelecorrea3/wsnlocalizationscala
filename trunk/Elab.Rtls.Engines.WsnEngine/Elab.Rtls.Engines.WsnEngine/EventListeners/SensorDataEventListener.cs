@@ -1,15 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Elab.Rtls.Engines.WsnEngine
+﻿namespace Elab.Rtls.Engines.WsnEngine
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public class SensorDataEventListener : EventListener
     {
+        #region Constructors
+
         public SensorDataEventListener(Scala.Core.EventSubscription eventSubscription)
             : base(eventSubscription)
-        { }
+        {
+        }
+
+        #endregion Constructors
+
+        #region Methods
 
         public override void Advise(Controller controller)
         {
@@ -27,7 +34,7 @@ namespace Elab.Rtls.Engines.WsnEngine
                 case "ButtonPressed":
                     controller.ButtonPressed += base.OnEventReceived;
                     break;
-            }     
+            }
         }
 
         public override void UnAdvise(Controller controller)
@@ -46,7 +53,9 @@ namespace Elab.Rtls.Engines.WsnEngine
                 case "ButtonPressed":
                     controller.ButtonPressed -= base.OnEventReceived;
                     break;
-            }     
+            }
         }
+
+        #endregion Methods
     }
 }
