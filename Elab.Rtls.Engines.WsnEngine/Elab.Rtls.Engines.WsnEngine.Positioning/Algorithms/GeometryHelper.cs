@@ -216,6 +216,16 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
         }
 
         //public static Dictionary<double, double> AnchorNodeDistance
+
+        public static bool BelongTo(double x1, double y1, double radius1, double x2, double y2, double radius2)
+        {
+            double distance = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
+
+            if ( distance < Math.Abs(radius1-radius2) || distance > (radius1 + radius2 ) )
+                return false;
+            else
+                return true;
+        }
     }
 
     public struct ClosestPointPair
