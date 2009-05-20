@@ -19,15 +19,23 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             List<AnchorNode> AllAnchors = new List<AnchorNode>();
             List<IntersectedAnchors> anchors = new List<IntersectedAnchors>();
             IntersectedAnchors anchor = new IntersectedAnchors();
-            Point center = new Point();
+            List<int> CountOfCircles = new List<int>();
 
+            Point center = new Point();
+            int numberOfCircles = 0;
             StreamWriter Log = new StreamWriter("Trilateration.csv", false);
 
 
             foreach (AnchorNode AN in BlindNode.Anchors)
-                 AN.fRSS = filterMethod(AN.RSS);
+            {
+                AN.fRSS = filterMethod(AN.RSS);
+                AN.range = Ranging(AN.fRSS);
+            }
             foreach (AnchorNode VAN in BlindNode.VirtualAnchors)
+            {
                 VAN.fRSS = filterMethod(VAN.RSS);
+                VAN.range = Ranging(VAN.fRSS);
+            }
 
                 /*
                 for(int j = 0; j<BlindNode.Anchors.Count-1; j++)
@@ -53,16 +61,12 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                         {
                             for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
                             {
-                                //returns 0, 1 or 2 Pointss
-                                //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
-                                //{
-                                //    intersectionPoints.Add(crossing);
-                                //}
-                                //TEST
-                                foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10))
+                                List<Point> crossingPoints = GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range);
+                                if (crossingPoints != null)
                                 {
-                                    if (crossing != null)
+                                    foreach (Point crossing in crossingPoints)
                                         intersectionPoints.Add(crossing);
+
                                 }
                             }
                         }
@@ -83,19 +87,21 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                     {
                         for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
                         {
-                            //returns 0, 1 or 2 Pointss
-                            //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
-                            //{
-                            //    intersectionPoints.Add(crossing);
-                            //}
-                            //TEST
-                            List<Point> crossingPoints = GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10);
-                            if(crossingPoints != null)
+                            List<Point> crossingPoints = GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range);
+                            if (crossingPoints != null)
                             {
-                                foreach (Point crossing in crossingPoints) 
-                                        intersectionPoints.Add(crossing);
-                               
+                                foreach (Point crossing in crossingPoints)
+                                    intersectionPoints.Add(crossing);
+
                             }
+                            //TEST
+                            //List<Point> crossingPoints = GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10);
+                            //if(crossingPoints != null)
+                            //{
+                            //    foreach (Point crossing in crossingPoints) 
+                            //            intersectionPoints.Add(crossing);
+                            //   
+                            //}
                         }
                     }
                     if (intersectionPoints.Count < 3)
@@ -111,23 +117,39 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                         {
                             for (int j = i + 1; j < AllAnchors.Count; j++)
                             {
-                                //returns 0, 1 or 2 Pointss
-                                //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
-                                //{
-                                //    intersectionPoints.Add(crossing);
-                                //}
-                                //TEST
-                                List<Point> crossingPoints = GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10);
+                                List<Point> crossingPoints = GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, AllAnchors[i].range, AllAnchors[j].posx, AllAnchors[j].posy, AllAnchors[j].range);
                                 if (crossingPoints != null)
                                 {
                                     foreach (Point crossing in crossingPoints)
                                         intersectionPoints.Add(crossing);
-                                    
+
                                 }
+                                //TEST
+                                //List<Point> crossingPoints = GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10);
+                                //if (crossingPoints != null)
+                                //{
+                                //    foreach (Point crossing in crossingPoints)
+                                //        intersectionPoints.Add(crossing);
+                                //    
+                                //}
                             }
                         }
+                        for (int i = 0; i < AllAnchors.Count; i++)
+                        {
+                            numberOfCircles = 0;
+                            for (int j = 0; j < AllAnchors.Count; j++)
+                            {
+                                //TEST
+                                if (GeometryHelper.BelongTo(AllAnchors[i].posx, AllAnchors[i].posy, AllAnchors[i].range, AllAnchors[j].posx, AllAnchors[j].posy, AllAnchors[j].range))
+                                //if (GeometryHelper.BelongTo(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
+                                    numberOfCircles++;
+                            }
+                            CountOfCircles.Add(numberOfCircles);
+                        }
+                        List<int> anchorss = CountOfCircles.FindAll(number => number == 1);
+
                         if (intersectionPoints.Count >= 3)
-                            center = Cluster(intersectionPoints, AllAnchors.Count);
+                            center = Cluster(intersectionPoints, (AllAnchors.Count - anchorss.Count) );
                         else
                         {
                             center = null;
