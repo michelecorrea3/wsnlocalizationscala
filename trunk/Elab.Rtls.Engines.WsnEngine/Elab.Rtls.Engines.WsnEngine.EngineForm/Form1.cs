@@ -126,5 +126,17 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             else
                 WsnController.UseMultihop = false;
         }
+
+        private void radioButtonExtendedClusteredTrilateration_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonExtendedClusteredTrilateration.Checked)
+                WsnController.SelectedAlgorithm = "ExtendedTrilateration";
+        }
+
+        private void radioButtonExtendedMinMax_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonExtendedMinMax.Checked)
+                WsnController.SelectedAlgorithm = "ExtendedMinMax";
+        }
     }
 }

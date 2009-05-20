@@ -46,9 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithms\Centroid.cs" />
+    <Compile Include="Algorithms\ExtendedTrilateration.cs" />
     <Compile Include="Algorithms\GeometryHelper.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Algorithms\MinMaxExtended.cs" />
     <Compile Include="INode.cs" />
     <Compile Include="Algorithms\MinMax.cs" />
     <Compile Include="Node.cs" />
