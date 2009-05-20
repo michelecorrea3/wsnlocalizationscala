@@ -1,44 +1,29 @@
-﻿using System;
-using System.Net.Sockets;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using System.Xml;
-using System.Xml.XPath;
-using System.Xml.Serialization;
-using System.Xml.Schema;
-using System.Xml.Linq;
-using ZedGraph;
-using System.IO;
-
-using SocketConnection;
-
-namespace GUI
+﻿namespace GUI
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.IO;
+    using System.Linq;
+    using System.Net.Sockets;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Windows.Forms;
+    using System.Xml;
+    using System.Xml.Linq;
+    using System.Xml.Schema;
+    using System.Xml.Serialization;
+    using System.Xml.XPath;
+
+    using SocketConnection;
+
+    using ZedGraph;
+
     partial class Form1
     {
-        #region SensorFetch
-
-        /// <summary>
-        /// Event for the discovery protocol
-        /// Discovery protocol sends a WSN action Request to the controller, which forwards it to the WSN parser.
-        /// The WSN parser disseminates a status request to each node, the nodes that reply are given as the active nodes
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
-        private void timerSensorFetch_Tick(object sender, EventArgs e)
-        {
-            if (radioButtonDiscovery.Checked)
-                Discovery();
-            else if (radioButtonSensorTimeOut.Checked)
-                SensorsTimeOut();
-        }
+        #region Methods
 
         private void Discovery()
         {
@@ -50,7 +35,6 @@ namespace GUI
             SocketClient socket_client = new SocketClient(Port, controllerIP.Text);
             // Receiving data
             string xml_receive = socket_client.Connect(xml_send, true);
-
 
             XmlDocument tempdoc = new XmlDocument();
             tempdoc.LoadXml(xml_receive);
@@ -202,11 +186,6 @@ namespace GUI
             }
         }
 
-        private void textBoxSensorFetchUpdateInterval_TextChanged(object sender, EventArgs e)
-        {
-            timerSensorFetch.Interval = Convert.ToInt32(textBoxSensorFetchUpdateInterval.Text);
-        }
-
         private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
             toolTipActive.ToolTipTitle = "Invalid input";
@@ -223,6 +202,26 @@ namespace GUI
             }
         }
 
-        #endregion
+        private void textBoxSensorFetchUpdateInterval_TextChanged(object sender, EventArgs e)
+        {
+            timerSensorFetch.Interval = Convert.ToInt32(textBoxSensorFetchUpdateInterval.Text);
+        }
+
+        /// <summary>
+        /// Event for the discovery protocol
+        /// Discovery protocol sends a WSN action Request to the controller, which forwards it to the WSN parser.
+        /// The WSN parser disseminates a status request to each node, the nodes that reply are given as the active nodes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timerSensorFetch_Tick(object sender, EventArgs e)
+        {
+            if (radioButtonDiscovery.Checked)
+                Discovery();
+            else if (radioButtonSensorTimeOut.Checked)
+                SensorsTimeOut();
+        }
+
+        #endregion Methods
     }
 }

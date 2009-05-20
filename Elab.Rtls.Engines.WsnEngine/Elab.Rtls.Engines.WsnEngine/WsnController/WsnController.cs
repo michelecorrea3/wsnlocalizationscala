@@ -1,40 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
-using System.Xml;
-using System.IO;
-using System.Net.Sockets;
-using System.Data;
-using System.ComponentModel;
-using System.ServiceModel;
-using System.Diagnostics;
-using System.Xml.Linq;
-
-using SocketConnection;
-using DatabaseConnection;
-using Elab.Rtls.Engines.WsnEngine.Positioning;
-
-using Elab.Toolkit.Core.Xml;
-using Scala.Core;
-
-namespace Elab.Rtls.Engines.WsnEngine
+﻿namespace Elab.Rtls.Engines.WsnEngine
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Net.Sockets;
+    using System.ServiceModel;
+    using System.Text;
+    using System.Threading;
+    using System.Xml;
+    using System.Xml.Linq;
+
+    using DatabaseConnection;
+
+    using Elab.Rtls.Engines.WsnEngine.Positioning;
+    using Elab.Toolkit.Core.Xml;
+
+    using Scala.Core;
+
+    using SocketConnection;
+
     /// <summary>
     /// The Senseless Controller
     /// </summary>
     public class Controller
     {
-        #region private variables
+        #region Fields
+
+        private List<Node> AnchorNodes = new List<Node>();
+
         /// <summary>
         /// Array that has all the backgroundworkers in it (=SocketServers)
         /// </summary>
         private Array BackGroundWorkers;
 
         /// <summary>
-        /// The dataset with the information that is read from the config.txt file
+        /// List with all the node that should be positioned
         /// </summary>
-        private DataSet Options = new DataSet();
+        private List<Node> BlindNodes = new List<Node>();
 
         /// <summary>
         /// MySQL-linker
@@ -42,18 +47,55 @@ namespace Elab.Rtls.Engines.WsnEngine
         private MySQLClass MySQLConn;
 
         /// <summary>
+        /// The dataset with the information that is read from the config.txt file
+        /// </summary>
+        private DataSet Options = new DataSet();
+
+        /// <summary>
         /// BN's WsnId
         /// </summary>
         private string currentID;
 
+        #endregion Fields
+
+        #region Constructors
+
         /// <summary>
-        /// List with all the node that should be positioned
+        /// Constructor for the control panel (SocketServerPanel-class)
         /// </summary>
-        private List<Node> BlindNodes = new List<Node>();
+        public Controller()
+        {
+            Console.WriteLine("Preparing SocketServerApp for use...");
+            Console.WriteLine("loading config...");
+            LoadOptions();  //Load the config-file
+            Console.WriteLine("config loaded");
 
-        private List<Node> AnchorNodes = new List<Node>();
+            //if (File.Exists("DBFaults.txt"))
+            //    File.Delete("DBFaults.txt");
+            this.SelectedAlgorithm = "CentroidLocalization";
+            this.SelectedFilter = "Average";
 
-        #endregion private variables
+            this.UseCalibration = false;
+            this.UseMultihop = false;
+
+            StartWsnEngine();
+        }
+
+        #endregion Constructors
+
+        #region Events
+
+        public event EventHandler<EventMessage> ButtonPressed;
+
+        public event EventHandler<EventMessage> HumidityChanged;
+
+        public event EventHandler<EventMessage> LightChanged;
+
+        public event EventHandler<EventMessage> LocationUpdated;
+
+        public event EventHandler<EventMessage> TemperatureChanged;
+
+        #endregion Events
 
         #region Properties
 
@@ -83,144 +125,177 @@ namespace Elab.Rtls.Engines.WsnEngine
             get; set;
         }
 
-        #endregion
+        #endregion Properties
 
-        #region Event variables
-
-        public event EventHandler<EventMessage> LocationUpdated;
-        public event EventHandler<EventMessage> TemperatureChanged;
-        public event EventHandler<EventMessage> HumidityChanged;
-        public event EventHandler<EventMessage> LightChanged;
-        public event EventHandler<EventMessage> ButtonPressed;
-
-        #endregion
+        #region Methods
 
         /// <summary>
-        /// Constructor for the control panel (SocketServerPanel-class)
+        /// The function that is called to process incoming connections.
+        /// It will decide which type of message it is and act accordingly.
         /// </summary>
-        public Controller()
+        /// <param name="state">The socket with the incoming message.</param>
+        public void HandleRequestSocket(object state)
         {
-            Console.WriteLine("Preparing SocketServerApp for use...");
-            Console.WriteLine("loading config...");
-            LoadOptions();  //Load the config-file
-            Console.WriteLine("config loaded");
-
-            //if (File.Exists("DBFaults.txt"))
-            //    File.Delete("DBFaults.txt");
-            this.SelectedAlgorithm = "CentroidLocalization";
-            this.SelectedFilter = "Average";
-
-            this.UseCalibration = false;
-            this.UseMultihop = false;
-
-            StartWsnEngine();
-        }
-
-        /// <summary>
-        /// Read the config.txt in the base-directory of the executable and prepare the database-linkers.
-        /// Peter: Loads the database info 
-        /// </summary>
-        private void LoadOptions()
-        {
-            try
+            using (Socket client = (Socket)state)   //Get the socket-instance that we have to process
+            using (NetworkStream stream = new NetworkStream(client)) //Create the network-stream so we can communicate
+            using (StreamReader reader = new StreamReader(stream))  //Create a reader for the stream
+            using (StreamWriter writer = new StreamWriter(stream))  //Create a writer for the stream
             {
-                Options.ReadXml("config.txt"); //Read the options
-                //Try to set up the MySQL-database linker
-                MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
+                DataSet IncMsg = new DataSet(); //DataSet to store incoming msg
+                DataSet OutMsg = new DataSet(); //DataSet to store outgoing msg
+                DataSet TempSet = new DataSet();
+
+                //Get ready to read the incoming xml-msg
+                string incxml = "";
+                try
+                {
+                    incxml = reader.ReadLine(); //Read the incoming data
+
+                    IncMsg = StringToDataSet(incxml);
+
+                    #region incoming
+                    do
+                    {
+
+                        //Check which type of incoming msg we have (if it is not in the list; we discard it)
+                        if (IncMsg.DataSetName == "SensorMeasurements" || IncMsg.DataSetName == "LocationMessage" || IncMsg.DataSetName == "StatusMessage")
+                        {   //SensorMeasurement
+                            Console.WriteLine("Received WSN message: " + IncMsg.DataSetName);
+                            AddSensorMeasurements(IncMsg);
+                            break;
+                        }
+                        else if (IncMsg.DataSetName == "Requests")
+                        {   //Requests
+                            Console.WriteLine("Received DB request");
+                            OutMsg = RequestsProcess(IncMsg);
+                            break;
+                        }
+                        else if (IncMsg.DataSetName == "WSNReq")
+                        {
+                            Console.WriteLine("Received WSN REQUEST");
+                            OutMsg = WSNActionReqProcess(IncMsg);
+                            Console.WriteLine("Received WSN REPLY");
+                            break;
+                        }
+                    }
+                    while (false);
+                    #endregion
+
+                    #region outgoing
+                    //Answer
+                    if (IncMsg.DataSetName == "SensorMeasurements" || IncMsg.DataSetName == "LocationMessage" || IncMsg.DataSetName == "StatusMessage")
+                    {
+                        //No reply needed
+                    }
+                    else
+                    {   //Reply needed
+                        if (OutMsg.Tables.Count >= 1)
+                        {   //Only send a reply if we actually got a correct Msg to send
+                            //(in other words, when the query actually succeeded)
+                            if ((OutMsg.Tables[0].Rows.Count <= 0))
+                            {   //We got a result back, but just nothing in it...
+                                OutMsg = CreateReplyInt(0);
+                            }
+                            MemoryStream OutMemStream = new MemoryStream();
+
+                            if (OutMsg.DataSetName == "Replies")
+                            {
+                                int intreply;
+                                if (int.TryParse(OutMsg.Tables["Reply"].Rows[0]["INT"].ToString(), out intreply))
+                                {
+                                    if (intreply == -404)
+                                        writer.WriteLine("404");
+                                    else
+                                    {
+                                        OutMsg.WriteXml(OutMemStream);
+                                        OutMemStream.Position = 0;
+                                        StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
+                                        writer.WriteLine(OutMemStreamReader.ReadToEnd());
+                                        writer.Flush();
+                                    }
+                                }
+                            }
+                            //else if (OutMsg.DataSetName == "DiscoveryReply")
+                            //{
+                            //    //in: list with all the WSN id's
+                            //    //proces: sets all other nodes to inactive
+                            //    //out: list with all the WSN id's and
+                            //    OutMsg = Discovery(OutMsg);
+
+                            //    OutMsg.WriteXml(OutMemStream);
+                            //    OutMemStream.Position = 0;
+                            //    StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
+                            //    writer.WriteLine(OutMemStreamReader.ReadToEnd());
+                            //    writer.Flush();
+                            //}
+                            else if (OutMsg.DataSetName == "WSNReply")
+                            {
+                                //needed so that AddSensorMeasurements parses the message correct
+                                OutMsg.DataSetName = "StatusMessage";
+                                //store the message in the db
+                                TempSet = AddSensorMeasurements(OutMsg);
+
+                                OutMsg.WriteXml(OutMemStream);
+                                OutMemStream.Position = 0;
+                                StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
+                                writer.WriteLine(OutMemStreamReader.ReadToEnd());
+                                writer.Flush();
+                            }
+                            else
+                            {
+                                OutMsg.WriteXml(OutMemStream);
+                                OutMemStream.Position = 0;
+                                StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
+                                writer.WriteLine(OutMemStreamReader.ReadToEnd());
+                                writer.Flush();
+                            }
+                        }
+                        else
+                        {   //Query didn't succeed - send back an 'error'
+                            DataSet Error = CreateReplyInt(0);
+                            MemoryStream OutMemStream = new MemoryStream();
+                            Error.WriteXml(OutMemStream);
+                            OutMemStream.Position = 0;
+                            StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
+                            writer.WriteLine(OutMemStreamReader.ReadToEnd());
+                            writer.Flush();
+                        }
+                    }
+
+                }
+                    #endregion
+
+                catch (XmlException xmlex)
+                {
+                    Console.WriteLine(xmlex.Message);
+                    Console.WriteLine(xmlex.StackTrace);
+                    Console.WriteLine("Received an incorrect XML message\n");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("\n" + e.Message);
+                    Console.WriteLine(e.StackTrace + "\n");
+
+                    //This is stupid, delete?
+                    //Fatal error - send back a message to indicate a problem
+                    //DataSet Error = CreateReplyInt(0);
+                    //MemoryStream OutMemStream = new MemoryStream();
+                    //Error.WriteXml(OutMemStream);
+                    //OutMemStream.Position = 0;
+                    //StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
+
+                    //try
+                    //{
+                    //    writer.WriteLine(OutMemStreamReader.ReadToEnd());
+                    //    writer.Flush();
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    Console.WriteLine("Could not even send back an error message");
+                    //}
+
+                }
             }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("Could not connect to the db or load the config");
-            }
-        }
-
-        /// <summary>
-        /// Starts the threads for the socket listeners
-        /// This will use the information stored in the config and read it at program-startup to decide on which ports the GUI and WSN servers have to listen.
-        /// </summary>
-        private void StartWsnEngine()
-        {
-            Console.WriteLine("Setting up SocketServers...");
-            BackGroundWorkers = Array.CreateInstance(typeof(BackgroundWorker), Options.Tables["SocketServer"].Rows.Count);
-
-            BackgroundWorker SocketServerListenerWSN = new BackgroundWorker();
-            SocketServerListenerWSN.DoWork += new DoWorkEventHandler(SocketServerListenerWSN_DoWork);
-            Console.WriteLine("\tSocketServer for WSN set up");
-
-            BackgroundWorker SocketServerListenerGUI = new BackgroundWorker();
-            SocketServerListenerGUI.DoWork += new DoWorkEventHandler(SocketServerListenerGUI_DoWork);
-            Console.WriteLine("\tSocketServer for GUI set up");
-
-            Console.WriteLine("Starting SocketServers...");
-
-            Console.WriteLine("\tStarting up SocketServer for WSN...");
-            SocketServerListenerWSN.RunWorkerAsync(int.Parse(Options.Tables["SocketServer"].Select("[Use] = 'WSN'")[0]["Port"].ToString()));
-            Console.WriteLine("\tSocketServer for WSN started");
-
-            Console.WriteLine("\tStarting up SocketServer for GUI...");
-            SocketServerListenerGUI.RunWorkerAsync(int.Parse(Options.Tables["SocketServer"].Select("[Use] = 'GUI'")[0]["Port"].ToString()));
-            Console.WriteLine("\tSocketServer for GUI started");
-
-            //Timer dummyTimer = new Timer(new TimerCallback(TimerTick));
-            //dummyTimer.Change(5000, 2500);
-        }
-
-        //private void TimerTick(object state)
-        //{
-        //    if (ButtonPressed != null)
-        //    {
-        //        EventMessage EventData = new EventMessage();
-        //        //EventData.EventType = "ButtonPressed";
-
-        //        EventData.TagBlink["TagID"] = "9";
-        //        EventData.TagBlink["Button"] = "1";
-
-        //        ButtonPressed(this, EventData);
-        //        Console.WriteLine("ButtonPressed event sent!");
-        //    }
-        //    Console.WriteLine("Timer fired");
-        //}
-
-        /// <summary>
-        /// This function corresponds to the socketserver for the GUI-side/port.
-        /// </summary>
-        /// <param name="sender">The 'thing' doing the actually calling of this function, the backgroundworker.</param>
-        /// <param name="e">Argument that was passed to this function when we called the function.</param>
-        private void SocketServerListenerWSN_DoWork(object sender, DoWorkEventArgs e)
-        {
-            SocketServer SServer = new SocketServer(int.Parse(e.Argument.ToString()), 100); //Set up a SocketServer on the given port.
-            Console.WriteLine("\t\tListening on port {0} for WSN", e.Argument.ToString());
-            SServer.Listen(HandleRequestSocket);    //Start listening for incoming messages
-        }
-
-        /// <summary>
-        /// This function corresponds to the socketserver for the GUI-side/port.
-        /// </summary>
-        /// <param name="sender">The 'thing' doing the actually calling of this function, the backgroundworker.</param>
-        /// <param name="e">Argument that was passed to this function when we called the function.</param>
-        private void SocketServerListenerGUI_DoWork(object sender, DoWorkEventArgs e)
-        {
-            SocketServer SServer = new SocketServer(int.Parse(e.Argument.ToString()), 100); //Set up a SocketServer on the given port.
-            Console.WriteLine("\t\tListening on port {0} for GUI", e.Argument.ToString());
-            SServer.Listen(HandleRequestSocket);    //Start listening for incoming messages
-        }
-
-        /// <summary>
-        /// Function that allows to easily create a reply-message with the given int as content.
-        /// </summary>
-        /// <param name="data">The that has to put into the reply</param>
-        /// <returns>The dataset with the correct sturcture for the reply</returns>
-        private DataSet CreateReplyInt(int data)
-        {
-            //This function will create a dataset according to the reply (int)-schema.
-            DataSet Set = new DataSet("Replies");
-            Set.Tables.Add("Reply");
-            Set.Tables[0].Columns.Add("INT");
-
-            DataRow newRow = Set.Tables[0].NewRow();
-            newRow[0] = data;
-            Set.Tables[0].Rows.Add(newRow);
-            return Set;
         }
 
         /// <summary>
@@ -281,7 +356,6 @@ namespace Elab.Rtls.Engines.WsnEngine
 
                 #endregion
 
-
                 if (Set.DataSetName == "SensorMeasurements")
                     cmd = ParseSensor(row, nodeId);
                 else if (Set.DataSetName == "LocationMessage")
@@ -297,128 +371,58 @@ namespace Elab.Rtls.Engines.WsnEngine
                 else if (Set.DataSetName == "StatusMessage")
                     cmd = ParseStatus(row);
 
-
                 returnSet = MySQLConn.Query(cmd);
             }
             return returnSet;
         }
 
-        private string ParseBlind(DataRow row, string nodeId)
+        /// <summary>
+        /// Function that allows to easily create a reply-message with the given int as content.
+        /// </summary>
+        /// <param name="data">The that has to put into the reply</param>
+        /// <returns>The dataset with the correct sturcture for the reply</returns>
+        private DataSet CreateReplyInt(int data)
         {
-            string cmd;
-            int tempint;
-           
-                int TimeSecs;
-                if (int.TryParse(row["Time"].ToString(), out TimeSecs))
-                    row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);
-                        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
+            //This function will create a dataset according to the reply (int)-schema.
+            DataSet Set = new DataSet("Replies");
+            Set.Tables.Add("Reply");
+            Set.Tables[0].Columns.Add("INT");
 
-                currentID = row["ID"].ToString();
-                Positioning.Point pos = new Positioning.Point(0, 0);
-                Node CurrentNode;
+            DataRow newRow = Set.Tables[0].NewRow();
+            newRow[0] = data;
+            Set.Tables[0].Rows.Add(newRow);
+            return Set;
+        }
 
-                    if (!BlindNodes.Exists(ExistsNode))
-                    {
-                        BlindNodes.Add(new Node(row["ID"].ToString(), MySQLConn, row["ANode"].ToString(),
-                                                Convert.ToDouble(row["RSSI"]), Convert.ToInt32(row["VANs"])));
-                        Console.WriteLine("Added new BN to be positioned\n\n\n");
-                        CurrentNode = BlindNodes.Find(ExistsNode);
-                    }
-                    else
-                    {
-                        CurrentNode = BlindNodes.Find(ExistsNode);
-                        CurrentNode.AddAnchor(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]));
-                    }
+        /// <summary>
+        /// Checks if the node is in the list
+        /// </summary>
+        /// <param name="alg"></param>
+        /// <returns></returns>
+        private bool ExistsNode(Node BlindNode)
+        {
+            if (BlindNode.WsnIdProperty == currentID)
+                return true;
+            else
+                return false;
+        }
 
-                    //TODO: switch on the bulletlist or whatever you use to select the algorithm
-                    Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
-                    Node.RangingMethod myRanging;
-        
-                    CurrentNode.UpdateAnchorPositions();
-                    
-                    if (UseCalibration)
-                        myRanging = new Node.RangingMethod(RangeBasedPositioning.Ranging);
-                    else
-                        myRanging = new Node.RangingMethod(RangeBasedPositioning.DefaultRanging);
-                    
-
-                    switch (SelectedFilter)
-                    {
-                        case "Median":
-                            myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
-                            break;
-                        case "Average":
-                            myFilter = new Node.FilterMethod(RangeBasedPositioning.AverageFilter);
-                            break;
-                    }
-
-                    switch (SelectedAlgorithm)
-                    {
-                        case "CentroidLocalization":
-                            pos = CentroidLocalization.CalculatePosition(CurrentNode);
-                            break;
-                        case "MinMax":
-                            pos = MinMax.CalculatePosition(CurrentNode, myFilter, UseMultihop);
-                            break;
-                        case "Trilateration":
-                            pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, UseMultihop);
-                            break;
-                        case "ExtendedTrilateration":
-                            pos = ExtendedTrilateration.CalculatePosition(CurrentNode, myFilter, UseMultihop);
-                            break;
-                        case "ExtendedMinMax":
-                            pos = MinMaxExtended.CalculatePosition(CurrentNode, myFilter, UseMultihop);
-                            break;
-                    }
-                    
-                    Console.WriteLine("Position was calculated for node: " + row["ID"] + " X = " + pos.x.ToString() + " Y = " + pos.y.ToString());
-
-                    //Create the command that we send to the database to insert the new row.
-                    cmd = "call addLocalizationData(" +
-                  ((int.TryParse(row["RSSI"].ToString(), out tempint)) ? row["RSSI"] : "null") + ",";
-
-                          if (pos != null)
-                              cmd += pos.x.ToString() + ", " + pos.y.ToString() + ", ";
-                          else
-                              cmd += "null, null, ";
-
-
-                          cmd += ((int.TryParse(row["Z"].ToString(), out tempint)) ? row["Z"] : "null") + "," +
-                          row["ID"] + ",'" +
-                          row["Time"] + "'," +
-                          ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
-                          "Centroid Localization" + "');";
-
-                    //add the position to the position table
-                     string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '" 
-                         + row["Time"].ToString() + "', " + "0, ";
-
-                     if (pos != null)
-                         AddPosition += pos.x.ToString() + ", " + pos.y.ToString() + ")";
-                     else
-                         AddPosition += "null, null, ";
-
-                    MySQLConn.Query(AddPosition);
-
-                    #region LocationUpdated
-
-                    if (LocationUpdated != null && pos != null)
-                    {
-                        EventMessage EventData = new EventMessage();
-                        //EventData.EventType = "LocationUpdated";
-
-                        EventData.TagBlink["TagID"] = nodeId;
-                        EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "1");
-                        EventData.TagBlink["MapID"] = "WsnEngine1map1";
-                        EventData.TagBlink["X"] = pos.x.ToString();
-                        EventData.TagBlink["Y"] = pos.y.ToString();
-
-                        LocationUpdated(this, EventData);
-                    }
-
-                    #endregion
-                
-                return cmd;
+        /// <summary>
+        /// Read the config.txt in the base-directory of the executable and prepare the database-linkers.
+        /// Peter: Loads the database info 
+        /// </summary>
+        private void LoadOptions()
+        {
+            try
+            {
+                Options.ReadXml("config.txt"); //Read the options
+                //Try to set up the MySQL-database linker
+                MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Could not connect to the db or load the config");
+            }
         }
 
         private void ParseAnchor(DataRow row)
@@ -453,6 +457,122 @@ namespace Elab.Rtls.Engines.WsnEngine
                         break;
                 }
             }
+        }
+
+        private string ParseBlind(DataRow row, string nodeId)
+        {
+            string cmd;
+            int tempint;
+
+                int TimeSecs;
+                if (int.TryParse(row["Time"].ToString(), out TimeSecs))
+                    row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);
+                        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
+
+                currentID = row["ID"].ToString();
+                Positioning.Point pos = new Positioning.Point(0, 0);
+                Node CurrentNode;
+
+                    if (!BlindNodes.Exists(ExistsNode))
+                    {
+                        BlindNodes.Add(new Node(row["ID"].ToString(), MySQLConn, row["ANode"].ToString(),
+                                                Convert.ToDouble(row["RSSI"]), Convert.ToInt32(row["VANs"])));
+                        Console.WriteLine("Added new BN to be positioned\n\n\n");
+                        CurrentNode = BlindNodes.Find(ExistsNode);
+                    }
+                    else
+                    {
+                        CurrentNode = BlindNodes.Find(ExistsNode);
+                        CurrentNode.AddAnchor(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]));
+                    }
+
+                    //TODO: switch on the bulletlist or whatever you use to select the algorithm
+                    Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
+                    Node.RangingMethod myRanging;
+
+                    CurrentNode.UpdateAnchorPositions();
+
+                    if (UseCalibration)
+                        myRanging = new Node.RangingMethod(RangeBasedPositioning.Ranging);
+                    else
+                        myRanging = new Node.RangingMethod(RangeBasedPositioning.DefaultRanging);
+
+                    switch (SelectedFilter)
+                    {
+                        case "Median":
+                            myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
+                            break;
+                        case "Average":
+                            myFilter = new Node.FilterMethod(RangeBasedPositioning.AverageFilter);
+                            break;
+                    }
+
+                    switch (SelectedAlgorithm)
+                    {
+                        case "CentroidLocalization":
+                            pos = CentroidLocalization.CalculatePosition(CurrentNode);
+                            break;
+                        case "MinMax":
+                            pos = MinMax.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            break;
+                        case "Trilateration":
+                            pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            break;
+                        case "ExtendedTrilateration":
+                            pos = ExtendedTrilateration.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            break;
+                        case "ExtendedMinMax":
+                            pos = MinMaxExtended.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            break;
+                    }
+
+                    Console.WriteLine("Position was calculated for node: " + row["ID"] + " X = " + pos.x.ToString() + " Y = " + pos.y.ToString());
+
+                    //Create the command that we send to the database to insert the new row.
+                    cmd = "call addLocalizationData(" +
+                  ((int.TryParse(row["RSSI"].ToString(), out tempint)) ? row["RSSI"] : "null") + ",";
+
+                          if (pos != null)
+                              cmd += pos.x.ToString() + ", " + pos.y.ToString() + ", ";
+                          else
+                              cmd += "null, null, ";
+
+                          cmd += ((int.TryParse(row["Z"].ToString(), out tempint)) ? row["Z"] : "null") + "," +
+                          row["ID"] + ",'" +
+                          row["Time"] + "'," +
+                          ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
+                          "Centroid Localization" + "');";
+
+                    //add the position to the position table
+                     string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
+                         + row["Time"].ToString() + "', " + "0, ";
+
+                     if (pos != null)
+                         AddPosition += pos.x.ToString() + ", " + pos.y.ToString() + ")";
+                     else
+                         AddPosition += "null, null, ";
+
+                    MySQLConn.Query(AddPosition);
+
+                    #region LocationUpdated
+
+                    if (LocationUpdated != null && pos != null)
+                    {
+                        EventMessage EventData = new EventMessage();
+                        //EventData.EventType = "LocationUpdated";
+
+                        EventData.TagBlink["TagID"] = nodeId;
+                        EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "1");
+                        EventData.TagBlink["MapID"] = "WsnEngine1map1";
+                        EventData.TagBlink["X"] = pos.x.ToString();
+                        EventData.TagBlink["Y"] = pos.y.ToString();
+
+                        LocationUpdated(this, EventData);
+                    }
+
+                    #endregion
+
+                return cmd;
         }
 
         private string ParseSensor(DataRow row, string nodeId)
@@ -569,19 +689,6 @@ namespace Elab.Rtls.Engines.WsnEngine
         }
 
         /// <summary>
-        /// Checks if the node is in the list
-        /// </summary>
-        /// <param name="alg"></param>
-        /// <returns></returns>
-        private bool ExistsNode(Node BlindNode)
-        {
-            if (BlindNode.WsnIdProperty == currentID)
-                return true;
-            else
-                return false;
-        }
-
-        /// <summary>
         /// Sub-function that is called when we detect that we have a request-xml-message.
         /// </summary>
         /// <param name="Set">The incoming message as a dataset (= tables)</param>
@@ -617,7 +724,6 @@ namespace Elab.Rtls.Engines.WsnEngine
             }
             cmd += ");";
 
-
             if (ReqName == "gethistorytime")    //in case we have gethistorytime, we should check if we have an endtime-argument in the request.
             {   //check if the timestamp (end) is an actual value or just null
                 try
@@ -634,7 +740,6 @@ namespace Elab.Rtls.Engines.WsnEngine
                     Logger.LogException(e);
                 }
             }
-
 
             //try
             {
@@ -787,6 +892,90 @@ namespace Elab.Rtls.Engines.WsnEngine
         }
 
         /// <summary>
+        /// This function corresponds to the socketserver for the GUI-side/port.
+        /// </summary>
+        /// <param name="sender">The 'thing' doing the actually calling of this function, the backgroundworker.</param>
+        /// <param name="e">Argument that was passed to this function when we called the function.</param>
+        private void SocketServerListenerGUI_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SocketServer SServer = new SocketServer(int.Parse(e.Argument.ToString()), 100); //Set up a SocketServer on the given port.
+            Console.WriteLine("\t\tListening on port {0} for GUI", e.Argument.ToString());
+            SServer.Listen(HandleRequestSocket);    //Start listening for incoming messages
+        }
+
+        //private void TimerTick(object state)
+        //{
+        //    if (ButtonPressed != null)
+        //    {
+        //        EventMessage EventData = new EventMessage();
+        //        //EventData.EventType = "ButtonPressed";
+        //        EventData.TagBlink["TagID"] = "9";
+        //        EventData.TagBlink["Button"] = "1";
+        //        ButtonPressed(this, EventData);
+        //        Console.WriteLine("ButtonPressed event sent!");
+        //    }
+        //    Console.WriteLine("Timer fired");
+        //}
+        /// <summary>
+        /// This function corresponds to the socketserver for the GUI-side/port.
+        /// </summary>
+        /// <param name="sender">The 'thing' doing the actually calling of this function, the backgroundworker.</param>
+        /// <param name="e">Argument that was passed to this function when we called the function.</param>
+        private void SocketServerListenerWSN_DoWork(object sender, DoWorkEventArgs e)
+        {
+            SocketServer SServer = new SocketServer(int.Parse(e.Argument.ToString()), 100); //Set up a SocketServer on the given port.
+            Console.WriteLine("\t\tListening on port {0} for WSN", e.Argument.ToString());
+            SServer.Listen(HandleRequestSocket);    //Start listening for incoming messages
+        }
+
+        /// <summary>
+        /// Starts the threads for the socket listeners
+        /// This will use the information stored in the config and read it at program-startup to decide on which ports the GUI and WSN servers have to listen.
+        /// </summary>
+        private void StartWsnEngine()
+        {
+            Console.WriteLine("Setting up SocketServers...");
+            BackGroundWorkers = Array.CreateInstance(typeof(BackgroundWorker), Options.Tables["SocketServer"].Rows.Count);
+
+            BackgroundWorker SocketServerListenerWSN = new BackgroundWorker();
+            SocketServerListenerWSN.DoWork += new DoWorkEventHandler(SocketServerListenerWSN_DoWork);
+            Console.WriteLine("\tSocketServer for WSN set up");
+
+            BackgroundWorker SocketServerListenerGUI = new BackgroundWorker();
+            SocketServerListenerGUI.DoWork += new DoWorkEventHandler(SocketServerListenerGUI_DoWork);
+            Console.WriteLine("\tSocketServer for GUI set up");
+
+            Console.WriteLine("Starting SocketServers...");
+
+            Console.WriteLine("\tStarting up SocketServer for WSN...");
+            SocketServerListenerWSN.RunWorkerAsync(int.Parse(Options.Tables["SocketServer"].Select("[Use] = 'WSN'")[0]["Port"].ToString()));
+            Console.WriteLine("\tSocketServer for WSN started");
+
+            Console.WriteLine("\tStarting up SocketServer for GUI...");
+            SocketServerListenerGUI.RunWorkerAsync(int.Parse(Options.Tables["SocketServer"].Select("[Use] = 'GUI'")[0]["Port"].ToString()));
+            Console.WriteLine("\tSocketServer for GUI started");
+
+            //Timer dummyTimer = new Timer(new TimerCallback(TimerTick));
+            //dummyTimer.Change(5000, 2500);
+        }
+
+        private DataSet StringToDataSet(string incxml)
+        {
+            DataSet IncMsg = new DataSet();
+            //Set up a memory-stream to store the xml
+            MemoryStream MemStream = new MemoryStream();
+            //Write the msg to the memory stream
+            StreamWriter SWriter = new StreamWriter(MemStream);
+            SWriter.WriteLine(incxml);
+            SWriter.Flush();
+            MemStream.Position = 0; //Reset the position so we start reading at the start
+
+            IncMsg.ReadXml(MemStream);  //Read the data into the dataset
+
+            return IncMsg;
+        }
+
+        /// <summary>
         /// Sub-function that is called when we detect an incoming message that ask for an action from a WSN (e.g. get LEDs to light up,...)
         /// </summary>
         /// <param name="WSNActionSet">The XML-message in a dataset</param>
@@ -866,8 +1055,6 @@ namespace Elab.Rtls.Engines.WsnEngine
                 }
                 #endregion
 
-
-
                 MemoryStream OutMemStream = new MemoryStream();
                 WSNActionSet.WriteXml(OutMemStream);
                 OutMemStream.Position = 0;
@@ -914,190 +1101,9 @@ namespace Elab.Rtls.Engines.WsnEngine
             return WSNActionWSNSet;
         }
 
-        /// <summary>
-        /// The function that is called to process incoming connections.
-        /// It will decide which type of message it is and act accordingly.
-        /// </summary>
-        /// <param name="state">The socket with the incoming message.</param>
-        public void HandleRequestSocket(object state)
-        {
-            using (Socket client = (Socket)state)   //Get the socket-instance that we have to process
-            using (NetworkStream stream = new NetworkStream(client)) //Create the network-stream so we can communicate
-            using (StreamReader reader = new StreamReader(stream))  //Create a reader for the stream
-            using (StreamWriter writer = new StreamWriter(stream))  //Create a writer for the stream
-            {
-                DataSet IncMsg = new DataSet(); //DataSet to store incoming msg
-                DataSet OutMsg = new DataSet(); //DataSet to store outgoing msg
-                DataSet TempSet = new DataSet();
+        #endregion Methods
 
-                //Get ready to read the incoming xml-msg
-                string incxml = "";
-                try
-                {
-                    incxml = reader.ReadLine(); //Read the incoming data
-
-                    IncMsg = StringToDataSet(incxml);
-
-                    #region incoming
-                    do
-                    {
-
-                        //Check which type of incoming msg we have (if it is not in the list; we discard it)
-                        if (IncMsg.DataSetName == "SensorMeasurements" || IncMsg.DataSetName == "LocationMessage" || IncMsg.DataSetName == "StatusMessage")
-                        {   //SensorMeasurement
-                            Console.WriteLine("Received WSN message: " + IncMsg.DataSetName);
-                            AddSensorMeasurements(IncMsg);
-                            break;
-                        }
-                        else if (IncMsg.DataSetName == "Requests")
-                        {   //Requests
-                            Console.WriteLine("Received DB request");
-                            OutMsg = RequestsProcess(IncMsg);                            
-                            break;
-                        }
-                        else if (IncMsg.DataSetName == "WSNReq")
-                        {   
-                            Console.WriteLine("Received WSN REQUEST");
-                            OutMsg = WSNActionReqProcess(IncMsg);
-                            Console.WriteLine("Received WSN REPLY");
-                            break;
-                        }
-                    }
-                    while (false);
-                    #endregion
-
-                    #region outgoing
-                    //Answer
-                    if (IncMsg.DataSetName == "SensorMeasurements" || IncMsg.DataSetName == "LocationMessage" || IncMsg.DataSetName == "StatusMessage")
-                    {
-                        //No reply needed
-                    }
-                    else
-                    {   //Reply needed
-                        if (OutMsg.Tables.Count >= 1)
-                        {   //Only send a reply if we actually got a correct Msg to send
-                            //(in other words, when the query actually succeeded)
-                            if ((OutMsg.Tables[0].Rows.Count <= 0))
-                            {   //We got a result back, but just nothing in it...
-                                OutMsg = CreateReplyInt(0);
-                            }
-                            MemoryStream OutMemStream = new MemoryStream();
-
-                            if (OutMsg.DataSetName == "Replies")
-                            {
-                                int intreply;
-                                if (int.TryParse(OutMsg.Tables["Reply"].Rows[0]["INT"].ToString(), out intreply))
-                                {
-                                    if (intreply == -404)
-                                        writer.WriteLine("404");
-                                    else
-                                    {
-                                        OutMsg.WriteXml(OutMemStream);
-                                        OutMemStream.Position = 0;
-                                        StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
-                                        writer.WriteLine(OutMemStreamReader.ReadToEnd());
-                                        writer.Flush();
-                                    }
-                                }
-                            }
-                            //else if (OutMsg.DataSetName == "DiscoveryReply")
-                            //{
-                            //    //in: list with all the WSN id's
-                            //    //proces: sets all other nodes to inactive
-                            //    //out: list with all the WSN id's and 
-                            //    OutMsg = Discovery(OutMsg);
-
-                            //    OutMsg.WriteXml(OutMemStream);
-                            //    OutMemStream.Position = 0;
-                            //    StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
-                            //    writer.WriteLine(OutMemStreamReader.ReadToEnd());
-                            //    writer.Flush();
-                            //}
-                            else if (OutMsg.DataSetName == "WSNReply")
-                            {
-                                //needed so that AddSensorMeasurements parses the message correct
-                                OutMsg.DataSetName = "StatusMessage";
-                                //store the message in the db
-                                TempSet = AddSensorMeasurements(OutMsg);
-
-                                OutMsg.WriteXml(OutMemStream);
-                                OutMemStream.Position = 0;
-                                StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
-                                writer.WriteLine(OutMemStreamReader.ReadToEnd());
-                                writer.Flush();
-                            }
-                            else
-                            {
-                                OutMsg.WriteXml(OutMemStream);
-                                OutMemStream.Position = 0;
-                                StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
-                                writer.WriteLine(OutMemStreamReader.ReadToEnd());
-                                writer.Flush();
-                            }
-                        }
-                        else
-                        {   //Query didn't succeed - send back an 'error'
-                            DataSet Error = CreateReplyInt(0);
-                            MemoryStream OutMemStream = new MemoryStream();
-                            Error.WriteXml(OutMemStream);
-                            OutMemStream.Position = 0;
-                            StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
-                            writer.WriteLine(OutMemStreamReader.ReadToEnd());
-                            writer.Flush();
-                        }
-                    }
-
-                }
-                    #endregion
-
-                catch (XmlException xmlex)
-                {
-                    Console.WriteLine(xmlex.Message);
-                    Console.WriteLine(xmlex.StackTrace);
-                    Console.WriteLine("Received an incorrect XML message\n");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("\n" + e.Message);
-                    Console.WriteLine(e.StackTrace + "\n");
-
-                    //This is stupid, delete?
-                    //Fatal error - send back a message to indicate a problem
-                    //DataSet Error = CreateReplyInt(0);
-                    //MemoryStream OutMemStream = new MemoryStream();
-                    //Error.WriteXml(OutMemStream);
-                    //OutMemStream.Position = 0;
-                    //StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
-
-                    //try
-                    //{
-                    //    writer.WriteLine(OutMemStreamReader.ReadToEnd());
-                    //    writer.Flush();
-                    //}
-                    //catch (Exception)
-                    //{
-                    //    Console.WriteLine("Could not even send back an error message");
-                    //}
-                    
-                }
-            }
-        }
-
-        private DataSet StringToDataSet(string incxml)
-        {
-            DataSet IncMsg = new DataSet();
-            //Set up a memory-stream to store the xml
-            MemoryStream MemStream = new MemoryStream();
-            //Write the msg to the memory stream
-            StreamWriter SWriter = new StreamWriter(MemStream);
-            SWriter.WriteLine(incxml);
-            SWriter.Flush();
-            MemStream.Position = 0; //Reset the position so we start reading at the start
-
-            IncMsg.ReadXml(MemStream);  //Read the data into the dataset
-
-            return IncMsg;
-        }
+        #region Other
 
         ///// <summary>
         ///// Processes the discovery reply
@@ -1110,14 +1116,10 @@ namespace Elab.Rtls.Engines.WsnEngine
         //{
         //    DataSet TempSet = new DataSet();
         //    DataSet ReturnSet = new DataSet();
-
-
         //    //here we process the discovery reply
         //    //we set the received node id's to active and the rest to inactive in the DB
-
         //    //SetNodesInactive
         //    string setNodesInactive = "call setAllNodesState(0);";
-
         //    try
         //    {
         //        TempSet = MySQLConn.Query(setNodesInactive);
@@ -1126,7 +1128,6 @@ namespace Elab.Rtls.Engines.WsnEngine
         //    {
         //        Logger.LogException(e_mysql);
         //    }
-
         //    //foreach row.... SetState
         //    foreach (DataRow row in Set.Tables[0].Rows) //Run through every sensor in the xml-message
         //    {
@@ -1143,7 +1144,6 @@ namespace Elab.Rtls.Engines.WsnEngine
         //    //we then send the wsn id and nodeid to the GUI
         //    //GetActiveSensors
         //    string getActiveTelosb = "call getActiveTelosb();";
-
         //    try
         //    {
         //            ReturnSet = MySQLConn.Query(getActiveTelosb);
@@ -1154,5 +1154,7 @@ namespace Elab.Rtls.Engines.WsnEngine
         //    }
         //    return ReturnSet;
         //}
+
+        #endregion Other
     }
 }

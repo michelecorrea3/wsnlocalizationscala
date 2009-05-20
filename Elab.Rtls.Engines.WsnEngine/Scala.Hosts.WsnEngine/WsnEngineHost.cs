@@ -1,18 +1,16 @@
-using System;
-using System.ServiceModel;
-
-using Elab.Rtls.Engines.WsnEngine;
-
 namespace Elab.Rtls.Engines.WsnEngine.Hosts
 {
+    using System;
+    using System.ServiceModel;
+
+    using Elab.Rtls.Engines.WsnEngine;
+
     /// <summary>
     /// 
     /// </summary>
     public class Host
     {
-        
-
-        #region Methods
+        #region Constructors
 
         ///// <summary>
         ///// Constructor
@@ -24,19 +22,14 @@ namespace Elab.Rtls.Engines.WsnEngine.Hosts
         //    //start the WsnController
         //    //Controller WsnController = new Controller();
         //    //WsnEngine.Advise(WsnController);
-
         //    //start the WCF Engine
         //    using (ServiceHost host = HostService(typeof(Elab.Rtls.Engines.WsnEngine.WsnEngineService)))
         //    {
         //        Console.WriteLine("Press <ENTER> to quit hosting. . . ");
         //        Console.ReadLine();
         //    }
-
         //    //TODO: dispose of WsnController?
         //}
-
-
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -56,6 +49,9 @@ namespace Elab.Rtls.Engines.WsnEngine.Hosts
             //TODO: dispose of WsnController?
         }
 
+        #endregion Constructors
+
+        #region Methods
 
         /// <summary>
         /// Hosts a service given by its type
@@ -69,7 +65,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Hosts
             {
                 Console.Write("Hosting WsnEngineService. . .");
                 host = new ServiceHost(serviceType);
-                
+
                 host.Open();
                 Console.WriteLine(" Ok.");
             }

@@ -1,24 +1,63 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SqlClient;
-using System.Data.Odbc;
-using System.Data;
-
-using IBM.Data.DB2;
-using Elab.Rtls.Engines.WsnEngine;
-
-namespace DatabaseConnection
+﻿namespace DatabaseConnection
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Odbc;
+    using System.Data.SqlClient;
+    using System.Text;
+
+    using Elab.Rtls.Engines.WsnEngine;
+
+    using IBM.Data.DB2;
+
+    /// <summary>
+    /// Class specific for DB2.
+    /// </summary>
+    public class DB2Class : DBClassDB2
+    {
+        #region Constructors
+
+        /// <summary>
+        /// Constructor for DB2Class
+        /// </summary>
+        /// <param name="DB2ConnectionString">connectionstring to use for the connection to the database (DB2!)</param>
+        public DB2Class(string DB2ConnectionString)
+            : base(DB2ConnectionString)
+        {
+        }
+
+        /// <summary>
+        /// Constructor that automatically adds a standard DB2 connectionstring
+        /// </summary>
+        public DB2Class()
+            : base("provider = IBMDADB2.1;"+
+                    "persist security info = false;"+
+                    "SERVER=localhost"+
+                    "data source = sample"+
+                    "UID=root;" +
+                    "PASSWORD=root;")
+        {
+        }
+
+        #endregion Constructors
+    }
+
     /// <summary>
     /// Base class for the DB2-database linker
     /// </summary>
     public class DBClassDB2
     {
+        #region Fields
+
         /// <summary>
         /// String with the needed specifications/arguments to set up a connection to the database.
         /// </summary>
         public string ConnString;
+
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
         /// Constructor of DBClassDB2
@@ -28,6 +67,10 @@ namespace DatabaseConnection
         {
             ConnString = ConnectionString;
         }
+
+        #endregion Constructors
+
+        #region Methods
 
         /// <summary>
         /// Function that executes the given command on the database and returns the result.
@@ -66,6 +109,8 @@ namespace DatabaseConnection
             }
             return TempDataSet;
         }
+
+        #endregion Methods
     }
 
     /// <summary>
@@ -73,10 +118,16 @@ namespace DatabaseConnection
     /// </summary>
     public class DBClassOdbc
     {
+        #region Fields
+
         /// <summary>
         /// Builder which helps create a syntax-correct connection-string.
         /// </summary>
         public OdbcConnectionStringBuilder ConnStringBuild;
+
+        #endregion Fields
+
+        #region Constructors
 
         /// <summary>
         /// Base constructor that takes a connection-string and initializes the ConnectionStringBuilder with it.
@@ -96,6 +147,10 @@ namespace DatabaseConnection
             ConnStringBuild = ConnectionStringBuilder;
         }
 
+        #endregion Constructors
+
+        #region Methods
+
         /// <summary>
         /// Function that sends a query to the database and returns the results in a dataset.
         /// </summary>
@@ -114,7 +169,7 @@ namespace DatabaseConnection
             catch (OdbcException OdbcEx)
             {
                 Logger.LogOdbcException(OdbcEx, myquery);
-                
+
                 //OdbcEx.
                 //Return the Error Message
                 TempDataSet = new DataSet("Replies");
@@ -140,6 +195,8 @@ namespace DatabaseConnection
             }
             return TempDataSet;
         }
+
+        #endregion Methods
     }
 
     /// <summary>5
@@ -147,6 +204,8 @@ namespace DatabaseConnection
     /// </summary>
     public class MySQLClass : DBClassOdbc
     {
+        #region Constructors
+
         /// <summary>
         /// Constructor for MySQLClass
         /// </summary>
@@ -159,44 +218,16 @@ namespace DatabaseConnection
         /// <summary>
         /// Constructor that automatically adds a standard MySQL connectionstring
         /// </summary>
-        public MySQLClass():
-            base("DRIVER={MySQL ODBC 3.51 Driver};" +
+        public MySQLClass()
+            : base("DRIVER={MySQL ODBC 3.51 Driver};" +
                                             "SERVER=localhost;" +
                                             "DATABASE=mysqlsample;" +
                                             "UID=root;" +
                                             "PASSWORD=root;" +
                                             "OPTION=3")
         {
-
-        }
-    }
-
-    /// <summary>
-    /// Class specific for DB2.
-    /// </summary>
-    public class DB2Class : DBClassDB2
-    {
-        /// <summary>
-        /// Constructor for DB2Class
-        /// </summary>
-        /// <param name="DB2ConnectionString">connectionstring to use for the connection to the database (DB2!)</param>
-        public DB2Class(string DB2ConnectionString)
-            : base(DB2ConnectionString)
-        {
         }
 
-        /// <summary>
-        /// Constructor that automatically adds a standard DB2 connectionstring
-        /// </summary>
-        public DB2Class():
-            base("provider = IBMDADB2.1;"+
-                    "persist security info = false;"+
-                    "SERVER=localhost"+
-                    "data source = sample"+
-                    "UID=root;" +
-                    "PASSWORD=root;")
-        {
-
-        }
+        #endregion Constructors
     }
 }

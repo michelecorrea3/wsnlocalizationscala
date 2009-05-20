@@ -1,27 +1,146 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-
-using DatabaseConnection;
-
-
-using System.IO;
-
-namespace Elab.Rtls.Engines.WsnEngine.Positioning
+﻿namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+
+    using DatabaseConnection;
+
     /// <summary>
     /// Min-Max Localization algorithm with simple radio propagation model
     /// Model parameters:
     /// </summary>
     public class MinMaxExtended : RangeBasedPositioning
     {
+        #region Methods
+
+        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multiHop)
+        {
+            //Point position = new Point();
+            //double distance;
+            Point center = new Point();
+            List<AnchorNode> Anchors = new List<AnchorNode>();
+            List<AnchorNode> AllAnchors = new List<AnchorNode>();
+            List<int> ListOfCounts = new List<int>();
+            int count = 0;
+            bool AllBoxesIntersected = false;
+
+            StreamWriter Log = new StreamWriter("ExtendedMinMax.csv", false);
+
+            foreach (AnchorNode an in BlindNode.Anchors)
+            {
+                an.fRSS = filterMethod(an.RSS);
+                an.range = Ranging(an.fRSS);
+                //TEST
+                //an.range = 10;
+            }
+
+            if (!multiHop)
+            {
+                while (!AllBoxesIntersected)
+                {
+
+                    for (int i = 0; i < BlindNode.Anchors.Count; i++)
+                    {
+                        count = 0;
+                        //BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
+                        //BlindNode.Anchors[i].range = Ranging(BlindNode.Anchors[i].fRSS);
+                        //BlindNode.Anchors[i].range = 10;
+                        for (int j = 0; j < BlindNode.Anchors.Count; j++)
+                        {
+                            //BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
+                            //BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
+                            if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
+                                //if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
+                                count++;
+                        }
+
+                        ListOfCounts.Add(count);
+                    }
+                    if (ListOfCounts.Average() != BlindNode.Anchors.Count)
+                    {
+                        ListOfCounts.Clear();
+                        foreach (AnchorNode an in BlindNode.Anchors)
+                            an.range *= 1.1;
+                    }
+                    else
+                        AllBoxesIntersected = true;
+                }
+                if (Anchors.Count >= 3)
+                {
+                    center = MinMaxCalc(Anchors, filterMethod);
+                    //logger.Write(currentID + ",");
+                }
+                else
+                {
+                    center.x = 0;
+                    center.y = 0;
+                }
+                //Log.Write("
+                Log.Write(BlindNode.Anchors.Count.ToString());
+                Log.Write(Anchors.Count.ToString());
+
+            }
+            else
+            {
+
+                if (Anchors.Count >= 3)
+                    center = MinMaxCalc(Anchors, filterMethod);
+                else if (Anchors.Count < 3)
+                {
+                    Anchors.Clear();
+                    foreach (AnchorNode an in BlindNode.Anchors)
+                        AllAnchors.Add(an);
+                    foreach (AnchorNode van in BlindNode.VirtualAnchors)
+                        AllAnchors.Add(van);
+
+                    for (int i = 0; i < AllAnchors.Count; i++)
+                    {
+                        count = 0;
+                        for (int j = 0; j < AllAnchors.Count; j++)
+                        {
+                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, Ranging(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, Ranging(Anchors[j].fRSS)))
+                                //                          if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
+                                count++;
+                        }
+                        if (count >= 3)
+                            Anchors.Add(AllAnchors[i]);
+                    }
+                    if (Anchors.Count < 3)
+                    {
+                        center.x = 0;
+                        center.y = 0;
+                        //return center;
+                    }
+                    else
+                        center = MinMaxCalc(Anchors, filterMethod);
+
+                }
+                else
+                {
+                    center.x = 0;
+                    center.y = 0;
+                    //return center;
+                }
+
+                Log.Write(BlindNode.Anchors.Count.ToString());
+                Log.Write(BlindNode.VirtualAnchors.Count.ToString());
+                Log.Write(AllAnchors.Count.ToString());
+            }
+
+            //center = MinMaxCalc(Anchors, filterMethod);
+
+            return center;
+        }
+
         /*
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multiHop)
-=======
+        =======
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multiHop)
->>>>>>> .r66
+        >>>>>>> .r66
         {
             BoundingBox BnBox, AnBox;
             Point position = new Point();
@@ -42,11 +161,11 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             //        AnBox = new BoundingBox(center, distance);
             //        BnBox = AnBox;
             //    }
-                
+
             //    if (BlindNode.Anchors.Count >= 2)
             //    {
             //        for ( int i = 1; i < BlindNode.Anchors.Count; i++ )
-            //        {   
+            //        {
             //            //disabled for testing
             //            BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
             //            distance = rangingMethod(BlindNode.Anchors[i].fRSS);
@@ -71,7 +190,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             //        {
             //            BlindNode.Anchors[0].fRSS = filterMethod(BlindNode.VirtualAnchors[0].RSS);
             //            distance = rangingMethod(BlindNode.VirtualAnchors[0].fRSS);
-                        
+
             //            center = new Point(BlindNode.VirtualAnchors[0].posx, BlindNode.VirtualAnchors[0].posy);
 
             //            //TEST: replace distance with constance
@@ -160,7 +279,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             return position;
         }
-    }
+        }
          */
         public static Point MinMaxCalc(List<AnchorNode> Anchors, Node.FilterMethod filterMethod)
         {
@@ -190,8 +309,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 center = new Point(Anchors[i].posx, Anchors[i].posy);
 
                 AnBox = new BoundingBox(center, distance);
-
-
 
                 //TEST
                 //AnBox = new BoundingBox(center, 1);
@@ -225,126 +342,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 return false;
         }
 
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multiHop)
-        {
-            //Point position = new Point();
-            //double distance;
-            Point center = new Point();
-            List<AnchorNode> Anchors = new List<AnchorNode>();
-            List<AnchorNode> AllAnchors = new List<AnchorNode>();
-            List<int> ListOfCounts = new List<int>();
-            int count = 0;
-            bool AllBoxesIntersected = false;
-
-            StreamWriter Log = new StreamWriter("ExtendedMinMax.csv", false);
-
-            foreach (AnchorNode an in BlindNode.Anchors)
-            {
-                an.fRSS = filterMethod(an.RSS);
-                an.range = Ranging(an.fRSS);
-                //TEST
-                //an.range = 10;
-            }
-
-
-            if (!multiHop)
-            {
-                while (!AllBoxesIntersected)
-                {
-
-                    for (int i = 0; i < BlindNode.Anchors.Count; i++)
-                    {
-                        count = 0;
-                        //BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-                        //BlindNode.Anchors[i].range = Ranging(BlindNode.Anchors[i].fRSS);
-                        //BlindNode.Anchors[i].range = 10;
-                        for (int j = 0; j < BlindNode.Anchors.Count; j++)
-                        {
-                            //BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
-                            //BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
-                            if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
-                                //if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
-                                count++;
-                        }
-
-                        ListOfCounts.Add(count);
-                    }
-                    if (ListOfCounts.Average() != BlindNode.Anchors.Count)
-                    {
-                        ListOfCounts.Clear();
-                        foreach (AnchorNode an in BlindNode.Anchors)
-                            an.range *= 1.1;
-                    }
-                    else
-                        AllBoxesIntersected = true;
-                }
-                if (Anchors.Count >= 3)
-                {
-                    center = MinMaxCalc(Anchors, filterMethod);
-                    //logger.Write(currentID + ",");
-                }
-                else
-                {
-                    center.x = 0;
-                    center.y = 0;
-                }
-                //Log.Write("
-                Log.Write(BlindNode.Anchors.Count.ToString());
-                Log.Write(Anchors.Count.ToString());
-
-            }
-            else
-            {
-
-                if (Anchors.Count >= 3)
-                    center = MinMaxCalc(Anchors, filterMethod);
-                else if (Anchors.Count < 3)
-                {
-                    Anchors.Clear();
-                    foreach (AnchorNode an in BlindNode.Anchors)
-                        AllAnchors.Add(an);
-                    foreach (AnchorNode van in BlindNode.VirtualAnchors)
-                        AllAnchors.Add(van);
-
-                    for (int i = 0; i < AllAnchors.Count; i++)
-                    {
-                        count = 0;
-                        for (int j = 0; j < AllAnchors.Count; j++)
-                        {
-                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, Ranging(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, Ranging(Anchors[j].fRSS)))
-                                //                          if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
-                                count++;
-                        }
-                        if (count >= 3)
-                            Anchors.Add(AllAnchors[i]);
-                    }
-                    if (Anchors.Count < 3)
-                    {
-                        center.x = 0;
-                        center.y = 0;
-                        //return center;
-                    }
-                    else
-                        center = MinMaxCalc(Anchors, filterMethod);
-
-                }
-                else
-                {
-                    center.x = 0; 
-                    center.y = 0;
-                    //return center;
-                }
-
-                Log.Write(BlindNode.Anchors.Count.ToString());
-                Log.Write(BlindNode.VirtualAnchors.Count.ToString());
-                Log.Write(AllAnchors.Count.ToString());
-            }
-
-            //center = MinMaxCalc(Anchors, filterMethod);
-
-            return center;
-        }
-
+        #endregion Methods
     }
-
 }

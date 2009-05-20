@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data;
-
-using DatabaseConnection;
-
-
-using System.IO;
-
-namespace Elab.Rtls.Engines.WsnEngine.Positioning
+﻿namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+
+    using DatabaseConnection;
+
     public class ClusterTrilateration : RangeBasedPositioning
     {
+        #region Methods
+
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multihop)
         {
             List<Point> intersectionPoints = new List<Point>();
@@ -24,7 +24,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             Point center = new Point();
             int numberOfCircles = 0;
             StreamWriter Log = new StreamWriter("Trilateration.csv", false);
-
 
             foreach (AnchorNode AN in BlindNode.Anchors)
             {
@@ -98,9 +97,9 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                             //List<Point> crossingPoints = GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10);
                             //if(crossingPoints != null)
                             //{
-                            //    foreach (Point crossing in crossingPoints) 
+                            //    foreach (Point crossing in crossingPoints)
                             //            intersectionPoints.Add(crossing);
-                            //   
+                            //
                             //}
                         }
                     }
@@ -130,7 +129,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                                 //{
                                 //    foreach (Point crossing in crossingPoints)
                                 //        intersectionPoints.Add(crossing);
-                                //    
+                                //
                                 //}
                             }
                         }
@@ -161,10 +160,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
                 }
                 return center;
-
-
-
         }
+
         private static Error Anchorsintersection(List<IntersectedAnchors> anchors)
         {
             Error fault = new Error();
@@ -186,7 +183,6 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             fault.NumberWide = exter;
 
             return fault;
-
         }
 
         private static Point Cluster(List<Point> crossings, int anchors)
@@ -236,5 +232,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             return centroid;
         }
+
+        #endregion Methods
     }
 }
