@@ -706,9 +706,8 @@ namespace GUI
                     if (listBoxControl.SelectedItem != null)
                     {
                         string selected = listBoxControl.SelectedItem.ToString();
-                    string nodeid;
-                    nodeid = getNodeID(selected);
-                    xml_send += "<NodeID>" + nodeid + "</NodeID>";
+
+                    xml_send += "<NodeID>" + selected + "</NodeID>";
 
                     //secondly we must check which fields have changed
                     //we can then add them ass nodes in the XML

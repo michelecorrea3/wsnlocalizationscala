@@ -68,15 +68,25 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 anchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
             else 
                 virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
-        }
+            }
         
         //TEST
-        public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy, int van)
+        //public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy, int van)
+        //{
+        //    if(van == 1)
+        //    anchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
+        //    else
+        //        virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
+        //}
+        public void UpdateAnchorPositions()
         {
-            if(van == 1)
-            anchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
-            else
-                virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
+            foreach (AnchorNode AN in this.Anchors)
+            {
+                Point newPosition = GetANPosition(AN.nodeid);
+
+                AN.posx = newPosition.x;
+                AN.posy = newPosition.y;
+            }
         }
 
         public void AddAnchor(string AnchorWsnId, double RSS, int van)
