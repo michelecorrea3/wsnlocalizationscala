@@ -69,9 +69,11 @@
                     for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
                     {
                         //returns 0, 1 or 2 Pointss
-                        foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
+                        List<Point> crossingPoints = GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range);
+                        if (crossingPoints != null)
                         {
-                            intersectionPoints.Add(crossing);
+                            foreach (Point crossing in crossingPoints)
+                                intersectionPoints.Add(crossing);
                         }
 
                     }
