@@ -161,25 +161,25 @@ namespace Elab.Rtls.Engines.WsnEngine
             SocketServerListenerGUI.RunWorkerAsync(int.Parse(Options.Tables["SocketServer"].Select("[Use] = 'GUI'")[0]["Port"].ToString()));
             Console.WriteLine("\tSocketServer for GUI started");
 
-            Timer dummyTimer = new Timer(new TimerCallback(TimerTick));
-            dummyTimer.Change(5000, 2500);
+            //Timer dummyTimer = new Timer(new TimerCallback(TimerTick));
+            //dummyTimer.Change(5000, 2500);
         }
 
-        private void TimerTick(object state)
-        {
-            if (ButtonPressed != null)
-            {
-                EventMessage EventData = new EventMessage();
-                //EventData.EventType = "ButtonPressed";
+        //private void TimerTick(object state)
+        //{
+        //    if (ButtonPressed != null)
+        //    {
+        //        EventMessage EventData = new EventMessage();
+        //        //EventData.EventType = "ButtonPressed";
 
-                EventData.TagBlink["TagID"] = "9";
-                EventData.TagBlink["Button"] = "1";
+        //        EventData.TagBlink["TagID"] = "9";
+        //        EventData.TagBlink["Button"] = "1";
 
-                ButtonPressed(this, EventData);
-                Console.WriteLine("ButtonPressed event sent!");
-            }
-            Console.WriteLine("Timer fired");
-        }
+        //        ButtonPressed(this, EventData);
+        //        Console.WriteLine("ButtonPressed event sent!");
+        //    }
+        //    Console.WriteLine("Timer fired");
+        //}
 
         /// <summary>
         /// This function corresponds to the socketserver for the GUI-side/port.
@@ -334,6 +334,8 @@ namespace Elab.Rtls.Engines.WsnEngine
                     Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
                     Node.RangingMethod myRanging;
         
+                    CurrentNode.UpdateAnchorPositions();
+                    
                     if (UseCalibration)
                         myRanging = new Node.RangingMethod(RangeBasedPositioning.Ranging);
                     else
@@ -793,14 +795,9 @@ namespace Elab.Rtls.Engines.WsnEngine
         {
             //DataSet to store the result of the query (temporarily) and the final reply to the GUI
             DataSet WSNActionWSNSet = new DataSet();
-            string cmd = "call getWSNid('" + WSNActionSet.Tables["RequestAction"].Rows[0]["NodeID"] + "');";
+
             SocketClient SendActionReq;
             int temp;
-
-
-                WSNActionWSNSet = MySQLConn.Query(cmd);
-
-                WSNActionSet.Tables["RequestAction"].Rows[0]["NodeID"] = WSNActionWSNSet.Tables[0].Rows[0][0];
 
                 //check if telosb
                 if ((int.TryParse(WSNActionSet.Tables["RequestAction"].Rows[0]["NodeID"].ToString(), out temp)) && (WSNActionSet.Tables["RequestAction"].Rows[0]["NodeID"].ToString().Length < 10))
