@@ -5,7 +5,7 @@ using System.Text;
 using System.Data;
 
 using DatabaseConnection;
-
+using SocketConnection;
 
 using System.IO;
 
@@ -18,7 +18,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             List<Point> intersectionPoints = new List<Point>();
             List<AnchorNode> AllAnchors = new List<AnchorNode>();
             List<IntersectedAnchors> anchors = new List<IntersectedAnchors>();
-            IntersectedAnchors anchor = new IntersectedAnchors();
+            //IntersectedAnchors anchor = new IntersectedAnchors();
             Point center = new Point();
             List<int> ListOfCounts = new List<int>();
             int count;
@@ -31,65 +31,88 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 an.fRSS = filterMethod(an.RSS);
                 an.range = Ranging(an.fRSS);
                 //TEST
-                //an.range = 10;
+                //an.range = 10/1.1;
             }
+            //no virtual anchors
 
-                if (!multihop)
+            if (!multihop)
+            {
+                while (!AllCirclesIntersected)
                 {
-                    while (!AllCirclesIntersected)
+                    for (int i = 0; i < BlindNode.Anchors.Count; i++)
                     {
-                        for (int i = 0; i < BlindNode.Anchors.Count; i++)
+                        count = 0;
+                        //BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
+                        //BlindNode.Anchors[i].range = Ranging(BlindNode.Anchors[i].fRSS);
+                        for (int j = 0; j < BlindNode.Anchors.Count; j++)
                         {
-                            count = 0;
-                            //BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-                            //BlindNode.Anchors[i].range = Ranging(BlindNode.Anchors[i].fRSS);
-                            for (int j = 0; j < BlindNode.Anchors.Count; j++)
-                            {
-                                //BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
-                                //BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
-                                if (BelongsToAllCircles(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
-                                    //                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
-                                    count++;
-                            }
-                            ListOfCounts.Add(count);
-                       }
-                        if (ListOfCounts.Average() != BlindNode.Anchors.Count)
-                        {
-                            ListOfCounts.Clear();
-                            foreach (AnchorNode an in BlindNode.Anchors)
-                                an.range = an.range * 1.1;
+                            //BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
+                            //BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
+                            if (BelongsToAllCircles(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
+                                //                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
+                                count++;
                         }
-                        else
-                            AllCirclesIntersected = true;
+                        ListOfCounts.Add(count);
                     }
-
-                    for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
+                    if (ListOfCounts.Average() != BlindNode.Anchors.Count)
                     {
-                        for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
-                        {
-                            //returns 0, 1 or 2 Pointss
-                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
-                            {
-                                intersectionPoints.Add(crossing);
-                            }
-
-
-                        }
+                        ListOfCounts.Clear();
+                        foreach (AnchorNode an in BlindNode.Anchors)
+                            an.range = an.range * 1.1;
                     }
-                    if (intersectionPoints.Count >= 3)
-                        center = Cluster(intersectionPoints, BlindNode.Anchors.Count);
                     else
-                    {
-                        center.x = 0;
-                        center.y = 0;
-                    }
-
+                        AllCirclesIntersected = true;
                 }
+
+                for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
+                    {
+                        //returns 0, 1 or 2 Pointss
+                        foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
+                        {
+                            intersectionPoints.Add(crossing);
+                        }
+
+
+                    }
+                }
+                if (intersectionPoints.Count >= 3)
+                    center = Cluster(intersectionPoints, BlindNode.Anchors.Count);
                 else
                 {
-                    for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
+                    center = null;
+                }
+
+            }
+            else
+            {
+                for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
+                {
+                    for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
                     {
-                        for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
+                        //returns 0, 1 or 2 Pointss
+                        //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+                        //{
+                        //    intersectionPoints.Add(crossing);
+                        //}
+                        //TEST
+                        foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 1.41, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 1.41))
+                        {
+                            intersectionPoints.Add(crossing);
+                        }
+                    }
+                }
+                if (intersectionPoints.Count < 3)
+                {
+                    foreach (AnchorNode an in BlindNode.Anchors)
+                        AllAnchors.Add(an);
+                    foreach (AnchorNode van in BlindNode.VirtualAnchors)
+                        AllAnchors.Add(van);
+
+                    for (int i = 0; i < AllAnchors.Count - 1; i++)
+                    {
+                        for (int j = i + 1; j < AllAnchors.Count; j++)
                         {
                             //returns 0, 1 or 2 Pointss
                             //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
@@ -97,42 +120,19 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                             //    intersectionPoints.Add(crossing);
                             //}
                             //TEST
-                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 1.41, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 1.41))
+                            foreach (Point crossing in GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 1.41, AllAnchors[j].posx, AllAnchors[j].posy, 1.41))
                             {
                                 intersectionPoints.Add(crossing);
                             }
                         }
                     }
-                    if (intersectionPoints.Count < 3)
-                    {
-                        foreach (AnchorNode an in BlindNode.Anchors)
-                            AllAnchors.Add(an);
-                        foreach (AnchorNode van in BlindNode.VirtualAnchors)
-                            AllAnchors.Add(van);
-
-                        for (int i = 0; i < AllAnchors.Count - 1; i++)
-                        {
-                            for (int j = i + 1; j < AllAnchors.Count; j++)
-                            {
-                                //returns 0, 1 or 2 Pointss
-                                //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
-                                //{
-                                //    intersectionPoints.Add(crossing);
-                                //}
-                                //TEST
-                                foreach (Point crossing in GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 1.41, AllAnchors[j].posx, AllAnchors[j].posy, 1.41))
-                                {
-                                    intersectionPoints.Add(crossing);
-                                }
-                            }
-                        }
-
-                    }
-                    else
-                        center = Cluster(intersectionPoints, BlindNode.Anchors.Count);
 
                 }
-                return center;
+                else
+                    center = Cluster(intersectionPoints, BlindNode.Anchors.Count);
+
+            }
+            return center;
 
 
         }
