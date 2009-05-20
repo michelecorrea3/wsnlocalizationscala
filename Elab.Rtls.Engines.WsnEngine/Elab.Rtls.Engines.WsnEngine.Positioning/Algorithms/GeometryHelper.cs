@@ -70,7 +70,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                         return points;
                     }
                     else
-                        throw new ApplicationException("No cutting points");
+                        return points = null;
+                        //throw new ApplicationException("No cutting points");
 
                 }
                 else if (y1 == y2)
@@ -103,7 +104,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                         return points;
                     }
                     else
-                        throw new ApplicationException("No cutting points");
+                        return points = null;
+                        //throw new ApplicationException("No cutting points");
 
                 }
                 else
@@ -146,7 +148,8 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                         return points;
                     }
                     else
-                        throw new ApplicationException("No cutting points");
+                        return points = null;
+                        //throw new ApplicationException("No cutting points");
                 }
 
             }
