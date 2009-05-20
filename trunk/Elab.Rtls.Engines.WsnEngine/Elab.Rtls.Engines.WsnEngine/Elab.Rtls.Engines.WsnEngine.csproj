@@ -76,6 +76,7 @@
     <Compile Include="EventListeners\EventListener.cs" />
     <Compile Include="EventListeners\PositionEventListener.cs" />
     <Compile Include="EventListeners\SensorDataEventListener.cs" />
+    <Compile Include="WsnController\StoredProcedureWrappers.cs" />
     <Compile Include="WsnController\WsnController.cs" />
     <Compile Include="WsnEngine\WsnEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

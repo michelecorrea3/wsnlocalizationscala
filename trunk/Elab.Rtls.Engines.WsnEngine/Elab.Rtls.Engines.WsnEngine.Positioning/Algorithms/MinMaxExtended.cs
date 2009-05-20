@@ -28,7 +28,7 @@
             int count = 0;
             bool AllBoxesIntersected = false;
 
-            StreamWriter Log = new StreamWriter("ExtendedMinMax.csv", false);
+            //StreamWriter Log = new StreamWriter("ExtendedMinMax.csv", false);
 
             foreach (AnchorNode an in BlindNode.Anchors)
             {
@@ -80,8 +80,8 @@
                     center.y = 0;
                 }
                 //Log.Write("
-                Log.Write(BlindNode.Anchors.Count.ToString());
-                Log.Write(Anchors.Count.ToString());
+                //Log.Write(BlindNode.Anchors.Count.ToString());
+                //Log.Write(Anchors.Count.ToString());
 
             }
             else
@@ -126,9 +126,9 @@
                     //return center;
                 }
 
-                Log.Write(BlindNode.Anchors.Count.ToString());
-                Log.Write(BlindNode.VirtualAnchors.Count.ToString());
-                Log.Write(AllAnchors.Count.ToString());
+                //Log.Write(BlindNode.Anchors.Count.ToString());
+                //Log.Write(BlindNode.VirtualAnchors.Count.ToString());
+                //Log.Write(AllAnchors.Count.ToString());
             }
 
             //center = MinMaxCalc(Anchors, filterMethod);

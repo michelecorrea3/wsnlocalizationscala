@@ -24,7 +24,7 @@
             int count;
             bool AllCirclesIntersected = false;
 
-            StreamWriter Log = new StreamWriter("ExtendedTrilateration.csv", false);
+            //StreamWriter Log = new StreamWriter("ExtendedTrilateration.csv", false);
 
             foreach (AnchorNode an in BlindNode.Anchors)
             {
