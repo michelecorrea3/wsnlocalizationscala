@@ -23,12 +23,11 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             StreamWriter Log = new StreamWriter("Trilateration.csv", false);
 
-            if (BlindNode.Anchors.Count >= 3)
-            {
-                foreach (AnchorNode AN in BlindNode.Anchors)
-                {
-                    AN.fRSS = filterMethod(AN.RSS);
-                }
+
+            foreach (AnchorNode AN in BlindNode.Anchors)
+                 AN.fRSS = filterMethod(AN.RSS);
+            foreach (AnchorNode VAN in BlindNode.VirtualAnchors)
+                VAN.fRSS = filterMethod(VAN.RSS);
 
                 /*
                 for(int j = 0; j<BlindNode.Anchors.Count-1; j++)
@@ -47,30 +46,35 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                  */
                 if (!multihop)
                 {
-
-                    for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
+                    if (BlindNode.Anchors.Count >= 3)
                     {
-                        for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
+
+                        for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
                         {
-                            //returns 0, 1 or 2 Pointss
-                            //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
-                            //{
-                            //    intersectionPoints.Add(crossing);
-                            //}
-                            //TEST
-                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10))
+                            for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
                             {
-                                intersectionPoints.Add(crossing);
+                                //returns 0, 1 or 2 Pointss
+                                //foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+                                //{
+                                //    intersectionPoints.Add(crossing);
+                                //}
+                                //TEST
+                                foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10))
+                                {
+                                    if (crossing != null)
+                                        intersectionPoints.Add(crossing);
+                                }
                             }
                         }
+                        if (intersectionPoints.Count >= 3)
+                            center = Cluster(intersectionPoints, BlindNode.Anchors.Count);
+                        else
+                        {
+                            center = null;
+                        }
                     }
-                    if (intersectionPoints.Count >= 3)
-                        center = Cluster(intersectionPoints, BlindNode.Anchors.Count);
                     else
-                    {
-                        center.x = 0;
-                        center.y = 0;
-                    }
+                        center = null;
 
                 }
                 else
@@ -85,14 +89,19 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                             //    intersectionPoints.Add(crossing);
                             //}
                             //TEST
-                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10))
+                            List<Point> crossingPoints = GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10);
+                            if(crossingPoints != null)
                             {
-                                intersectionPoints.Add(crossing);
+                                foreach (Point crossing in crossingPoints) 
+                                        intersectionPoints.Add(crossing);
+                               
                             }
                         }
                     }
                     if (intersectionPoints.Count < 3)
                     {
+                        intersectionPoints.Clear();
+
                         foreach (AnchorNode an in BlindNode.Anchors)
                             AllAnchors.Add(an);
                         foreach (AnchorNode van in BlindNode.VirtualAnchors)
@@ -108,11 +117,20 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                                 //    intersectionPoints.Add(crossing);
                                 //}
                                 //TEST
-                                foreach (Point crossing in GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
+                                List<Point> crossingPoints = GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10);
+                                if (crossingPoints != null)
                                 {
-                                    intersectionPoints.Add(crossing);
+                                    foreach (Point crossing in crossingPoints)
+                                        intersectionPoints.Add(crossing);
+                                    
                                 }
                             }
+                        }
+                        if (intersectionPoints.Count >= 3)
+                            center = Cluster(intersectionPoints, AllAnchors.Count);
+                        else
+                        {
+                            center = null;
                         }
 
                     }
@@ -122,9 +140,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 }
                 return center;
 
-            }
-            else
-                throw new ApplicationException("Less than three anchor nodes available");
+
 
         }
         private static Error Anchorsintersection(List<IntersectedAnchors> anchors)
