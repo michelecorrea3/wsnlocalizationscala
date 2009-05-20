@@ -21,18 +21,18 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
             IntersectedAnchors anchor = new IntersectedAnchors();
             Point center = new Point();
             List<int> ListOfCounts = new List<int>();
-
+            int count;
             bool AllCirclesIntersected = false;
 
-            StreamWriter Log = new StreamWriter("Trilateration.csv", false);
+            StreamWriter Log = new StreamWriter("ExtendedTrilateration.csv", false);
 
-            if (BlindNode.Anchors.Count >= 3)
+            foreach (AnchorNode an in BlindNode.Anchors)
             {
-                foreach (AnchorNode AN in BlindNode.Anchors)
-                {
-                    AN.fRSS = filterMethod(AN.RSS);
-                }
-
+                an.fRSS = filterMethod(an.RSS);
+                an.range = Ranging(an.fRSS);
+                //TEST
+                //an.range = 10;
+            }
 
                 if (!multihop)
                 {
@@ -41,13 +41,13 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                         for (int i = 0; i < BlindNode.Anchors.Count; i++)
                         {
                             count = 0;
-                            BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-                            BlindNode.Anchors[i].range = Ranging(BlindNode.Anchors[i].fRSS);
+                            //BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
+                            //BlindNode.Anchors[i].range = Ranging(BlindNode.Anchors[i].fRSS);
                             for (int j = 0; j < BlindNode.Anchors.Count; j++)
                             {
-                                BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
-                                BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
-                                if (BelongsToAllCircles(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+                                //BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
+                                //BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
+                                if (BelongsToAllCircles(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
                                     //                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
                                     count++;
                             }
@@ -68,7 +68,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                         for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
                         {
                             //returns 0, 1 or 2 Pointss
-                            foreach (Point crossing in Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
+                            foreach (Point crossing in GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
                             {
                                 intersectionPoints.Add(crossing);
                             }
@@ -134,11 +134,9 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 }
                 return center;
 
-            }
-            else
-                throw new ApplicationException("Less than three anchor nodes available");
 
         }
+
         private static Error Anchorsintersection(List<IntersectedAnchors> anchors)
         {
             Error fault = new Error();
