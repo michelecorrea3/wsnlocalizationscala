@@ -13,7 +13,7 @@
     {
         #region Methods
 
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multihop)
+        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multihop)
         {
             List<Point> intersectionPoints = new List<Point>();
             List<AnchorNode> AllAnchors = new List<AnchorNode>();
@@ -23,17 +23,17 @@
 
             Point center = new Point();
             int numberOfCircles = 0;
-            StreamWriter Log = new StreamWriter("Trilateration.csv", false);
+            //StreamWriter Log = new StreamWriter("Trilateration.csv", false);
 
             foreach (AnchorNode AN in BlindNode.Anchors)
             {
                 AN.fRSS = filterMethod(AN.RSS);
-                AN.range = Ranging(AN.fRSS);
+                AN.range = rangingMethod(AN.fRSS);
             }
             foreach (AnchorNode VAN in BlindNode.VirtualAnchors)
             {
                 VAN.fRSS = filterMethod(VAN.RSS);
-                VAN.range = Ranging(VAN.fRSS);
+                VAN.range = rangingMethod(VAN.fRSS);
             }
 
                 /*

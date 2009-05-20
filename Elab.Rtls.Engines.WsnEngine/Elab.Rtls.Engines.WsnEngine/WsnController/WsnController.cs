@@ -516,7 +516,7 @@
                             pos = MinMax.CalculatePosition(CurrentNode, myFilter, UseMultihop);
                             break;
                         case "Trilateration":
-                            pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "ExtendedTrilateration":
                             pos = ExtendedTrilateration.CalculatePosition(CurrentNode, myFilter, UseMultihop);
@@ -526,7 +526,10 @@
                             break;
                     }
 
-                    Console.WriteLine("Position was calculated for node: " + row["ID"] + " X = " + pos.x.ToString() + " Y = " + pos.y.ToString());
+                    if (pos != null)
+                        Console.WriteLine("Position was calculated for node: " + row["ID"] + " X = " + pos.x.ToString() + " Y = " + pos.y.ToString());
+                    else 
+                        Console.WriteLine("Position for node: " + row["ID"] + "could not be calculated");
 
                     //Create the command that we send to the database to insert the new row.
                     cmd = "call addLocalizationData(" +
@@ -550,7 +553,7 @@
                      if (pos != null)
                          AddPosition += pos.x.ToString() + ", " + pos.y.ToString() + ")";
                      else
-                         AddPosition += "null, null, ";
+                         AddPosition += "null, null )";
 
                     MySQLConn.Query(AddPosition);
 
