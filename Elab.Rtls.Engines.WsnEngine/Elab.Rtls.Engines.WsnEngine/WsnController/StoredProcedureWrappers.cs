@@ -8,15 +8,38 @@
     using System.Net.Sockets;
     using System.Xml;
 
+    using DatabaseConnection;
+
     using Elab.Rtls.Engines.WsnEngine.Positioning;
 
     using Scala.Core;
 
     using SocketConnection;
-    using DatabaseConnection;
 
     public partial class Controller
     {
+        #region Methods
+
+        /// <summary>
+        /// Function that can be used to convert from a UnixTimeStamp (=seconds since 1 jan 1970) to a string in the format "yyyy-MM-dd HH:mm:ss".
+        /// </summary>
+        /// <param name="UnixTimestamp">UnixTimeStamp (integer, seconds) to convert to local time.</param>
+        /// <returns>A string with the UnixTimeStamp in the format "yyyy-MM-dd HH:mm:ss".</returns>
+        private static string ConvertUnixToLocalTimeStamp(int UnixTimestamp)
+        {
+            // First make a System.DateTime equivalent to the UNIX Epoch.
+            System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+
+            // Add the number of seconds in UNIX timestamp to be converted.
+            dateTime = dateTime.AddSeconds(UnixTimestamp);
+            dateTime = dateTime.ToLocalTime();
+
+            // The dateTime now contains the right date/time so to format the string,
+            // use the standard formatting methods of the DateTime object.
+            //dateTime.ToString(
+            return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
+        }
+
         private void AddPosition(DataRow row, Point pos, int anchor)
         {
             string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
@@ -54,24 +77,6 @@
             return IncMsg;
         }
 
-        /// <summary>
-        /// Function that can be used to convert from a UnixTimeStamp (=seconds since 1 jan 1970) to a string in the format "yyyy-MM-dd HH:mm:ss".
-        /// </summary>
-        /// <param name="UnixTimestamp">UnixTimeStamp (integer, seconds) to convert to local time.</param>
-        /// <returns>A string with the UnixTimeStamp in the format "yyyy-MM-dd HH:mm:ss".</returns>
-        private static string ConvertUnixToLocalTimeStamp(int UnixTimestamp)
-        {
-            // First make a System.DateTime equivalent to the UNIX Epoch.
-            System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-
-            // Add the number of seconds in UNIX timestamp to be converted.
-            dateTime = dateTime.AddSeconds(UnixTimestamp);
-            dateTime = dateTime.ToLocalTime();
-
-            // The dateTime now contains the right date/time so to format the string,
-            // use the standard formatting methods of the DateTime object.
-            //dateTime.ToString(
-            return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
-        }
+        #endregion Methods
     }
 }
