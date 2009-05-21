@@ -127,8 +127,6 @@
                     }
                     else
                         return points = null;
-                        //throw new ApplicationException("No cutting points");
-
                 }
                 else if (y1 == y2)
                 {

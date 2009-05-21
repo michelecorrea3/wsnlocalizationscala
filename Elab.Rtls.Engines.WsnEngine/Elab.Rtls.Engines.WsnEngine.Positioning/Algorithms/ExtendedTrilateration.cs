@@ -13,7 +13,7 @@
     {
         #region Methods
 
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multihop)
+        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multihop)
         {
             List<Point> intersectionPoints = new List<Point>();
             List<AnchorNode> AllAnchors = new List<AnchorNode>();
@@ -29,7 +29,7 @@
             foreach (AnchorNode an in BlindNode.Anchors)
             {
                 an.fRSS = filterMethod(an.RSS);
-                an.range = Ranging(an.fRSS);
+                an.range = rangingMethod(an.fRSS);
                 //TEST
                 //an.range = 10/1.1;
             }
@@ -48,7 +48,7 @@
                         {
                             //BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
                             //BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
-                            if (BelongsToAllCircles(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
+                            if (GeometryHelper.BelongTo(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
                                 //                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
                                 count++;
                         }
