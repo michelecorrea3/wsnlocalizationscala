@@ -492,16 +492,16 @@
                             pos = CentroidLocalization.CalculatePosition(CurrentNode);
                             break;
                         case "MinMax":
-                            pos = MinMax.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            pos = MinMax.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "Trilateration":
                             pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "ExtendedTrilateration":
-                            pos = ExtendedTrilateration.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            pos = ExtendedTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "ExtendedMinMax":
-                            pos = MinMaxExtended.CalculatePosition(CurrentNode, myFilter, UseMultihop);
+                            pos = MinMaxExtended.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                     }
 
