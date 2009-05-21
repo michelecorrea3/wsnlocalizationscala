@@ -24,6 +24,11 @@
     {
         #region Fields
 
+        /// <summary>
+        /// MySQL-linker
+        /// </summary>
+        public MySQLClass MySQLConn;
+
         private List<Node> AnchorNodes = new List<Node>();
 
         /// <summary>
@@ -35,11 +40,6 @@
         /// List with all the node that should be positioned
         /// </summary>
         private List<Node> BlindNodes = new List<Node>();
-
-        /// <summary>
-        /// MySQL-linker
-        /// </summary>
-        public MySQLClass MySQLConn;
 
         /// <summary>
         /// The dataset with the information that is read from the config.txt file
@@ -133,8 +133,8 @@
             using (StreamReader reader = new StreamReader(stream))  //Create a reader for the stream
             using (StreamWriter writer = new StreamWriter(stream))  //Create a writer for the stream
             {
-                DataSet IncMsg = new DataSet(); 
-                DataSet OutMsg = new DataSet(); 
+                DataSet IncMsg = new DataSet();
+                DataSet OutMsg = new DataSet();
                 DataSet TempSet = new DataSet();
 
                 //Get ready to read the incoming xml-msg
@@ -399,8 +399,8 @@
         /// </summary>
         private void LoadOptions()
         {
-                Options.ReadXml("config.txt"); 
-                
+            Options.ReadXml("config.txt");
+
                 MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
         }
 
@@ -507,7 +507,7 @@
 
                     if (pos != null)
                         Console.WriteLine("Position was calculated for node: " + row["ID"] + " X = " + pos.x.ToString() + " Y = " + pos.y.ToString());
-                    else 
+                    else
                         Console.WriteLine("Position for node: " + row["ID"] + "could not be calculated");
 
                     //Create the command that we send to the database to insert the new row.
@@ -888,7 +888,6 @@
         //    }
         //    Console.WriteLine("Timer fired");
         //}
-
         /// <summary>
         /// This function corresponds to the socketserver for the GUI-side/port.
         /// </summary>
@@ -1017,9 +1016,9 @@
 
         #endregion Methods
 
-        //Discovery
         #region Other
 
+        //Discovery
         ///// <summary>
         ///// Processes the discovery reply
         ///// TODO: add further info

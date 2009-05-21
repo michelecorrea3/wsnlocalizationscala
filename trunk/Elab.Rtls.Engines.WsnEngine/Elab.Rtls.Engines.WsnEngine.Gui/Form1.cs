@@ -664,16 +664,16 @@
 
             textLocRefresh.Text = "1000";
             textSensRefresh.Text = "5000";
-            textBoxGraphUpdateInterval.Text = "10000";
+            textBoxGraphUpdateInterval.Text = "5000";
             textBoxSensorFetchUpdateInterval.Text = "60000";
 
             //maskedTextBox1.ValidatingType = typeof(System.TimeSpan);
-            maskedTextBox1.Text = "10 10:00:00";
+            maskedTextBox1.Text = "0 10:00:00";
 
-            textBoxXmin.Text = "0";
-            textBoxXmax.Text = "1000";
-            textBoxYmin.Text = "0";
-            textBoxYmax.Text = "1000";
+            textBoxXmin.Text = "0.0";
+            textBoxXmax.Text = "1000.0";
+            textBoxYmin.Text = "0.0";
+            textBoxYmax.Text = "1000.0";
             textBoxSensorRateMax.Text = "60000";
             textBoxSensorRateMin.Text = "1000";
             textBoxLocRateMin.Text = "100";
@@ -1008,20 +1008,20 @@
 
         private bool ValidX(string X, out string errorMessage)
         {
-            short result;
+            double result;
 
-            if (!Int16.TryParse(X, out result))
+            if (!double.TryParse(X, out result))
             {
                 errorMessage = "X is not numeric";
                 return false;
             }
 
-            if ((Convert.ToInt32(X)) < (Convert.ToInt32(textBoxXmin.Text)))
+            if ((Convert.ToDouble(X)) < (Convert.ToDouble(textBoxXmin.Text)))
             {
                 errorMessage = "X is too small";
                 return false;
             }
-            else if ((Convert.ToInt32(X)) > (Convert.ToInt32(textBoxXmax.Text)))
+            else if ((Convert.ToDouble(X)) > (Convert.ToDouble(textBoxXmax.Text)))
             {
                     errorMessage = "X is too large";
                     return false;
@@ -1033,20 +1033,20 @@
 
         private bool ValidY(string Y, out string errorMessage)
         {
-            short result;
+            double result;
             //if (Int16.TryParse(
-            if (!Int16.TryParse(Y, out result))
+            if (!double.TryParse(Y, out result))
             {
                 errorMessage = "Y is not numeric";
                 return false;
             }
 
-            if ((Convert.ToInt32(Y)) < (Convert.ToInt32(textBoxYmin.Text)))
+            if ((Convert.ToDouble(Y)) < (Convert.ToDouble(textBoxYmin.Text)))
             {
                 errorMessage = "Y is too small";
                 return false;
             }
-            else if ((Convert.ToInt32(Y)) > (Convert.ToInt32(textBoxYmax.Text)))
+            else if ((Convert.ToDouble(Y)) > (Convert.ToDouble(textBoxYmax.Text)))
             {
                 errorMessage = "Y is too large";
                 return false;
