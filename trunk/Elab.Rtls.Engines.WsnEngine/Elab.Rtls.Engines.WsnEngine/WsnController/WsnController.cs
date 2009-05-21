@@ -4,14 +4,9 @@
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data;
-    using System.Diagnostics;
     using System.IO;
     using System.Net.Sockets;
-    using System.ServiceModel;
-    using System.Text;
-    using System.Threading;
     using System.Xml;
-    using System.Xml.Linq;
 
     using DatabaseConnection;
 
@@ -25,7 +20,7 @@
     /// <summary>
     /// The Senseless Controller
     /// </summary>
-    public class Controller
+    public partial class Controller
     {
         #region Fields
 
@@ -44,7 +39,7 @@
         /// <summary>
         /// MySQL-linker
         /// </summary>
-        private MySQLClass MySQLConn;
+        public MySQLClass MySQLConn;
 
         /// <summary>
         /// The dataset with the information that is read from the config.txt file
@@ -70,11 +65,8 @@
             LoadOptions();  //Load the config-file
             Console.WriteLine("config loaded");
 
-            //if (File.Exists("DBFaults.txt"))
-            //    File.Delete("DBFaults.txt");
             this.SelectedAlgorithm = "CentroidLocalization";
             this.SelectedFilter = "Average";
-
             this.UseCalibration = false;
             this.UseMultihop = false;
 
@@ -141,8 +133,8 @@
             using (StreamReader reader = new StreamReader(stream))  //Create a reader for the stream
             using (StreamWriter writer = new StreamWriter(stream))  //Create a writer for the stream
             {
-                DataSet IncMsg = new DataSet(); //DataSet to store incoming msg
-                DataSet OutMsg = new DataSet(); //DataSet to store outgoing msg
+                DataSet IncMsg = new DataSet(); 
+                DataSet OutMsg = new DataSet(); 
                 DataSet TempSet = new DataSet();
 
                 //Get ready to read the incoming xml-msg
@@ -154,13 +146,26 @@
                     IncMsg = StringToDataSet(incxml);
 
                     #region incoming
+                    //TODO: why did he put a do-while here?
                     do
                     {
 
                         //Check which type of incoming msg we have (if it is not in the list; we discard it)
                         if (IncMsg.DataSetName == "SensorMeasurements" || IncMsg.DataSetName == "LocationMessage" || IncMsg.DataSetName == "StatusMessage")
                         {   //SensorMeasurement
-                            Console.WriteLine("Received WSN message: " + IncMsg.DataSetName);
+                            if (IncMsg.DataSetName == "LocationMessage")
+                            {
+                                Console.Write("Received WSN message: " + IncMsg.DataSetName + " :");
+
+                                if (Convert.ToInt16(IncMsg.Tables[0].Rows[0]["VANr"]) == 1)
+                                    Console.WriteLine(" Anchor Node");
+                                else
+                                    Console.WriteLine(" Blind Node");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Received WSN message: " + IncMsg.DataSetName);
+                            }
                             AddSensorMeasurements(IncMsg);
                             break;
                         }
@@ -299,26 +304,6 @@
         }
 
         /// <summary>
-        /// Function that can be used to convert from a UnixTimeStamp (=seconds since 1 jan 1970) to a string in the format "yyyy-MM-dd HH:mm:ss".
-        /// </summary>
-        /// <param name="UnixTimestamp">UnixTimeStamp (integer, seconds) to convert to local time.</param>
-        /// <returns>A string with the UnixTimeStamp in the format "yyyy-MM-dd HH:mm:ss".</returns>
-        private static string ConvertUnixToLocalTimeStamp(int UnixTimestamp)
-        {
-            // First make a System.DateTime equivalent to the UNIX Epoch.
-            System.DateTime dateTime = new System.DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-
-            // Add the number of seconds in UNIX timestamp to be converted.
-            dateTime = dateTime.AddSeconds(UnixTimestamp);
-            dateTime = dateTime.ToLocalTime();
-
-            // The dateTime now contains the right date/time so to format the string,
-            // use the standard formatting methods of the DateTime object.
-            //dateTime.ToString(
-            return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
-        }
-
-        /// <summary>
         /// Sub-function that takes a dataset which holds (a number of) sensormeasurements and saves these to the database.
         /// Note: the MAC-address (SunSpot) or the Unique ID (TelosB) has to be in the database or the measurement will be ignored and not saved tot he database.
         /// </summary>
@@ -409,20 +394,14 @@
 
         /// <summary>
         /// Read the config.txt in the base-directory of the executable and prepare the database-linkers.
-        /// Peter: Loads the database info 
+        /// Peter: Loads the database info
+        /// No use putting this into a try catch, the controller can not run withouth the database or connecction parameters 
         /// </summary>
         private void LoadOptions()
         {
-            try
-            {
-                Options.ReadXml("config.txt"); //Read the options
-                //Try to set up the MySQL-database linker
+                Options.ReadXml("config.txt"); 
+                
                 MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("Could not connect to the db or load the config");
-            }
         }
 
         private void ParseAnchor(DataRow row)
@@ -547,17 +526,9 @@
                           "Centroid Localization" + "');";
 
                     //add the position to the position table
-                     string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
-                         + row["Time"].ToString() + "', " + "0, ";
+                     AddPosition(row, pos, 0);
 
-                     if (pos != null)
-                         AddPosition += pos.x.ToString() + ", " + pos.y.ToString() + ")";
-                     else
-                         AddPosition += "null, null )";
-
-                    MySQLConn.Query(AddPosition);
-
-                    #region LocationUpdated
+            #region LocationUpdated
 
                     if (LocationUpdated != null && pos != null)
                     {
@@ -665,6 +636,7 @@
         {
             string cmd;
             int TimeSecs, tempint;
+
             if (int.TryParse(row["Time"].ToString(), out TimeSecs))
                 row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
 
@@ -683,10 +655,7 @@
             ((int.TryParse(row["Frequency"].ToString(), out tempint)) ? row["Frequency"] : "null") + "," +
             ((int.TryParse(row["Conn"].ToString(), out tempint)) ? row["Conn"] : "null") + ");";
 
-             string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
-                 + row["Time"].ToString() + "', " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString() + ")";
-
-            MySQLConn.Query(AddPosition);
+             AddPosition(row);
 
             return cmd;
         }
@@ -919,6 +888,7 @@
         //    }
         //    Console.WriteLine("Timer fired");
         //}
+
         /// <summary>
         /// This function corresponds to the socketserver for the GUI-side/port.
         /// </summary>
@@ -962,22 +932,6 @@
             //dummyTimer.Change(5000, 2500);
         }
 
-        private DataSet StringToDataSet(string incxml)
-        {
-            DataSet IncMsg = new DataSet();
-            //Set up a memory-stream to store the xml
-            MemoryStream MemStream = new MemoryStream();
-            //Write the msg to the memory stream
-            StreamWriter SWriter = new StreamWriter(MemStream);
-            SWriter.WriteLine(incxml);
-            SWriter.Flush();
-            MemStream.Position = 0; //Reset the position so we start reading at the start
-
-            IncMsg.ReadXml(MemStream);  //Read the data into the dataset
-
-            return IncMsg;
-        }
-
         /// <summary>
         /// Sub-function that is called when we detect an incoming message that ask for an action from a WSN (e.g. get LEDs to light up,...)
         /// </summary>
@@ -991,72 +945,32 @@
             SocketClient SendActionReq;
             int temp;
 
-                //check if telosb
-                if ((int.TryParse(WSNActionSet.Tables["RequestAction"].Rows[0]["NodeID"].ToString(), out temp)) && (WSNActionSet.Tables["RequestAction"].Rows[0]["NodeID"].ToString().Length < 10))
-                {   //Parsing the NodeID to an int works (and the value in string-format is smaller than 10 characters); so we have a TelosB
+            //fetch these from the config
+            SendActionReq = new SocketClient(
+                int.Parse(Options.Tables["SocketClient"].Select("Use = 'TelosB'")[0]["Port"].ToString()),
+                Options.Tables["SocketClient"].Select("Use = 'TelosB'")[0]["HostName"].ToString());
 
-                    //fetch these from the config
-                    SendActionReq = new SocketClient(
-                        int.Parse(Options.Tables["SocketClient"].Select("Use = 'TelosB'")[0]["Port"].ToString()),
-                        Options.Tables["SocketClient"].Select("Use = 'TelosB'")[0]["HostName"].ToString());
-
-                    //Because TelosB expects a simple 1 or 0, but GUI might send a hexadecimal string
-                    //Led on = 0 = white light = FFFFFF
-                    foreach (DataColumn col in WSNActionSet.Tables[0].Columns)
+            //Because TelosB expects a simple 1 or 0, but GUI might send a hexadecimal string
+            //Led on = 0 = white light = FFFFFF
+            foreach (DataColumn col in WSNActionSet.Tables[0].Columns)
+            {
+                if (col.ColumnName.IndexOf("LED", StringComparison.CurrentCultureIgnoreCase) != -1)
+                {
+                    if (WSNActionSet.Tables[0].Rows[0][col].ToString().Length >= 2)
                     {
-                        if (col.ColumnName.IndexOf("LED", StringComparison.CurrentCultureIgnoreCase) != -1)
+                        int tempint;
+                        if (int.TryParse(WSNActionSet.Tables[0].Rows[0][col].ToString(), out tempint))
                         {
-                            try
-                            {
-                                if (WSNActionSet.Tables[0].Rows[0][col].ToString().Length >= 2)
-                                {
-                                    int tempint;
-                                    if (int.TryParse(WSNActionSet.Tables[0].Rows[0][col].ToString(), out tempint))
-                                    {
-                                        if (tempint == 0)
-                                            WSNActionSet.Tables[0].Rows[0][col] = 0;
-                                        else
-                                            WSNActionSet.Tables[0].Rows[0][col] = 1;
-                                    }
-                                    else
-                                        WSNActionSet.Tables[0].Rows[0][col] = 1;
-                                }
-                            }
-                            catch (Exception)
-                            { }
+                            if (tempint == 0)
+                                WSNActionSet.Tables[0].Rows[0][col] = 0;
+                            else
+                                WSNActionSet.Tables[0].Rows[0][col] = 1;
                         }
+                        else
+                            WSNActionSet.Tables[0].Rows[0][col] = 1;
                     }
                 }
-
-                #region Sun SPOT!
-                else
-                {   //Parsing the NodeID to an int didn't work (or the value in string-format is longer than 10 characters); we have a SunSpot
-                    SendActionReq = new SocketClient(
-                        int.Parse(Options.Tables["SocketClient"].Select("Use = 'SunSpot'")[0]["Port"].ToString()),
-                        Options.Tables["SocketClient"].Select("Use = 'SunSpot'")[0]["HostName"].ToString());
-
-                    //Because SunSpot expects a hexadecimal 6-character string, but the GUI sends '1', we have to change this.
-                    //Led on = white light = FFFFFF
-                    foreach (DataColumn col in WSNActionSet.Tables[0].Columns)
-                    {
-                        if (col.ColumnName.IndexOf("LED", StringComparison.CurrentCultureIgnoreCase) != -1)
-                        {
-                            try
-                            {
-                                if (WSNActionSet.Tables[0].Rows[0][col].ToString().Length == 1)
-                                {
-                                    if (int.Parse(WSNActionSet.Tables[0].Rows[0][col].ToString()) == 1)
-                                        WSNActionSet.Tables[0].Rows[0][col] = "FFFFFF";
-                                    else if (int.Parse(WSNActionSet.Tables[0].Rows[0][col].ToString()) == 0)
-                                        WSNActionSet.Tables[0].Rows[0][col] = "000000";
-                                }
-                            }
-                            catch (Exception)
-                            { }
-                        }
-                    }
-                }
-                #endregion
+            }
 
                 MemoryStream OutMemStream = new MemoryStream();
                 WSNActionSet.WriteXml(OutMemStream);
@@ -1080,10 +994,7 @@
 
                 foreach (DataRow row in WSNActionWSNSet.Tables[0].Rows)
                 {
-                    string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
-                        + row["Time"].ToString() + "', " + "1, " + row["X"].ToString() + ", " + row["Y"].ToString() + ")";
-
-                    MySQLConn.Query(AddPosition);
+                    AddPosition(row);
                 }
             }
             catch (ArgumentNullException nullex)
@@ -1106,6 +1017,7 @@
 
         #endregion Methods
 
+        //Discovery
         #region Other
 
         ///// <summary>
