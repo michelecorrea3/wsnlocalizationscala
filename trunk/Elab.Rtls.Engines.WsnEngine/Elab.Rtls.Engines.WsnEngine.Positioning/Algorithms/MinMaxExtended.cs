@@ -17,7 +17,7 @@
     {
         #region Methods
 
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multiHop)
+        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multiHop)
         {
             //Point position = new Point();
             //double distance;
@@ -33,7 +33,9 @@
             foreach (AnchorNode an in BlindNode.Anchors)
             {
                 an.fRSS = filterMethod(an.RSS);
-                an.range = Ranging(an.fRSS);
+                double frss = rangingMethod(an.fRSS);
+                //an.range = rangingMethod(an.fRSS);
+                an.range = frss;
                 //TEST
                 //an.range = 10;
             }
@@ -71,7 +73,7 @@
                 }
                 if (Anchors.Count >= 3)
                 {
-                    center = MinMaxCalc(Anchors, filterMethod);
+                    center = MinMaxCalc(Anchors, filterMethod, rangingMethod);
                     //logger.Write(currentID + ",");
                 }
                 else
@@ -88,7 +90,7 @@
             {
 
                 if (Anchors.Count >= 3)
-                    center = MinMaxCalc(Anchors, filterMethod);
+                    center = MinMaxCalc(Anchors, filterMethod, rangingMethod);
                 else if (Anchors.Count < 3)
                 {
                     Anchors.Clear();
@@ -102,7 +104,7 @@
                         count = 0;
                         for (int j = 0; j < AllAnchors.Count; j++)
                         {
-                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, Ranging(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, Ranging(Anchors[j].fRSS)))
+                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, AllAnchors[i].range, AllAnchors[j].posx, AllAnchors[j].posy, Anchors[j].range))
                                 //                          if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
                                 count++;
                         }
@@ -116,7 +118,7 @@
                         //return center;
                     }
                     else
-                        center = MinMaxCalc(Anchors, filterMethod);
+                        center = MinMaxCalc(Anchors, filterMethod, rangingMethod);
 
                 }
                 else
@@ -281,12 +283,13 @@
         }
         }
          */
-        public static Point MinMaxCalc(List<AnchorNode> Anchors, Node.FilterMethod filterMethod)
+        public static Point MinMaxCalc(List<AnchorNode> Anchors, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod)
         {
             BoundingBox BnBox, AnBox;
             //comment for the test
-            Anchors[0].fRSS = filterMethod(Anchors[0].RSS);
-            double distance = Ranging(Anchors[0].fRSS);
+            //Anchors[0].fRSS = filterMethod(Anchors[0].RSS);
+            //double distance = (Anchors[0].fRSS);
+            double distance = Anchors[0].range;
             //TEST
             //double distance = 10;
             Point center;
@@ -294,15 +297,16 @@
             center = new Point(Anchors[0].posx, Anchors[0].posy);
 
             //TEST: replace distance with constance
-            AnBox = new BoundingBox(center, 10);
+            AnBox = new BoundingBox(center, distance);
             //AnBox = new BoundingBox(center, Ranging(Anchors[0].fRSS));
             BnBox = AnBox;
 
             for (int i = 1; i < Anchors.Count; i++)
             {
                 //disabled for testing
-                Anchors[i].fRSS = filterMethod(Anchors[i].RSS);
-                distance = Ranging(Anchors[i].fRSS);
+                //Anchors[i].fRSS = filterMethod(Anchors[i].RSS);
+                //distance = rangingMethod(Anchors[i].fRSS);
+                distance = Anchors[i].range;
                 //TEST
                 //distance = 10;
 
@@ -336,10 +340,13 @@
             bn1 = new BoundingBox(a1, r1);
             bn2 = new BoundingBox(a2, r2);
 
-            if ((((bn1.Xmin <= bn2.Xmax) && (bn2.Xmax <= bn1.Xmax)) || ((bn1.Xmin <= bn2.Xmin) && (bn2.Xmin <= bn1.Xmax))) && (((bn1.Ymin <= bn2.Ymax) && (bn2.Ymax <= bn1.Ymax)) || ((bn1.Ymin <= bn2.Ymin) && (bn2.Ymin <= bn1.Ymax))))
-                return true;
-            else
+
+
+            //if ((((bn1.Xmin <= bn2.Xmax) && (bn2.Xmax <= bn1.Xmax)) || ((bn1.Xmin <= bn2.Xmin) && (bn2.Xmin <= bn1.Xmax))) && (((bn1.Ymin <= bn2.Ymax) && (bn2.Ymax <= bn1.Ymax)) || ((bn1.Ymin <= bn2.Ymin) && (bn2.Ymin <= bn1.Ymax))))
+            if(bn1.Xmax < bn2.Xmin || bn1.Xmin > bn2.Xmax || bn1.Ymax < bn2.Ymin || bn1.Ymin > bn2.Ymax)
                 return false;
+            else
+                return true;
         }
 
         #endregion Methods

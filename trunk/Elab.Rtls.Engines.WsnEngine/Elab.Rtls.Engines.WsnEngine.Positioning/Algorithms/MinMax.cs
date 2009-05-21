@@ -49,7 +49,7 @@
     {
         #region Methods
 
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multiHop)
+        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingmethod, bool multiHop)
         {
             //Point position = new Point();
             //double distance;
@@ -67,7 +67,7 @@
                 for (int j = 0; j < BlindNode.Anchors.Count; j++)
                 {
                     BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
-                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, Ranging(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, Ranging(BlindNode.Anchors[j].fRSS)))
+                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, rangingmethod(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, rangingmethod(BlindNode.Anchors[j].fRSS)))
                         //if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
                         count++;
                 }
@@ -79,7 +79,7 @@
             {
                 if (Anchors.Count >= 3)
                 {
-                    center = MinMaxCalc(Anchors, filterMethod);
+                    center = MinMaxCalc(Anchors, filterMethod, rangingmethod);
                     //logger.Write(currentID + ",");
                 }
                 else
@@ -96,7 +96,7 @@
             {
 
                 if (Anchors.Count >= 3)
-                    center = MinMaxCalc(Anchors, filterMethod);
+                    center = MinMaxCalc(Anchors, filterMethod, rangingmethod);
                 else if (Anchors.Count < 3)
                 {
                     Anchors.Clear();
@@ -110,7 +110,7 @@
                         count = 0;
                         for (int j = 0; j < AllAnchors.Count; j++)
                         {
-                            //if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, Ranging(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, Ranging(Anchors[j].fRSS)))
+                            //if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, rangingmethod(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, rangingmethod(Anchors[j].fRSS)))
                             if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
                                 count++;
                         }
@@ -124,7 +124,7 @@
                         //return center;
                     }
                     else
-                        center = MinMaxCalc(Anchors, filterMethod);
+                        center = MinMaxCalc(Anchors, filterMethod, rangingmethod);
 
                 }
                 else
@@ -147,7 +147,7 @@
         /*
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multiHop)
         =======
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multiHop)
+        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.rangingmethod rangingmethod, bool multiHop)
         >>>>>>> .r66
         {
             BoundingBox BnBox, AnBox;
@@ -161,7 +161,7 @@
             //    {
             //        //comment for the test
             //        BlindNode.Anchors[0].fRSS = filterMethod(BlindNode.Anchors[0].RSS);
-            //        distance = rangingMethod(BlindNode.Anchors[0].fRSS);
+            //        distance = rangingmethod(BlindNode.Anchors[0].fRSS);
 
             //        center = new Point(BlindNode.Anchors[0].posx, BlindNode.Anchors[0].posy);
 
@@ -176,7 +176,7 @@
             //        {
             //            //disabled for testing
             //            BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-            //            distance = rangingMethod(BlindNode.Anchors[i].fRSS);
+            //            distance = rangingmethod(BlindNode.Anchors[i].fRSS);
 
             //            center = new Point(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy);
 
@@ -197,7 +197,7 @@
             //        if (BlindNode.Anchors.Count == 0)
             //        {
             //            BlindNode.Anchors[0].fRSS = filterMethod(BlindNode.VirtualAnchors[0].RSS);
-            //            distance = rangingMethod(BlindNode.VirtualAnchors[0].fRSS);
+            //            distance = rangingmethod(BlindNode.VirtualAnchors[0].fRSS);
 
             //            center = new Point(BlindNode.VirtualAnchors[0].posx, BlindNode.VirtualAnchors[0].posy);
 
@@ -209,7 +209,7 @@
             //            {
             //                //disabled for testing
             //                BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.VirtualAnchors[i].RSS);
-            //                distance = rangingMethod(BlindNode.VirtualAnchors[i].fRSS);
+            //                distance = rangingmethod(BlindNode.VirtualAnchors[i].fRSS);
 
             //                center = new Point(BlindNode.VirtualAnchors[i].posx, BlindNode.VirtualAnchors[i].posy);
 
@@ -230,7 +230,7 @@
             //            {
             //                //disabled for testing
             //                BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.VirtualAnchors[i].RSS);
-            //                distance = rangingMethod(BlindNode.VirtualAnchors[i].fRSS);
+            //                distance = rangingmethod(BlindNode.VirtualAnchors[i].fRSS);
 
             //                center = new Point(BlindNode.VirtualAnchors[i].posx, BlindNode.VirtualAnchors[i].posy);
 
@@ -252,7 +252,7 @@
             {
                 //comment for the test
                 BlindNode.Anchors[0].fRSS = filterMethod(BlindNode.Anchors[0].RSS);
-                distance = rangingMethod(BlindNode.Anchors[0].fRSS);
+                distance = rangingmethod(BlindNode.Anchors[0].fRSS);
 
                 center = new Point(BlindNode.Anchors[0].posx, BlindNode.Anchors[0].posy);
 
@@ -264,7 +264,7 @@
                 {
                     //disabled for testing
                     BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-                    distance = rangingMethod(BlindNode.Anchors[i].fRSS);
+                    distance = rangingmethod(BlindNode.Anchors[i].fRSS);
 
                     center = new Point(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy);
 
@@ -289,26 +289,26 @@
         }
         }
          */
-        public static Point MinMaxCalc(List<AnchorNode> Anchors, Node.FilterMethod filterMethod)
+        public static Point MinMaxCalc(List<AnchorNode> Anchors, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod)
         {
             BoundingBox BnBox, AnBox;
             //comment for the test
             Anchors[0].fRSS = filterMethod(Anchors[0].RSS);
-            double distance = Ranging(Anchors[0].fRSS);
+            double distance = rangingMethod(Anchors[0].fRSS);
             Point center;
 
             center = new Point(Anchors[0].posx, Anchors[0].posy);
 
             //TEST: replace distance with constance
             //AnBox = new BoundingBox(center, 10);
-            AnBox = new BoundingBox(center, Ranging(Anchors[0].fRSS));
+            AnBox = new BoundingBox(center, rangingMethod(Anchors[0].fRSS));
             BnBox = AnBox;
 
             for (int i = 1; i < Anchors.Count; i++)
             {
                 //disabled for testing
                 Anchors[i].fRSS = filterMethod(Anchors[i].RSS);
-                distance = Ranging(Anchors[i].fRSS);
+                distance = rangingMethod(Anchors[i].fRSS);
                 //TEST
                 //distance = 10;
 
