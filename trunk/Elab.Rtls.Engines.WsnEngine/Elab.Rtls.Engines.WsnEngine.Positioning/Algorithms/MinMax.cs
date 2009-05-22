@@ -58,7 +58,7 @@
             List<AnchorNode> AllAnchors = new List<AnchorNode>();
             int count = 0;
 
-            StreamWriter Log = new StreamWriter("MinMax.csv", false);
+            //StreamWriter Log = new StreamWriter("MinMax.csv", false);
 
             for (int i = 0; i < BlindNode.Anchors.Count; i++)
             {
@@ -84,12 +84,11 @@
                 }
                 else
                 {
-                    center.x = 0;
-                    center.y = 0;
+                    center = null;
                 }
                 //Log.Write("
-                Log.Write(BlindNode.Anchors.Count.ToString());
-                Log.Write(Anchors.Count.ToString());
+                //Log.Write(BlindNode.Anchors.Count.ToString());
+                //Log.Write(Anchors.Count.ToString());
 
             }
             else
@@ -119,8 +118,7 @@
                     }
                     if (Anchors.Count < 3)
                     {
-                        center.x = 0;
-                        center.y = 0;
+                        center = null;
                         //return center;
                     }
                     else
@@ -129,14 +127,12 @@
                 }
                 else
                 {
-                    center.x = 0;
-                    center.y = 0;
-                    //return center;
+                    center = null;
                 }
 
-                Log.Write(BlindNode.Anchors.Count.ToString());
-                Log.Write(BlindNode.VirtualAnchors.Count.ToString());
-                Log.Write(AllAnchors.Count.ToString());
+                //Log.Write(BlindNode.Anchors.Count.ToString());
+                //Log.Write(BlindNode.VirtualAnchors.Count.ToString());
+                //Log.Write(AllAnchors.Count.ToString());
             }
 
             //center = MinMaxCalc(Anchors, filterMethod);

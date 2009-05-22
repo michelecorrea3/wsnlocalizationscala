@@ -57,8 +57,14 @@
                     if (ListOfCounts.Average() != BlindNode.Anchors.Count)
                     {
                         ListOfCounts.Clear();
+                        double kleinste = BlindNode.Anchors[0].range;
                         foreach (AnchorNode an in BlindNode.Anchors)
-                            an.range = an.range * 1.1;
+                            if (an.range <= kleinste)
+                                kleinste = an.range;
+                        foreach (AnchorNode an in BlindNode.Anchors)
+                            if (an.range == kleinste)
+                                an.range *= 1.1;
+                            //an.range = an.range * 1.1;
                     }
                     else
                         AllCirclesIntersected = true;
