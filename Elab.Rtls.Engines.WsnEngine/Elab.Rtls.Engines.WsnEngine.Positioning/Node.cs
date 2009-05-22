@@ -167,6 +167,7 @@
         //    else
         //        virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
         //}
+
         public void UpdateAnchorPositions()
         {
             foreach (AnchorNode AN in this.Anchors)
@@ -178,7 +179,6 @@
             }
         }
 
-        //OUTDATED....
         /// <summary>
         /// Retrieves the position of the specified node from the DB  
         /// </summary>

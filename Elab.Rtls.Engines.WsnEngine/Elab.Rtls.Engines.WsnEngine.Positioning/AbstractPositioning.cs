@@ -63,19 +63,13 @@
     /// </summary>
     public abstract class RangeBasedPositioning : Positioning
     {
-        #region Properties
+        #region Fields
 
-        public static double baseLoss
-        {
-            get; set;
-        }
+        private static double baseLoss = 51.00;
 
-        public static double pathLossExponent
-        {
-            get; set;
-        }
+        private static double pathLossExponent = 2.00;
 
-        #endregion Properties
+        #endregion Fields
 
         #region Methods
 
@@ -135,7 +129,7 @@
         {
             const double baseRSS = 51, pathLossExponent = 2;
 
-                return Math.Pow(10, ((-baseRSS - fRSS) / (10 * pathLossExponent)));
+            return Math.Pow(10, ((-baseRSS - fRSS) / (10 * pathLossExponent)));
         }
 
         public static double MedianFilter(Queue<double> RSS)
