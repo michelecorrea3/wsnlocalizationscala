@@ -508,7 +508,13 @@
                     if (pos != null)
                         Console.WriteLine("Position was calculated for node: " + row["ID"] + " X = " + pos.x.ToString() + " Y = " + pos.y.ToString());
                     else
-                        Console.WriteLine("Position for node: " + row["ID"] + "could not be calculated");
+                    {
+                        Console.WriteLine("Position for node: " + row["ID"] + " could not be calculated");
+                        if (CurrentNode.Anchors.Count < 3)
+                            Console.WriteLine("Reason: too few anchor nodes!: " + CurrentNode.Anchors.Count.ToString());
+                        else
+                            Console.WriteLine("Unspecified error");
+                    }
 
                     //Create the command that we send to the database to insert the new row.
                     cmd = "call addLocalizationData(" +
