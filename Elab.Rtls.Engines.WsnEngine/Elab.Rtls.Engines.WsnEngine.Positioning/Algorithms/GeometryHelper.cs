@@ -59,7 +59,7 @@
         {
             double distance = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
 
-            if ( distance < Math.Abs(radius1-radius2) || distance > (radius1 + radius2 ) )
+            if ( (distance < Math.Abs(radius1-radius2)) || (distance > (radius1 + radius2)) )
                 return false;
             else
                 return true;

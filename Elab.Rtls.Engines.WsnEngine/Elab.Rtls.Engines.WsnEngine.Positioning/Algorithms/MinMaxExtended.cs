@@ -71,9 +71,9 @@
                     else
                         AllBoxesIntersected = true;
                 }
-                if (Anchors.Count >= 3)
+                if (BlindNode.Anchors.Count >= 3)
                 {
-                    center = MinMaxCalc(Anchors, filterMethod, rangingMethod);
+                    center = MinMaxCalc(BlindNode.Anchors, filterMethod, rangingMethod);
                     //logger.Write(currentID + ",");
                 }
                 else
