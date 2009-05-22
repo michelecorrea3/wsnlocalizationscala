@@ -340,8 +340,6 @@
             bn1 = new BoundingBox(a1, r1);
             bn2 = new BoundingBox(a2, r2);
 
-
-
             //if ((((bn1.Xmin <= bn2.Xmax) && (bn2.Xmax <= bn1.Xmax)) || ((bn1.Xmin <= bn2.Xmin) && (bn2.Xmin <= bn1.Xmax))) && (((bn1.Ymin <= bn2.Ymax) && (bn2.Ymax <= bn1.Ymax)) || ((bn1.Ymin <= bn2.Ymin) && (bn2.Ymin <= bn1.Ymax))))
             if(bn1.Xmax < bn2.Xmin || bn1.Xmin > bn2.Xmax || bn1.Ymax < bn2.Ymin || bn1.Ymin > bn2.Ymax)
                 return false;
