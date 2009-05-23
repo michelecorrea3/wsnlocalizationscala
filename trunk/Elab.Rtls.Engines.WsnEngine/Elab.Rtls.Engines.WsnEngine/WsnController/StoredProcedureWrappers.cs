@@ -43,14 +43,11 @@
 
         private void AddPosition(DataRow row, Point pos, int anchor)
         {
-            CultureInfo cultureInfo = new CultureInfo("be");
-
             string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
                                  + row["Time"].ToString() + "', " + anchor + ", ";
 
             if (pos != null)
-                AddPosition += pos.x.ToString(cultureInfo) + ", " + pos.y.ToString(cultureInfo) + ")";
-            else
+            {                string tempString = pos.x.ToString() + ", " + pos.y.ToString() + ")";                tempString.Replace(',', '.');                AddPosition += tempString;            }                            else
                 AddPosition += "null, null )";
 
             MySQLConn.Query(AddPosition);
