@@ -1,6 +1,7 @@
 ﻿namespace Elab.Rtls.Engines.WsnEngine
 {
     using System;
+    using System.Globalization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data;
@@ -42,6 +43,8 @@
 
         private void AddPosition(DataRow row, Point pos, int anchor)
         {
+            CultureInfo cultureInfo = new CultureInfo("be");
+
             string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
                                  + row["Time"].ToString() + "', " + anchor + ", ";
 
