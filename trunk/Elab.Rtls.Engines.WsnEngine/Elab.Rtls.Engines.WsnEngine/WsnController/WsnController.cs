@@ -408,32 +408,33 @@
         {
             Node CurrentNode;
             currentID = row["ID"].ToString();
+
+            if (!AnchorNodes.Exists(ExistsNode))
             {
-                if (!AnchorNodes.Exists(ExistsNode))
-                {
-                    AnchorNodes.Add(new Node(row["ID"].ToString(), MySQLConn));
-                    Console.WriteLine("Added new BN to be positioned\n\n\n");
-                }
-
-                CurrentNode = AnchorNodes.Find(ExistsNode);
-                CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
-                CurrentNode = AnchorNodes.Find(ExistsNode);
-
-                Node.FilterMethod myFilter;
-
-                switch (SelectedFilter)
-                {
-                    case "Median":
-                        myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
-                        break;
-                    case "Average":
-                        myFilter = new Node.FilterMethod(RangeBasedPositioning.AverageFilter);
-                        break;
-                    default:
-                        myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
-                        break;
-                }
+                AnchorNodes.Add(new Node(row["ID"].ToString(), MySQLConn));
+                Console.WriteLine("Added new BN to be positioned\n\n\n");
             }
+
+            CurrentNode = AnchorNodes.Find(ExistsNode);
+            CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
+            CurrentNode = AnchorNodes.Find(ExistsNode);
+
+            Node.FilterMethod myFilter;
+
+            switch (SelectedFilter)
+            {
+                case "Median":
+                    myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
+                    break;
+                case "Average":
+                    myFilter = new Node.FilterMethod(RangeBasedPositioning.AverageFilter);
+                    break;
+                default:
+                    myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);
+                    break;
+            }
+
+            RangeBasedPositioning.CalibratePathloss(AnchorNodes, myFilter);
         }
 
         private string ParseBlind(DataRow row, string nodeId)

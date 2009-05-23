@@ -180,8 +180,13 @@
             {
                 Point newPosition = GetANPosition(AN.nodeid);
 
-                AN.posx = newPosition.x;
-                AN.posy = newPosition.y;
+                if (newPosition == null)
+                    this.anchorList.Remove(AN);
+                else
+                {
+                    AN.posx = newPosition.x;
+                    AN.posy = newPosition.y;   
+                }
             }
         }
 
@@ -190,7 +195,7 @@
             foreach (AnchorNode AN in this.Anchors)
             {
                 if (AN.lastUpdate < DateTime.Now.Subtract(new TimeSpan(0, 2, 0)))
-                    this.Anchors.Remove(AN);
+                    this.anchorList.Remove(AN);
             }
         }
 
@@ -211,8 +216,13 @@
 
                 foreach (DataRow row in returnSet.Tables[0].Rows)
                 {
-                    pos.x = Convert.ToDouble(row["X"]);
-                    pos.y = Convert.ToDouble(row["Y"]);
+                    if (row["X"] == null || row["Y"] == null)
+                        return null;
+                    else
+                    {
+                        pos.x = Convert.ToDouble(row["X"]);
+                        pos.y = Convert.ToDouble(row["Y"]);                        
+                    }
                 }
             }
             catch (Exception e_mysql)
