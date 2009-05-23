@@ -66,12 +66,23 @@
         #region Fields
 
         private static double baseLoss = 51.00;
-
         private static double pathLossExponent = 2.00;
 
         #endregion Fields
 
         #region Methods
+
+        public static double AverageFilter(Queue<double> RSS)
+        {
+            double total = 0;
+
+            foreach (double d in RSS)
+            {
+                total += d;
+            }
+
+            return (total / RSS.Count);
+        }
 
         public static void CalibratePathloss(List<Node> AnchorNodes, Node.FilterMethod filterMethod)
         {
@@ -135,18 +146,6 @@
                 {
                     return ((RSSList[(RSSList.Count/2) - 1] + RSSList[(RSSList.Count/2)])/2);
                 }
-        }
-
-        public static double AverageFilter(Queue<double> RSS)
-        {
-            double total = 0;
-
-            foreach (double d in RSS)
-            {
-                total += d;
-            }
-
-            return (total / RSS.Count);
         }
 
         public static double NoFilter(Queue<double> RSS)

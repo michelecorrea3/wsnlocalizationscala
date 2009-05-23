@@ -459,7 +459,7 @@
                         CurrentNode = BlindNodes.Find(ExistsNode);
                         CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
                         //TODO: check if automatically updated
-                        CurrentNode = BlindNodes.Find(ExistsNode);                                                
+                        CurrentNode = BlindNodes.Find(ExistsNode);
 
                     Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
                     Node.RangingMethod myRanging;

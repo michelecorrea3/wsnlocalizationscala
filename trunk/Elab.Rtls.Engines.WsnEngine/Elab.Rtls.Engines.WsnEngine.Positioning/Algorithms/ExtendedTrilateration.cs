@@ -61,9 +61,8 @@
                             else if (StatusCircles.Contains("In") && !StatusCircles.Contains("Out"))
                                 BlindNode.Anchors[i].range *= 0.9;
 
-
                              StatusCircles.Clear();
-                                
+
                             //ListOfCounts.Add(count);
                                 //AllCirclesIntersected = true;
                         }
@@ -160,6 +159,7 @@
             */
             return center;
         }
+
         /*
         private static Error Anchorsintersection(List<IntersectedAnchors> anchors)
         {

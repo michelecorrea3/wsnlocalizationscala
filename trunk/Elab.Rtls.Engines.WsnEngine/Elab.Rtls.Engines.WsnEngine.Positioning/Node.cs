@@ -17,11 +17,11 @@
 
         public Queue<double> RSS = new Queue<double>(20);
         public double fRSS;
+        public DateTime lastUpdate;
         public string nodeid;
         public double posx;
         public double posy;
         public double range;
-        public DateTime lastUpdate;
 
         #endregion Fields
 
@@ -59,13 +59,6 @@
             this.MyDb = MyDb;
             this.WsnId = WsnId;
         }
-
-        //public Node(string WsnId, MySQLClass MyDb, string AnchorWsnId, double RSS, int van, DateTime now)
-        //{
-        //    this.MyDb = MyDb;
-        //    this.WsnId = WsnId;
-        //    NewAnchor(AnchorWsnId, RSS, van, now);
-        //}
 
         #endregion Constructors
 
@@ -105,6 +98,15 @@
         #endregion Properties
 
         #region Methods
+
+        /// <summary>
+        /// Allows a node to determine its own position from the database, 
+        /// only applicable in case the node is an anchor
+        /// </summary>
+        public void SetOwnPosition()
+        {
+            position = GetANPosition(this.WsnId);
+        }
 
         public void UpdateAnchors(string AnchorWsnId, double RSS, int van, DateTime now)
         {
@@ -157,49 +159,6 @@
         }
 
         /// <summary>
-        /// Allows a node to determine its own position from the database, 
-        /// only applicable in case the node is an anchor
-        /// </summary>
-        public void SetOwnPosition()
-        {
-            position = GetANPosition(this.WsnId);
-        }
-
-        //TEST
-        //public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy, int van)
-        //{
-        //    if(van == 1)
-        //    anchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
-        //    else
-        //        virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
-        //}
-
-        private void UpdateAnchorPositions()
-        {
-            foreach (AnchorNode AN in this.Anchors)
-            {
-                Point newPosition = GetANPosition(AN.nodeid);
-
-                if (newPosition == null)
-                    this.anchorList.Remove(AN);
-                else
-                {
-                    AN.posx = newPosition.x;
-                    AN.posy = newPosition.y;   
-                }
-            }
-        }
-
-        private void RemoveOutdatedAnchors()
-        {
-            foreach (AnchorNode AN in this.Anchors)
-            {
-                if (AN.lastUpdate < DateTime.Now.Subtract(new TimeSpan(0, 2, 0)))
-                    this.anchorList.Remove(AN);
-            }
-        }
-
-        /// <summary>
         /// Retrieves the position of the specified node from the DB  
         /// </summary>
         /// <param name="AN">The WSNid of the Anchor Node</param>
@@ -221,7 +180,7 @@
                     else
                     {
                         pos.x = Convert.ToDouble(row["X"]);
-                        pos.y = Convert.ToDouble(row["Y"]);                        
+                        pos.y = Convert.ToDouble(row["Y"]);
                     }
                 }
             }
@@ -244,6 +203,50 @@
                 virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS, now));
         }
 
+        private void RemoveOutdatedAnchors()
+        {
+            foreach (AnchorNode AN in this.Anchors)
+            {
+                if (AN.lastUpdate < DateTime.Now.Subtract(new TimeSpan(0, 2, 0)))
+                    this.anchorList.Remove(AN);
+            }
+        }
+
+        //TEST
+        //public void NewAnchor(string AnchorWsnId, double RSS, double posx, double posy, int van)
+        //{
+        //    if(van == 1)
+        //    anchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
+        //    else
+        //        virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
+        //}
+        private void UpdateAnchorPositions()
+        {
+            foreach (AnchorNode AN in this.Anchors)
+            {
+                Point newPosition = GetANPosition(AN.nodeid);
+
+                if (newPosition == null)
+                    this.anchorList.Remove(AN);
+                else
+                {
+                    AN.posx = newPosition.x;
+                    AN.posy = newPosition.y;
+                }
+            }
+        }
+
         #endregion Methods
+
+        #region Other
+
+        //public Node(string WsnId, MySQLClass MyDb, string AnchorWsnId, double RSS, int van, DateTime now)
+        //{
+        //    this.MyDb = MyDb;
+        //    this.WsnId = WsnId;
+        //    NewAnchor(AnchorWsnId, RSS, van, now);
+        //}
+
+        #endregion Other
     }
 }
