@@ -60,14 +60,14 @@
                                 BlindNode.Anchors[i].range *= 1.1;
                             else if (StatusCircles.Contains("In") && !StatusCircles.Contains("Out"))
                                 BlindNode.Anchors[i].range *= 0.9;
-                             else if (StatusCircles.Contains("Cut") && !StatusCircles.Contains("In") && StatusCircles.Contains("Out") )
 
 
                              StatusCircles.Clear();
                                 
                             //ListOfCounts.Add(count);
-                                AllCirclesIntersected = true;
+                                //AllCirclesIntersected = true;
                         }
+                        ListOfCounts.Clear();
                         for (int i = 0; i < BlindNode.Anchors.Count; i++)
                         {
                             count = 0;
