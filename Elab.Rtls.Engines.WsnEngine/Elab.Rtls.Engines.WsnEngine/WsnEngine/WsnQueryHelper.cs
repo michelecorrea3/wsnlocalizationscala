@@ -444,6 +444,8 @@
                                     ReturnTagBlink["TagID"] = tagBlink["TagID"];
                                     ReturnTagBlink["Location/X"] = tagBlink["X"];
                                     ReturnTagBlink["Location/Y"] = tagBlink["Y"];
+                                    ReturnTagBlink["Location/MapID"] = tagBlink["MapID"];
+                                    ReturnTagBlink["Location/Accuracy"] = tagBlink["Accuracy"];
                                     ReturnTagBlink["RTLSBlinkTime"] = DateTime.UtcNow.ToString("yyyy/MM/dd HH:mm:ss") + timezone;
                                     break;
                             }

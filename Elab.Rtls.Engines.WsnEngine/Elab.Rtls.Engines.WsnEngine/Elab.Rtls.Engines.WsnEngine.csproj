@@ -46,10 +46,6 @@
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="SocketConnection, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SocketConnection\obj\Debug\SocketConnection.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -99,6 +95,10 @@
     <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Tools.Logger\Elab.Rtls.Engines.WsnEngine.Tools.Logger.csproj">
       <Project>{077929CD-F25F-4043-B612-5CD8BAB7C186}</Project>
       <Name>Elab.Rtls.Engines.WsnEngine.Tools.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection\Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection.csproj">
+      <Project>{AD1B0220-33A6-46C6-96DB-0866851F745D}</Project>
+      <Name>Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
