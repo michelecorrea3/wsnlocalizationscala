@@ -43,13 +43,13 @@
 
         private void AddPosition(DataRow row, Point pos, int anchor)
         {
-            CultureInfo cultureInfo = new CultureInfo("be");
+            //CultureInfo cultureInfo = new CultureInfo("be");
 
             string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
                                  + row["Time"].ToString() + "', " + anchor + ", ";
 
             if (pos != null)
-                AddPosition += pos.x.ToString() + ", " + pos.y.ToString() + ")";
+                AddPosition += pos.x.ToString("F") + ", " + pos.y.ToString("F") + ")";
             else
                 AddPosition += "null, null )";
 
