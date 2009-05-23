@@ -47,10 +47,8 @@
                                  + row["Time"].ToString() + "', " + anchor + ", ";
 
             if (pos != null)
-            {               
-                AddPosition += pos.x.ToString().Replace(',', '.') + ", " + pos.y.ToString().Replace(',', '.') + ")";                
-            }                            
-            else
+                AddPosition += pos.x.ToString().Replace(',', '.') + ", " + pos.y.ToString().Replace(',', '.') + ")";                                     
+            else                
                 AddPosition += "null, null )";
 
             MySQLConn.Query(AddPosition);
