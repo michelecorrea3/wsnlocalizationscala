@@ -411,15 +411,13 @@
             {
                 if (!AnchorNodes.Exists(ExistsNode))
                 {
-                    AnchorNodes.Add(new Node(row["ID"].ToString(), MySQLConn, row["ANode"].ToString(),
-                                            Convert.ToDouble(row["RSSI"]), Convert.ToInt32(row["VANs"])));
-                    CurrentNode = BlindNodes.Find(ExistsNode);
+                    AnchorNodes.Add(new Node(row["ID"].ToString(), MySQLConn));
+                    Console.WriteLine("Added new BN to be positioned\n\n\n");
                 }
-                else
-                {
-                    CurrentNode = AnchorNodes.Find(ExistsNode);
-                    CurrentNode.AddAnchor(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]));
-                }
+
+                CurrentNode = AnchorNodes.Find(ExistsNode);
+                CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
+                CurrentNode = AnchorNodes.Find(ExistsNode);
 
                 Node.FilterMethod myFilter;
 
@@ -454,22 +452,16 @@
 
                     if (!BlindNodes.Exists(ExistsNode))
                     {
-                        BlindNodes.Add(new Node(row["ID"].ToString(), MySQLConn, row["ANode"].ToString(),
-                                                Convert.ToDouble(row["RSSI"]), Convert.ToInt32(row["VANs"])));
+                        BlindNodes.Add(new Node(row["ID"].ToString(), MySQLConn));
                         Console.WriteLine("Added new BN to be positioned\n\n\n");
-                        CurrentNode = BlindNodes.Find(ExistsNode);
                     }
-                    else
-                    {
                         CurrentNode = BlindNodes.Find(ExistsNode);
-                        CurrentNode.AddAnchor(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]));
-                    }
+                        CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
+                        //TODO: check if automatically updated
+                        CurrentNode = BlindNodes.Find(ExistsNode);                                                
 
-                    //TODO: switch on the bulletlist or whatever you use to select the algorithm
                     Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
                     Node.RangingMethod myRanging;
-
-                    CurrentNode.UpdateAnchorPositions();
 
                     if (UseCalibration)
                         myRanging = new Node.RangingMethod(RangeBasedPositioning.Ranging);
@@ -483,6 +475,9 @@
                             break;
                         case "Average":
                             myFilter = new Node.FilterMethod(RangeBasedPositioning.AverageFilter);
+                            break;
+                        case "NoFilter":
+                            myFilter = new Node.FilterMethod(RangeBasedPositioning.NoFilter);
                             break;
                     }
 
@@ -642,6 +637,7 @@
         {
             string cmd;
             int TimeSecs, tempint;
+            double tempDouble;
 
             if (int.TryParse(row["Time"].ToString(), out TimeSecs))
                 row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);        //SunSpot sends the timestamp as unix-timestamp, convert it to normal timestamp.
@@ -652,8 +648,8 @@
             row["Time"] + "'," +
             row["Active"] + "," +
             row["AN"] + "," +
-            ((int.TryParse(row["X"].ToString(), out tempint)) ? row["X"] : "null") + "," +
-            ((int.TryParse(row["Y"].ToString(), out tempint)) ? row["Y"] : "null") + "," +
+            ((double.TryParse(row["X"].ToString(), out tempDouble)) ? row["X"] : "null") + "," +
+            ((double.TryParse(row["Y"].ToString(), out tempDouble)) ? row["Y"] : "null") + "," +
             ((int.TryParse(row["SampleRate"].ToString(), out tempint)) ? row["SampleRate"] : "null") + "," +
             ((int.TryParse(row["LocRate"].ToString(), out tempint)) ? row["LocRate"] : "null") + "," +
             ((int.TryParse(row["Leds"].ToString(), out tempint)) ? row["Leds"] : "null") + "," +

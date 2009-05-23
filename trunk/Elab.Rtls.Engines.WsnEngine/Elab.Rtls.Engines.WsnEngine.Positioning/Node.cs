@@ -21,17 +21,19 @@
         public double posx;
         public double posy;
         public double range;
+        public DateTime lastUpdate;
 
         #endregion Fields
 
         #region Constructors
 
-        public AnchorNode(string wsnid, double posx, double posy, double RSS)
+        public AnchorNode(string wsnid, double posx, double posy, double RSS, DateTime now)
         {
             this.nodeid = wsnid;
             this.posx = posx;
             this.posy = posy;
             this.RSS.Enqueue(RSS);
+            this.lastUpdate = now;
         }
 
         #endregion Constructors
@@ -58,12 +60,12 @@
             this.WsnId = WsnId;
         }
 
-        public Node(string WsnId, MySQLClass MyDb, string AnchorWsnId, double RSS, int van)
-        {
-            this.MyDb = MyDb;
-            this.WsnId = WsnId;
-            NewAnchor(AnchorWsnId, RSS, van);
-        }
+        //public Node(string WsnId, MySQLClass MyDb, string AnchorWsnId, double RSS, int van, DateTime now)
+        //{
+        //    this.MyDb = MyDb;
+        //    this.WsnId = WsnId;
+        //    NewAnchor(AnchorWsnId, RSS, van, now);
+        //}
 
         #endregion Constructors
 
@@ -104,7 +106,7 @@
 
         #region Methods
 
-        public void AddAnchor(string AnchorWsnId, double RSS, int van)
+        public void UpdateAnchors(string AnchorWsnId, double RSS, int van, DateTime now)
         {
             Point ANpos = new Point();
             AnchorNode TempNode;
@@ -116,8 +118,7 @@
             {
                 if (van == 1)
                 {
-                    AnchorNode TempANode = anchorList.Find(AN => AN.nodeid == AnchorWsnId);
-                    int index = anchorList.IndexOf(TempANode);
+                    int index = anchorList.FindIndex(AN => AN.nodeid == AnchorWsnId);
 
                     anchorList[index].RSS.Enqueue(RSS);
 
@@ -128,11 +129,12 @@
                             anchorList[index].RSS.Dequeue();
                         } while (anchorList[index].RSS.Count > 20);
                     }
+
+                    anchorList[index].lastUpdate = now;
                 }
                 else
                 {
-                    AnchorNode TempANode = virtualAnchorList.Find(AN => AN.nodeid == AnchorWsnId);
-                    int index = virtualAnchorList.IndexOf(TempANode);
+                    int index = virtualAnchorList.FindIndex(AN => AN.nodeid == AnchorWsnId);
 
                     virtualAnchorList[index].RSS.Enqueue(RSS);
 
@@ -143,17 +145,21 @@
                             virtualAnchorList[index].RSS.Dequeue();
                         } while (virtualAnchorList[index].RSS.Count > 20);
                     }
+
+                    virtualAnchorList[index].lastUpdate = now;
                 }
             }
             else
-            {
-                if (van == 1)
-                    anchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
-                else
-                    virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
-            }
+                NewAnchor(AnchorWsnId, RSS, van, now);
+
+            RemoveOutdatedAnchors();
+            UpdateAnchorPositions();
         }
 
+        /// <summary>
+        /// Allows a node to determine its own position from the database, 
+        /// only applicable in case the node is an anchor
+        /// </summary>
         public void SetOwnPosition()
         {
             position = GetANPosition(this.WsnId);
@@ -168,7 +174,7 @@
         //        virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
         //}
 
-        public void UpdateAnchorPositions()
+        private void UpdateAnchorPositions()
         {
             foreach (AnchorNode AN in this.Anchors)
             {
@@ -176,6 +182,15 @@
 
                 AN.posx = newPosition.x;
                 AN.posy = newPosition.y;
+            }
+        }
+
+        private void RemoveOutdatedAnchors()
+        {
+            foreach (AnchorNode AN in this.Anchors)
+            {
+                if (AN.lastUpdate < DateTime.Now.Subtract(new TimeSpan(0, 2, 0)))
+                    this.Anchors.Remove(AN);
             }
         }
 
@@ -192,36 +207,31 @@
 
             try
             {
-                {
-                    returnSet = MyDb.Query(cmd);
+                returnSet = MyDb.Query(cmd);
 
-                    foreach (DataRow row in returnSet.Tables[0].Rows)
-                    {
-                        pos.x = Convert.ToDouble(row["X"]);
-                        pos.y = Convert.ToDouble(row["Y"]);
-                    }
+                foreach (DataRow row in returnSet.Tables[0].Rows)
+                {
+                    pos.x = Convert.ToDouble(row["X"]);
+                    pos.y = Convert.ToDouble(row["Y"]);
                 }
             }
             catch (Exception e_mysql)
             {
                 Console.WriteLine(e_mysql.Message);
                 Console.WriteLine(e_mysql.StackTrace);
-                Console.WriteLine("Some field is probably missing");
             }
 
             return pos;
         }
 
-        private void NewAnchor(string AnchorWsnId, double RSS, int van)
+        private void NewAnchor(string AnchorWsnId, double RSS, int van, DateTime now)
         {
-            Point ANpos = new Point();
-
-            ANpos = GetANPosition(AnchorWsnId);
+            Point ANpos = GetANPosition(AnchorWsnId);
 
             if (van == 1)
-                anchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
+                anchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS, now));
             else
-                virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS));
+                virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS, now));
         }
 
         #endregion Methods

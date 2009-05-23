@@ -73,18 +73,6 @@
 
         #region Methods
 
-        public static double AverageFilter(Queue<double> RSS)
-        {
-            double total = 0;
-
-                foreach (double d in RSS)
-                {
-                    total += d;
-                }
-
-                return (total/RSS.Count);
-        }
-
         public static void CalibratePathloss(List<Node> AnchorNodes, Node.FilterMethod filterMethod)
         {
             double pathlossExponent = 0;
@@ -147,6 +135,25 @@
                 {
                     return ((RSSList[(RSSList.Count/2) - 1] + RSSList[(RSSList.Count/2)])/2);
                 }
+        }
+
+        public static double AverageFilter(Queue<double> RSS)
+        {
+            double total = 0;
+
+            foreach (double d in RSS)
+            {
+                total += d;
+            }
+
+            return (total / RSS.Count);
+        }
+
+        public static double NoFilter(Queue<double> RSS)
+        {
+            List<double> RSSList = RSS.ToList();
+
+            return RSSList[RSS.Count - 1];
         }
 
         /// <summary>

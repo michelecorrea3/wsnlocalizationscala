@@ -376,8 +376,8 @@
                                 if (
                                     ActiveProperty == ID.GetElementsByTagName("active")[0].InnerText &&
                                     AnchorProperty == ID.GetElementsByTagName("AN")[0].InnerText &&
-                                    textBoxControlX.Text == ID.GetElementsByTagName("X")[0].InnerText &&
-                                    textBoxControlY.Text == ID.GetElementsByTagName("Y")[0].InnerText &&
+                                    Convert.ToDouble(textBoxControlX.Text) == Convert.ToDouble(ID.GetElementsByTagName("X")[0].InnerText) &&
+                                    Convert.ToDouble(textBoxControlY.Text) == Convert.ToDouble(ID.GetElementsByTagName("Y")[0].InnerText) &&
                                     textBoxSampleRate.Text == ID.GetElementsByTagName("Samplerate")[0].InnerText &&
                                     textBoxLocRate.Text == ID.GetElementsByTagName("LocRate")[0].InnerText &&
                                     LedsProperty == ID.GetElementsByTagName("Leds")[0].InnerText &&
