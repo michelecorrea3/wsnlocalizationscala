@@ -78,14 +78,14 @@
                 }
                 else
                 {
-                    center.x = 0;
-                    center.y = 0;
+                    center = null;
                 }
                 //Log.Write("
                 //Log.Write(BlindNode.Anchors.Count.ToString());
                 //Log.Write(Anchors.Count.ToString());
 
             }
+                /*
             else
             {
 
@@ -132,7 +132,7 @@
                 //Log.Write(BlindNode.VirtualAnchors.Count.ToString());
                 //Log.Write(AllAnchors.Count.ToString());
             }
-
+            */
             //center = MinMaxCalc(Anchors, filterMethod);
 
             return center;
@@ -316,14 +316,10 @@
 
                 //TEST
                 //AnBox = new BoundingBox(center, 1);
-                if (((BnBox.Xmin <= AnBox.Xmax) && (AnBox.Xmax <= BnBox.Xmax)) || ((BnBox.Xmin <= AnBox.Xmin) && (AnBox.Xmin <= BnBox.Xmax)))
-                    if (((BnBox.Ymin <= AnBox.Ymax) && (AnBox.Ymax <= BnBox.Ymax)) || ((BnBox.Ymin <= AnBox.Ymin) && (AnBox.Ymin <= BnBox.Ymax)))
-                    {
-                        BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
-                        BnBox.Xmax = Math.Min(BnBox.Xmax, AnBox.Xmax);
-                        BnBox.Ymin = Math.Max(BnBox.Ymin, AnBox.Ymin);
-                        BnBox.Ymax = Math.Min(BnBox.Ymax, AnBox.Ymax);
-                    }
+                BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
+                BnBox.Xmax = Math.Min(BnBox.Xmax, AnBox.Xmax);
+                BnBox.Ymin = Math.Max(BnBox.Ymin, AnBox.Ymin);
+                BnBox.Ymax = Math.Min(BnBox.Ymax, AnBox.Ymax);
             }
             center.x = (BnBox.Xmin + BnBox.Xmax) / 2;
             center.y = (BnBox.Ymin + BnBox.Ymax) / 2;
