@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DatabaseConnection\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection.csproj">
+    <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection.csproj">
       <Project>{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}</Project>
       <Name>Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection</Name>
     </ProjectReference>

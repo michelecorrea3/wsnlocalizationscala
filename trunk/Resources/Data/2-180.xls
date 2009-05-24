@@ -1,0 +1,1891 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:html="http://www.w3.org/TR/REC-html40">
+ <Worksheet ss:Name="Table1">
+  <Table>
+   <Column ss:Index="7" ss:AutoFitWidth="0" ss:Width="110"/>   <Column ss:Index="9" ss:AutoFitWidth="0" ss:Width="110"/>   <Row>
+    <Cell><Data ss:Type="String">idlocalization</Data></Cell>
+    <Cell><Data ss:Type="String">RSSI</Data></Cell>
+    <Cell><Data ss:Type="String">X</Data></Cell>
+    <Cell><Data ss:Type="String">Y</Data></Cell>
+    <Cell><Data ss:Type="String">Z</Data></Cell>
+    <Cell><Data ss:Type="String">node</Data></Cell>
+    <Cell><Data ss:Type="String">time</Data></Cell>
+    <Cell><Data ss:Type="String">ANode</Data></Cell>
+    <Cell><Data ss:Type="String">Algorithms</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47386</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47387</Data></Cell>
+    <Cell><Data ss:Type="Number">-75</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47388</Data></Cell>
+    <Cell><Data ss:Type="Number">-70</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47389</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47390</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47391</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47392</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47393</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47394</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47395</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47396</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47397</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47398</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:00</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47399</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47400</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47401</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47402</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47403</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47404</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47405</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47406</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47407</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47408</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47409</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47410</Data></Cell>
+    <Cell><Data ss:Type="Number">-71</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47411</Data></Cell>
+    <Cell><Data ss:Type="Number">-71</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47412</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47413</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47414</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47415</Data></Cell>
+    <Cell><Data ss:Type="Number">-71</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47416</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47417</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:01</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47418</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:04</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47419</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:04</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47420</Data></Cell>
+    <Cell><Data ss:Type="Number">-71</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:04</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47421</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:04</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47422</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:04</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47423</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:04</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47424</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:04</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47425</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:04</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47426</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47427</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47428</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47429</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47430</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47431</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47432</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47433</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47434</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47435</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:07</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47436</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47437</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47438</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47439</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47440</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47441</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47442</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47443</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47444</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47445</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47446</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47447</Data></Cell>
+    <Cell><Data ss:Type="Number">-76</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47448</Data></Cell>
+    <Cell><Data ss:Type="Number">-75</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47449</Data></Cell>
+    <Cell><Data ss:Type="Number">-75</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47450</Data></Cell>
+    <Cell><Data ss:Type="Number">-77</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47451</Data></Cell>
+    <Cell><Data ss:Type="Number">-77</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47452</Data></Cell>
+    <Cell><Data ss:Type="Number">-78</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47453</Data></Cell>
+    <Cell><Data ss:Type="Number">-76</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47454</Data></Cell>
+    <Cell><Data ss:Type="Number">-77</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47455</Data></Cell>
+    <Cell><Data ss:Type="Number">-77</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47456</Data></Cell>
+    <Cell><Data ss:Type="Number">-76</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47457</Data></Cell>
+    <Cell><Data ss:Type="Number">-76</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47458</Data></Cell>
+    <Cell><Data ss:Type="Number">-76</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47459</Data></Cell>
+    <Cell><Data ss:Type="Number">-76</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:08</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47460</Data></Cell>
+    <Cell><Data ss:Type="Number">-75</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:09</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47461</Data></Cell>
+    <Cell><Data ss:Type="Number">-75</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:09</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47462</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:09</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47463</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:12</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47464</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:12</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47465</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:15</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47466</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:15</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47467</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:15</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47468</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:15</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47469</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:15</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47470</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:15</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47471</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:15</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47472</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:15</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47473</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:15</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47474</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:16</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47475</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:16</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47476</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:16</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47477</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:16</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47478</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47479</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47480</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47481</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47482</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47483</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47484</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47485</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47486</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47487</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47488</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47489</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47490</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47491</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47492</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47493</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47494</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47495</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47496</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47497</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47498</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47499</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47500</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47501</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:19</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47502</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:20</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47503</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:20</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47504</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47505</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47506</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47507</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47508</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47509</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47510</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47511</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47512</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47513</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47514</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47515</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47516</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47517</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47518</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47519</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47520</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47521</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:23</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47522</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47523</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47524</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47525</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47526</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47527</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47528</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47529</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47530</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47531</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47532</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47533</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47534</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47535</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47536</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47537</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47538</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47539</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47540</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47541</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47542</Data></Cell>
+    <Cell><Data ss:Type="Number">-75</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47543</Data></Cell>
+    <Cell><Data ss:Type="Number">-75</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47544</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47545</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47546</Data></Cell>
+    <Cell><Data ss:Type="Number">-75</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47547</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:24</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47548</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:27</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47549</Data></Cell>
+    <Cell><Data ss:Type="Number">-74</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:28</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47550</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:28</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47551</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:28</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47552</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:28</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47553</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:28</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47554</Data></Cell>
+    <Cell><Data ss:Type="Number">-72</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:28</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+   <Row>
+    <Cell><Data ss:Type="Number">47555</Data></Cell>
+    <Cell><Data ss:Type="Number">-73</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">0</Data></Cell>
+    <Cell><Data ss:Type="Number">15</Data></Cell>
+    <Cell><Data ss:Type="Number">20</Data></Cell>
+    <Cell><Data ss:Type="String">2009-05-23 14:47:28</Data></Cell>
+    <Cell><Data ss:Type="Number">19</Data></Cell>
+    <Cell><Data ss:Type="String">Centroid Localization</Data></Cell>
+   </Row>
+  </Table>
+ </Worksheet>
+</Workbook>
