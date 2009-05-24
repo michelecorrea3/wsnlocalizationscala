@@ -912,9 +912,9 @@ struct node **VAN(struct node **n)
 		call CC2420Config.sync();
   }
   */
-  	call Leds.led0Off();
-	call Leds.led1Off();
-	call Leds.led2Off();
+  	//call Leds.led0Off();
+	//call Leds.led1Off();
+	//call Leds.led2Off();
   
 	  printf("Timer.fired\n");
 	  call PrintfFlush.flush();	
