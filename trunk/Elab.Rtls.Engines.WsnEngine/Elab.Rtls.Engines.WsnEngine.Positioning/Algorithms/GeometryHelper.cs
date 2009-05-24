@@ -69,9 +69,9 @@
         {
             double distance = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
 
-            if (x1 == x2 & y1 == y2)
+            if (x1 == x2 && y1 == y2)
                 return "Same";
-            else if (distance < Math.Abs(radius1 - radius2))
+            else if (distance < (radius1 - radius2))
                 return "In";
             else if (distance > (radius1 + radius2))
                 return "Out";

@@ -137,7 +137,7 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
         private void radioButtonNoFilter_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonNoFilter.Checked)
-                WsnController.SelectedAlgorithm = "NoFilter";
+                WsnController.SelectedFilter = "NoFilter";
         }
     }
 }
