@@ -46,11 +46,6 @@
         /// </summary>
         private DataSet Options = new DataSet();
 
-        /// <summary>
-        /// BN's WsnId
-        /// </summary>
-        private string currentID;
-
         #endregion Fields
 
         #region Constructors
@@ -66,7 +61,7 @@
             Console.WriteLine("config loaded");
 
             this.SelectedAlgorithm = "CentroidLocalization";
-            this.SelectedFilter = "Average";
+            this.SelectedFilter = "NoFilter";
             this.UseCalibration = false;
             this.UseMultihop = false;
 
@@ -379,18 +374,18 @@
             return Set;
         }
 
-        /// <summary>
-        /// Checks if the node is in the list
-        /// </summary>
-        /// <param name="alg"></param>
-        /// <returns></returns>
-        private bool ExistsNode(Node BlindNode)
-        {
-            if (BlindNode.WsnIdProperty == currentID)
-                return true;
-            else
-                return false;
-        }
+        ///// <summary>
+        ///// Checks if the node is in the list
+        ///// </summary>
+        ///// <param name="alg"></param>
+        ///// <returns></returns>
+        //private bool ExistsNode(Node BlindNode)
+        //{
+        //    if (BlindNode.WsnIdProperty == currentID)
+        //        return true;
+        //    else
+        //        return false;
+        //}
 
         /// <summary>
         /// Read the config.txt in the base-directory of the executable and prepare the database-linkers.
@@ -407,17 +402,17 @@
         private void ParseAnchor(DataRow row)
         {
             Node CurrentNode;
-            currentID = row["ID"].ToString();
+            string currentID = row["ID"].ToString();
 
-            if (!AnchorNodes.Exists(ExistsNode))
+            if (!AnchorNodes.Exists(AN => AN.WsnIdProperty == currentID))
             {
                 AnchorNodes.Add(new Node(row["ID"].ToString(), MySQLConn));
                 Console.WriteLine("Added new BN to be positioned\n\n\n");
             }
 
-            CurrentNode = AnchorNodes.Find(ExistsNode);
+            CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
             CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
-            CurrentNode = AnchorNodes.Find(ExistsNode);
+            CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
 
             Node.FilterMethod myFilter;
 
@@ -439,7 +434,7 @@
 
         private string ParseBlind(DataRow row, string nodeId)
         {
-            string cmd;
+            string cmd, currentID;
             int tempint;
 
                 int TimeSecs;
@@ -451,15 +446,15 @@
                 Positioning.Point pos = new Positioning.Point(0, 0);
                 Node CurrentNode;
 
-                    if (!BlindNodes.Exists(ExistsNode))
+                    if (!BlindNodes.Exists(BN => BN.WsnIdProperty == currentID))
                     {
                         BlindNodes.Add(new Node(row["ID"].ToString(), MySQLConn));
                         Console.WriteLine("Added new BN to be positioned\n\n\n");
                     }
-                        CurrentNode = BlindNodes.Find(ExistsNode);
+                        CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
                         CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
                         //TODO: check if automatically updated
-                        CurrentNode = BlindNodes.Find(ExistsNode);
+                        CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
 
                     Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
                     Node.RangingMethod myRanging;
