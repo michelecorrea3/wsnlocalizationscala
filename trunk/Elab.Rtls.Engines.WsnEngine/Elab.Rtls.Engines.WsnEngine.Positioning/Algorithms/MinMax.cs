@@ -49,7 +49,7 @@
     {
         #region Methods
 
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingmethod, bool multiHop)
+        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multiHop)
         {
             //Point position = new Point();
             //double distance;
@@ -106,7 +106,7 @@
             {
 
                 if (Anchors.Count >= 3)
-                    center = MinMaxCalc(Anchors, filterMethod, rangingmethod);
+                    center = MinMaxCalc(Anchors, filterMethod);
                 else if (Anchors.Count < 3)
                 {
                     Anchors.Clear();
