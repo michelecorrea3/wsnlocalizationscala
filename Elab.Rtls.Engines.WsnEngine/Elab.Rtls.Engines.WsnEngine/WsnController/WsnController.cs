@@ -341,10 +341,7 @@
                 else if (Set.DataSetName == "LocationMessage")
                 {
                     if (Convert.ToInt16(row["VANr"]) == 1)
-                    {
-                        ParseAnchor(row);
-                        return null;
-                    }
+                        cmd = ParseAnchor(row);
                     else
                         cmd = ParseBlind(row, nodeId);
                 }
@@ -399,7 +396,7 @@
                 MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
         }
 
-        private void ParseAnchor(DataRow row)
+        private string ParseAnchor(DataRow row)
         {
             Node CurrentNode;
             string currentID = row["ID"].ToString();
@@ -430,6 +427,23 @@
             }
 
             RangeBasedPositioning.CalibratePathloss(AnchorNodes, myFilter);
+
+            int TimeSecs, tempint;
+            if (int.TryParse(row["Time"].ToString(), out TimeSecs))
+                row["Time"] = ConvertUnixToLocalTimeStamp(TimeSecs);
+
+            //Create the command that we send to the database to insert the new row.
+            string cmd = "call addLocalizationData(" +
+            ((int.TryParse(row["RSSI"].ToString(), out tempint)) ? row["RSSI"] : "null") + "," +
+            ((int.TryParse(row["X"].ToString(), out tempint)) ? row["X"] : "null") + "," +
+            ((int.TryParse(row["Y"].ToString(), out tempint)) ? row["Y"] : "null") + "," +
+            ((int.TryParse(row["Z"].ToString(), out tempint)) ? row["Z"] : "null") + "," +
+            row["ID"] + ",'" +
+            row["Time"] + "'," +
+            ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
+            "Anchor" + "');";
+
+            return cmd;
         }
 
         private string ParseBlind(DataRow row, string nodeId)
@@ -520,7 +534,7 @@
                           row["ID"] + ",'" +
                           row["Time"] + "'," +
                           ((int.TryParse(row["ANode"].ToString(), out tempint)) ? row["ANode"] : "null") + ",'" +
-                          "Centroid Localization" + "');";
+                          SelectedAlgorithm + "');";
 
                     //add the position to the position table
                      AddPosition(row, pos, 0);

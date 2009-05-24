@@ -11,31 +11,29 @@
 
     public class ExtendedTrilateration : RangeBasedPositioning
     {
-        #region Methods
+        #region Methods(
 
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multihop)
         {
+            
             List<Point> intersectionPoints = new List<Point>();
-            List<AnchorNode> AllAnchors = new List<AnchorNode>();
-            List<IntersectedAnchors> anchors = new List<IntersectedAnchors>();
-            //IntersectedAnchors anchor = new IntersectedAnchors();
-            Point center = new Point();
+
+            //multihop?
+            //List<AnchorNode> AllAnchors = new List<AnchorNode>();
+            //List<IntersectedAnchors> anchors = new List<IntersectedAnchors>();
+
+            Point position = new Point();
             List<string> StatusCircles = new List<string>();
-            List<string> StatusAllCircles = new List<string>();
+
             List<int> ListOfCounts = new List<int>();
             int count;
             bool AllCirclesIntersected = false;
-
-            //StreamWriter Log = new StreamWriter("ExtendedTrilateration.csv", false);
 
             foreach (AnchorNode an in BlindNode.Anchors)
             {
                 an.fRSS = filterMethod(an.RSS);
                 an.range = rangingMethod(an.fRSS);
-                //TEST
-                //an.range = 10/1.1;
             }
-            //no virtual anchors
 
             if (!multihop)
             {
@@ -46,15 +44,10 @@
                         for (int i = 0; i < BlindNode.Anchors.Count; i++)
                         {
                             count = 0;
-                            //BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-                            //BlindNode.Anchors[i].range = Ranging(BlindNode.Anchors[i].fRSS);
+
                             for (int j = 0; j < BlindNode.Anchors.Count; j++)
                             {
-                                //BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
-                                //BlindNode.Anchors[j].range = Ranging(BlindNode.Anchors[j].fRSS);
                                 StatusCircles.Add(GeometryHelper.InOrOut(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range));
-                                    //                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
-                                    //count++;
                             }
                              if(StatusCircles.Contains("Out") && !StatusCircles.Contains("In"))
                                 BlindNode.Anchors[i].range *= 1.1;
@@ -62,10 +55,9 @@
                                 BlindNode.Anchors[i].range *= 0.9;
 
                              StatusCircles.Clear();
-
-                            //ListOfCounts.Add(count);
-                                //AllCirclesIntersected = true;
                         }
+
+                        //Check if all nodes intersect
                         ListOfCounts.Clear();
                         for (int i = 0; i < BlindNode.Anchors.Count; i++)
                         {
@@ -83,6 +75,7 @@
                         }
                     }
 
+                    //Determine crossings
                     for (int i = 0; i < BlindNode.Anchors.Count - 1; i++)
                     {
                         for (int j = i + 1; j < BlindNode.Anchors.Count; j++)
@@ -97,15 +90,17 @@
 
                         }
                     }
+
+                    //Calculate BN position with clustering
                     if (intersectionPoints.Count >= 3)
-                        center = Cluster(intersectionPoints, BlindNode.Anchors.Count);
+                        position = Cluster(intersectionPoints, BlindNode.Anchors.Count);
                     else
                     {
-                        center = null;
+                        position = null;
                     }
                 }
                 else
-                    center = null;
+                    position = null;
 
             }
             /*
@@ -157,7 +152,7 @@
 
             }
             */
-            return center;
+            return position;
         }
 
         /*
