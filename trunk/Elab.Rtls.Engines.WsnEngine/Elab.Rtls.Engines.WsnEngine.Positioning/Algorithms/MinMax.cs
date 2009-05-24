@@ -60,6 +60,17 @@
 
             //StreamWriter Log = new StreamWriter("MinMax.csv", false);
 
+            foreach (AnchorNode AN in BlindNode.Anchors)
+            {
+                AN.fRSS = filterMethod(AN.RSS);
+                AN.range = rangingMethod(AN.fRSS);
+            }
+            foreach (AnchorNode VAN in BlindNode.VirtualAnchors)
+            {
+                VAN.fRSS = filterMethod(VAN.RSS);
+                VAN.range = rangingMethod(VAN.fRSS);
+            }
+
             for (int i = 0; i < BlindNode.Anchors.Count; i++)
             {
                 count = 0;
@@ -67,7 +78,7 @@
                 for (int j = 0; j < BlindNode.Anchors.Count; j++)
                 {
                     BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
-                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, rangingmethod(BlindNode.Anchors[i].fRSS), BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, rangingmethod(BlindNode.Anchors[j].fRSS)))
+                    if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
                         //if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
                         count++;
                 }
@@ -79,7 +90,7 @@
             {
                 if (Anchors.Count >= 3)
                 {
-                    center = MinMaxCalc(Anchors, filterMethod, rangingmethod);
+                    center = MinMaxCalc(Anchors, filterMethod);
                     //logger.Write(currentID + ",");
                 }
                 else
@@ -109,8 +120,8 @@
                         count = 0;
                         for (int j = 0; j < AllAnchors.Count; j++)
                         {
-                            //if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, rangingmethod(AllAnchors[i].fRSS), AllAnchors[j].posx, AllAnchors[j].posy, rangingmethod(Anchors[j].fRSS)))
-                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
+                            if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, AllAnchors[i].range, AllAnchors[j].posx, AllAnchors[j].posy, AllAnchors[j].range))
+                            //if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
                                 count++;
                         }
                         if (count >= 3)
@@ -122,7 +133,7 @@
                         //return center;
                     }
                     else
-                        center = MinMaxCalc(Anchors, filterMethod, rangingmethod);
+                        center = MinMaxCalc(Anchors, filterMethod);
 
                 }
                 else
@@ -285,26 +296,27 @@
         }
         }
          */
-        public static Point MinMaxCalc(List<AnchorNode> Anchors, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod)
+        public static Point MinMaxCalc(List<AnchorNode> Anchors, Node.FilterMethod filterMethod)
         {
             BoundingBox BnBox, AnBox;
             //comment for the test
-            Anchors[0].fRSS = filterMethod(Anchors[0].RSS);
-            double distance = rangingMethod(Anchors[0].fRSS);
+            //Anchors[0].fRSS = filterMethod(Anchors[0].RSS);
+            //double distance = rangingMethod(Anchors[0].fRSS);
+            //double distance = Anchors[0].range;
             Point center;
 
             center = new Point(Anchors[0].posx, Anchors[0].posy);
 
             //TEST: replace distance with constance
             //AnBox = new BoundingBox(center, 10);
-            AnBox = new BoundingBox(center, rangingMethod(Anchors[0].fRSS));
+            AnBox = new BoundingBox(center, Anchors[0].range);
             BnBox = AnBox;
 
             for (int i = 1; i < Anchors.Count; i++)
             {
                 //disabled for testing
-                Anchors[i].fRSS = filterMethod(Anchors[i].RSS);
-                distance = rangingMethod(Anchors[i].fRSS);
+                //Anchors[i].fRSS = filterMethod(Anchors[i].RSS);
+                double distance = Anchors[i].range;
                 //TEST
                 //distance = 10;
 
@@ -314,8 +326,7 @@
 
                 //TEST
                 //AnBox = new BoundingBox(center, 1);
-                if (((BnBox.Xmin <= AnBox.Xmax) && (AnBox.Xmax <= BnBox.Xmax)) || ((BnBox.Xmin <= AnBox.Xmin) && (AnBox.Xmin <= BnBox.Xmax)))
-                    if (((BnBox.Ymin <= AnBox.Ymax) && (AnBox.Ymax <= BnBox.Ymax)) || ((BnBox.Ymin <= AnBox.Ymin) && (AnBox.Ymin <= BnBox.Ymax)))
+                if (!(BnBox.Xmax < AnBox.Xmin || BnBox.Xmin > AnBox.Xmax || BnBox.Ymax < AnBox.Ymin || BnBox.Ymin > AnBox.Ymax))
                     {
                         BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
                         BnBox.Xmax = Math.Min(BnBox.Xmax, AnBox.Xmax);
