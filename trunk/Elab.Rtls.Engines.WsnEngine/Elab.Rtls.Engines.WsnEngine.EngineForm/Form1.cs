@@ -114,12 +114,6 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
                 WsnController.SelectedAlgorithm = "CentroidLocalization";
         }
 
-        private void radioButtonClusteredTriLateration_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonClusteredTriLateration.Checked)
-                WsnController.SelectedAlgorithm = "Trilateration";
-        }
-
         private void radioButtonExtendedClusteredTrilateration_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonExtendedClusteredTrilateration.Checked)
@@ -138,12 +132,12 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
                 WsnController.SelectedFilter = "Median";
         }
 
-        private void radioButtonMinMaxSimpleModel_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonMinMaxSimpleModel.Checked)
-                WsnController.SelectedAlgorithm = "MinMax";
-        }
-
         #endregion Methods
+
+        private void radioButtonNoFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonNoFilter.Checked)
+                WsnController.SelectedAlgorithm = "NoFilter";
+        }
     }
 }
