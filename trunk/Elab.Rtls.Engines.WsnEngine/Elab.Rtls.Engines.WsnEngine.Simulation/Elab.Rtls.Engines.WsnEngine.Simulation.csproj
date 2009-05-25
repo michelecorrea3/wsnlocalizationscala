@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Elab.Rtls.Engines.WsnEngine.Positioning, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\WsnEngine\Scala.Engine.WsnEngine\Scala.Engine.WsnEngine.Positioning\obj\Debug\Elab.Rtls.Engines.WsnEngine.Positioning.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -54,6 +50,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Positioning\Elab.Rtls.Engines.WsnEngine.Positioning.csproj">
+      <Project>{2EC133F5-6F78-4166-AEE7-F730B4ED258F}</Project>
+      <Name>Elab.Rtls.Engines.WsnEngine.Positioning</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection.csproj">
       <Project>{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}</Project>
       <Name>Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection</Name>

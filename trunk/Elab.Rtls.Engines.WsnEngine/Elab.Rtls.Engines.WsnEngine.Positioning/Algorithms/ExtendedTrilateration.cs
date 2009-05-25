@@ -49,9 +49,9 @@
                             {
                                 StatusCircles.Add(GeometryHelper.InOrOut(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range));
                             }
-                             if(StatusCircles.Contains("Out") && !StatusCircles.Contains("In"))
+                             if(StatusCircles.Contains("Overlap") && !( StatusCircles.Contains("In") || StatusCircles.Contains("Separated")) )
                                 BlindNode.Anchors[i].range *= 1.1;
-                            else if (StatusCircles.Contains("In") && !StatusCircles.Contains("Out"))
+                            else if ( (StatusCircles.Contains("In") || StatusCircles.Contains("Separated") ) && !StatusCircles.Contains("Out"))
                                 BlindNode.Anchors[i].range *= 0.9;
 
                              StatusCircles.Clear();
@@ -155,40 +155,6 @@
             return position;
         }
 
-        /*
-        private static Error Anchorsintersection(List<IntersectedAnchors> anchors)
-        {
-            Error fault = new Error();
-
-            double distance;
-            int inter = 0;
-            int exter = 0;
-
-            foreach (IntersectedAnchors ANs in anchors)
-            {
-                distance = Math.Pow((Math.Pow((ANs.x2 - ANs.x1), 2) + Math.Pow((ANs.y2 - ANs.y1), 2)), 0.5);
-                if (distance < Math.Abs(ANs.r1 - ANs.r2))
-                    inter++;
-                if (distance > (ANs.r1 + ANs.r2))
-                    exter++;
-
-            }
-            fault.NumberSmall = inter;
-            fault.NumberWide = exter;
-
-            return fault;
-        }
-
-        private static bool BelongsToAllCircles(double x1, double y1, double r1, double x2, double y2, double r2)
-        {
-            double distance1 = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
-
-            if (distance1 <= (r1 + r2))
-                return true;
-            else
-                return false;
-        }
-        */
         private static Point Cluster(List<Point> crossings, int anchors)
         {
             List<Point> cluster = new List<Point>();
