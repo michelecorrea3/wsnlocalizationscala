@@ -35,9 +35,9 @@
             this.radioButtonExtendedMinMax = new System.Windows.Forms.RadioButton();
             this.radioButtonExtendedClusteredTrilateration = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonNoFilter = new System.Windows.Forms.RadioButton();
             this.checkBoxCalibration = new System.Windows.Forms.CheckBox();
             this.checkBoxUseMultihop = new System.Windows.Forms.CheckBox();
-            this.radioButtonNoFilter = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -127,10 +127,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Choose your RSS filter";
             // 
+            // radioButtonNoFilter
+            // 
+            this.radioButtonNoFilter.AutoSize = true;
+            this.radioButtonNoFilter.Location = new System.Drawing.Point(22, 66);
+            this.radioButtonNoFilter.Name = "radioButtonNoFilter";
+            this.radioButtonNoFilter.Size = new System.Drawing.Size(64, 17);
+            this.radioButtonNoFilter.TabIndex = 6;
+            this.radioButtonNoFilter.TabStop = true;
+            this.radioButtonNoFilter.Text = "No Filter";
+            this.radioButtonNoFilter.UseVisualStyleBackColor = true;
+            this.radioButtonNoFilter.CheckedChanged += new System.EventHandler(this.radioButtonNoFilter_CheckedChanged);
+            // 
             // checkBoxCalibration
             // 
             this.checkBoxCalibration.AutoSize = true;
-            this.checkBoxCalibration.Enabled = false;
             this.checkBoxCalibration.Location = new System.Drawing.Point(44, 296);
             this.checkBoxCalibration.Name = "checkBoxCalibration";
             this.checkBoxCalibration.Size = new System.Drawing.Size(134, 17);
@@ -150,18 +161,6 @@
             this.checkBoxUseMultihop.Text = "Use Multihop Positioning";
             this.checkBoxUseMultihop.UseVisualStyleBackColor = true;
             this.checkBoxUseMultihop.CheckedChanged += new System.EventHandler(this.checkBoxUseMultihop_CheckedChanged);
-            // 
-            // radioButtonNoFilter
-            // 
-            this.radioButtonNoFilter.AutoSize = true;
-            this.radioButtonNoFilter.Location = new System.Drawing.Point(22, 66);
-            this.radioButtonNoFilter.Name = "radioButtonNoFilter";
-            this.radioButtonNoFilter.Size = new System.Drawing.Size(64, 17);
-            this.radioButtonNoFilter.TabIndex = 6;
-            this.radioButtonNoFilter.TabStop = true;
-            this.radioButtonNoFilter.Text = "No Filter";
-            this.radioButtonNoFilter.UseVisualStyleBackColor = true;
-            this.radioButtonNoFilter.CheckedChanged += new System.EventHandler(this.radioButtonNoFilter_CheckedChanged);
             // 
             // Form1
             // 

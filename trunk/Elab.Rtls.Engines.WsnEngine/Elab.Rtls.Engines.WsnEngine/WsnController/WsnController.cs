@@ -61,8 +61,8 @@
             Console.WriteLine("config loaded");
 
             this.SelectedAlgorithm = "CentroidLocalization";
-            this.SelectedFilter = "NoFilter";
-            this.UseCalibration = false;
+            this.SelectedFilter = "Average";
+            this.UseCalibration = true;
             this.UseMultihop = false;
 
             StartWsnEngine();

@@ -122,9 +122,7 @@
                 {
                     int index = anchorList.FindIndex(AN => AN.nodeid == AnchorWsnId);
 
-                    anchorList[index].RSS.Enqueue(RSS);
-
-                    if (anchorList[index].RSS.Count > 20)
+                    if (anchorList[index].RSS.Count >= 20)
                     {
                         do
                         {
@@ -132,21 +130,23 @@
                         } while (anchorList[index].RSS.Count > 20);
                     }
 
+                    anchorList[index].RSS.Enqueue(RSS);
+
                     anchorList[index].lastUpdate = now;
                 }
                 else
                 {
                     int index = virtualAnchorList.FindIndex(AN => AN.nodeid == AnchorWsnId);
 
-                    virtualAnchorList[index].RSS.Enqueue(RSS);
-
-                    if (virtualAnchorList[index].RSS.Count > 20)
+                    if (virtualAnchorList[index].RSS.Count >= 20)
                     {
                         do
                         {
                             virtualAnchorList[index].RSS.Dequeue();
                         } while (virtualAnchorList[index].RSS.Count > 20);
                     }
+
+                    virtualAnchorList[index].RSS.Enqueue(RSS);
 
                     virtualAnchorList[index].lastUpdate = now;
                 }
