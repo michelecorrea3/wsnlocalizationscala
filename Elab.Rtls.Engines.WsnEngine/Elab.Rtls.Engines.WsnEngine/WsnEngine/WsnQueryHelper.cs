@@ -185,7 +185,7 @@
                                     double tempY = (double)Row["Y"];
 
                                     tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "1");
-                                    tagBlink["Location/MapID"] = "WsnEngine1map1";
+                                    tagBlink["Location/MapID"] = "WsnEngine1map2";
                                     tagBlink["Location/X"] = tempX.ToString();
                                     tagBlink["Location/Y"] = tempY.ToString();
 
@@ -213,7 +213,7 @@
                                 break;
                             case "Location/MapID":
                                 //hardcode this to floor two
-                                tagBlink["Location/MapID"] = "WsnEngine1map1";
+                                tagBlink["Location/MapID"] = "WsnEngine1map2";
                                 break;
                             case "Accuracy":
                                 if (!String.IsNullOrEmpty(Row["X"].ToString()) && !String.IsNullOrEmpty(Row["Y"].ToString()))
@@ -282,7 +282,7 @@
                                     double tempY = (double)Row["Y"];
 
                                     tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "1");
-                                    tagBlink["Location/MapID"] = "WsnEngine1map1";
+                                    tagBlink["Location/MapID"] = "WsnEngine1map2";
                                     tagBlink["Location/X"] = tempX.ToString();
                                     tagBlink["Location/Y"] = tempY.ToString();
                                 }

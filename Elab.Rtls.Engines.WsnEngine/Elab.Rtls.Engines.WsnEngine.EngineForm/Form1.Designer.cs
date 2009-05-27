@@ -58,12 +58,10 @@
             // radioButtonMedianFilter
             // 
             this.radioButtonMedianFilter.AutoSize = true;
-            this.radioButtonMedianFilter.Checked = true;
             this.radioButtonMedianFilter.Location = new System.Drawing.Point(22, 19);
             this.radioButtonMedianFilter.Name = "radioButtonMedianFilter";
             this.radioButtonMedianFilter.Size = new System.Drawing.Size(60, 17);
             this.radioButtonMedianFilter.TabIndex = 4;
-            this.radioButtonMedianFilter.TabStop = true;
             this.radioButtonMedianFilter.Text = "Median";
             this.radioButtonMedianFilter.UseVisualStyleBackColor = true;
             this.radioButtonMedianFilter.CheckedChanged += new System.EventHandler(this.radioButtonMedianFilter_CheckedChanged);
@@ -71,10 +69,12 @@
             // radioButtonAverageFilter
             // 
             this.radioButtonAverageFilter.AutoSize = true;
+            this.radioButtonAverageFilter.Checked = true;
             this.radioButtonAverageFilter.Location = new System.Drawing.Point(22, 42);
             this.radioButtonAverageFilter.Name = "radioButtonAverageFilter";
             this.radioButtonAverageFilter.Size = new System.Drawing.Size(65, 17);
             this.radioButtonAverageFilter.TabIndex = 5;
+            this.radioButtonAverageFilter.TabStop = true;
             this.radioButtonAverageFilter.Text = "Average";
             this.radioButtonAverageFilter.UseVisualStyleBackColor = true;
             this.radioButtonAverageFilter.CheckedChanged += new System.EventHandler(this.radioButtonAverageFilter_CheckedChanged);
@@ -134,7 +134,6 @@
             this.radioButtonNoFilter.Name = "radioButtonNoFilter";
             this.radioButtonNoFilter.Size = new System.Drawing.Size(64, 17);
             this.radioButtonNoFilter.TabIndex = 6;
-            this.radioButtonNoFilter.TabStop = true;
             this.radioButtonNoFilter.Text = "No Filter";
             this.radioButtonNoFilter.UseVisualStyleBackColor = true;
             this.radioButtonNoFilter.CheckedChanged += new System.EventHandler(this.radioButtonNoFilter_CheckedChanged);
