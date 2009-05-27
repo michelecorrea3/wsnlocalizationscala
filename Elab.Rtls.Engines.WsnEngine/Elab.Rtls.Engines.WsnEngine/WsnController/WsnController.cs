@@ -55,7 +55,7 @@
         /// </summary>
         public Controller()
         {
-            Console.WriteLine("Preparing SocketServerApp for use...");
+            Console.WriteLine("Preparing the WSN Engine for use...");
             Console.WriteLine("loading config...");
             LoadOptions();  //Load the config-file
             Console.WriteLine("config loaded");
@@ -547,8 +547,8 @@
                         //EventData.EventType = "LocationUpdated";
 
                         EventData.TagBlink["TagID"] = nodeId;
-                        EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "1");
-                        EventData.TagBlink["MapID"] = "WsnEngine1map2";
+                        EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "3");
+                        EventData.TagBlink["MapID"] = "WsnEngine1map3";
                         EventData.TagBlink["X"] = pos.x.ToString();
                         EventData.TagBlink["Y"] = pos.y.ToString();
 
