@@ -526,7 +526,7 @@
                   ((int.TryParse(row["RSSI"].ToString(), out tempint)) ? row["RSSI"] : "null") + ",";
 
                           if (pos != null)
-                              cmd += pos.x.ToString() + ", " + pos.y.ToString() + ", ";
+                              cmd += pos.x.ToString().Replace(',','.') + ", " + pos.y.ToString().Replace(',','.') + ", ";
                           else
                               cmd += "null, null, ";
 
