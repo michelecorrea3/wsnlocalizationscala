@@ -508,6 +508,9 @@
                         case "ExtendedMinMax":
                             pos = MinMaxExtended.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
+                        case "WeightedCentroidLocalization":
+                            pos = WCL.CalculatePosition(CurrentNode, myFilter);
+                            break;
                     }
 
                     if (pos != null)

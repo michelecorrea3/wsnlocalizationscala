@@ -23,7 +23,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 weight = 1 / Math.Pow(anchorNode.fRSS, 2);
                 position.x += anchorNode.posx * weight;
                 position.y += anchorNode.posy * weight;
-
+                
                 totalWeight += weight;
             }
 

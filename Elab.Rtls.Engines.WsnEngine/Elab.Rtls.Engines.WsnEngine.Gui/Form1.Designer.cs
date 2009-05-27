@@ -674,7 +674,7 @@
             // 
             this.groupBox12.Controls.Add(this.label19);
             this.groupBox12.Controls.Add(this.textBoxSampleRate);
-            this.groupBox12.Location = new System.Drawing.Point(419, 203);
+            this.groupBox12.Location = new System.Drawing.Point(419, 125);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(200, 49);
             this.groupBox12.TabIndex = 42;
@@ -705,12 +705,13 @@
             this.groupBox11.Controls.Add(this.label20);
             this.groupBox11.Controls.Add(this.numericUpDownPower);
             this.groupBox11.Controls.Add(this.numericUpDownFrequency);
-            this.groupBox11.Location = new System.Drawing.Point(419, 120);
+            this.groupBox11.Location = new System.Drawing.Point(419, 182);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(200, 76);
             this.groupBox11.TabIndex = 41;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Radio Parameters";
+            this.groupBox11.Visible = false;
             // 
             // label21
             // 

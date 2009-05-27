@@ -38,6 +38,7 @@
             this.radioButtonNoFilter = new System.Windows.Forms.RadioButton();
             this.checkBoxCalibration = new System.Windows.Forms.CheckBox();
             this.checkBoxUseMultihop = new System.Windows.Forms.CheckBox();
+            this.radioButtonWeigthedCentroidLocalization = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -81,12 +82,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioButtonWeigthedCentroidLocalization);
             this.groupBox1.Controls.Add(this.radioButtonExtendedMinMax);
             this.groupBox1.Controls.Add(this.radioButtonExtendedClusteredTrilateration);
             this.groupBox1.Controls.Add(this.radioButtonCentroidLocalization);
             this.groupBox1.Location = new System.Drawing.Point(22, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 124);
+            this.groupBox1.Size = new System.Drawing.Size(200, 136);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Choose your positioning algorithm";
@@ -94,24 +96,24 @@
             // radioButtonExtendedMinMax
             // 
             this.radioButtonExtendedMinMax.AutoSize = true;
-            this.radioButtonExtendedMinMax.Location = new System.Drawing.Point(22, 79);
+            this.radioButtonExtendedMinMax.Location = new System.Drawing.Point(22, 104);
             this.radioButtonExtendedMinMax.Name = "radioButtonExtendedMinMax";
-            this.radioButtonExtendedMinMax.Size = new System.Drawing.Size(108, 17);
+            this.radioButtonExtendedMinMax.Size = new System.Drawing.Size(62, 17);
             this.radioButtonExtendedMinMax.TabIndex = 5;
             this.radioButtonExtendedMinMax.TabStop = true;
-            this.radioButtonExtendedMinMax.Text = "eXtendedMinMax";
+            this.radioButtonExtendedMinMax.Text = "MinMax";
             this.radioButtonExtendedMinMax.UseVisualStyleBackColor = true;
             this.radioButtonExtendedMinMax.CheckedChanged += new System.EventHandler(this.radioButtonExtendedMinMax_CheckedChanged);
             // 
             // radioButtonExtendedClusteredTrilateration
             // 
             this.radioButtonExtendedClusteredTrilateration.AutoSize = true;
-            this.radioButtonExtendedClusteredTrilateration.Location = new System.Drawing.Point(22, 55);
+            this.radioButtonExtendedClusteredTrilateration.Location = new System.Drawing.Point(22, 80);
             this.radioButtonExtendedClusteredTrilateration.Name = "radioButtonExtendedClusteredTrilateration";
-            this.radioButtonExtendedClusteredTrilateration.Size = new System.Drawing.Size(126, 17);
+            this.radioButtonExtendedClusteredTrilateration.Size = new System.Drawing.Size(80, 17);
             this.radioButtonExtendedClusteredTrilateration.TabIndex = 4;
             this.radioButtonExtendedClusteredTrilateration.TabStop = true;
-            this.radioButtonExtendedClusteredTrilateration.Text = "eXtendedTrilateration";
+            this.radioButtonExtendedClusteredTrilateration.Text = "Trilateration";
             this.radioButtonExtendedClusteredTrilateration.UseVisualStyleBackColor = true;
             this.radioButtonExtendedClusteredTrilateration.CheckedChanged += new System.EventHandler(this.radioButtonExtendedClusteredTrilateration_CheckedChanged);
             // 
@@ -141,7 +143,7 @@
             // checkBoxCalibration
             // 
             this.checkBoxCalibration.AutoSize = true;
-            this.checkBoxCalibration.Location = new System.Drawing.Point(44, 296);
+            this.checkBoxCalibration.Location = new System.Drawing.Point(44, 283);
             this.checkBoxCalibration.Name = "checkBoxCalibration";
             this.checkBoxCalibration.Size = new System.Drawing.Size(134, 17);
             this.checkBoxCalibration.TabIndex = 8;
@@ -153,19 +155,32 @@
             // 
             this.checkBoxUseMultihop.AutoSize = true;
             this.checkBoxUseMultihop.Enabled = false;
-            this.checkBoxUseMultihop.Location = new System.Drawing.Point(44, 320);
+            this.checkBoxUseMultihop.Location = new System.Drawing.Point(44, 307);
             this.checkBoxUseMultihop.Name = "checkBoxUseMultihop";
             this.checkBoxUseMultihop.Size = new System.Drawing.Size(142, 17);
             this.checkBoxUseMultihop.TabIndex = 9;
             this.checkBoxUseMultihop.Text = "Use Multihop Positioning";
             this.checkBoxUseMultihop.UseVisualStyleBackColor = true;
+            this.checkBoxUseMultihop.Visible = false;
             this.checkBoxUseMultihop.CheckedChanged += new System.EventHandler(this.checkBoxUseMultihop_CheckedChanged);
+            // 
+            // radioButtonWeigthedCentroidLocalization
+            // 
+            this.radioButtonWeigthedCentroidLocalization.AutoSize = true;
+            this.radioButtonWeigthedCentroidLocalization.Location = new System.Drawing.Point(22, 57);
+            this.radioButtonWeigthedCentroidLocalization.Name = "radioButtonWeigthedCentroidLocalization";
+            this.radioButtonWeigthedCentroidLocalization.Size = new System.Drawing.Size(172, 17);
+            this.radioButtonWeigthedCentroidLocalization.TabIndex = 6;
+            this.radioButtonWeigthedCentroidLocalization.TabStop = true;
+            this.radioButtonWeigthedCentroidLocalization.Text = "Weigthed Centroid Localization";
+            this.radioButtonWeigthedCentroidLocalization.UseVisualStyleBackColor = true;
+            this.radioButtonWeigthedCentroidLocalization.CheckedChanged += new System.EventHandler(this.radioButtonWeigthedCentroidLocalization_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(252, 355);
+            this.ClientSize = new System.Drawing.Size(252, 314);
             this.Controls.Add(this.checkBoxUseMultihop);
             this.Controls.Add(this.checkBoxCalibration);
             this.Controls.Add(this.groupBox2);
@@ -193,6 +208,7 @@
         private System.Windows.Forms.RadioButton radioButtonExtendedMinMax;
         private System.Windows.Forms.RadioButton radioButtonExtendedClusteredTrilateration;
         private System.Windows.Forms.RadioButton radioButtonNoFilter;
+        private System.Windows.Forms.RadioButton radioButtonWeigthedCentroidLocalization;
     }
 }
 
