@@ -51,6 +51,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Algorithms\MinMaxExtended.cs" />
+    <Compile Include="Algorithms\WCL.cs" />
     <Compile Include="INode.cs" />
     <Compile Include="Algorithms\MinMax.cs" />
     <Compile Include="Node.cs" />
