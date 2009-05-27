@@ -208,7 +208,7 @@
             foreach (AnchorNode AN in this.Anchors)
             {
                 if (AN.lastUpdate < DateTime.Now.Subtract(new TimeSpan(0, 2, 0)))
-                    this.anchorList.Remove(AN);
+                    this.Anchors.Remove(AN);
             }
         }
 
