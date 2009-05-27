@@ -205,10 +205,10 @@
 
         private void RemoveOutdatedAnchors()
         {
-            foreach (AnchorNode AN in this.Anchors)
+            for (int i = 0; i < Anchors.Count; i++)
             {
-                if (AN.lastUpdate < DateTime.Now.Subtract(new TimeSpan(0, 2, 0)))
-                    this.Anchors.Remove(AN);
+                if (Anchors[i].lastUpdate < DateTime.Now.Subtract(new TimeSpan(0, 2, 0)))
+                    this.Anchors.RemoveAt(i);
             }
         }
 
@@ -222,16 +222,16 @@
         //}
         private void UpdateAnchorPositions()
         {
-            foreach (AnchorNode AN in this.Anchors)
+            for (int i = 0; i < Anchors.Count; i++)
             {
-                Point newPosition = GetANPosition(AN.nodeid);
+                Point newPosition = GetANPosition(Anchors[i].nodeid);
 
                 if (newPosition == null)
-                    this.anchorList.Remove(AN);
+                    this.anchorList.RemoveAt(i);
                 else
                 {
-                    AN.posx = newPosition.x;
-                    AN.posy = newPosition.y;
+                    Anchors[i].posx = newPosition.x;
+                    Anchors[i].posy = newPosition.y;
                 }
             }
         }

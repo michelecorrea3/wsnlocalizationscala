@@ -50,9 +50,9 @@
                                 StatusCircles.Add(GeometryHelper.InOrOut(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range));
                             }
                              if(StatusCircles.Contains("Overlap") && !( StatusCircles.Contains("In") || StatusCircles.Contains("Separated")) )
-                                BlindNode.Anchors[i].range *= 1.1;
-                            else if ( (StatusCircles.Contains("In") || StatusCircles.Contains("Separated") ) && !StatusCircles.Contains("Out"))
                                 BlindNode.Anchors[i].range *= 0.9;
+                            else if ( (StatusCircles.Contains("In") || StatusCircles.Contains("Separated") ) && !StatusCircles.Contains("Out"))
+                                BlindNode.Anchors[i].range *= 1.1;
 
                              StatusCircles.Clear();
                         }

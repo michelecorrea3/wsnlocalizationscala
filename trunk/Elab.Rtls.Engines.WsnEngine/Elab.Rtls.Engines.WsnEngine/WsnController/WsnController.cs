@@ -62,7 +62,7 @@
 
             this.SelectedAlgorithm = "CentroidLocalization";
             this.SelectedFilter = "Average";
-            this.UseCalibration = true;
+            this.UseCalibration = false;
             this.UseMultihop = false;
 
             StartWsnEngine();
@@ -548,7 +548,7 @@
 
                         EventData.TagBlink["TagID"] = nodeId;
                         EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "1");
-                        EventData.TagBlink["MapID"] = "WsnEngine1map1";
+                        EventData.TagBlink["MapID"] = "WsnEngine1map2";
                         EventData.TagBlink["X"] = pos.x.ToString();
                         EventData.TagBlink["Y"] = pos.y.ToString();
 
