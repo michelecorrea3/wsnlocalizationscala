@@ -20,7 +20,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             foreach (AnchorNode anchorNode in BlindNode.Anchors)
             {
-                weight = 1 / Math.Pow(anchorNode.fRSS, 2);
+                weight = 1 / Math.Pow(anchorNode.fRSS, 3);
                 position.x += anchorNode.posx * weight;
                 position.y += anchorNode.posy * weight;
                 
