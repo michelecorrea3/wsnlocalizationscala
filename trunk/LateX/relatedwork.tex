@@ -1,0 +1,27 @@
+\section{Related Work}
+The amount of literature on this topic is quite substantial. It becomes more manageable if we limit ourselves to three categories: ranging algorithms, location estimation and frameworks. Limited surveys on this topic do exist; however, they fail to point out a superior algorithm and provide few quantitative comparisons, so further investigation is required. 
+
+Sum Dist is a distributed multihop algorithm that makes use of the hop count as a primitive distance metric \cite{langendoen2003dlw}. The distance to the anchor nodes is determined by simply adding the ranges (RSS) encountered at each hop during the network flood of beacon messages by the anchor nodes. The downside of this algorithm is that the range errors rise exponentially when the beacon message travels over multiple hops. Thus, in large networks with little anchor nodes, it will lead to poor ranging. A good alternative is DV-hop. It makes use of the topological information; counting the hops instead. When the topology of the network is very irregular, the ranging will be very inaccurate because of the high variance in hop distance. The anchor nodes broadcast a beacon message to the blind node, which will forward the message to the blind nodes that are out or range of the anchor nodes after filling in the hop count as the path length.
+The paper "RSS-based location estimation with unknow pathloss model" \cite{li2006rbl} dynamically estimates the distance-power gradient; parameter of the radio propagation pathloss model \cite{seidel1992mpl}. It adapts automatically to the environment, thus eliminating the need for extensive channel measurements. This  leads to a more accurate conversion of RSS to distance.
+Sorted RSSI Quantization \cite{li2005srq} is a connectivity based algorithm that uses hopcount and RSS as a ranging method. It multiplies a hop by the radio range or a chosen distance. It sorts the obtained RSSI and applies a quantizer that represents a level of range in the hop. This makes the algorithm insensitive to RSSI errors.
+
+MoteTrack\cite{lorincz2007mrd} is decentralized location tracking system based on RF. It is similar to RADAR \cite{bahl2000rbr}, but does not rely upon back-end server or network infrastructure. The location of each blind node is computed using a RSS signature from the anchor nodes to a database of signatures. This database is stored at the anchor nodes themselves.
+Cricket \cite{priyantha2000cls} is decentralized and uses RF and ultrasound to determine the location of a blind node. Anchor nodes broadcast beacon messages, together with te RF message, it will transmit a ultrasonic pulse. Blind nodes listen to beacon messages and upon receipt, they will listen to the corresponding ultrasonic pulse. A distance to the transmitting anchor node can be estimated with that pulse.
+A noteworthy survey is \cite{langendoen2003dlw} by K. Langendoen. This survey describes three algorithms: 
+\begin{itemize}
+	\item Ad-hoc positioning by Niculescuand Nath \cite{niculescu2003dbp}, 
+	\item N-hop multilateration by Savvides et al. \cite{savvides2003nhm}, 
+	\item Robust positioning by Savarese et al. \cite{savarese2002rpa}. 
+\end{itemize}
+These algorithms are fully distributed algorithms; they require no central processing node and are designed towards multihop localization. The survey concludes that no single algorithm performs best under different circumstances. Robust positioning works best when no or very bad ranging information is available. Ad-Hoc positioning only works well when the ranging error is very low ((<)20\%). The N-hop multilateration is to be preferred in other situations. 
+
+This survey identifies a common three-phase structure in these localization algorithms. The first phase determines the distances between blind and anchor nodes. Note, however, that this does not mean that a specific ranging method, such as RSS, should be used,. The second phase derives a position using the RSS from the anchor nodes. These two phases are roughly equal to what was described in the introduction. Finally, there is a third phase called the refinement phase, where the positions are refined through iterative measurements. 
+
+Another comparison is given in \cite{zanca2008ecr} by Zanca et.al. This paper compares four algorithms: 
+\begin{itemize}
+	\item Min-Max \cite{langendoen2003dlw}\cite{nguyen2003las}
+	\item Multilateration \cite{langendoen2003dlw}\cite{nguyen2003las}
+	\item Maximum Likelihood \cite{patwari2001rlw} by Patwari N.
+	\item ROCRSSI \cite{liu2004slr} by Liu C.
+\end{itemize}
+A brief introduction to the radio channel is provided. The absolute ranging errors of the algorithms are presented with the number of anchor nodes as a parameter. The authors conclude that ML provides superior accuracy compared to the other algorithms when the number of anchor nodes is high enough. Interestingly, despite its simplicity, Min-Max achieves reasonable performance. This is probably due to the fact that it localizes the node in the center of the estimated area. The authors also note that a good radio channel model is required to obtain a relatively high accuracy. The algorithms presented in this paper are one-hop algorithms; they can only localize nodes in reach of enough anchor nodes.

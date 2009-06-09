@@ -1,0 +1,41 @@
+\section{Localization}
+Localizing the position of a node happens in 2 phases:
+the first phase is the ranging: the estimation of the distance from an anchor node to the blind node. This is done with a propagation model: translates the RSSI to distance. This model can be made more accurate if you apply a calibration process.
+The second phase is calculating the node with an algorithm.
+
+\subsection{Propagation model}
+There exist a number of propagation models:
+\begin{itemize}
+	\item the Rayleigh fading model\cite{hashemi1993irp}: does not account for a Line Of Sight (LOS) component
+	\item Rician distribution model\cite{rice1944mar}: the determination of the model parameters is difficult
+	\item Floor attenuation factor propagation model\cite{seidel1992mpl}: manual determination of model parameters
+	\item log-normal-shadowing model\cite{seidel1992mpl}: the most simpel model
+\end{itemize}
+We use the log-normal-shadowing model for the ranging. It is the most widely used signal propagation model and the determination of the parameters is simple and can be obtained dynamically with Least Squares (LS).
+\[
+RSS(d) = PT - PL(d0) - 10\times n \times \log( \frac{d}{d0} )+ Xo
+\]
+Where, \textsl{PT}	is the tramitted power, \textsl{PL(d0)} is the path loss for the reference distance \textsl{d0}, \textsl{n} is the path loss exponent (the rate at which the path loss increases with distance) and \textsl{Xo} is a gaussian random variable with zero mean and standard deviation \textsl{o} dB.
+The most common reference distance is one meter. In the calibration phase of the WSN, we determine the path loss exponent and the path loss for the reference distance, so that the propagation model is adapted to the environment and thus more accurate.
+
+\subsection{Algorithms}
+Centroid localization is a simple approach for coarse grained localization. All blind nodes calculate their position as the centroid of the anchor nodes within their communication range. This algorithm has a low accuracy because it does not use signal strength to denote the range. A solutions to make CL more accurate is the Weighted Centroid Localization (WCL)\cite{schuhmann2008iwc}. A weight is coupled to each anchor by its RSSI:
+\[
+Weight = \frac{1}{RSS^{g}}
+\]
+The degree \textsl{g} has to ensure that the remote anchor nodes still have impact on the position determination. In case of a very high \textsl{g}, the calculated position
+moves to the closest position of the anchor node and the positioning error increases.
+
+Min-Max is a popular and a very easy algorithm to implement. Anchor nodes, that are in range of the blind nodes, will create a box around them. This box has the anchor node as the center and has a height and width of twice the estimated distance to the blind node. In an ideal situation, will this algorithms work, but the estimated distance between the node is often underrated. So, one or more boxes will not collide and thus a location can not be determined. In this case, the estimated distance between the nodes is expanded with 10\% until all boxes collide.
+
+Multilateration is used in a variety of localization systems including GPS. Multilateration calculates the intersection of three or more circles. If these circles intersect in exactly one point, the coordinates of this point can be determined by linear equations.  This method has one major flaw; the circles almost never intersect in a single point. They do not intersect at all or overlap a part of each other. In more dramatic cases one circle can entirely overlap another circle.  This is due to the erroneous ranging. The range is over or underestimated. 
+
+\cite{trilat} presents two solutions to solve this problem. The first solution is based on non-linear LS . Through an iterative process the range of the circles is changed until a single point of intersection is found. This method can yield fairly accurate results. The downside however is that it is computationally intensive. The second solution is much simpler and requires that the circles overlap. Given x circles, the algorithm determines the x-nearest points. The centroid of these points is taken as the result. 
+The second solution is simpler to implement but has the requirement that the three circles should overlap a part of each other. We present a simple solution to this problem. There are three cases in which the range of the circle should be modified:
+\begin{itemize}
+	\item The circles are too far from each other and do not intersect 
+	\item One circle completely overlaps another circle
+	\item A circle is completely inside another circle
+\end{itemize}
+In each of these cases the range should be adapted accordingly until these conditions are no longer met. The algorithm iterates through all the circles so that all circles are slightly changed instead of drastically changing one circle. The algorithm finally converges to the situation where all circles overlap each other.
+We chose to implement both, but an easier from of the first solution namely the normal least square\cite{sayed2005nbw}, this algorithm is much simpler to implement and has a better performance.
