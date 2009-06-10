@@ -860,6 +860,8 @@
             //return the nodeid with sensor as input
             try
             {
+                if (listBoxControl.SelectedItem != null)
+                {
                 //make the XML string to send
                 string selected = listBoxControl.SelectedItem.ToString();
                 string nodeid = getNodeID(selected);
@@ -914,6 +916,7 @@
 
                     oldChanges.leds = LedsProperty;
                 }
+            }
             }
             //catch the exceptions
             catch (ArgumentNullException nullex)

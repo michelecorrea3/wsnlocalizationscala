@@ -45,9 +45,9 @@
         #region Fields
 
         private MySQLClass MyDb;
-        private string WsnId;
+        public string WsnId;
         private List<AnchorNode> anchorList = new List<AnchorNode>();
-        private Point position;
+        public Point position;
         private List<AnchorNode> virtualAnchorList = new List<AnchorNode>();
 
         #endregion Fields
@@ -118,17 +118,19 @@
 
             if (anchorList.Exists(AN => AN.nodeid == AnchorWsnId) || virtualAnchorList.Exists(VAN => VAN.nodeid == AnchorWsnId))
             {
+                
                 if (van == 1)
                 {
                     int index = anchorList.FindIndex(AN => AN.nodeid == AnchorWsnId);
-
+                    try{
                     if (anchorList[index].RSS.Count >= 20)
                     {
                         do
                         {
                             anchorList[index].RSS.Dequeue();
                         } while (anchorList[index].RSS.Count > 20);
-                    }
+                    } }
+                    catch{}
 
                     anchorList[index].RSS.Enqueue(RSS);
 
