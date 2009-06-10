@@ -33,15 +33,15 @@
   <ItemGroup>
     <Reference Include="Castle.ActiveRecord, Version=1.0.3.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Scala\Scala - Src\build\Castle.ActiveRecord.dll</HintPath>
+      <HintPath>..\..\Resources\Castle.ActiveRecord.dll</HintPath>
     </Reference>
     <Reference Include="Elab.Toolkit.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37c3a49e34abacd0, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Scala\Scala - Src\trunk\Elab.Toolkit.Core\obj\Debug\Elab.Toolkit.Core.dll</HintPath>
+      <HintPath>..\..\Resources\Elab.Toolkit.Core.dll</HintPath>
     </Reference>
     <Reference Include="Elab.Toolkit.Imaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=21c8a63f50fb0f4f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Scala\Scala - Src\build\Elab.Toolkit.Imaging.dll</HintPath>
+      <HintPath>..\..\Resources\Elab.Toolkit.Imaging.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -80,7 +80,7 @@
     <Compile Include="WsnEngine\WsnQueryHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Scala - Src\trunk\Scala.Core\Scala.Core.csproj">
+    <ProjectReference Include="..\..\..\scala\Scala.Core\Scala.Core.csproj">
       <Project>{662AC005-4CEA-4106-AF80-92C1AE8E870A}</Project>
       <Name>Scala.Core</Name>
     </ProjectReference>
