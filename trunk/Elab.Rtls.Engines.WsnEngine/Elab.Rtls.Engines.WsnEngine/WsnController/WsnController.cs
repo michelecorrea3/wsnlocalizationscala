@@ -41,6 +41,8 @@
         /// </summary>
         private List<Node> BlindNodes = new List<Node>();
 
+        private List<Node> CalibrationNodes = new List<Node>();
+
         /// <summary>
         /// The dataset with the information that is read from the config.txt file
         /// </summary>
@@ -153,7 +155,10 @@
                                 Console.Write("Received WSN message: " + IncMsg.DataSetName + " :");
 
                                 if (Convert.ToInt16(IncMsg.Tables[0].Rows[0]["VANr"]) == 1)
+                                {
+                                    CalibrationAnchors(IncMsg.Tables[0].Rows[0]["ID"].ToString(), IncMsg.Tables[0].Rows[0]["ANode"].ToString(), Convert.ToDouble(IncMsg.Tables[0].Rows[0]["RSSI"].ToString()));
                                     Console.WriteLine(" Anchor Node");
+                                }
                                 else
                                     Console.WriteLine(" Blind Node");
                             }
@@ -177,6 +182,8 @@
                             Console.WriteLine("Received WSN REPLY");
                             break;
                         }
+
+                        
                     }
                     while (false);
                     #endregion
@@ -296,6 +303,21 @@
 
                 }
             }
+        }
+        private void CalibrationAnchors(string id, string ANid, double RSSI)
+        {
+            Node CurrentNode;
+            if (!CalibrationNodes.Exists(BN => BN.WsnIdProperty == id))
+            {
+                CalibrationNodes.Add(new Node (id, MySQLConn));
+                Console.WriteLine("Added new BN to be positioned\n\n\n");
+            }
+            CurrentNode = CalibrationNodes.Find(BN => BN.WsnIdProperty == id);
+            CurrentNode.UpdateAnchors(ANid, RSSI, 1, DateTime.Now);
+            CurrentNode.SetOwnPosition();
+            //CurrentNode.SetOwnPosition = CurrentNode.GetANPosition(id);
+            //TODO: check if automatically updated
+            //CurrentNode = CalibrationNodes.Find(BN => BN.WsnIdProperty == id);
         }
 
         /// <summary>
@@ -426,7 +448,8 @@
                     break;
             }
 
-            RangeBasedPositioning.CalibratePathloss(AnchorNodes, myFilter);
+            //RangeBasedPositioning.CalibratePathloss(AnchorNodes, myFilter);
+            RangeBasedPositioning.CalibratePathlossLS(CalibrationNodes, myFilter);
 
             int TimeSecs, tempint;
             if (int.TryParse(row["Time"].ToString(), out TimeSecs))
@@ -467,8 +490,10 @@
                     }
                         CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
                         CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
+                        
                         //TODO: check if automatically updated
                         CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
+            
 
                     Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
                     Node.RangingMethod myRanging;
@@ -494,7 +519,8 @@
                     switch (SelectedAlgorithm)
                     {
                         case "CentroidLocalization":
-                            pos = CentroidLocalization.CalculatePosition(CurrentNode);
+                            //pos = CentroidLocalization.CalculatePosition(CurrentNode);
+                            pos = WCL.CalculatePosition(CurrentNode, myFilter);
                             break;
                         case "MinMax":
                             pos = MinMax.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);

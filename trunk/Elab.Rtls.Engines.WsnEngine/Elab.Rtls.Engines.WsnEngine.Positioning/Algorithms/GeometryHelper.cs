@@ -71,11 +71,11 @@
 
             if (x1 == x2 && y1 == y2)
                 return "Same";
-            else if (radius1 < (distance - radius2))
+            else if (radius1 < (distance - radius2))   // r1 + r2 < distance
                 return "Separated";
-            else if (radius1 > (distance + radius2))
+            else if (radius1 > (distance + radius2))    //r1 - r2 > distance
                 return "Overlap";
-            else if (radius1 < radius2 - distance)
+            else if (radius1 < radius2 - distance)      // r2 - r1 > distance
                 return "In";
             else
                 return "Cut";

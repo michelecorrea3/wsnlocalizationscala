@@ -115,6 +115,60 @@
                 RangeBasedPositioning.pathLossExponent = pathlossExponent;
         }
 
+           public struct TwoAnchors{
+                public string a1;
+                public string a2;
+            };
+            
+        public static void CalibratePathlossLS(List<Node> CalibrationNodes, Node.FilterMethod filterMethod)
+        {
+            double pathlossExponent = 0;
+
+            TwoAnchors twoAnchors1 = new TwoAnchors();
+            TwoAnchors twoAnchors2 = new TwoAnchors();
+            List<TwoAnchors> AllCalAnchors = new List<TwoAnchors>();
+
+            if (CalibrationNodes.Count < 3)
+                return;
+
+            double[][] y = new double[CalibrationNodes.Count][];
+            double[][] x = new double[CalibrationNodes.Count][];
+
+            foreach (Node cal in CalibrationNodes)
+            {
+                twoAnchors1.a1 = cal.WsnId ;
+                twoAnchors2.a2 = cal.WsnId ;
+
+                for(int i = 0; i < cal.Anchors.Count; i++)
+                {
+                    twoAnchors1.a2 = cal.Anchors[i].nodeid;
+                    twoAnchors2.a1 = cal.Anchors[i].nodeid;
+                    if (!AllCalAnchors.Contains(twoAnchors1) && !AllCalAnchors.Contains(twoAnchors2 ))
+                    {
+                        AllCalAnchors.Add(twoAnchors1);
+                        AllCalAnchors.Add(twoAnchors2);
+                        cal.Anchors[i].fRSS = filterMethod(cal.Anchors[i].RSS);
+                        double distance = Math.Pow((Math.Pow((cal.Position.x - cal.Anchors[i].posx), 2) + Math.Pow((cal.Position.y - cal.Anchors[i].posy), 2)), 0.5);
+                        y[i] = new double[] { cal.Anchors[i].fRSS };
+                        x[i] = new double[2] { 1, -10 * Math.Log10(distance) };
+                    }
+                }
+
+            }
+            GeneralMatrix Y = new GeneralMatrix(y);
+            GeneralMatrix X = new GeneralMatrix(x);
+            GeneralMatrix XT = X.Transpose();
+            GeneralMatrix haakjes = XT.Multiply(X);
+            GeneralMatrix inverted = haakjes.Inverse();
+            GeneralMatrix XTY = XT.Multiply(Y);
+
+            GeneralMatrix sol = inverted.Multiply(XTY);
+                
+            
+            RangeBasedPositioning.baseLoss = sol.Array[0][0];
+            RangeBasedPositioning.pathLossExponent = sol.Array[1][0];
+        }
+
         /// <summary>
         /// Translates RSS readings into distances expressed in meters
         /// 
