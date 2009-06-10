@@ -51,9 +51,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Algorithms\MinMaxExtended.cs" />
+    <Compile Include="Algorithms\Multilateration.cs" />
     <Compile Include="Algorithms\WCL.cs" />
     <Compile Include="INode.cs" />
     <Compile Include="Algorithms\MinMax.cs" />
+    <Compile Include="matrix\CholeskyDecomposition.cs" />
+    <Compile Include="matrix\EigenvalueDecomposition.cs" />
+    <Compile Include="matrix\GeneralMatrix.cs" />
+    <Compile Include="matrix\LUDecomposition.cs" />
+    <Compile Include="matrix\QRDecomposition.cs" />
+    <Compile Include="matrix\SingularValueDecomposition.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="AbstractPositioning.cs">
       <SubType>Code</SubType>
@@ -65,6 +72,10 @@
     <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection\Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection.csproj">
       <Project>{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}</Project>
       <Name>Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection\Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection.csproj">
+      <Project>{AD1B0220-33A6-46C6-96DB-0866851F745D}</Project>
+      <Name>Elab.Rtls.Engines.WsnEngine.Tools.SocketConnection</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
