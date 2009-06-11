@@ -18,8 +18,8 @@
 
             Point position = new Point();
             List<AnchorNode> AllAnchors = new List<AnchorNode>();
-            double[][] y = new double[BlindNode.Anchors.Count][];
-            double[][] x = new double[BlindNode.Anchors.Count][];
+            double[][] y = new double[BlindNode.Anchors.Count-1][];
+            double[][] x = new double[BlindNode.Anchors.Count-1][];
 
             foreach (AnchorNode an in BlindNode.Anchors)
             {
