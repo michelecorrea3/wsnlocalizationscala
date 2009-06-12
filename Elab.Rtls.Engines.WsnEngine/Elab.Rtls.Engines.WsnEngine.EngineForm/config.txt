@@ -11,7 +11,7 @@
   <SocketClient>
     <Use>TelosB</Use>
     <Port>3801</Port>
-    <HostName>192.168.140.129</HostName>
+    <HostName>10.22.41.81</HostName>
   </SocketClient>
   <SocketClient>
     <Use>SunSpot</Use>

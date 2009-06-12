@@ -11,11 +11,10 @@
 
     public class ExtendedTrilateration : RangeBasedPositioning
     {
-        #region Methods(
+        #region Methods
 
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multihop)
         {
-            
             List<Point> intersectionPoints = new List<Point>();
 
             //multihop?

@@ -40,7 +40,6 @@
         /// List with all the node that should be positioned
         /// </summary>
         private List<Node> BlindNodes = new List<Node>();
-
         private List<Node> CalibrationNodes = new List<Node>();
 
         /// <summary>
@@ -183,7 +182,6 @@
                             break;
                         }
 
-                        
                     }
                     while (false);
                     #endregion
@@ -304,21 +302,6 @@
                 }
             }
         }
-        private void CalibrationAnchors(string id, string ANid, double RSSI)
-        {
-            Node CurrentNode;
-            if (!CalibrationNodes.Exists(BN => BN.WsnIdProperty == id))
-            {
-                CalibrationNodes.Add(new Node (id, MySQLConn));
-                Console.WriteLine("Added new BN to be positioned\n\n\n");
-            }
-            CurrentNode = CalibrationNodes.Find(BN => BN.WsnIdProperty == id);
-            CurrentNode.UpdateAnchors(ANid, RSSI, 1, DateTime.Now);
-            CurrentNode.SetOwnPosition();
-            //CurrentNode.SetOwnPosition = CurrentNode.GetANPosition(id);
-            //TODO: check if automatically updated
-            //CurrentNode = CalibrationNodes.Find(BN => BN.WsnIdProperty == id);
-        }
 
         /// <summary>
         /// Sub-function that takes a dataset which holds (a number of) sensormeasurements and saves these to the database.
@@ -375,6 +358,22 @@
             return returnSet;
         }
 
+        private void CalibrationAnchors(string id, string ANid, double RSSI)
+        {
+            Node CurrentNode;
+            if (!CalibrationNodes.Exists(BN => BN.WsnIdProperty == id))
+            {
+                CalibrationNodes.Add(new Node (id, MySQLConn));
+                Console.WriteLine("Added new BN to be positioned\n\n\n");
+            }
+            CurrentNode = CalibrationNodes.Find(BN => BN.WsnIdProperty == id);
+            CurrentNode.UpdateAnchors(ANid, RSSI, 1, DateTime.Now);
+            CurrentNode.SetOwnPosition();
+            //CurrentNode.SetOwnPosition = CurrentNode.GetANPosition(id);
+            //TODO: check if automatically updated
+            //CurrentNode = CalibrationNodes.Find(BN => BN.WsnIdProperty == id);
+        }
+
         /// <summary>
         /// Function that allows to easily create a reply-message with the given int as content.
         /// </summary>
@@ -405,7 +404,6 @@
         //    else
         //        return false;
         //}
-
         /// <summary>
         /// Read the config.txt in the base-directory of the executable and prepare the database-linkers.
         /// Peter: Loads the database info
@@ -490,10 +488,9 @@
                     }
                         CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
                         CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
-                        
+
                         //TODO: check if automatically updated
                         CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
-            
 
                     Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
                     Node.RangingMethod myRanging;

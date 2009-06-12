@@ -44,10 +44,11 @@
     {
         #region Fields
 
-        private MySQLClass MyDb;
         public string WsnId;
-        private List<AnchorNode> anchorList = new List<AnchorNode>();
         public Point position;
+
+        private MySQLClass MyDb;
+        private List<AnchorNode> anchorList = new List<AnchorNode>();
         private List<AnchorNode> virtualAnchorList = new List<AnchorNode>();
 
         #endregion Fields
@@ -118,7 +119,7 @@
 
             if (anchorList.Exists(AN => AN.nodeid == AnchorWsnId) || virtualAnchorList.Exists(VAN => VAN.nodeid == AnchorWsnId))
             {
-                
+
                 if (van == 1)
                 {
                     int index = anchorList.FindIndex(AN => AN.nodeid == AnchorWsnId);

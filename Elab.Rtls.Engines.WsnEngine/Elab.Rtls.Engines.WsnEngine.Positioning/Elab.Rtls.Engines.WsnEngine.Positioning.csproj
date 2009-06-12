@@ -51,9 +51,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Algorithms\MinMaxExtended.cs" />
-    <Compile Include="Algorithms\Multilateration.cs" />
+    <Compile Include="Algorithms\LeastSquaresTrilateration.cs" />
     <Compile Include="Algorithms\WCL.cs" />
-    <Compile Include="INode.cs" />
     <Compile Include="Algorithms\MinMax.cs" />
     <Compile Include="matrix\CholeskyDecomposition.cs" />
     <Compile Include="matrix\EigenvalueDecomposition.cs" />

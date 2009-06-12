@@ -115,11 +115,6 @@
                 RangeBasedPositioning.pathLossExponent = pathlossExponent;
         }
 
-           public struct TwoAnchors{
-                public string a1;
-                public string a2;
-            };
-            
         public static void CalibratePathlossLS(List<Node> CalibrationNodes, Node.FilterMethod filterMethod)
         {
             double pathlossExponent = 0;
@@ -202,8 +197,7 @@
                 RangeBasedPositioning.baseLoss = sol.Array[0][0];
                 RangeBasedPositioning.pathLossExponent = sol.Array[1][0];
             }
-                
-            
+
 
         }
 
@@ -262,5 +256,19 @@
         }
 
         #endregion Methods
+
+        #region Nested Types
+
+        public struct TwoAnchors
+        {
+            #region Fields
+
+            public string a1;
+            public string a2;
+
+            #endregion Fields
+        }
+
+        #endregion Nested Types
     }
 }

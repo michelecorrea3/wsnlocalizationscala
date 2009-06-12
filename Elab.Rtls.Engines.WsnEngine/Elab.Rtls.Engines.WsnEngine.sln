@@ -1,11 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Hosts", "Scala.Hosts.WsnEngine\Elab.Rtls.Engines.WsnEngine.Hosts.csproj", "{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C91B3347-B0FE-4AA9-AC1F-0547B7D62E60} = {C91B3347-B0FE-4AA9-AC1F-0547B7D62E60}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.GUI", "Elab.Rtls.Engines.WsnEngine.Gui\Elab.Rtls.Engines.WsnEngine.GUI.csproj", "{5844E910-E08E-431B-838D-257864CBE4F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elab.Rtls.Engines.WsnEngine.Positioning.Tests", "Elab.Rtls.Engines.WsnEngine.Positioning.Tests\Elab.Rtls.Engines.WsnEngine.Positioning.Tests.csproj", "{2A02D430-4BB9-461D-BE96-16C5B2199BA8}"
@@ -33,12 +28,6 @@ Global
 		Simulation|Any CPU = Simulation|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}.Simulation|Any CPU.ActiveCfg = Release|Any CPU
-		{9C4DE4C2-6532-46B8-8FD7-CE29065A2382}.Simulation|Any CPU.Build.0 = Release|Any CPU
 		{5844E910-E08E-431B-838D-257864CBE4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5844E910-E08E-431B-838D-257864CBE4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5844E910-E08E-431B-838D-257864CBE4F3}.Release|Any CPU.ActiveCfg = Release|Any CPU

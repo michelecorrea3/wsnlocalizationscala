@@ -126,13 +126,11 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
                 WsnController.SelectedAlgorithm = "ExtendedMinMax";
         }
 
-            private void radioButtonMedianFilter_CheckedChanged(object sender, EventArgs e)
+        private void radioButtonMedianFilter_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonAverageFilter.Checked)
                 WsnController.SelectedFilter = "Median";
         }
-
-        #endregion Methods
 
         private void radioButtonNoFilter_CheckedChanged(object sender, EventArgs e)
         {
@@ -145,5 +143,7 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             if (radioButtonWeigthedCentroidLocalization.Checked)
                 WsnController.SelectedAlgorithm = "WeightedCentroidLocalization";
         }
+
+        #endregion Methods
     }
 }
