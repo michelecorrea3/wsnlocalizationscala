@@ -156,8 +156,8 @@
 
                                 if (Convert.ToInt16(IncMsg.Tables[0].Rows[0]["VANr"]) == 1)
                                 {
-                                    CalibrationAnchors(IncMsg.Tables[0].Rows[0]["ID"].ToString(), IncMsg.Tables[0].Rows[0]["ANode"].ToString(), Convert.ToDouble(IncMsg.Tables[0].Rows[0]["RSSI"].ToString()));
                                     Console.WriteLine(" Anchor Node");
+                                    CalibrationAnchors(IncMsg.Tables[0].Rows[0]["ID"].ToString(), IncMsg.Tables[0].Rows[0]["ANode"].ToString(), Convert.ToDouble(IncMsg.Tables[0].Rows[0]["RSSI"].ToString()));
                                 }
                                 else
                                     Console.WriteLine(" Blind Node");
@@ -529,7 +529,7 @@
                             pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "ExtendedTrilateration":
-                            pos = ExtendedTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
+                            pos = Multilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "ExtendedMinMax":
                             pos = MinMaxExtended.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
