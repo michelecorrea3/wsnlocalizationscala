@@ -123,50 +123,88 @@
         public static void CalibratePathlossLS(List<Node> CalibrationNodes, Node.FilterMethod filterMethod)
         {
             double pathlossExponent = 0;
-
+            List<Node> AllAnchors = new List<Node>();
             TwoAnchors twoAnchors1 = new TwoAnchors();
             TwoAnchors twoAnchors2 = new TwoAnchors();
             List<TwoAnchors> AllCalAnchors = new List<TwoAnchors>();
+            AllAnchors = CalibrationNodes;
 
-            if (CalibrationNodes.Count < 3)
-                return;
-
-            double[][] y = new double[CalibrationNodes.Count][];
-            double[][] x = new double[CalibrationNodes.Count][];
-
-            foreach (Node cal in CalibrationNodes)
+            for (int j = 0; j < CalibrationNodes.Count; j++)
             {
-                twoAnchors1.a1 = cal.WsnId ;
-                twoAnchors2.a2 = cal.WsnId ;
+                twoAnchors1.a1 = CalibrationNodes[j].WsnId;
+                twoAnchors2.a2 = CalibrationNodes[j].WsnId;
 
-                for(int i = 0; i < cal.Anchors.Count; i++)
+                for (int i = 0; i < CalibrationNodes[j].Anchors.Count; i++)
                 {
-                    twoAnchors1.a2 = cal.Anchors[i].nodeid;
-                    twoAnchors2.a1 = cal.Anchors[i].nodeid;
-                    if (!AllCalAnchors.Contains(twoAnchors1) && !AllCalAnchors.Contains(twoAnchors2 ))
+                    twoAnchors1.a2 = CalibrationNodes[j].Anchors[i].nodeid;
+                    twoAnchors2.a1 = CalibrationNodes[j].Anchors[i].nodeid;
+                    if (!AllCalAnchors.Contains(twoAnchors1) && !AllCalAnchors.Contains(twoAnchors2))
                     {
                         AllCalAnchors.Add(twoAnchors1);
                         AllCalAnchors.Add(twoAnchors2);
-                        cal.Anchors[i].fRSS = filterMethod(cal.Anchors[i].RSS);
-                        double distance = Math.Pow((Math.Pow((cal.Position.x - cal.Anchors[i].posx), 2) + Math.Pow((cal.Position.y - cal.Anchors[i].posy), 2)), 0.5);
-                        y[i] = new double[] { cal.Anchors[i].fRSS };
-                        x[i] = new double[2] { 1, -10 * Math.Log10(distance) };
                     }
+                    else
+                    {
+                        foreach (Node mote in AllAnchors)
+                        {
+                            if (mote.WsnId == CalibrationNodes[j].Anchors[i].nodeid)
+                                foreach (AnchorNode an in mote.Anchors)
+                                    if (an.nodeid == CalibrationNodes[j].WsnId)
+                                    {
+                                        foreach (double d in CalibrationNodes[j].Anchors[i].RSS)
+                                        {
+                                            an.RSS.Enqueue(d);
+                                        }
+                          //              mote.Anchors.Remove(CalibrationNodes[j].Anchors[i]);
+                                    }
+                        }
+                        foreach (Node mote in AllAnchors)
+                            if (mote.WsnId == CalibrationNodes[j].WsnId)
+                                mote.Anchors.Remove(CalibrationNodes[j].Anchors[i]);
+                    }
+
                 }
 
             }
-            GeneralMatrix Y = new GeneralMatrix(y);
-            GeneralMatrix X = new GeneralMatrix(x);
-            GeneralMatrix XT = X.Transpose();
-            GeneralMatrix haakjes = XT.Multiply(X);
-            GeneralMatrix inverted = haakjes.Inverse();
-            GeneralMatrix XTY = XT.Multiply(Y);
 
-            GeneralMatrix sol = inverted.Multiply(XTY);
+            if (AllAnchors.Count >= 3)
+            {
+                int totalcount = 0;
+                int count = 0;
+                foreach (Node node in AllAnchors)
+                    totalcount += node.Anchors.Count;
+
+                double[][] y = new double[totalcount][];
+                double[][] x = new double[totalcount][];
+
+                foreach (Node cal in AllAnchors)
+                {
+
+                    for (int i = 0; i < cal.Anchors.Count; i++)
+                    {
+                            cal.Anchors[i].fRSS = filterMethod(cal.Anchors[i].RSS);
+                            double distance = Math.Pow((Math.Pow((cal.Position.x - cal.Anchors[i].posx), 2) + Math.Pow((cal.Position.y - cal.Anchors[i].posy), 2)), 0.5);
+                            y[count] = new double[1] { cal.Anchors[i].fRSS };
+                            x[count] = new double[2] { 1, -10 * Math.Log10(distance) };
+                            count++;
+                    }
+                    
+                }
+                GeneralMatrix Y = new GeneralMatrix(y);
+                GeneralMatrix X = new GeneralMatrix(x);
+                GeneralMatrix XT = X.Transpose();
+                GeneralMatrix haakjes = XT.Multiply(X);
+                GeneralMatrix inverted = haakjes.Inverse();
+                GeneralMatrix XTY = XT.Multiply(Y);
+
+                GeneralMatrix sol = inverted.Multiply(XTY);
+
+                RangeBasedPositioning.baseLoss = sol.Array[0][0];
+                RangeBasedPositioning.pathLossExponent = sol.Array[1][0];
+            }
                 
             
-            RangeBasedPositioning.baseLoss = sol.Array[0][0];
-            RangeBasedPositioning.pathLossExponent = sol.Array[1][0];
+
         }
 
         /// <summary>
