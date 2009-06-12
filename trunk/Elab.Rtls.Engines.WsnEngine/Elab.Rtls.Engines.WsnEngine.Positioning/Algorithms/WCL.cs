@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Elab.Rtls.Engines.WsnEngine.Positioning
+﻿namespace Elab.Rtls.Engines.WsnEngine.Positioning
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+
     public class WCL : ConnectivityBasedPositioning
     {
+        #region Methods
+
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod)
         {
             Point position = new Point();
@@ -23,7 +25,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
                 weight = 1 / Math.Pow(anchorNode.fRSS, 3);
                 position.x += anchorNode.posx * weight;
                 position.y += anchorNode.posy * weight;
-                
+
                 totalWeight += weight;
             }
 
@@ -32,5 +34,7 @@ namespace Elab.Rtls.Engines.WsnEngine.Positioning
 
             return position;
         }
+
+        #endregion Methods
     }
 }

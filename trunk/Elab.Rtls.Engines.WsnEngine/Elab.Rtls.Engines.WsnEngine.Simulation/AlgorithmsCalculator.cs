@@ -15,12 +15,12 @@
     {
         #region Fields
 
+        private List<Node> AnchorNodes = new List<Node>();
+
         /// <summary>
         /// List with all the node that should be positioned
         /// </summary>
         private List<Node> BlindNodes = new List<Node>();
-        private List<Node> AnchorNodes = new List<Node>();
-
         private MySQLClass MyDb;
 
         /// <summary>
@@ -40,63 +40,55 @@
 
             do
             {
-                UpdateAnhors();    
-                
+                UpdateAnhors();
+                UpdateBlind();
+
                 Console.WriteLine("Using a new batch of data!");
-
                 DataSet TempSet = FetchData();
-
                 ExecuteAlgorithms(TempSet);
 
                 Console.Write("Process another batch of data? (Y/N) ");
                 response = Console.ReadLine();
             } while (response == "Yes" || response == "Y");
-            
+
             Console.WriteLine("Done! Press ENTER to exit");
             Console.ReadLine();
         }
 
-        private void UpdateAnhors()
+        private void UpdateBlind()
         {
-            Console.Write("Do you wish to update the position of the anchors? (Y/N) ");
-            
-            string response = Console.ReadLine();
+            Console.WriteLine("Enter the position of the blind node in doubles!");   
+            Point position = new Point();
+            Console.Write("X: ");
+            position.x = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Y: ");
+            position.y = Convert.ToDouble(Console.ReadLine());
 
-            if (response == "Y" || response == "Yes")
-            {
-                Console.WriteLine("Enter the new anchors positions");
-
-                do
-                {
-                    Console.Write("WsnId: ");
-                    string wsnID = Console.ReadLine();
-                    Point position = new Point();
-                    Console.Write("X: ");
-                    position.x = Convert.ToDouble(Console.ReadLine());
-                    Console.Write("Y: ");
-                    position.y = Convert.ToDouble(Console.ReadLine());
-
-                    AddPosition(wsnID, position);
-
-                    Console.Write("Enter another position? (Y/N) ");
-                    response = Console.ReadLine();
-
-                } while (response == "Y" || response == "Yes");   
-
-                Console.WriteLine("Thank you for updating the database!");
-            }
+            Node CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
+            CurrentNode.Position.x = position.x;
+            CurrentNode.Position.y = position.y;
         }
 
         #endregion Constructors
 
         #region Methods
 
+        private void AddPosition(string wsnID, Point position)
+        {
+            string AddPosition = "call addPosition(" + wsnID + ", '"
+                                 + DateTime.Now.ToString("u").Remove(19) + "', " + 1 + ", ";
+
+            if (position != null)
+                AddPosition += position.x.ToString().Replace(',', '.') + ", " + position.y.ToString().Replace(',', '.') + ")";
+            else
+                AddPosition += "null, null )";
+
+            MyDb.Query(AddPosition);
+        }
+
         private void ExecuteAlgorithms(DataSet Set)
         {
             Console.WriteLine("Executing each algorithm on the data");
-
-            //foreach algorithms that exists ...
-            //foreach (ob
 
             //write the data to the stream ...
             StreamWriter logger = new StreamWriter("Log.csv", true);
@@ -118,8 +110,8 @@
                     }
                         CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
                         CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
-                        //TODO: check if automatically updated
-                        CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
+                        ////TODO: check if automatically updated
+                        //CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
 
                         logger.Write(row["idlocalization"].ToString() + ",");
                         logger.Write(row["time"].ToString() + ",");
@@ -135,6 +127,7 @@
                         {
                             logger.Write(pos.x + ",");
                             logger.Write(pos.y + ",");
+                            logger.Write(DistanceBetweenTwoPoints(pos, CurrentNode.Position));
                         }
                         else
                         {
@@ -169,7 +162,7 @@
 
                     CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
                     CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
-                    CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
+                    //CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
 
                     RangeBasedPositioning.CalibratePathloss(AnchorNodes, RangeBasedPositioning.AverageFilter);
                 }
@@ -187,7 +180,7 @@
             Console.WriteLine("Enter the ending value of idLocalization: (dd hh:mm:ss)");
             UpperBound = Console.ReadLine();
 
-            MyQuery =  "SELECT * FROM localization l where time between '2009-05-" + LowerBound +  "' and '2009-05-" + UpperBound + "';";
+            MyQuery =  "SELECT * FROM localization l where time between '2009-06-" + LowerBound +  "' and '2009-06 -" + UpperBound + "';";
             Set = MyDb.Query(MyQuery);
 
             //translate NodeIDs into WsnIDs
@@ -207,17 +200,54 @@
             return Set;
         }
 
-        private void AddPosition(string wsnID, Point position)
+        private void UpdateAnhors()
         {
-            string AddPosition = "call addPosition(" + wsnID + ", '"
-                                 + DateTime.Now.ToString("u").Remove(19) + "', " + 1 + ", ";
+            Console.Write("Do you wish to update the position of the anchors? (Y/N) ");
 
-            if (position != null)
-                AddPosition += position.x.ToString().Replace(',', '.') + ", " + position.y.ToString().Replace(',', '.') + ")";
-            else
-                AddPosition += "null, null )";
+            string response = Console.ReadLine();
 
-            MyDb.Query(AddPosition);
+            if (response == "Y" || response == "Yes")
+            {
+                Console.WriteLine("Enter the new anchors positions");
+
+                do
+                {
+                    Console.Write("WsnId: ");
+                    string wsnID = Console.ReadLine();
+                    Point position = new Point();
+                    Console.Write("X: ");
+                    position.x = Convert.ToDouble(Console.ReadLine());
+                    Console.Write("Y: ");
+                    position.y = Convert.ToDouble(Console.ReadLine());
+
+                    AddPosition(wsnID, position);
+
+                    Console.Write("Enter another position? (Y/N) ");
+                    response = Console.ReadLine();
+
+                } while (response == "Y" || response == "Yes");
+
+                Console.WriteLine("Thank you for updating the database!");
+            }
+        }
+
+        private static double DistanceBetweenTwoPoints(Point point1, Point point2)
+        {
+            return Math.Pow((Math.Pow((point1.x - point2.x), 2) + Math.Pow((point1.y - point2.y), 2)), 0.5);
+        }
+
+        private double AverageDistanceToAnchors()
+        {
+            double distance = 0.0;
+            Node CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == "11");
+            
+            foreach (Node anchorNode in AnchorNodes)
+            {
+                distance += DistanceBetweenTwoPoints(anchorNode.Position, CurrentNode.Position);
+            }
+
+            distance /= AnchorNodes.Count;
+            return distance;
         }
 
         #endregion Methods

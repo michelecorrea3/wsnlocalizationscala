@@ -1,10 +1,10 @@
 ﻿namespace Elab.Rtls.Engines.WsnEngine
 {
     using System;
-    using System.Globalization;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data;
+    using System.Globalization;
     using System.IO;
     using System.Net.Sockets;
     using System.Xml;
@@ -47,8 +47,8 @@
                                  + row["Time"].ToString() + "', " + anchor + ", ";
 
             if (pos != null)
-                AddPosition += pos.x.ToString().Replace(',', '.') + ", " + pos.y.ToString().Replace(',', '.') + ")";                                     
-            else                
+                AddPosition += pos.x.ToString().Replace(',', '.') + ", " + pos.y.ToString().Replace(',', '.') + ")";
+            else
                 AddPosition += "null, null )";
 
             MySQLConn.Query(AddPosition);
