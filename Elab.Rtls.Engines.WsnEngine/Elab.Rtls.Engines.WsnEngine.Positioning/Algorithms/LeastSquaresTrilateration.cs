@@ -9,13 +9,12 @@
 
     using DatabaseConnection;
 
-    public class Multilateration : RangeBasedPositioning
+    public class LSTrilateration : RangeBasedPositioning
     {
         #region Methods
 
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multihop)
         {
-
             Point position = new Point();
             List<AnchorNode> AllAnchors = new List<AnchorNode>();
             double[][] y = new double[BlindNode.Anchors.Count-1][];

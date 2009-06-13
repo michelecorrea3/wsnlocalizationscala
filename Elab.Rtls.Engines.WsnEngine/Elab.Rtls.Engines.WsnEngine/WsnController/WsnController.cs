@@ -523,10 +523,10 @@
                             pos = MinMax.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "Trilateration":
-                            pos = ClusterTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
+                            pos = LSTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "ExtendedTrilateration":
-                            pos = Multilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
+                            pos = LSTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "ExtendedMinMax":
                             pos = MinMaxExtended.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
@@ -574,7 +574,7 @@
 
                         EventData.TagBlink["TagID"] = nodeId;
                         EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "3");
-                        EventData.TagBlink["MapID"] = "WsnEngine1map3";
+                        EventData.TagBlink["MapID"] = "WsnEngine1map2";
                         EventData.TagBlink["X"] = pos.x.ToString();
                         EventData.TagBlink["Y"] = pos.y.ToString();
 

@@ -59,6 +59,7 @@
         {
             this.MyDb = MyDb;
             this.WsnId = WsnId;
+            this.position = new Point(0.00, 0.00);
         }
 
         #endregion Constructors
