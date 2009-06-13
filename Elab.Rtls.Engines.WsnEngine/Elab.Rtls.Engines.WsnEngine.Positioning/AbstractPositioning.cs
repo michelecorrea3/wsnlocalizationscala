@@ -106,7 +106,7 @@
                         anchorNode.fRSS = filterMethod(anchorNode.RSS);
                         double distance = Math.Pow((Math.Pow((node.Position.x - anchorNode.posx), 2) + Math.Pow((node.Position.y - anchorNode.posy), 2)), 0.5);
 
-                        tempPathLossExponent += (anchorNode.fRSS - 51.00)/(10*Math.Log10(distance));
+                        tempPathLossExponent += (anchorNode.fRSS + 51.00)/(-10*Math.Log10(distance));
                     }
                     tempPathLossExponent /= node.Anchors.Count;
                     pathlossExponent += tempPathLossExponent;
@@ -194,7 +194,7 @@
 
                 GeneralMatrix sol = inverted.Multiply(XTY);
 
-                RangeBasedPositioning.baseLoss = sol.Array[0][0];
+                RangeBasedPositioning.baseLoss = -sol.Array[0][0];
                 RangeBasedPositioning.pathLossExponent = sol.Array[1][0];
             }
         }
@@ -212,7 +212,7 @@
         {
             const double baseRSS = 51, pathLossExponent = 2;
 
-            return Math.Pow(10, ((-baseRSS - fRSS) / (10 * pathLossExponent)));
+            return Math.Pow(10, ((fRSS + baseRSS) / ( -10 * pathLossExponent)));
         }
 
         public static double MedianFilter(Queue<double> RSS)
@@ -250,7 +250,7 @@
         /// <returns>The distance expressed in centimeters</returns>
         public static double Ranging(double fRSS)
         {
-            return Math.Pow(10, ((-RangeBasedPositioning.baseLoss - fRSS) / (10 * RangeBasedPositioning.pathLossExponent)));
+            return Math.Pow(10, ((fRSS + RangeBasedPositioning.baseLoss) / (-10 * RangeBasedPositioning.pathLossExponent)));
         }
 
         #endregion Methods
