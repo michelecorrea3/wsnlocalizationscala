@@ -156,7 +156,7 @@
                                 if (Convert.ToInt16(IncMsg.Tables[0].Rows[0]["VANr"]) == 1)
                                 {
                                     Console.WriteLine(" Anchor Node");
-                                    CalibrationAnchors(IncMsg.Tables[0].Rows[0]["ID"].ToString(), IncMsg.Tables[0].Rows[0]["ANode"].ToString(), Convert.ToDouble(IncMsg.Tables[0].Rows[0]["RSSI"].ToString()));
+                                    //CalibrationAnchors(IncMsg.Tables[0].Rows[0]["ID"].ToString(), IncMsg.Tables[0].Rows[0]["ANode"].ToString(), Convert.ToDouble(IncMsg.Tables[0].Rows[0]["RSSI"].ToString()));
                                 }
                                 else
                                     Console.WriteLine(" Blind Node");
@@ -429,7 +429,8 @@
 
             CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
             CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), Convert.ToInt32(row["VANs"]), DateTime.Now);
-            CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
+            CurrentNode.SetOwnPosition();
+            //CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
 
             Node.FilterMethod myFilter;
 
@@ -447,7 +448,7 @@
             }
 
             //RangeBasedPositioning.CalibratePathloss(AnchorNodes, myFilter);
-            RangeBasedPositioning.CalibratePathlossLS(CalibrationNodes, myFilter);
+            RangeBasedPositioning.CalibratePathlossLS(AnchorNodes, myFilter);
 
             int TimeSecs, tempint;
             if (int.TryParse(row["Time"].ToString(), out TimeSecs))
