@@ -183,7 +183,7 @@
                             x[count] = new double[2] { 1, -10 * Math.Log10(distance) };
                             count++;
                     }
-                    
+
                 }
                 GeneralMatrix Y = new GeneralMatrix(y);
                 GeneralMatrix X = new GeneralMatrix(x);
@@ -197,8 +197,6 @@
                 RangeBasedPositioning.baseLoss = sol.Array[0][0];
                 RangeBasedPositioning.pathLossExponent = sol.Array[1][0];
             }
-
-
         }
 
         /// <summary>
