@@ -128,6 +128,7 @@
             {
                 twoAnchors1.a1 = CalibrationNodes[j].WsnId;
                 twoAnchors2.a2 = CalibrationNodes[j].WsnId;
+                CalibrationNodes[j].SetOwnPosition();
 
                 for (int i = 0; i < CalibrationNodes[j].Anchors.Count; i++)
                 {
@@ -161,8 +162,10 @@
                 }
 
             }
-
-            if (AllAnchors.Count >= 3)
+            int totalcount = 0;
+            foreach (Node nod in AllAnchors)
+                totalcount += nod.Anchors.Count;
+            if (totalcount >= 3)
             {
                 int totalcount = 0;
                 int count = 0;
