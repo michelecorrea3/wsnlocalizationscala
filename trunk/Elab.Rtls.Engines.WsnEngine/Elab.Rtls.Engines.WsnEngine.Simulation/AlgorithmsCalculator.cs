@@ -43,6 +43,14 @@
             Console.Write("Enter the file which you wish to write to: ");
             fileName = Console.ReadLine();
             logger = new StreamWriter(fileName, true);
+            //writing the csv header
+            logger.WriteLine("idLocalization, time, WsnID, #anchors, CL X, CL X, CL AbsErr, CL RelErr," +
+            "WCL X, WCL X, WCL AbsErr, WCL RelErr, MinMax R X, MinMax R Y, MinMax R AbsErr, MinMax R RelErr," +
+            "MinMax DR X, MinMax DR Y, MinMax DR AbsErr, MinMax DR RelErr," +
+            "TriLat R X, TriLat R Y, TriLat R AbsErr, TriLat R RelErr," +
+            "TriLat DR X, TriLat DR Y, TriLat DR AbsErr, TriLat DR RelErr," +
+            "LSTriLat R X, LSTriLat R Y, LSTriLat R AbsErr, LSTriLat R RelErr," +
+            "LSTriLat DR X, LSTriLat DR Y, LSTriLat DR AbsErr, LSTriLat DR RelErr\n\n");
 
             do
             {
@@ -59,6 +67,7 @@
                 response = Console.ReadLine();
             } while (response == "Yes" || response == "Y");
 
+            logger.Close();
             Console.WriteLine("Done! Press ENTER to exit");
             Console.ReadLine();
         }
@@ -98,15 +107,6 @@
         private void ExecuteAlgorithms(DataSet Set, int numberAnchors)
         {
             Console.WriteLine("Executing each algorithm on the data");            
-
-            //writing the csv header
-            logger.WriteLine("idLocalization, time, WsnID, #anchors, CL X, CL X, CL AbsErr, CL RelErr," +
-            "WCL X, WCL X, WCL AbsErr, WCL RelErr, MinMax R X, MinMax R Y, MinMax R AbsErr, MinMax R RelErr," +
-            "MinMax DR X, MinMax DR Y, MinMax DR AbsErr, MinMax DR RelErr," +
-            "TriLat R X, TriLat R Y, TriLat R AbsErr, TriLat R RelErr," +
-            "TriLat DR X, TriLat DR Y, TriLat DR AbsErr, TriLat DR RelErr," +
-            "LSTriLat R X, LSTriLat R Y, LSTriLat R AbsErr, LSTriLat R RelErr," +
-            "LSTriLat DR X, LSTriLat DR Y, LSTriLat DR AbsErr, LSTriLat DR RelErr");
 
             foreach (DataRow row in Set.Tables[0].Rows)
             {
@@ -190,11 +190,10 @@
                     CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
                     //CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
 
-                    RangeBasedPositioning.CalibratePathlossLS(AnchorNodes, RangeBasedPositioning.NoFilter);
+                    RangeBasedPositioning.CalibratePathloss(AnchorNodes, RangeBasedPositioning.NoFilter);
                     
                 }
             }
-            logger.Close();
         }
 
         private void LogPosition(Point pos, Node CurrentNode, StreamWriter logger)
