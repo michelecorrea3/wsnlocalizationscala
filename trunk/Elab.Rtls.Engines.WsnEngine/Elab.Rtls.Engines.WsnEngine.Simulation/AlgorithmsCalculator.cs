@@ -33,6 +33,11 @@
 
         #region Constructors
 
+        internal static void Main()
+        {
+            AlgorithmsCalculator calc = new AlgorithmsCalculator();
+        }
+
         public AlgorithmsCalculator()
         {
             MyDb = new MySQLClass("DRIVER={MySQL ODBC 3.51 Driver};SERVER=localhost;DATABASE=senseless;UID=root;PASSWORD=admin;OPTION=3;");
