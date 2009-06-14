@@ -106,7 +106,11 @@
                         anchorNode.fRSS = filterMethod(anchorNode.RSS);
                         double distance = Math.Pow((Math.Pow((node.Position.x - anchorNode.posx), 2) + Math.Pow((node.Position.y - anchorNode.posy), 2)), 0.5);
 
-                        tempPathLossExponent += (anchorNode.fRSS + 51.00)/(-10*Math.Log10(distance));
+                        //formula does not work when the distance is 1m, then np can not be calculated
+                        if (distance != 1)
+                            tempPathLossExponent += (anchorNode.fRSS + 51.00) / (-10 * Math.Log10(distance));
+                        else
+                            tempPathLossExponent += 2.00;
                     }
                     tempPathLossExponent /= node.Anchors.Count;
                     pathlossExponent += tempPathLossExponent;
