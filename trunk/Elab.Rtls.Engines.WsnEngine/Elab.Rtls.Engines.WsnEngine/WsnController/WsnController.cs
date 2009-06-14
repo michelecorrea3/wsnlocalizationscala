@@ -583,7 +583,7 @@
                         //EventData.EventType = "LocationUpdated";
 
                         EventData.TagBlink["TagID"] = nodeId;
-                        EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "3");
+                        EventData.TagBlink["Accuracy"] = WsnEngine.CheckMapBounds(ref pos.x, ref pos.y, "2");
                         EventData.TagBlink["MapID"] = "WsnEngine1map2";
                         EventData.TagBlink["X"] = pos.x.ToString();
                         EventData.TagBlink["Y"] = pos.y.ToString();
