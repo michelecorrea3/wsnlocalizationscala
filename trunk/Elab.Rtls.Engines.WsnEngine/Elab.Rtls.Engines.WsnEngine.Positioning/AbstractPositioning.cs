@@ -99,7 +99,7 @@
                 {
                     double tempPathLossExponent = 0.00;
 
-                    node.SetOwnPosition();
+                    //node.SetOwnPosition();
 
                     foreach (AnchorNode anchorNode in node.Anchors)
                     {
@@ -128,7 +128,7 @@
             {
                 twoAnchors1.a1 = CalibrationNodes[j].WsnId;
                 twoAnchors2.a2 = CalibrationNodes[j].WsnId;
-                CalibrationNodes[j].SetOwnPosition();
+                //CalibrationNodes[j].SetOwnPosition();
 
                 for (int i = 0; i < CalibrationNodes[j].Anchors.Count; i++)
                 {
