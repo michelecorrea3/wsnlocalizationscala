@@ -160,7 +160,7 @@
                                                                       RangeBasedPositioning.Ranging, false);
                         LogPosition(pos, CurrentNode, logger);
 
-                        //logger.Write("TriLat - NoFilter - DefaultRanging,");
+                        logger.Write("TriLat - NoFilter - DefaultRanging,");
                         pos = ExtendedTrilateration.CalculatePosition(CurrentNode, RangeBasedPositioning.NoFilter,
                                                                       RangeBasedPositioning.DefaultRanging, false);
                         LogPosition(pos, CurrentNode, logger);
@@ -195,7 +195,7 @@
                     CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
                     //CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
 
-                    RangeBasedPositioning.CalibratePathloss(AnchorNodes, RangeBasedPositioning.NoFilter);
+                    RangeBasedPositioning.CalibratePathlossLS(AnchorNodes, RangeBasedPositioning.NoFilter);
                     
                 }
             }
