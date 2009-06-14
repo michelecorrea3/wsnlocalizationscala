@@ -259,6 +259,10 @@
         /// <returns>The distance expressed in centimeters</returns>
         public static double Ranging(double fRSS)
         {
+            if (RangeBasedPositioning.pathLossExponent < 0.01 && RangeBasedPositioning.pathLossExponent > 0.0 || RangeBasedPositioning.pathLossExponent == 0.00)
+                RangeBasedPositioning.pathLossExponent = 0.01;
+            if (RangeBasedPositioning.pathLossExponent > -0.01 && RangeBasedPositioning.pathLossExponent < 0.0)
+                RangeBasedPositioning.pathLossExponent = -0.01;
             return Math.Pow(10, ((fRSS + RangeBasedPositioning.baseLoss) / (-10 * RangeBasedPositioning.pathLossExponent)));
         }
 
