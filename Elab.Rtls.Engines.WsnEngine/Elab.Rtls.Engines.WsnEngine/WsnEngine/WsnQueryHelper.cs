@@ -184,7 +184,7 @@
                                     double tempX = (double)Row["X"];
                                     double tempY = (double)Row["Y"];
 
-                                    tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "1");
+                                    tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "2");
                                     tagBlink["Location/MapID"] = "WsnEngine1map2";
                                     tagBlink["Location/X"] = tempX.ToString();
                                     tagBlink["Location/Y"] = tempY.ToString();
@@ -197,7 +197,7 @@
                                     double tempX = (double)Row["X"];
                                     double tempY = (double)Row["Y"];
 
-                                    WsnEngine.CheckMapBounds(ref tempX, ref tempY, "3");
+                                    WsnEngine.CheckMapBounds(ref tempX, ref tempY, "2");
                                     tagBlink["Location/X"] = tempX.ToString();
                                 }
                                 break;
@@ -207,7 +207,7 @@
                                     double tempX = (double)Row["X"];
                                     double tempY = (double)Row["Y"];
 
-                                    WsnEngine.CheckMapBounds(ref tempX, ref tempY, "3");
+                                    WsnEngine.CheckMapBounds(ref tempX, ref tempY, "2");
                                     tagBlink["Location/Y"] = tempX.ToString();
                                 }
                                 break;
@@ -221,7 +221,7 @@
                                     double tempX = (double) Row["X"];
                                     double tempY = (double) Row["Y"];
 
-                                    tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "3");
+                                    tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "2");
                                 }
                                 break;
                             case "Buttons":
@@ -281,7 +281,7 @@
                                     double tempX = (double)Row["X"];
                                     double tempY = (double)Row["Y"];
 
-                                    tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "3");
+                                    tagBlink["Location/Accuracy"] = WsnEngine.CheckMapBounds(ref tempX, ref tempY, "2");
                                     tagBlink["Location/MapID"] = "WsnEngine1map2";
                                     tagBlink["Location/X"] = tempX.ToString();
                                     tagBlink["Location/Y"] = tempY.ToString();
