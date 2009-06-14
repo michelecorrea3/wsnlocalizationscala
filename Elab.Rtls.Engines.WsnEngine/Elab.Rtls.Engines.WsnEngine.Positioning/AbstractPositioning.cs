@@ -186,6 +186,8 @@
                     {
                             cal.Anchors[i].fRSS = filterMethod(cal.Anchors[i].RSS);
                             double distance = Math.Pow((Math.Pow((cal.Position.x - cal.Anchors[i].posx), 2) + Math.Pow((cal.Position.y - cal.Anchors[i].posy), 2)), 0.5);
+                            if (distance == 0)
+                                distance = 0.1;
                             y[count] = new double[1] { cal.Anchors[i].fRSS };
                             x[count] = new double[2] { 1, -10 * Math.Log10(distance) };
                             count++;
