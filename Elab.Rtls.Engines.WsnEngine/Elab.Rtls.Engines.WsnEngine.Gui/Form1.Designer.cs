@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "",
             ""}, -1);
@@ -166,6 +166,14 @@
             this.toolTipActive = new System.Windows.Forms.ToolTip(this.components);
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -224,7 +232,7 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(78, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(88, 17);
             this.toolStripStatusLabel.Text = "No Connection";
             // 
             // tabPage4
@@ -1052,10 +1060,10 @@
             this.listViewGraphValues.GridLines = true;
             this.listViewGraphValues.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewGraphValues.HideSelection = false;
-            listViewItem1.IndentCount = 10;
-            listViewItem1.Tag = "";
+            listViewItem3.IndentCount = 10;
+            listViewItem3.Tag = "";
             this.listViewGraphValues.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem3});
             this.listViewGraphValues.Location = new System.Drawing.Point(6, 21);
             this.listViewGraphValues.Name = "listViewGraphValues";
             this.listViewGraphValues.Size = new System.Drawing.Size(207, 213);
@@ -1193,6 +1201,10 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.textBox14);
+            this.groupBox6.Controls.Add(this.textBox13);
+            this.groupBox6.Controls.Add(this.textBox12);
+            this.groupBox6.Controls.Add(this.textBox11);
             this.groupBox6.Controls.Add(this.textBoxLocUpdate);
             this.groupBox6.Controls.Add(this.label12);
             this.groupBox6.Controls.Add(this.label48);
@@ -1209,9 +1221,9 @@
             this.groupBox6.Controls.Add(this.textBoxZ);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.groupBox6.Location = new System.Drawing.Point(167, 40);
+            this.groupBox6.Location = new System.Drawing.Point(146, 40);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(275, 304);
+            this.groupBox6.Size = new System.Drawing.Size(309, 304);
             this.groupBox6.TabIndex = 26;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Localization";
@@ -1381,6 +1393,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox10);
+            this.groupBox1.Controls.Add(this.textBox9);
+            this.groupBox1.Controls.Add(this.textBox8);
+            this.groupBox1.Controls.Add(this.textBox7);
             this.groupBox1.Controls.Add(this.textBoxSensUpdate);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.groupBox3);
@@ -1389,7 +1405,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.groupBox1.Location = new System.Drawing.Point(472, 40);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(236, 304);
+            this.groupBox1.Size = new System.Drawing.Size(263, 304);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sensor";
@@ -1608,6 +1624,78 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // textBox7
+            // 
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Location = new System.Drawing.Point(226, 137);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(30, 18);
+            this.textBox7.TabIndex = 30;
+            this.textBox7.Text = "F";
+            // 
+            // textBox8
+            // 
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Location = new System.Drawing.Point(225, 166);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(30, 18);
+            this.textBox8.TabIndex = 31;
+            this.textBox8.Text = "L";
+            // 
+            // textBox9
+            // 
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.Location = new System.Drawing.Point(225, 196);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(30, 18);
+            this.textBox9.TabIndex = 32;
+            this.textBox9.Text = "g";
+            // 
+            // textBox10
+            // 
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Location = new System.Drawing.Point(225, 233);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(38, 18);
+            this.textBox10.TabIndex = 33;
+            this.textBox10.Text = "dBm";
+            // 
+            // textBox11
+            // 
+            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox11.Location = new System.Drawing.Point(264, 113);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(38, 17);
+            this.textBox11.TabIndex = 34;
+            this.textBox11.Text = "dBm";
+            // 
+            // textBox12
+            // 
+            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox12.Location = new System.Drawing.Point(264, 154);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(30, 17);
+            this.textBox12.TabIndex = 35;
+            this.textBox12.Text = "m";
+            // 
+            // textBox13
+            // 
+            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox13.Location = new System.Drawing.Point(264, 196);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(30, 17);
+            this.textBox13.TabIndex = 36;
+            this.textBox13.Text = "m";
+            // 
+            // textBox14
+            // 
+            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox14.Location = new System.Drawing.Point(264, 234);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(30, 17);
+            this.textBox14.TabIndex = 37;
+            this.textBox14.Text = "m";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1804,6 +1892,14 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ComboBox comboBoxGraphNumMeasurements;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox9;
 
     }
 }
