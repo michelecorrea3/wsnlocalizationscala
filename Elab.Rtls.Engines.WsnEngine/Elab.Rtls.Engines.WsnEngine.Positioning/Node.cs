@@ -160,7 +160,7 @@
 
             //TODO: enable
             //RemoveOutdatedAnchors();
-            UpdateAnchorPositions();
+            //UpdateAnchorPositions();
         }
 
         /// <summary>

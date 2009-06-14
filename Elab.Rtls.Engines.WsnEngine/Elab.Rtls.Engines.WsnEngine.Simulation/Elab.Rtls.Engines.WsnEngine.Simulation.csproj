@@ -12,7 +12,7 @@
     <AssemblyName>Elab.Rtls.Engines.WsnEngine.Simulation</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <StartupObject>LocalizationAlgorithmsRunner.AlgorithmsCalculator</StartupObject>
+    <StartupObject>LocalizationAlgorithmsRunner.CalibrationRunner</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlgorithmsCalculator.cs" />
+    <Compile Include="CalibrationRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

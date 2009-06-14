@@ -65,8 +65,8 @@
     {
         #region Fields
 
-        private static double baseLoss = 51.00;
-        private static double pathLossExponent = 2.00;
+        public static double baseLoss = 51.00;
+        public static double pathLossExponent = 2.00;
 
         #endregion Fields
 
@@ -88,8 +88,8 @@
         {
             double pathlossExponent = 0;
 
-                if (AnchorNodes.Count < 3)
-                    return;
+                //if (AnchorNodes.Count < 3)
+                //    return;
 
                 //determine Pd0 & d0
                 //use default values for now...
@@ -162,10 +162,10 @@
                 }
 
             }
-            int totalcount = 0;
+            int totalcountt = 0;
             foreach (Node nod in AllAnchors)
-                totalcount += nod.Anchors.Count;
-            if (totalcount >= 3)
+                totalcountt += nod.Anchors.Count;
+            if (totalcountt >= 3)
             {
                 int totalcount = 0;
                 int count = 0;

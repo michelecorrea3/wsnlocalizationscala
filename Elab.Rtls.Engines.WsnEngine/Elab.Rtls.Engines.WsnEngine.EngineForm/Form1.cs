@@ -86,14 +86,6 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             return host;
         }
 
-        private void checkBoxCalibration_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxCalibration.Checked)
-                WsnController.UseCalibration = true;
-            else
-                WsnController.UseCalibration = false;
-        }
-
         private void checkBoxUseMultihop_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxUseMultihop.Checked)
@@ -102,11 +94,25 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
                 WsnController.UseMultihop = false;
         }
 
+        #region filters
         private void radioButtonAverageFilter_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonAverageFilter.Checked)
                 WsnController.SelectedFilter = "Average";
         }
+
+        private void radioButtonMedianFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonAverageFilter.Checked)
+                WsnController.SelectedFilter = "Median";
+        }
+
+        private void radioButtonNoFilter_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonNoFilter.Checked)
+                WsnController.SelectedFilter = "NoFilter";
+        }
+        #endregion
 
         private void radioButtonCentroidLocalization_CheckedChanged(object sender, EventArgs e)
         {
@@ -126,18 +132,6 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
                 WsnController.SelectedAlgorithm = "ExtendedMinMax";
         }
 
-        private void radioButtonMedianFilter_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonAverageFilter.Checked)
-                WsnController.SelectedFilter = "Median";
-        }
-
-        private void radioButtonNoFilter_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButtonNoFilter.Checked)
-                WsnController.SelectedFilter = "NoFilter";
-        }
-
         private void radioButtonWeigthedCentroidLocalization_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonWeigthedCentroidLocalization.Checked)
@@ -145,5 +139,24 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
         }
 
         #endregion Methods
+
+        private void radioButtonCalibrationDisabled_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonCalibrationDisabled.Checked)
+                WsnController.SelectedCalibration = "Disabled";
+        }
+
+        private void radioButtonCalibrationNormal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonCalibrationNormal.Checked)
+                WsnController.SelectedCalibration = "Normal";
+        }
+
+        private void radioButtonCalibrationLeastSquares_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonCalibrationLeastSquares.Checked)
+                WsnController.SelectedCalibration = "LeastSquares";
+        }
+
     }
 }
