@@ -27,10 +27,16 @@ namespace LocalizationAlgorithmsRunner
         CalibrationRunner()
         {
             MyDb = new MySQLClass("DRIVER={MySQL ODBC 3.51 Driver};SERVER=localhost;DATABASE=senseless;UID=root;PASSWORD=admin;OPTION=3;");
+            string response;
 
-            Console.WriteLine("Using a new batch of data!");
-            DataSet TempSet = FetchData();
-            ExecuteCalibrationBlindNode(TempSet);
+            do
+            {
+                Console.WriteLine("Using a new batch of data!");
+                DataSet TempSet = FetchData();
+                ExecuteCalibrationBlindNode(TempSet);
+                Console.Write("Process another batch of data? (Y/N) ");
+                response = Console.ReadLine();
+            } while (response == "Yes" || response == "Y");
 
             Console.WriteLine("Press ENTER to exit");
             Console.ReadLine();
@@ -117,10 +123,21 @@ namespace LocalizationAlgorithmsRunner
                     if (!AnchorNodes.Exists(AN => AN.WsnIdProperty == currentID))
                     {
                         AnchorNodes.Add(new Node(row["node"].ToString(), MyDb));
+
+                        CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
+
+                        Console.WriteLine("Enter the position of the blind node in doubles!");
+                        Point position = new Point();
+                        Console.Write("X: ");
+                        position.x = Convert.ToDouble(Console.ReadLine());
+                        Console.Write("Y: ");
+                        position.y = Convert.ToDouble(Console.ReadLine());
+
+                        CurrentNode.position = new Point(position.x, position.y);
                     }
 
                     CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
-                    CurrentNode.position = new Point(0.00, 3.29);
+
                     CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
                 }
             }
@@ -133,6 +150,8 @@ namespace LocalizationAlgorithmsRunner
             Console.WriteLine("LS Calibration");
             Console.WriteLine(RangeBasedPositioning.pathLossExponent);
             Console.WriteLine(RangeBasedPositioning.baseLoss);
+
+            AnchorNodes.Clear();
         }
 
         private DataSet FetchData()
