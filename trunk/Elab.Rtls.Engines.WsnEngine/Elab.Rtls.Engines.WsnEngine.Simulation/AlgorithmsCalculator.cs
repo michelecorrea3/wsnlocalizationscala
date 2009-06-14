@@ -219,7 +219,7 @@
             }
         }
 
-        private DataSet FetchData()
+        public DataSet FetchData()
         {
             string LowerBound, UpperBound, MyQuery;
             DataSet Set;

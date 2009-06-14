@@ -63,7 +63,7 @@
 
             this.SelectedAlgorithm = "CentroidLocalization";
             this.SelectedFilter = "Average";
-            this.UseCalibration = false;
+            this.SelectedCalibration = "Disabled";
             this.UseMultihop = false;
 
             StartWsnEngine();
@@ -103,7 +103,7 @@
             get; set;
         }
 
-        public bool UseCalibration
+        public string SelectedCalibration
         {
             get; set;
         }
@@ -447,8 +447,17 @@
                     break;
             }
 
-            //RangeBasedPositioning.CalibratePathloss(AnchorNodes, myFilter);
-            RangeBasedPositioning.CalibratePathlossLS(AnchorNodes, myFilter);
+            switch (SelectedCalibration)
+            {
+                case "Normal":
+                    RangeBasedPositioning.CalibratePathloss(AnchorNodes, myFilter);
+                    break;
+                case "LeastSquares":
+                    RangeBasedPositioning.CalibratePathlossLS(AnchorNodes, myFilter);
+                    break;
+            }
+            
+            
 
             int TimeSecs, tempint;
             if (int.TryParse(row["Time"].ToString(), out TimeSecs))
@@ -496,7 +505,7 @@
                     Node.FilterMethod myFilter = new Node.FilterMethod(RangeBasedPositioning.MedianFilter);;
                     Node.RangingMethod myRanging;
 
-                    if (UseCalibration)
+                    if (SelectedCalibration != "Disabled")
                         myRanging = new Node.RangingMethod(RangeBasedPositioning.Ranging);
                     else
                         myRanging = new Node.RangingMethod(RangeBasedPositioning.DefaultRanging);
