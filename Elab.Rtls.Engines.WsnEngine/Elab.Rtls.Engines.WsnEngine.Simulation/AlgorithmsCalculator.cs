@@ -184,20 +184,20 @@
                     logger.WriteLine("");
                     logger.Flush();
                 }
-                else
-                {
-                    if (!AnchorNodes.Exists(AN => AN.WsnIdProperty == currentID))
-                    {
-                        AnchorNodes.Add(new Node(row["node"].ToString(), MyDb));
-                    }
+                //else
+                //{
+                //    if (!AnchorNodes.Exists(AN => AN.WsnIdProperty == currentID))
+                //    {
+                //        AnchorNodes.Add(new Node(row["node"].ToString(), MyDb));
+                //    }
 
-                    CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
-                    CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
-                    //CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
+                //    CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
+                //    CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
+                //    //CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
 
-                    RangeBasedPositioning.CalibratePathlossLS(AnchorNodes, RangeBasedPositioning.NoFilter);
+                //    RangeBasedPositioning.CalibratePathlossLS(AnchorNodes, RangeBasedPositioning.NoFilter);
                     
-                }
+                //}
             }
         }
 

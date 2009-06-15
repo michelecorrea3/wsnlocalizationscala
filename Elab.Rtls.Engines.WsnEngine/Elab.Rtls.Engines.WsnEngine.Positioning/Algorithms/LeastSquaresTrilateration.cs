@@ -49,6 +49,10 @@
 
                 for (int i = 1; i < AllAnchors.Count; i++)
                 {
+                    if (AllAnchors[i].posx == AllAnchors[0].posx)
+                        AllAnchors[i].posx += 0.1;
+                    if (AllAnchors[i].posy == AllAnchors[0].posy)
+                        AllAnchors[i].posy += 0.1;
                     y[i - 1] = new double[] { Math.Pow(AllAnchors[i].posx, 2) - Math.Pow(AllAnchors[0].posx, 2) + Math.Pow(AllAnchors[i].posy, 2) - Math.Pow(AllAnchors[0].posy, 2) - Math.Pow(AllAnchors[i].range, 2) + Math.Pow(AllAnchors[0].range, 2) };
                     x[i - 1] = new double[] { AllAnchors[i].posx - AllAnchors[0].posx, AllAnchors[i].posy - AllAnchors[0].posy };
                 }
