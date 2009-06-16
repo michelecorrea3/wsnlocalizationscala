@@ -36,16 +36,16 @@ In the second part, only one node is equipped with the external antenna and plac
 \centering
 \begin{tabular}{|l|l|l|l|} \hline
 \multicolumn{4}{|c|}{Results} \\ \hline
-\multirow{} & Average RSSI & Stdv1 & Stdv2 \\ \hline
-\multirow{1m and 1 ext. antenna} & -50,65 & 1,144 & 5,71 \\ \hline
-\multirow{5m and 1 ext. antenna} & -59,50 & 1,63 & 4,31 \\ \hline
-\multirow{1m and 2 ext. antenna} & -31,46 & 0,21 & 0,64 \\ \hline
-\multirow{5m and 2 ext. antenna} & -49,77 & 0,90 & 1,61 \\ \hline
+\multirow{} & Average & Stdv1 & Stdv2 \\ \hline
+\multirow{Onboard antenna at one meter} & -50,65 & 1,144 & 5,71 \\ \hline
+\multirow{Onboard antenna at five meter} & -59,50 & 1,63 & 4,31 \\ \hline
+\multirow{External antenna at one meter} & -31,46 & 0,21 & 0,64 \\ \hline
+\multirow{External antenna at five meter} & -49,77 & 0,90 & 1,61 \\ \hline
 \end{tabular}
 \end{table}
 
-Figure \ref{fig:ExternalAntenna} and \ref{fig:OnboardAntenna} display the mean and standard deviation of the RSS when rotating the node. Table \ref{table:resultsorient} displays the average of the standard deviation for each orientation and the standard deviation of the entire dataset. These results show that RSS readings are more stable when the node is equipped with a more omnidirectional antenna. However the readings with onboard antenna are fairly stable as well. 
-The results also clearly show that the external antenna is more invariant to orientation than the onboard antenna. 
+Figure \ref{fig:ExternalAntenna} and \ref{fig:OnboardAntenna} display the mean and standard deviation of the RSS when rotating the node. Table \ref{table:resultsorient} displays the average standard deviation for each orientation and the standard deviation of the entire dataset. Note that the standard deviation is sometimes too small to be seen on the graph. These results show that RSS readings are more stable when the node is equipped with a more omnidirectional antenna. However the readings with onboard antenna are fairly stable as well. The results also clearly show that the external antenna is more invariant to orientation than the onboard antenna. 
+The results are consistent with the common belief that node orientation influences RSS readings.
 
 \subsection{In \& outdoor positioning}
 In this section, we will test the accuracy and thus the position error of our 2 range-based algorithms namely Min-Max and multilateration.
