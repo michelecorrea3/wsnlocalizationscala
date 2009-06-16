@@ -158,5 +158,11 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
                 WsnController.SelectedCalibration = "LeastSquares";
         }
 
+        private void radioButtonLeastSquaresTriLateration_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonLeastSquaresTriLateration.Checked)
+                WsnController.SelectedAlgorithm = "LSTrilateration";
+        }
+
     }
 }

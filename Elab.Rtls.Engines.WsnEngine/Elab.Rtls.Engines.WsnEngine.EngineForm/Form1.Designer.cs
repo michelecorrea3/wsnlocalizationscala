@@ -32,17 +32,17 @@
             this.radioButtonMedianFilter = new System.Windows.Forms.RadioButton();
             this.radioButtonAverageFilter = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonLeastSquaresTriLateration = new System.Windows.Forms.RadioButton();
             this.radioButtonWeigthedCentroidLocalization = new System.Windows.Forms.RadioButton();
             this.radioButtonExtendedMinMax = new System.Windows.Forms.RadioButton();
             this.radioButtonExtendedClusteredTrilateration = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButtonNoFilter = new System.Windows.Forms.RadioButton();
             this.checkBoxUseMultihop = new System.Windows.Forms.CheckBox();
-            this.radioButtonLeastSquaresTriLateration = new System.Windows.Forms.RadioButton();
             this.groupBoxCalibration = new System.Windows.Forms.GroupBox();
-            this.radioButtonCalibrationDisabled = new System.Windows.Forms.RadioButton();
-            this.radioButtonCalibrationNormal = new System.Windows.Forms.RadioButton();
             this.radioButtonCalibrationLeastSquares = new System.Windows.Forms.RadioButton();
+            this.radioButtonCalibrationNormal = new System.Windows.Forms.RadioButton();
+            this.radioButtonCalibrationDisabled = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBoxCalibration.SuspendLayout();
@@ -98,6 +98,18 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Positioning algorithm";
+            // 
+            // radioButtonLeastSquaresTriLateration
+            // 
+            this.radioButtonLeastSquaresTriLateration.AutoSize = true;
+            this.radioButtonLeastSquaresTriLateration.Location = new System.Drawing.Point(20, 113);
+            this.radioButtonLeastSquaresTriLateration.Name = "radioButtonLeastSquaresTriLateration";
+            this.radioButtonLeastSquaresTriLateration.Size = new System.Drawing.Size(151, 17);
+            this.radioButtonLeastSquaresTriLateration.TabIndex = 7;
+            this.radioButtonLeastSquaresTriLateration.TabStop = true;
+            this.radioButtonLeastSquaresTriLateration.Text = "Least Squares Trilateration";
+            this.radioButtonLeastSquaresTriLateration.UseVisualStyleBackColor = true;
+            this.radioButtonLeastSquaresTriLateration.CheckedChanged += new System.EventHandler(this.radioButtonLeastSquaresTriLateration_CheckedChanged);
             // 
             // radioButtonWeigthedCentroidLocalization
             // 
@@ -171,17 +183,6 @@
             this.checkBoxUseMultihop.Visible = false;
             this.checkBoxUseMultihop.CheckedChanged += new System.EventHandler(this.checkBoxUseMultihop_CheckedChanged);
             // 
-            // radioButtonLeastSquaresTriLateration
-            // 
-            this.radioButtonLeastSquaresTriLateration.AutoSize = true;
-            this.radioButtonLeastSquaresTriLateration.Location = new System.Drawing.Point(20, 113);
-            this.radioButtonLeastSquaresTriLateration.Name = "radioButtonLeastSquaresTriLateration";
-            this.radioButtonLeastSquaresTriLateration.Size = new System.Drawing.Size(151, 17);
-            this.radioButtonLeastSquaresTriLateration.TabIndex = 7;
-            this.radioButtonLeastSquaresTriLateration.TabStop = true;
-            this.radioButtonLeastSquaresTriLateration.Text = "Least Squares Trilateration";
-            this.radioButtonLeastSquaresTriLateration.UseVisualStyleBackColor = true;
-            // 
             // groupBoxCalibration
             // 
             this.groupBoxCalibration.Controls.Add(this.radioButtonCalibrationLeastSquares);
@@ -194,18 +195,17 @@
             this.groupBoxCalibration.TabStop = false;
             this.groupBoxCalibration.Text = "Calibration";
             // 
-            // radioButtonCalibrationDisabled
+            // radioButtonCalibrationLeastSquares
             // 
-            this.radioButtonCalibrationDisabled.AutoSize = true;
-            this.radioButtonCalibrationDisabled.Checked = true;
-            this.radioButtonCalibrationDisabled.Location = new System.Drawing.Point(22, 19);
-            this.radioButtonCalibrationDisabled.Name = "radioButtonCalibrationDisabled";
-            this.radioButtonCalibrationDisabled.Size = new System.Drawing.Size(66, 17);
-            this.radioButtonCalibrationDisabled.TabIndex = 0;
-            this.radioButtonCalibrationDisabled.TabStop = true;
-            this.radioButtonCalibrationDisabled.Text = "Disabled";
-            this.radioButtonCalibrationDisabled.UseVisualStyleBackColor = true;
-            this.radioButtonCalibrationDisabled.CheckedChanged += new System.EventHandler(this.radioButtonCalibrationDisabled_CheckedChanged);
+            this.radioButtonCalibrationLeastSquares.AutoSize = true;
+            this.radioButtonCalibrationLeastSquares.Location = new System.Drawing.Point(22, 65);
+            this.radioButtonCalibrationLeastSquares.Name = "radioButtonCalibrationLeastSquares";
+            this.radioButtonCalibrationLeastSquares.Size = new System.Drawing.Size(93, 17);
+            this.radioButtonCalibrationLeastSquares.TabIndex = 2;
+            this.radioButtonCalibrationLeastSquares.TabStop = true;
+            this.radioButtonCalibrationLeastSquares.Text = "Least Squares";
+            this.radioButtonCalibrationLeastSquares.UseVisualStyleBackColor = true;
+            this.radioButtonCalibrationLeastSquares.CheckedChanged += new System.EventHandler(this.radioButtonCalibrationLeastSquares_CheckedChanged);
             // 
             // radioButtonCalibrationNormal
             // 
@@ -219,17 +219,18 @@
             this.radioButtonCalibrationNormal.UseVisualStyleBackColor = true;
             this.radioButtonCalibrationNormal.CheckedChanged += new System.EventHandler(this.radioButtonCalibrationNormal_CheckedChanged);
             // 
-            // radioButtonCalibrationLeastSquares
+            // radioButtonCalibrationDisabled
             // 
-            this.radioButtonCalibrationLeastSquares.AutoSize = true;
-            this.radioButtonCalibrationLeastSquares.Location = new System.Drawing.Point(22, 65);
-            this.radioButtonCalibrationLeastSquares.Name = "radioButtonCalibrationLeastSquares";
-            this.radioButtonCalibrationLeastSquares.Size = new System.Drawing.Size(93, 17);
-            this.radioButtonCalibrationLeastSquares.TabIndex = 2;
-            this.radioButtonCalibrationLeastSquares.TabStop = true;
-            this.radioButtonCalibrationLeastSquares.Text = "Least Squares";
-            this.radioButtonCalibrationLeastSquares.UseVisualStyleBackColor = true;
-            this.radioButtonCalibrationLeastSquares.CheckedChanged += new System.EventHandler(this.radioButtonCalibrationLeastSquares_CheckedChanged);
+            this.radioButtonCalibrationDisabled.AutoSize = true;
+            this.radioButtonCalibrationDisabled.Checked = true;
+            this.radioButtonCalibrationDisabled.Location = new System.Drawing.Point(22, 19);
+            this.radioButtonCalibrationDisabled.Name = "radioButtonCalibrationDisabled";
+            this.radioButtonCalibrationDisabled.Size = new System.Drawing.Size(66, 17);
+            this.radioButtonCalibrationDisabled.TabIndex = 0;
+            this.radioButtonCalibrationDisabled.TabStop = true;
+            this.radioButtonCalibrationDisabled.Text = "Disabled";
+            this.radioButtonCalibrationDisabled.UseVisualStyleBackColor = true;
+            this.radioButtonCalibrationDisabled.CheckedChanged += new System.EventHandler(this.radioButtonCalibrationDisabled_CheckedChanged);
             // 
             // Form1
             // 

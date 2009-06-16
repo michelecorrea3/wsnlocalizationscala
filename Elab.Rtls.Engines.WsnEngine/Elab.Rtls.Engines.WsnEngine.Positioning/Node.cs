@@ -159,8 +159,8 @@
                 NewAnchor(AnchorWsnId, RSS, van, now);
 
             //TODO: enable
-            //RemoveOutdatedAnchors();
-            //UpdateAnchorPositions();
+            RemoveOutdatedAnchors();
+            UpdateAnchorPositions();
         }
 
         /// <summary>

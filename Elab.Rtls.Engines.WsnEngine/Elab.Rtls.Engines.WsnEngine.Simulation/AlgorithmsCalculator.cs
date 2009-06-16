@@ -160,7 +160,7 @@
                                                                       RangeBasedPositioning.Ranging, false);
                         LogPosition(pos, CurrentNode, logger);
 
-                        logger.Write("TriLat - NoFilter - DefaultRanging,");
+                        //logger.Write("TriLat - NoFilter - DefaultRanging,");
                         pos = ExtendedTrilateration.CalculatePosition(CurrentNode, RangeBasedPositioning.NoFilter,
                                                                       RangeBasedPositioning.DefaultRanging, false);
                         LogPosition(pos, CurrentNode, logger);
