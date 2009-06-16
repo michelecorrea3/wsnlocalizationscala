@@ -1,0 +1,190 @@
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:09:32 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:10:17 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:11:13 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:13:37 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:27:19 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:29:18 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 2:37:05 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 2:37:18 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 2:39:20 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 2:40:14 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 2:41:35 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 192.168.209.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:03:48 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:08:03 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:09:22 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:11:28 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:11:59 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:16:45 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:17:15 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:18:42 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:19:06 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:20:40 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:21:10 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.1.102:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/23/2009 3:23:21 PM
+----------++++++++++----------
+System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 87
+3/23/2009 3:51:22 PM
+----------++++++++++----------
+System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 87
+3/24/2009 3:33:59 PM
+----------++++++++++----------
+System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 87
+3/24/2009 3:34:17 PM
+----------++++++++++----------
+System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 87
+3/24/2009 3:35:28 PM
+----------++++++++++----------
+System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/26/2009 4:33:43 PM
+----------++++++++++----------
+System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/26/2009 4:55:10 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 192.168.140.129:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/26/2009 5:02:43 PM
+----------++++++++++----------
+System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/31/2009 3:18:30 PM
+----------++++++++++----------

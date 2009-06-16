@@ -1,0 +1,19 @@
+D:\Programs\ControllerApp\DatabaseConnection\bin\Release\DatabaseConnection.dll
+D:\Programs\ControllerApp\DatabaseConnection\bin\Release\DatabaseConnection.pdb
+D:\Programs\ControllerApp\DatabaseConnection\bin\Release\SocketConnection.dll
+D:\Programs\ControllerApp\DatabaseConnection\bin\Release\SocketConnection.pdb
+D:\Programs\ControllerApp\DatabaseConnection\bin\Release\SocketConnection.xml
+D:\Programs\ControllerApp\DatabaseConnection\obj\Release\ResolveAssemblyReference.cache
+D:\Programs\ControllerApp\DatabaseConnection\obj\Release\DatabaseConnection.dll
+D:\Programs\ControllerApp\DatabaseConnection\obj\Release\DatabaseConnection.pdb
+D:\Programs\ControllerApp\DatabaseConnection\bin\Release\DatabaseConnection.XML
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\bin\Release\DatabaseConnection.XML
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\bin\Release\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\bin\Release\DatabaseConnection.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\bin\Release\IBM.Data.DB2.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\bin\Release\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\bin\Release\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\bin\Release\SocketConnection.xml
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\obj\Release\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\DatabaseConnection\obj\Release\DatabaseConnection.pdb

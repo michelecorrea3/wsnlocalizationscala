@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" standalone="yes"?>
+<History>
+  <Sensor>
+    <ID>1</ID>
+    <MeasurementType>Temperature</MeasurementType>
+    <Measurement>
+      <MeasurementValue>3</MeasurementValue>
+      <MeasurementTime>2008-10-10 10:10:10</MeasurementTime>
+    </Measurement>
+    <Measurement>
+      <MeasurementValue>3</MeasurementValue>
+      <MeasurementTime>2008-10-10 10:10:10</MeasurementTime>
+    </Measurement>
+    <Measurement>
+      <MeasurementValue>3</MeasurementValue>
+      <MeasurementTime>2008-10-10 10:10:10</MeasurementTime>
+    </Measurement>
+  </Sensor>
+</History>

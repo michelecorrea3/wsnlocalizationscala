@@ -1,0 +1,41 @@
+D:\Programs\SocketXMLexchange\DatabaseConnection\bin\Debug\DatabaseConnection.dll
+D:\Programs\SocketXMLexchange\DatabaseConnection\bin\Debug\DatabaseConnection.pdb
+D:\Programs\SocketXMLexchange\DatabaseConnection\obj\Debug\ResolveAssemblyReference.cache
+D:\Programs\SocketXMLexchange\DatabaseConnection\obj\Debug\DatabaseConnection.dll
+D:\Programs\SocketXMLexchange\DatabaseConnection\obj\Debug\DatabaseConnection.pdb
+K:\SocketXMLexchange\DatabaseConnection\bin\Debug\DatabaseConnection.dll
+K:\SocketXMLexchange\DatabaseConnection\bin\Debug\DatabaseConnection.pdb
+K:\SocketXMLexchange\DatabaseConnection\obj\Debug\ResolveAssemblyReference.cache
+K:\SocketXMLexchange\DatabaseConnection\obj\Debug\DatabaseConnection.dll
+K:\SocketXMLexchange\DatabaseConnection\obj\Debug\DatabaseConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\DatabaseConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\DatabaseConnection\obj\Debug\DatabaseConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\DatabaseConnection\bin\Debug\DatabaseConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\DatabaseConnection\bin\Debug\DatabaseConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\DatabaseConnection\obj\Debug\DatabaseConnection.pdb
+D:\Programs\SocketXMLexchange-v2\DatabaseConnection\bin\Debug\DatabaseConnection.dll
+D:\Programs\SocketXMLexchange-v2\DatabaseConnection\bin\Debug\DatabaseConnection.pdb
+D:\Programs\SocketXMLexchange-v2\DatabaseConnection\obj\Debug\ResolveAssemblyReference.cache
+D:\Programs\SocketXMLexchange-v2\DatabaseConnection\obj\Debug\DatabaseConnection.dll
+D:\Programs\SocketXMLexchange-v2\DatabaseConnection\obj\Debug\DatabaseConnection.pdb
+D:\Programs\ControllerApp\DatabaseConnection\bin\Debug\DatabaseConnection.dll
+D:\Programs\ControllerApp\DatabaseConnection\bin\Debug\DatabaseConnection.pdb
+D:\Programs\ControllerApp\DatabaseConnection\obj\Debug\ResolveAssemblyReference.cache
+D:\Programs\ControllerApp\DatabaseConnection\obj\Debug\DatabaseConnection.dll
+D:\Programs\ControllerApp\DatabaseConnection\obj\Debug\DatabaseConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\DatabaseConnection\bin\Debug\DatabaseConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\DatabaseConnection\bin\Debug\DatabaseConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\DatabaseConnection\bin\Debug\IBM.Data.DB2.dll
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\DatabaseConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\DatabaseConnection\obj\Debug\DatabaseConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\DatabaseConnection\obj\Debug\DatabaseConnection.pdb
+D:\Programs\ControllerApp\DatabaseConnection\bin\Debug\SocketConnection.dll
+D:\Programs\ControllerApp\DatabaseConnection\bin\Debug\SocketConnection.pdb
+D:\Programs\ControllerApp\DatabaseConnection\bin\Debug\SocketConnection.xml
+D:\Programs\ControllerApp\DatabaseConnection\bin\Debug\DatabaseConnection.XML
+C:\Documents and Settings\peter\Desktop\Senseless\dev\DatabaseConnection\bin\Debug\DatabaseConnection.XML
+C:\Documents and Settings\peter\Desktop\Senseless\dev\DatabaseConnection\bin\Debug\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\DatabaseConnection\bin\Debug\DatabaseConnection.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\DatabaseConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\DatabaseConnection\obj\Debug\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\DatabaseConnection\obj\Debug\DatabaseConnection.pdb

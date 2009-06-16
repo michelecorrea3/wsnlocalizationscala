@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GUI</name>
+    </assembly>
+    <members>
+        <member name="M:GUI.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="F:GUI.Form1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:GUI.Form1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.#ctor">
+            <summary>
+            Constructor for the form
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.Form1_Load(System.Object,System.EventArgs)">
+            <summary>
+            Initializes variables, called when the form loads
+            Conenction parameters, parameter for the plot function
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.Form1_Resize_1(System.Object,System.EventArgs)">
+            <summary>
+            Event that fires when the user resizes the form
+            Resized the graph area
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.getNodeID(System.String)">
+            <summary>
+            Helper method for retreiving the nodeid of the framework
+             </summary>
+             <param name="selected">
+             The MAC or TOSid of the mote
+             </param>
+             <returns>
+             node id, unique identifier within Senseless
+             </returns>
+        </member>
+        <member name="M:GUI.Form1.getTelosbId(System.String)">
+            <summary>
+            Helper method for retreiving the WSNid of the framework
+            </summary>
+            <param name="selected">
+            node id, unique identifier within Senseless
+            </param>
+            <returns>
+            The MAC or TOSid of the mote
+            </returns>
+        </member>
+        <member name="M:GUI.Form1.SetSize">
+            <summary>
+            Resizes the graph area when the user resizes the form
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.CreateGraph(ZedGraph.ZedGraphControl,System.String)">
+            <summary>
+            Draws the graph 
+            </summary>
+            <param name="zgc">
+            The control for the graph element
+            </param>
+            <param name="measurements">
+            Points of the graph
+            </param>
+        </member>
+        <member name="M:GUI.Form1.GetGraphData">
+            <summary>
+            Retreives the graph data from the controller
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.button2_Click_1(System.Object,System.EventArgs)">
+            <summary>
+            Event-handler for the plot button
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.timerGraph_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when timerGraph fires
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.checkBoxPlotUpdate_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when the user changes the check on checkboxPlotUpdate
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.timer1_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Event-handler for the timer which controls the polling for the sensordata
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.GetSensorData">
+            <summary>
+            Retreives the sensordata from the controller
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.timerLoc_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when timerLoc fires
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.GetLocData">
+            <summary>
+            Retreives the localization data of the selected node from the controller
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.listBoxControl_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when the active sensor is changed in listBoxControl, calls GetStatData
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.GetStatData">
+            <summary>
+            Gets the statusdata off the selected node from the controller
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.buttonWSNControl_Click(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when the apply changes button is click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.buttonControlDiscard_Click(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when the discard changes button is clicked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:GUI.Form1.buttonConnect_Click(System.Object,System.EventArgs)" -->
+        <member name="M:GUI.Form1.buttonDisconnect_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event for the disconnect button in the options tab
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.textSensRefresh_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when the refreshrate of the Sensordata is changed
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.textLocRefresh_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when the refreshrate of the LocData is changed
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.textBoxGraphUpdateInterval_TextChanged(System.Object,System.EventArgs)">
+            <summary>
+            Occurs when the refreshrate of the graph is changed
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.timerDiscovery_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Event for the discovery protocol
+            Discovery protocol sends a WSN action Request to the controller, which forwards it to the WSN parser.
+            The WSN parser disseminates a status request to each node, the nodes that reply are given as the active nodes
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:GUI.Form1.GetSensors">
+            <summary>
+            Fetches all the motes in the databases
+            Has NO offline detection mechanism
+            </summary>
+        </member>
+        <member name="M:GUI.Form1.SensorsTimeOut">
+            <summary>
+            Active nodes are selected when they have sent a packet within a given time limit
+            </summary>
+        </member>
+        <member name="P:GUI.Form1.ActiveProperty">
+            <summary>
+            Property of checkboxActive
+            input: 0 or 1 string
+            </summary>
+        </member>
+        <member name="P:GUI.Form1.AnchorProperty">
+            <summary>
+            Property of checkBoxAnchorNode
+            input: 0 or 1 string
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:GUI.Form1.LedsProperty" -->
+        <member name="P:GUI.Form1.PowerProperty">
+            <summary>
+            Set or Gets the Power value
+            </summary>
+        </member>
+        <member name="P:GUI.Form1.FrequencyProperty">
+            <summary>
+            Set or Gets the Frequency value
+            </summary>
+        </member>
+        <member name="T:GUI.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:GUI.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:GUI.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

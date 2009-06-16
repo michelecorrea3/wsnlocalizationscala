@@ -1,0 +1,117 @@
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\config.txt
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\xml\HistoryTest.xml
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.XML
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.exe
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.pdb
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.dll
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\SocketConnection.dll
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.pdb
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.xml
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\SocketConnection.pdb
+D:\Programs\ControllerApp\SocketServerApp\bin\Release\SocketConnection.xml
+D:\Programs\ControllerApp\SocketServerApp\obj\Release\ResolveAssemblyReference.cache
+D:\Programs\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.Properties.Resources.resources
+D:\Programs\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.SocketServerPanel.resources
+D:\Programs\ControllerApp\SocketServerApp\obj\Release\ControllerModuleApp.csproj.GenerateResource.Cache
+D:\Programs\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.exe
+D:\Programs\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.XML
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\config.txt
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\xml\HistoryTest.xml
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.XML
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\IBM.Data.DB2.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.xml
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.xml
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.SocketServerPanel.resources
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\obj\Release\ControllerModuleApp.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\config.txt
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\xml\HistoryTest.xml
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\IBM.Data.DB2.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.xml
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.xml
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.SocketServerPanel.resources
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\ControllerModuleApp.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.XML
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\config.txt
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\xml\HistoryTest.xml
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\IBM.Data.DB2.dll
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.pdb
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.xml
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.xml
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.SocketServerPanel.resources
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\obj\Release\ControllerModuleApp.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.XML
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.SocketServerPanel.resources
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\obj\Release\ControllerModuleApp.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\config.txt
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\xml\HistoryTest.xml
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\IBM.Data.DB2.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.xml
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.XML
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\bin\Release\config.txt
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\bin\Release\xml\HistoryTest.xml
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.XML
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\bin\Release\IBM.Data.DB2.dll
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.SocketServerPanel.resources
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\obj\Release\ControllerModuleApp.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\Senseless\stable\Controller\1.2.5\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\obj\Release\SocketServerApp.SocketServerPanel.resources
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\obj\Release\ControllerModuleApp.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\bin\Release\config.txt
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\bin\Release\IBM.Data.DB2.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\bin\Release\DatabaseConnection.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Controller\Controller\ControllerApp\SocketServerApp\bin\Release\SocketServerApp.XML

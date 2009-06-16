@@ -1,0 +1,8 @@
+C:\Documents and Settings\peter\Desktop\Senseless\dev\LocalizationAlgorithmsRunner\LocalizationAlgorithmsRunner\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\LocalizationAlgorithmsRunner\LocalizationAlgorithmsRunner\bin\Debug\LocalizationAlgorithmsRunner.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\LocalizationAlgorithmsRunner\LocalizationAlgorithmsRunner\bin\Debug\LocalizationAlgorithmsRunner.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\LocalizationAlgorithmsRunner\LocalizationAlgorithmsRunner\obj\Debug\LocalizationAlgorithmsRunner.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\LocalizationAlgorithmsRunner\LocalizationAlgorithmsRunner\obj\Debug\LocalizationAlgorithmsRunner.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\LocalizationAlgorithmsRunner\LocalizationAlgorithmsRunner\bin\Debug\DatabaseConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\LocalizationAlgorithmsRunner\LocalizationAlgorithmsRunner\bin\Debug\Elab.Rtls.Engines.WsnEngine.Positioning.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\LocalizationAlgorithmsRunner\LocalizationAlgorithmsRunner\bin\Debug\Elab.Rtls.Engines.WsnEngine.Positioning.pdb

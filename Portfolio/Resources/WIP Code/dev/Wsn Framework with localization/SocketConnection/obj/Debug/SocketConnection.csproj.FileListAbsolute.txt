@@ -1,0 +1,49 @@
+D:\Programs\SocketXMLexchange\SocketConnection\bin\Debug\SocketConnection.dll
+D:\Programs\SocketXMLexchange\SocketConnection\bin\Debug\SocketConnection.pdb
+D:\Programs\SocketXMLexchange\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
+D:\Programs\SocketXMLexchange\SocketConnection\obj\Debug\SocketConnection.dll
+D:\Programs\SocketXMLexchange\SocketConnection\obj\Debug\SocketConnection.pdb
+K:\SocketXMLexchange\SocketConnection\bin\Debug\SocketConnection.dll
+K:\SocketXMLexchange\SocketConnection\bin\Debug\SocketConnection.pdb
+K:\SocketXMLexchange\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
+K:\SocketXMLexchange\SocketConnection\obj\Debug\SocketConnection.dll
+K:\SocketXMLexchange\SocketConnection\obj\Debug\SocketConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\SocketConnection\obj\Debug\SocketConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\SocketConnection\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\SocketConnection\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\SocketXMLexchange\SocketConnection\obj\Debug\SocketConnection.pdb
+D:\Programs\SocketXMLexchange-v2\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
+D:\Programs\SocketXMLexchange-v2\SocketConnection\obj\Debug\SocketConnection.dll
+D:\Programs\SocketXMLexchange-v2\SocketConnection\bin\Debug\SocketConnection.dll
+D:\Programs\SocketXMLexchange-v2\SocketConnection\bin\Debug\SocketConnection.pdb
+D:\Programs\SocketXMLexchange-v2\SocketConnection\obj\Debug\SocketConnection.pdb
+D:\Programs\ControllerApp\SocketConnection\bin\Debug\SocketConnection.dll
+D:\Programs\ControllerApp\SocketConnection\bin\Debug\SocketConnection.pdb
+D:\Programs\ControllerApp\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
+D:\Programs\ControllerApp\SocketConnection\obj\Debug\SocketConnection.dll
+D:\Programs\ControllerApp\SocketConnection\obj\Debug\SocketConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketConnection\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketConnection\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketConnection\obj\Debug\SocketConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketConnection\obj\Debug\SocketConnection.pdb
+D:\Programs\ControllerApp\SocketConnection\bin\Debug\SocketConnection.XML
+C:\Documents and Settings\peter\Desktop\Controller\ControllerApp\SocketConnection\bin\Debug\SocketConnection.XML
+C:\Documents and Settings\peter\Desktop\Controller\ControllerApp\SocketConnection\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Controller\ControllerApp\SocketConnection\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\Controller\ControllerApp\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Controller\ControllerApp\SocketConnection\obj\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Controller\ControllerApp\SocketConnection\obj\Debug\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.XML
+C:\Documents and Settings\peter\Desktop\Senseless\dev\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\SocketConnection\obj\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\SocketConnection\obj\Debug\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.XML
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Wsn Framework with localization\SocketConnection\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Wsn Framework with localization\SocketConnection\obj\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\Wsn Framework with localization\SocketConnection\obj\Debug\SocketConnection.pdb

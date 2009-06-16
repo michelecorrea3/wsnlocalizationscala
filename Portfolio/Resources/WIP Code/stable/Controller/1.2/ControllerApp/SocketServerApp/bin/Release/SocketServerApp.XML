@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SocketServerApp</name>
+    </assembly>
+    <members>
+        <member name="T:SocketServerApp.SocketServerPanel">
+            <summary>
+            Control panel (form/window) for the controller application.
+            </summary>
+        </member>
+        <member name="F:SocketServerApp.SocketServerPanel.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:SocketServerApp.SocketServerPanel.BackGroundWorkers">
+            <summary>
+            Array that has all the backgroundworkers in it (=SocketServers)
+            </summary>
+        </member>
+        <member name="F:SocketServerApp.SocketServerPanel.Options">
+            <summary>
+            The dataset with the information that is read from the config.txt file
+            </summary>
+        </member>
+        <member name="F:SocketServerApp.SocketServerPanel.MySQLConn">
+            <summary>
+            MySQL-linker
+            </summary>
+        </member>
+        <member name="F:SocketServerApp.SocketServerPanel.DB2Conn">
+            <summary>
+            DB2-linker
+            </summary>
+        </member>
+        <member name="F:SocketServerApp.SocketServerPanel.UseMySQLForInfo">
+            <summary>
+            bool that keeps track of which database we want to use for simple/pure information-requests.
+            </summary>
+        </member>
+        <member name="F:SocketServerApp.SocketServerPanel.DB2AllowedConn">
+            <summary>
+            Do we have a DB2-instance that we can connect to?
+            </summary>
+        </member>
+        <member name="F:SocketServerApp.SocketServerPanel.MySQLAllowedConn">
+            <summary>
+            Do we have a MySQL-instance that we can connect to?
+            </summary>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.#ctor">
+            <summary>
+            Constructor for the control panel (SocketServerPanel-class)
+            </summary>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.LoadOptions">
+            <summary>
+            Read the config.txt in the base-directory of the executable and prepare the database-linkers.
+            Peter: Loads the database info 
+            </summary>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.StartSocketServerButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Click-event-function that fires when the user clicks the "Start SocketServer"-button.
+            This will use the information stored in the config and read at program-startup to decide on which ports the GUI and WSN servers have to listen.
+            </summary>
+            <param name="sender">Button in question ("Start SocketServer")</param>
+            <param name="e">The button-event information</param>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.SocketServerListenerWSN_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            The functions that is started in its own thread when we press the "start socketserver"-button.
+            This function corresponds to the socketserver for the GUI-side/port.
+            </summary>
+            <param name="sender">The 'thing' doing the actually calling of this function, the backgroundworker.</param>
+            <param name="e">Argument that was passed to this function when we called the function.</param>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.SocketServerListenerGUI_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            The functions that is started in its own thread when we press the "start socketserver"-button.
+            This function corresponds to the socketserver for the GUI-side/port.
+            </summary>
+            <param name="sender">The 'thing' doing the actually calling of this function, the backgroundworker.</param>
+            <param name="e">Argument that was passed to this function when we called the function.</param>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.CreateReplyInt(System.Int32)">
+            <summary>
+            Function that allows to easily create a reply-message with the given int as content.
+            </summary>
+            <param name="data">The that has to put into the reply</param>
+            <returns>The dataset with the correct sturcture for the reply</returns>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.ConvertUnixToLocalTimeStamp(System.Int32)">
+            <summary>
+            Function that can be used to convert from a UnixTimeStamp (=seconds since 1 jan 1970) to a string in the format "yyyy-MM-dd HH:mm:ss".
+            </summary>
+            <param name="UnixTimestamp">UnixTimeStamp (integer, seconds) to convert to local time.</param>
+            <returns>A string with the UnixTimeStamp in the format "yyyy-MM-dd HH:mm:ss".</returns>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.AddSensorMeasurements(System.Data.DataSet)">
+            <summary>
+            Sub-function that takes a dataset which holds (a number of) sensormeasurements and saves these to the database.
+            Note: the MAC-address (SunSpot) or the Unique ID (TelosB) has to be in the database or the measurement will be ignored and not saved tot he database.
+            </summary>
+            <param name="Set">DataSet with the table that contains the sensormeasurement.</param>
+            <returns>The last UID of the inserted row (which means an int >= 1) anything else means the last insert failed.</returns>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.RequestsProcess(System.Data.DataSet)">
+            <summary>
+            Sub-function that is called when we detect that we have a request-xml-message.
+            </summary>
+            <param name="Set">The incoming message as a dataset (= tables)</param>
+            <returns>The result of the request.</returns>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.WSNActionReqProcess(System.Data.DataSet)">
+            <summary>
+            Sub-function that is called when we detect an incoming message that ask for an action from a WSN (e.g. get LEDs to light up,...)
+            </summary>
+            <param name="WSNActionSet">The XML-message in a dataset</param>
+            <returns>A reply of either 0 (failed) or 1 (succeeded) in xml (in the dataset)</returns>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.HandleRequestSocket(System.Object)">
+            <summary>
+            The function that is called to process incoming connections.
+            It will decide which type of message it is and act accordingly.
+            </summary>
+            <param name="state">The socket with the incoming message.</param>
+        </member>
+        <member name="M:SocketServerApp.SocketServerPanel.button1_Click(System.Object,System.EventArgs)">
+            <summary>
+            Function that is fired when the 'close controller'-button is blicked.
+            </summary>
+            <param name="sender">the button that fired the event</param>
+            <param name="e">the arguments of the event</param>
+        </member>
+        <member name="T:SocketServerApp.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SocketServerApp.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SocketServerApp.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="M:SocketServerApp.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+    </members>
+</doc>

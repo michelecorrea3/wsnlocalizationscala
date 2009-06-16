@@ -1,0 +1,272 @@
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.dll
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\obj\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\obj\Debug\GUI.Form1.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\bin\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\bin\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\bin\Debug\ZedGraph.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+D:\School\4EA\ICT - databases & WSN\C#\GUI\GUI\obj\Debug\GUI.Form2.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\obj\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\obj\Debug\ResolveAssemblyReference.cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\obj\Debug\GUI.Form1.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\obj\Debug\GUI.Properties.Resources.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\bin\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\bin\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\bin\Debug\ZedGraph.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI v2\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Mijn documenten\Visual Studio 2008\Projects\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI\GUI\obj\Debug\GUI.Form3.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\obj\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\bin\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\bin\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\bin\Debug\ZedGraph.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\obj\Debug\ResolveAssemblyReference.cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\obj\Debug\GUI.Form1.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\obj\Debug\GUI.Form2.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\obj\Debug\GUI.Form3.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\obj\Debug\GUI.Properties.Resources.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.20\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\obj\Debug\GUI.Form3.resources
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN-\desktop GUI\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\obj\Debug\GUI.Form3.resources
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\verslag\SVN\desktop GUI\GUI\GUI\bin\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\obj\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\bin\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\bin\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\bin\Debug\ZedGraph.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\obj\Debug\ResolveAssemblyReference.cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\obj\Debug\GUI.Form1.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\obj\Debug\GUI.Form2.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\obj\Debug\GUI.Form3.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\obj\Debug\GUI.Properties.Resources.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.30\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\obj\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\bin\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\bin\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\bin\Debug\ZedGraph.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\obj\Debug\GUI.Form1.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\obj\Debug\GUI.Form2.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\obj\Debug\GUI.Form3.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.31\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\obj\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\bin\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\bin\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\bin\Debug\ZedGraph.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\obj\Debug\GUI.Form1.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\obj\Debug\GUI.Form2.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\obj\Debug\GUI.Form3.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.46\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\obj\Debug\GUI.Form3.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.46\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\obj\Debug\GUI.Form3.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.48\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\obj\Debug\GUI.Form3.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.49\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.50\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v0.50\GUI\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\obj\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\bin\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\bin\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\bin\Debug\ZedGraph.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\obj\Debug\GUI.Form1.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\obj\Debug\GUI.Form2.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\bin\Debug\SocketConnection.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI v0.50\GUI\GUI\bin\Debug\SocketConnection.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\obj\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\obj\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\bin\Debug\GUI.exe
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\bin\Debug\GUI.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\bin\Debug\ZedGraph.dll
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.pdb
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\obj\Debug\GUI.Form1.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\obj\Debug\GUI.Form2.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+D:\School\4EA\ICT - databases & WSN\C#\GUI v1.0\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\Gerrit\Bureaublad\GUI v1.0\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.dll
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\bin\Debug\Gigasoft.ProEssentials.xml
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\Gerrit\Bureaublad\Kopie van GUI v1.0\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Desktop GUI v1.0\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Form2.resources
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\peter\My Documents\Artesis\WSN-Databases\portfolio\project\binaries\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Desktop GUI v1.0\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\Copy of GoogleCodeSVN\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.XML
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.XML
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\ZedGraph.dll
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Form1.resources
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\obj\Debug\GUI.csproj.GenerateResource.Cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\GUI\bin\Debug\SocketConnection.xml
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\bin\Debug\GUI.XML
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\Desktop GUI v1.0\GUI\obj\Debug\GUI.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\bin\Debug\GUI.XML
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\obj\Debug\GUI.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\GUI\GUI\obj\Debug\GUI.pdb

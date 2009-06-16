@@ -1,0 +1,6 @@
+C:\Documents and Settings\peter\Desktop\Senseless\dev\WsnEngine\Scala.Engine.WsnEngine\build\Elab.Rtls.Engines.WsnEngine.Hosts.exe.config
+C:\Documents and Settings\peter\Desktop\Senseless\dev\WsnEngine\Scala.Engine.WsnEngine\build\Elab.Rtls.Engines.WsnEngine.Hosts.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\WsnEngine\Scala.Engine.WsnEngine\build\Elab.Rtls.Engines.WsnEngine.Hosts.pdb
+C:\Documents and Settings\peter\Desktop\Senseless\dev\WsnEngine\Scala.Engine.WsnEngine\Scala.Hosts.WsnEngine\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\Senseless\dev\WsnEngine\Scala.Engine.WsnEngine\Scala.Hosts.WsnEngine\obj\Debug\Elab.Rtls.Engines.WsnEngine.Hosts.exe
+C:\Documents and Settings\peter\Desktop\Senseless\dev\WsnEngine\Scala.Engine.WsnEngine\Scala.Hosts.WsnEngine\obj\Debug\Elab.Rtls.Engines.WsnEngine.Hosts.pdb

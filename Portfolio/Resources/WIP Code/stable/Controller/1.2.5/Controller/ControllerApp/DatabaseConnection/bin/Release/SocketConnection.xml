@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SocketConnection</name>
+    </assembly>
+    <members>
+        <member name="T:SocketConnection.SocketClass">
+            <summary>
+            Baseclass that can be used for other socket-level classes.
+            </summary>
+        </member>
+        <member name="F:SocketConnection.SocketClass._Port">
+            <summary>
+            Attribute to save the port for the socket to.
+            </summary>
+        </member>
+        <member name="M:SocketConnection.SocketClass.#ctor(System.Int32)">
+            <summary>
+            Constructor for this class, it saves the given port to the private/protected member.
+            </summary>
+            <param name="Port">The port we bind the socket to.</param>
+        </member>
+        <member name="M:SocketConnection.SocketClass.LogError(System.Exception,System.String)">
+            <summary>
+            Global function that can be used to log errors (mostly from within a catch statement) to a log-file
+            </summary>
+            <param name="e">The Exception that has to be logged</param>
+            <param name="LogFilePath">The location of the logfile (including filename).</param>
+        </member>
+        <member name="T:SocketConnection.SocketClient">
+            <summary>
+            Class that can be used to set up a socket-client (sender/activator).
+            </summary>
+        </member>
+        <member name="F:SocketConnection.SocketClient._RemoteLocation">
+            <summary>
+            Hostname or ip of the target computer/system.
+            </summary>
+        </member>
+        <member name="M:SocketConnection.SocketClient.#ctor(System.Int32,System.String)">
+            <summary>
+            Constructor for the SocketClient-class.
+            </summary>
+            <param name="Port">The port to which we want to open a connection.</param>
+            <param name="RemoteLocation">The hostname or ip-address of the target of our connection.</param>
+        </member>
+        <member name="M:SocketConnection.SocketClient.Connect(System.String,System.Boolean)">
+            <summary>
+            This function will open a connection to the target (given in the constructor) and will send the string of xml over the connection.
+            It can be used to either send and ignore any replies or it can be asked to wait for a reply from the target.
+            </summary>
+            <param name="xmlstream">XML-string to send over the connection to the target.</param>
+            <param name="WaitForResponse">If this is 'true' we will wait and read the reply from the target. If 'false' it will send the info and finish.</param>
+            <returns>The reply of the target, if nothing is received or WaitForResponse argument was set to false, this will return be 'null'</returns>
+        </member>
+        <member name="T:SocketConnection.SocketServer">
+            <summary>
+            Class that can be used to set up a socket-server (listener/react).
+            </summary>
+        </member>
+        <member name="F:SocketConnection.SocketServer._BackLogQueue">
+            <summary>
+            Maximum number of connections that are waiting to be processed.
+            </summary>
+        </member>
+        <member name="M:SocketConnection.SocketServer.#ctor(System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="Port">Port on which we want the server to listen</param>
+        </member>
+        <member name="M:SocketConnection.SocketServer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor (which allows to set the number of pending connections)
+            </summary>
+            <param name="Port">Port on which we want the server to listen</param>
+            <param name="BackLogQueue">Number of pending connections that can be in the queue (this is capped by your OS too)</param>
+        </member>
+        <member name="M:SocketConnection.SocketServer.Listen(System.Threading.WaitCallback)">
+            <summary>
+            This function starts up and keeps running indefinatly, constantly listening and putting incoming connections in the 'to process' threadpool. (do not run this in your mainthread, as this is a BLOCKING function, indefinatly)
+            </summary>
+            <param name="CallBack">The callback of the function that we want to use to process incoming connections.</param>
+        </member>
+    </members>
+</doc>
