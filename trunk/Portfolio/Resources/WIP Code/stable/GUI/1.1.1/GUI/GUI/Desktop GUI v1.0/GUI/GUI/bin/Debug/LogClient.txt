@@ -1,0 +1,55 @@
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1900
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/4/2009 9:43:40 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1900
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/4/2009 1:20:41 PM
+----------++++++++++----------
+System.IO.IOException: Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.IO.StreamReader.ReadBuffer()
+   at System.IO.StreamReader.ReadToEnd()
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/4/2009 1:28:15 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1900
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/4/2009 1:59:50 PM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1900
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/5/2009 8:29:53 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1900
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/5/2009 8:39:35 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1900
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/5/2009 8:47:25 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1900
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/5/2009 8:47:41 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:1900
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/5/2009 8:48:57 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: The requested address is not valid in its context 127.0.0.1:0
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse)
+3/6/2009 10:22:51 AM
+----------++++++++++----------

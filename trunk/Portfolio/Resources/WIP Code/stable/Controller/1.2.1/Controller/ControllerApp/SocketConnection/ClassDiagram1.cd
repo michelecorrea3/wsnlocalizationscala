@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SocketConnection.SocketClass" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>SocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocketConnection.SocketClient">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SocketConnection.SocketServer" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>SocketClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

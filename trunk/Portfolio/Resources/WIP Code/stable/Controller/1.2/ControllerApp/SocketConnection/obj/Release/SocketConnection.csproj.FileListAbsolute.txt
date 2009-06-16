@@ -1,0 +1,12 @@
+D:\Programs\ControllerApp\SocketConnection\bin\Release\SocketConnection.dll
+D:\Programs\ControllerApp\SocketConnection\bin\Release\SocketConnection.pdb
+D:\Programs\ControllerApp\SocketConnection\obj\Release\ResolveAssemblyReference.cache
+D:\Programs\ControllerApp\SocketConnection\obj\Release\SocketConnection.dll
+D:\Programs\ControllerApp\SocketConnection\obj\Release\SocketConnection.pdb
+D:\Programs\ControllerApp\SocketConnection\bin\Release\SocketConnection.XML
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\bin\Release\SocketConnection.XML
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\bin\Release\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\bin\Release\SocketConnection.pdb
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\obj\Release\SocketConnection.dll
+C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\obj\Release\SocketConnection.pdb

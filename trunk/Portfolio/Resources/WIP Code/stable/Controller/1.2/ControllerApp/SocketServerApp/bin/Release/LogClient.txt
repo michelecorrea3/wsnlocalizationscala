@@ -1,0 +1,30 @@
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:09:32 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:10:17 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:11:13 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:13:37 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:27:19 AM
+----------++++++++++----------
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 127.0.0.1:3801
+   at System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   at SocketConnection.SocketClient.Connect(String xmlstream, Boolean WaitForResponse) in C:\Documents and Settings\peter\Desktop\GoogleCodeSVN\Controller\ControllerApp\SocketConnection\SocketClass.cs:line 79
+3/21/2009 11:29:18 AM
+----------++++++++++----------

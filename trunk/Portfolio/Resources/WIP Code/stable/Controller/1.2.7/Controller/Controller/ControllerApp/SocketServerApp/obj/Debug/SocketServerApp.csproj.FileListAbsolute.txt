@@ -1,0 +1,58 @@
+D:\Programs\SocketXMLexchange\SocketServerApp\obj\Debug\ResolveAssemblyReference.cache
+D:\Programs\SocketXMLexchange\SocketServerApp\obj\Debug\SocketServerApp.Properties.Resources.resources
+D:\Programs\SocketXMLexchange\SocketServerApp\obj\Debug\SocketServerApp.SocketServerPanel.resources
+D:\Programs\SocketXMLexchange\SocketServerApp\obj\Debug\SocketServerApp.csproj.GenerateResource.Cache
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\SocketServerApp.exe
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\SocketServerApp.pdb
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\SocketConnection.dll
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\SocketConnection.pdb
+D:\Programs\SocketXMLexchange\SocketServerApp\obj\Debug\SocketServerApp.exe
+D:\Programs\SocketXMLexchange\SocketServerApp\obj\Debug\SocketServerApp.pdb
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\config.xml
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\HistoryOfSensorMeasurement.xsd
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\SensorMeasurements.xsd
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\DatabaseConnection.dll
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\XMLParser.dll
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\DatabaseConnection.pdb
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\XMLParser.pdb
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\MapSensors.xsd
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\Reply.xsd
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\Requests.xsd
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\SensorTypes.xsd
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\WSNActionReq.xsd
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\controller\RequestNamesList.xml
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\controller\config.xsd
+D:\Programs\SocketXMLexchange\SocketServerApp\bin\Debug\Schemas\Example-XML\HistoryOfSensorMeasurement.xml
+D:\Programs\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.exe
+D:\Programs\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.pdb
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\config.xml
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\SocketServerApp.exe
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\SocketServerApp.pdb
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\DatabaseConnection.dll
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\SocketConnection.dll
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\DatabaseConnection.pdb
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\SocketConnection.pdb
+D:\Programs\ControllerApp\SocketServerApp\obj\Debug\ResolveAssemblyReference.cache
+D:\Programs\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.Properties.Resources.resources
+D:\Programs\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.SocketServerPanel.resources
+D:\Programs\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.csproj.GenerateResource.Cache
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\xml\HistoryTest.xml
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\config.xml
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\xml\HistoryTest.xml
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\SocketServerApp.XML
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\SocketServerApp.exe
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\SocketServerApp.pdb
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\DatabaseConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\SocketConnection.dll
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\IBM.Data.DB2.dll
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\DatabaseConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\bin\Debug\SocketConnection.pdb
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.Properties.Resources.resources
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.SocketServerPanel.resources
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.csproj.GenerateResource.Cache
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.exe
+C:\Documents and Settings\Olivier\Bureaublad\ControllerApp\SocketServerApp\obj\Debug\SocketServerApp.pdb
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\DatabaseConnection.xml
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\SocketConnection.xml
+D:\Programs\ControllerApp\SocketServerApp\bin\Debug\SocketServerApp.XML
