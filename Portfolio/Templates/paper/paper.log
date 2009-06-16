@@ -1,0 +1,345 @@
+This is pdfTeX, Version 3.1415926-1.40.9 (MiKTeX 2.7) (preloaded format=pdflatex 2009.1.31)  2 FEB 2009 15:52
+entering extended mode
+**C:/Users/peter/Documents/Artesis/MAP/sjablonen/paper/paper/paper.tex
+(C:/Users/peter/Documents/Artesis/MAP/sjablonen/paper/paper/paper.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman, ngerman, german-x-2008-06-18, ngerman-x-2008-06-18, french, loaded.
+(elab.cls
+Document Class: elab 2007/03/05 V1.7a by Michael Shell
+-- See the "elab_HOWTO" manual for usage information.
+-- http://www.michaelshell.org/tex/elab/
+\@elabtmpdimenA=\dimen102
+\@elabtmpdimenB=\dimen103
+\@elabtmpcountA=\count79
+\@elabtmpcountB=\count80
+\@elabtmptoksA=\toks14
+-- Using IEEE Computer Society mode.
+LaTeX Font Info:    Try loading font information for OT1+ppl on input line 367.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\psnfss\ot1ppl.fd"
+File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+)
+-- Using 210mm x 297mm (a4) paper.
+-- Using PDF output.
+\@IEEEnormalsizeunitybaselineskip=\dimen104
+-- This is a 9 point document.
+\CLASSINFOnormalsizebaselineskip=\dimen105
+\CLASSINFOnormalsizeunitybaselineskip=\dimen106
+\IEEEnormaljot=\dimen107
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <5> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <7> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <7> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <8> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <8.5> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <8.5> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <9> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <14> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <17> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <17> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <20> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 725.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <20> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 725.
+\IEEEilabelindentA=\dimen108
+\IEEEilabelindentB=\dimen109
+\IEEEilabelindent=\dimen110
+\IEEEelabelindent=\dimen111
+\IEEEdlabelindent=\dimen112
+\IEEElabelindent=\dimen113
+\IEEEiednormlabelsep=\dimen114
+\IEEEiedmathlabelsep=\dimen115
+\IEEEiedtopsep=\skip41
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@IEEEsubequation=\count85
+\abovecaptionskip=\skip42
+\belowcaptionskip=\skip43
+\c@figure=\count86
+\c@table=\count87
+\@IEEEeqnnumcols=\count88
+\@IEEEeqncolcnt=\count89
+\@IEEEtmpitemindent=\dimen116
+\c@IEEEbiography=\count90
+\@elabrubishbin=\box26
+) ("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks15
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\graphics.sty"
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2008/09/08 v0.04l Graphics/color for pdfTeX
+\Gread@gobject=\count91
+))
+\Gin@req@height=\dimen117
+\Gin@req@width=\dimen118
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks16
+\ex@=\dimen119
+))
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen120
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\amsmath\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count92
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count93
+\leftroot@=\count94
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count95
+\DOTSCASE@=\count96
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen121
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count97
+\c@MaxMatrixCols=\count98
+\dotsspace@=\muskip10
+\c@parentequation=\count99
+\dspbrk@lvl=\count100
+\tag@help=\toks17
+\row@=\count101
+\column@=\count102
+\maxfields@=\count103
+\andhelp@=\toks18
+\eqnshift@=\dimen122
+\alignsep@=\dimen123
+\tagshift@=\dimen124
+\tagwidth@=\dimen125
+\totwidth@=\dimen126
+\lineht@=\dimen127
+\@envbody=\toks19
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\algorithms\algorithmic.sty"
+Package: algorithmic 2006/06/02
+
+Document Style `algorithmic' - environment
+("C:\Program Files\MiKTeX 2.7\tex\latex\base\ifthen.sty"
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\tools\calc.sty"
+Package: calc 2005/08/06 v4.2 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count104
+\calc@Bcount=\count105
+\calc@Adimen=\dimen128
+\calc@Bdimen=\dimen129
+\calc@Askip=\skip47
+\calc@Bskip=\skip48
+LaTeX Info: Redefining \setlength on input line 75.
+LaTeX Info: Redefining \addtolength on input line 76.
+\calc@Ccount=\count106
+\calc@Cskip=\skip49
+)
+\c@ALC@line=\count107
+\c@ALC@rem=\count108
+\c@ALC@depth=\count109
+\ALC@tlm=\skip50
+\algorithmicindent=\skip51
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\subfigure\subfigure.sty"
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip52
+\subfigcapskip=\skip53
+\subfigcaptopadj=\dimen130
+\subfigbottomskip=\skip54
+\subfigcapmargin=\dimen131
+\subfiglabelskip=\skip55
+\c@subfigure=\count110
+\c@lofdepth=\count111
+\c@subtable=\count112
+\c@lotdepth=\count113
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+("C:\Program Files\MiKTeX 2.7\tex\latex\subfigure\subfigure.cfg")
+\subfig@top=\skip56
+\subfig@bottom=\skip57
+)
+("C:\Program Files\MiKTeX 2.7\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+) (paper.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+
+("C:\Program Files\MiKTeX 2.7\tex\context\base\supp-pdf.tex"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count114
+\scratchdimen=\dimen132
+\scratchbox=\box29
+\nofMPsegments=\count115
+\nofMParguments=\count116
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count117
+\MPscratchDim=\dimen133
+\MPnumerator=\count118
+\everyMPtoPDFconversion=\toks22
+)
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 120.
+
+ ("C:\Program Files\MiKTeX 2.7\tex\latex\psnfss\ot1phv.fd"
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <8> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 120.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 120.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 120.
+LaTeX Font Info:    Try loading font information for U+pzd on input line 120.
+
+("C:\Program Files\MiKTeX 2.7\tex\latex\psnfss\upzd.fd"
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 120.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 120.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 126.
+LaTeX Font Info:    Font shape `OT1/phv/bx/sc' in size <10> not available
+(Font)              Font shape `OT1/phv/b/sc' tried instead on input line 126.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 126.
+
+
+LaTeX Warning: Citation `POCT1' on page 1 undefined on input line 145.
+
+
+LaTeX Warning: Citation `Anastasio2001' on page 1 undefined on input line 146.
+
+<Images/img1.png, id=1, 167.87718pt x 167.87718pt>
+File: Images/img1.png Graphic file (type png)
+ <use Images/img1.png>
+<Images/img2.png, id=2, 167.87718pt x 167.87718pt>
+File: Images/img2.png Graphic file (type png)
+ <use Images/img2.png>
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 159.
+LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 163.
+
+
+LaTeX Warning: Citation `POCT1' on page 1 undefined on input line 165.
+
+[1{C:/ProgramData/MiKTeX/2.7/pdftex/config/pdftex.map}
+
+
+ <Images/img1.png (PNG copy)> <Images/img2.png (PNG copy)>] (paper.bbl)
+<Images/SchaepsTim.jpg, id=22, 52.998pt x 72.27pt>
+File: Images/SchaepsTim.jpg Graphic file (type jpg)
+ <use Images/SchaepsTim.jpg>
+File: Images/SchaepsTim.jpg Graphic file (type jpg)
+
+<use Images/SchaepsTim.jpg>
+<Images/GoossensMaggy.jpg, id=25, 120.45pt x 160.6pt>
+File: Images/GoossensMaggy.jpg Graphic file (type jpg)
+
+<use Images/GoossensMaggy.jpg>
+File: Images/GoossensMaggy.jpg Graphic file (type jpg)
+ <use Images/GoossensMaggy.jpg> [2 <Images/SchaepsTim.jpg> <Images/GoossensMagg
+y.jpg>] (paper.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 2730 strings out of 95304
+ 37299 string characters out of 1183070
+ 95850 words of memory out of 1500000
+ 5909 multiletter control sequences out of 110000
+ 43729 words of font info for 89 fonts, out of 3000000 for 5000
+ 17 hyphenation exceptions out of 8191
+ 28i,10n,34p,1072b,333s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files/MiKTeX 2.7/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
+s/MiKTeX 2.7/fonts/type1/bluesky/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.7/fon
+ts/type1/bluesky/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/
+cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmr6.pfb><C:/P
+rogram Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmr9.pfb><C:/Program Files/MiKTe
+X 2.7/fonts/type1/bluesky/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1
+/bluesky/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/bluesky/cm/cmsy9
+.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Progr
+am Files/MiKTeX 2.7/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTe
+X 2.7/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Program Files/MiKTeX 2.7/fonts/t
+ype1/urw/palatino/uplb8a.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/urw/palat
+ino/uplr8a.pfb><C:/Program Files/MiKTeX 2.7/fonts/type1/urw/palatino/uplri8a.pf
+b><C:/Program Files/MiKTeX 2.7/fonts/type1/urw/zapfding/uzdr.pfb>
+Output written on paper.pdf (2 pages, 296490 bytes).
+PDF statistics:
+ 80 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
+
