@@ -82,11 +82,20 @@ The communication between the controller and the GUI also happens with an XML pa
 The communication here makes use of ODBC (Open Database Connectivity), which is an universal database interface. By using this interface, the controller does not need to worry about the database that is used. Stored procedures are used instead of full SQL syntax.
 
 \subsection{SCALA}
-SCALA is a TETRA \cite{tetra} project which aims to shorten the gap between localization technologies and possible end-user applications. The goal of this project is to ease the development of location aware applications by providing these applications with a common interface to the location technologies.
+Scala is a TETRA \cite{tetra} project which aims to shorten the gap between localization technologies and possible end-user applications. The goal of this project is to ease the development of location aware applications by providing these applications with a common interface to the location technologies.
 
-From a technical point of view, SCALA adapts the interfaces of the existing localization technologies into a common interface. Doing so, the user can receive location information transparent of the underlying technology. 
-Another feature of SCALA is the fusion of location information. By combining the information the middleware receives from different localization technologies, a more accurate and robust position can be determined.
+From a technical point of view, Scala adapts the interfaces of the existing localization technologies into a common interface. Doing so, the user can receive location information transparent of the underlying technology. 
+Another feature of Scala is the fusion of location information. By combining the information the middleware receives from different localization technologies, a more accurate and robust position can be determined.
 
-The Senseless framework will provide an interface to SCALA. The framework will plug into SCALA as an engine. Doing so, our algorithms become accessible to a variety of applications.
-The interface with the middleware is constructed in the controller. Two types of communication are available: polling and event-based. By polling the engine, information is requested only when needed, as opposed to event-based communication where, the middleware subscribes to information coming from the WSN. The interface is loosely based on the ANSI Rtls API \cite{RTLS}.
+The Senseless framework provides an interface to SCALA. The framework will plug into SCALA as an engine. Doing so, our algorithms become accessible to a variety of applications.
+The interface with Scala is performed in the controller via WCF \cite{WCF}. Currently our engine supports four distinct software interfaces. 
+
+\begin{\begin{itemize}
+	\item Map data
+	\item Position data
+	\item Context data, such as the data coming from the sensors
+	\item Availaible nodes
+\end{itemize}}
+
+Two types of communication are available: polling and event-based. By polling the engine, information is requested only when needed, as opposed to event-based communication where, Scala subscribes to information coming from the framework. The interface is loosely based on the ANSI Rtls API \cite{RTLS}.
 The API documents a polling-based system. Possible data fields are specified and a method of filtering data is documented as well.
