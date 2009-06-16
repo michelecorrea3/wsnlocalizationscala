@@ -527,22 +527,25 @@
                     {
                         case "CentroidLocalization":
                             //pos = CentroidLocalization.CalculatePosition(CurrentNode);
-                            pos = WCL.CalculatePosition(CurrentNode, myFilter);
+                            pos = CentroidLocalization.CalculatePosition(CurrentNode);
                             break;
                         case "MinMax":
                             pos = MinMax.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "Trilateration":
-                            pos = LSTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
+                            pos = ExtendedTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "ExtendedTrilateration":
-                            pos = LSTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
+                            pos = ExtendedTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "ExtendedMinMax":
                             pos = MinMaxExtended.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                         case "WeightedCentroidLocalization":
                             pos = WCL.CalculatePosition(CurrentNode, myFilter);
+                            break;
+                        case "LSTrilateration":
+                            pos = LSTrilateration.CalculatePosition(CurrentNode, myFilter, myRanging, UseMultihop);
                             break;
                     }
 
