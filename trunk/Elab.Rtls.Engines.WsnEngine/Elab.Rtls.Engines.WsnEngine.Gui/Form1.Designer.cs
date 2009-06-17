@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "",
             "",
             ""}, -1);
@@ -65,8 +65,6 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.radioButtonSensorTimeOut = new System.Windows.Forms.RadioButton();
-            this.radioButtonGetSensors = new System.Windows.Forms.RadioButton();
-            this.radioButtonDiscovery = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.controllerPort = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
@@ -129,10 +127,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.textBoxLocUpdate = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
@@ -149,10 +143,6 @@
             this.textBoxZ = new System.Windows.Forms.TextBox();
             this.listBoxLoc = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBoxSensUpdate = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -174,6 +164,18 @@
             this.toolTipActive = new System.Windows.Forms.ToolTip(this.components);
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -232,7 +234,7 @@
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(78, 17);
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(88, 17);
             this.toolStripStatusLabel.Text = "No Connection";
             // 
             // tabPage4
@@ -432,8 +434,6 @@
             this.groupBox7.Controls.Add(this.label27);
             this.groupBox7.Controls.Add(this.label26);
             this.groupBox7.Controls.Add(this.radioButtonSensorTimeOut);
-            this.groupBox7.Controls.Add(this.radioButtonGetSensors);
-            this.groupBox7.Controls.Add(this.radioButtonDiscovery);
             this.groupBox7.Location = new System.Drawing.Point(23, 221);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(279, 168);
@@ -444,7 +444,7 @@
             // maskedTextBox1
             // 
             this.maskedTextBox1.BeepOnError = true;
-            this.maskedTextBox1.Location = new System.Drawing.Point(120, 132);
+            this.maskedTextBox1.Location = new System.Drawing.Point(119, 78);
             this.maskedTextBox1.Mask = "00 00:00:00";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
@@ -454,7 +454,7 @@
             // 
             // textBoxSensorFetchUpdateInterval
             // 
-            this.textBoxSensorFetchUpdateInterval.Location = new System.Drawing.Point(120, 107);
+            this.textBoxSensorFetchUpdateInterval.Location = new System.Drawing.Point(119, 53);
             this.textBoxSensorFetchUpdateInterval.Name = "textBoxSensorFetchUpdateInterval";
             this.textBoxSensorFetchUpdateInterval.Size = new System.Drawing.Size(100, 20);
             this.textBoxSensorFetchUpdateInterval.TabIndex = 17;
@@ -463,7 +463,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(19, 132);
+            this.label27.Location = new System.Drawing.Point(18, 78);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(73, 13);
             this.label27.TabIndex = 16;
@@ -472,7 +472,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(19, 107);
+            this.label26.Location = new System.Drawing.Point(18, 53);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(88, 13);
             this.label26.TabIndex = 15;
@@ -482,35 +482,13 @@
             // 
             this.radioButtonSensorTimeOut.AutoSize = true;
             this.radioButtonSensorTimeOut.Checked = true;
-            this.radioButtonSensorTimeOut.Location = new System.Drawing.Point(19, 78);
+            this.radioButtonSensorTimeOut.Location = new System.Drawing.Point(18, 24);
             this.radioButtonSensorTimeOut.Name = "radioButtonSensorTimeOut";
             this.radioButtonSensorTimeOut.Size = new System.Drawing.Size(98, 17);
             this.radioButtonSensorTimeOut.TabIndex = 14;
             this.radioButtonSensorTimeOut.TabStop = true;
             this.radioButtonSensorTimeOut.Text = "SensorTimeOut";
             this.radioButtonSensorTimeOut.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonGetSensors
-            // 
-            this.radioButtonGetSensors.AutoSize = true;
-            this.radioButtonGetSensors.Enabled = false;
-            this.radioButtonGetSensors.Location = new System.Drawing.Point(19, 20);
-            this.radioButtonGetSensors.Name = "radioButtonGetSensors";
-            this.radioButtonGetSensors.Size = new System.Drawing.Size(80, 17);
-            this.radioButtonGetSensors.TabIndex = 12;
-            this.radioButtonGetSensors.Text = "GetSensors";
-            this.radioButtonGetSensors.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonDiscovery
-            // 
-            this.radioButtonDiscovery.AutoSize = true;
-            this.radioButtonDiscovery.Enabled = false;
-            this.radioButtonDiscovery.Location = new System.Drawing.Point(19, 49);
-            this.radioButtonDiscovery.Name = "radioButtonDiscovery";
-            this.radioButtonDiscovery.Size = new System.Drawing.Size(72, 17);
-            this.radioButtonDiscovery.TabIndex = 13;
-            this.radioButtonDiscovery.Text = "Discovery";
-            this.radioButtonDiscovery.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -680,11 +658,12 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.textBox18);
             this.groupBox12.Controls.Add(this.label19);
             this.groupBox12.Controls.Add(this.textBoxSampleRate);
             this.groupBox12.Location = new System.Drawing.Point(419, 125);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(200, 49);
+            this.groupBox12.Size = new System.Drawing.Size(220, 49);
             this.groupBox12.TabIndex = 42;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Sensor Parameters";
@@ -715,7 +694,7 @@
             this.groupBox11.Controls.Add(this.numericUpDownFrequency);
             this.groupBox11.Location = new System.Drawing.Point(419, 182);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(200, 76);
+            this.groupBox11.Size = new System.Drawing.Size(220, 76);
             this.groupBox11.TabIndex = 41;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Radio Parameters";
@@ -782,6 +761,9 @@
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.textBox17);
+            this.groupBox10.Controls.Add(this.textBox16);
+            this.groupBox10.Controls.Add(this.textBox15);
             this.groupBox10.Controls.Add(this.label18);
             this.groupBox10.Controls.Add(this.checkBoxActive);
             this.groupBox10.Controls.Add(this.textBoxLocRate);
@@ -794,7 +776,7 @@
             this.groupBox10.Controls.Add(this.checkBoxAnchorNode);
             this.groupBox10.Location = new System.Drawing.Point(180, 27);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(200, 225);
+            this.groupBox10.Size = new System.Drawing.Size(219, 225);
             this.groupBox10.TabIndex = 40;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Positioning";
@@ -904,7 +886,7 @@
             this.groupBox9.Controls.Add(this.checkBoxLedGreen);
             this.groupBox9.Location = new System.Drawing.Point(419, 27);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(200, 87);
+            this.groupBox9.Size = new System.Drawing.Size(220, 87);
             this.groupBox9.TabIndex = 39;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Leds";
@@ -1060,10 +1042,10 @@
             this.listViewGraphValues.GridLines = true;
             this.listViewGraphValues.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listViewGraphValues.HideSelection = false;
-            listViewItem1.IndentCount = 10;
-            listViewItem1.Tag = "";
+            listViewItem4.IndentCount = 10;
+            listViewItem4.Tag = "";
             this.listViewGraphValues.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem4});
             this.listViewGraphValues.Location = new System.Drawing.Point(6, 21);
             this.listViewGraphValues.Name = "listViewGraphValues";
             this.listViewGraphValues.Size = new System.Drawing.Size(207, 213);
@@ -1227,50 +1209,6 @@
             this.groupBox6.TabIndex = 26;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Localization";
-            // 
-            // textBox14
-            // 
-            this.textBox14.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(264, 234);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(30, 17);
-            this.textBox14.TabIndex = 37;
-            this.textBox14.Text = "m";
-            // 
-            // textBox13
-            // 
-            this.textBox13.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(264, 196);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(30, 17);
-            this.textBox13.TabIndex = 36;
-            this.textBox13.Text = "m";
-            // 
-            // textBox12
-            // 
-            this.textBox12.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(264, 154);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(30, 17);
-            this.textBox12.TabIndex = 35;
-            this.textBox12.Text = "m";
-            // 
-            // textBox11
-            // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(264, 113);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(38, 17);
-            this.textBox11.TabIndex = 34;
-            this.textBox11.Text = "dBm";
             // 
             // textBoxLocUpdate
             // 
@@ -1453,50 +1391,6 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sensor";
-            // 
-            // textBox10
-            // 
-            this.textBox10.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox10.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(225, 233);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(38, 18);
-            this.textBox10.TabIndex = 33;
-            this.textBox10.Text = "dBm";
-            // 
-            // textBox9
-            // 
-            this.textBox9.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(225, 196);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(30, 18);
-            this.textBox9.TabIndex = 32;
-            this.textBox9.Text = "g";
-            // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(225, 166);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(30, 18);
-            this.textBox8.TabIndex = 31;
-            this.textBox8.Text = "L";
-            // 
-            // textBox7
-            // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(226, 137);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(30, 18);
-            this.textBox7.TabIndex = 30;
-            this.textBox7.Text = "F";
             // 
             // textBoxSensUpdate
             // 
@@ -1712,6 +1606,118 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // textBox7
+            // 
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Location = new System.Drawing.Point(226, 137);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(30, 18);
+            this.textBox7.TabIndex = 30;
+            this.textBox7.Text = "F";
+            // 
+            // textBox8
+            // 
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Location = new System.Drawing.Point(225, 166);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(30, 18);
+            this.textBox8.TabIndex = 31;
+            this.textBox8.Text = "L";
+            // 
+            // textBox9
+            // 
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.Location = new System.Drawing.Point(225, 196);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(30, 18);
+            this.textBox9.TabIndex = 32;
+            this.textBox9.Text = "g";
+            // 
+            // textBox10
+            // 
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Location = new System.Drawing.Point(225, 233);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(38, 18);
+            this.textBox10.TabIndex = 33;
+            this.textBox10.Text = "dBm";
+            // 
+            // textBox11
+            // 
+            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox11.Location = new System.Drawing.Point(264, 113);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(38, 17);
+            this.textBox11.TabIndex = 34;
+            this.textBox11.Text = "dBm";
+            // 
+            // textBox12
+            // 
+            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox12.Location = new System.Drawing.Point(264, 154);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(30, 17);
+            this.textBox12.TabIndex = 35;
+            this.textBox12.Text = "m";
+            // 
+            // textBox13
+            // 
+            this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox13.Location = new System.Drawing.Point(264, 196);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(30, 17);
+            this.textBox13.TabIndex = 36;
+            this.textBox13.Text = "m";
+            // 
+            // textBox14
+            // 
+            this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox14.Location = new System.Drawing.Point(264, 234);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(30, 17);
+            this.textBox14.TabIndex = 37;
+            this.textBox14.Text = "m";
+            // 
+            // textBox15
+            // 
+            this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.textBox15.Location = new System.Drawing.Point(187, 97);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(30, 17);
+            this.textBox15.TabIndex = 41;
+            this.textBox15.Text = "m";
+            // 
+            // textBox16
+            // 
+            this.textBox16.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.textBox16.Location = new System.Drawing.Point(187, 125);
+            this.textBox16.Name = "textBox16";
+            this.textBox16.Size = new System.Drawing.Size(30, 17);
+            this.textBox16.TabIndex = 42;
+            this.textBox16.Text = "m";
+            // 
+            // textBox17
+            // 
+            this.textBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.textBox17.Location = new System.Drawing.Point(187, 153);
+            this.textBox17.Name = "textBox17";
+            this.textBox17.Size = new System.Drawing.Size(30, 17);
+            this.textBox17.TabIndex = 43;
+            this.textBox17.Text = "ms";
+            // 
+            // textBox18
+            // 
+            this.textBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.textBox18.Location = new System.Drawing.Point(190, 15);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(30, 17);
+            this.textBox18.TabIndex = 44;
+            this.textBox18.Text = "ms";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1872,8 +1878,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownFrequency;
         private System.Windows.Forms.NumericUpDown numericUpDownPower;
         private System.Windows.Forms.RadioButton radioButtonSensorTimeOut;
-        private System.Windows.Forms.RadioButton radioButtonDiscovery;
-        private System.Windows.Forms.RadioButton radioButtonGetSensors;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBoxPlotUpdate;
@@ -1916,6 +1920,10 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox textBox15;
 
     }
 }
