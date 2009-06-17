@@ -31,6 +31,9 @@
 
         #region Constructors
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public Point()
         {
         }
@@ -65,13 +68,28 @@
     {
         #region Fields
 
+        /// <summary>
+        /// Propagation model parameter:
+        /// Attenuattion at a distance of 1 meter
+        /// </summary>
         public static double baseLoss = 51.00;
+
+        /// <summary>
+        /// Propagation model parameter
+        /// Determines the speed of attennuation
+        /// 2.00 = free space loss
+        /// </summary>
         public static double pathLossExponent = 2.00;
 
         #endregion Fields
 
         #region Methods
 
+        /// <summary>
+        /// Averages the RSS 
+        /// </summary>
+        /// <param name="RSS">Last 20 RSS readings</param>
+        /// <returns>Filtered RSS</returns>
         public static double AverageFilter(Queue<double> RSS)
         {
             double total = 0;
@@ -84,6 +102,11 @@
             return (total / RSS.Count);
         }
 
+        /// <summary>
+        /// Calibrates the pathloss parameter with information of the anchor nodes
+        /// </summary>
+        /// <param name="AnchorNodes">The anchor nodes giving the calibration information</param>
+        /// <param name="filterMethod">Method to filter the RSS</param>
         public static void CalibratePathloss(List<Node> AnchorNodes, Node.FilterMethod filterMethod)
         {
             double pathlossExponent = 0;
@@ -119,6 +142,11 @@
                 RangeBasedPositioning.pathLossExponent = pathlossExponent;
         }
 
+        /// <summary>
+        /// Calibrates the pathloss parameter with information of the anchor nodes using Least Squares
+        /// </summary>
+        /// <param name="AnchorNodes">The anchor nodes giving the calibration information</param>
+        /// <param name="filterMethod">Method to filter the RSS</param>
         public static void CalibratePathlossLS(List<Node> CalibrationNodes, Node.FilterMethod filterMethod)
         {
             double pathlossExponent = 0;
@@ -224,6 +252,11 @@
             return Math.Pow(10, ((fRSS + baseRSS) / ( -10 * pathLossExponent)));
         }
 
+        /// <summary>
+        /// Median filter for the RSS
+        /// </summary>
+        /// <param name="RSS">Last 20 RSS readings</param>
+        /// <returns>The filtered RSS</returns>
         public static double MedianFilter(Queue<double> RSS)
         {
             List<double> RSSList = RSS.ToList();
@@ -241,6 +274,12 @@
                 }
         }
 
+        /// <summary>
+        /// Fake RSS filter
+        /// Enables the use of the delegates even when no filter is used
+        /// </summary>
+        /// <param name="RSS"></param>
+        /// <returns></returns>
         public static double NoFilter(Queue<double> RSS)
         {
             List<double> RSSList = RSS.ToList();
@@ -250,7 +289,6 @@
 
         /// <summary>
         /// Translates RSS readings into distances expressed in meters
-        /// 
         /// Formula from the paper "Relative location in Wireless Networks
         /// baseRSS was already measured in our BAP, however this data has not been validated
         /// lossFactor has the free space value, in indoor environments this can be 1,6 to 1,8
@@ -270,6 +308,9 @@
 
         #region Nested Types
 
+        /// <summary>
+        /// Collection of two related anchors, required for LS calibration
+        /// </summary>
         public struct TwoAnchors
         {
             #region Fields
