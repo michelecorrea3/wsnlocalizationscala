@@ -9,10 +9,20 @@
 
     using DatabaseConnection;
 
+    /// <summary>
+    /// Trilateration with Least Square algorithm, the position is the cutting point of all the circles of the anchor nodes or an approximation
+    /// </summary>
     public class LSTrilateration : RangeBasedPositioning
     {
         #region Methods
-
+        /// <summary>
+        /// Calculates the position
+        /// </summary>
+        /// <param name="BlindNode">The BlindNode to be positioned</param>
+        /// <param name="filterMethod">The filter to use on the RSS values</param>
+        /// <param name="RangingMethod">The ranging method</param>
+        /// <param name="multihop">use multihop or not</param>
+        /// <returns>The position of the blind node</returns>
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multihop)
         {
             Point position = new Point();

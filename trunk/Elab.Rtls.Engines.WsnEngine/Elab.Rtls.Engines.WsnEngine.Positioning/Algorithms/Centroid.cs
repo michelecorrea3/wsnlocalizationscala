@@ -19,7 +19,7 @@
         /// Calculates the position
         /// </summary>
         /// <param name="BlindNode">The BlindNode to be positioned</param>
-        /// <returns></returns>
+        /// <returns>The position of the blind node</returns>
         public static Point CalculatePosition(Node BlindNode)
         {
             Point position = new Point();
