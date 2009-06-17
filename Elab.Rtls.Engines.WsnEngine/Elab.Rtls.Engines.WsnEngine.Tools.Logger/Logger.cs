@@ -1,12 +1,8 @@
 ﻿namespace Elab.Rtls.Engines.WsnEngine
 {
     using System;
-    using System.Collections.Generic;
-    using System.Data;
     using System.Data.Odbc;
     using System.IO;
-    using System.Linq;
-    using System.Text;
 
     public static class Logger
     {
@@ -28,6 +24,11 @@
             logger.Close();
         }
 
+        /// <summary>
+        /// Logs ODBC Exceptions in a text file
+        /// </summary>
+        /// <param name="odbcException">The ODBC exception that has to be logged</param>
+        /// <param name="query">The location of the logfile (including filename)</param>
         public static void LogOdbcException(OdbcException odbcException, string query)
         {
             StreamWriter logger = new StreamWriter("DBFaults.txt", true); //Open the file and get ready to append the error-info to the file.

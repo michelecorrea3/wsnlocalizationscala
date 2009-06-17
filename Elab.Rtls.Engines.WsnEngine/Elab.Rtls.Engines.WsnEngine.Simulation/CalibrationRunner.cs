@@ -10,6 +10,9 @@ namespace LocalizationAlgorithmsRunner
 {
     class CalibrationRunner
     {
+        /// <summary>
+        /// Connectionstring to use for the connection to the database (MySQL!)
+        /// </summary>
         private MySQLClass MyDb;
 
         /// <summary>
@@ -17,13 +20,24 @@ namespace LocalizationAlgorithmsRunner
         /// </summary>
         private string currentID;
 
+        /// <summary>
+        /// Contains all the anchor nodes that should be used for calibration
+        /// </summary>
         private List<Node> AnchorNodes = new List<Node>();
-        
+
+        /// <summary>
+        /// Entry point for the application
+        /// </summary>
         internal static void Main()
         {
             CalibrationRunner calibrationRunner = new CalibrationRunner();
         }
 
+        /// <summary>
+        /// Constructor
+        /// Initializes the log file
+        /// Contains the loop which calls all the required functions for simulation
+        /// </summary>
         CalibrationRunner()
         {
             MyDb = new MySQLClass("DRIVER={MySQL ODBC 3.51 Driver};SERVER=localhost;DATABASE=senseless;UID=root;PASSWORD=admin;OPTION=3;");
@@ -42,6 +56,10 @@ namespace LocalizationAlgorithmsRunner
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Calculates the calibration algorithms
+        /// </summary>
+        /// <param name="dataSet">The dataset to be processed</param>
         private void ExecuteCalibration(DataSet dataSet)
         {
             double baseLoss = 0, pathLossExponent = 0;
@@ -109,6 +127,10 @@ namespace LocalizationAlgorithmsRunner
             Console.WriteLine("pathLossExponent = " + pathLossExponent.ToString());
         }
 
+        /// <summary>
+        /// Calculates the calibration algorithms where the node to be calibrated is the blind node
+        /// </summary>
+        /// <param name="dataSet">The dataset to be processed</param>
         private void ExecuteCalibrationBlindNode(DataSet dataSet)
         {
             Console.WriteLine("Executing the two calibration methods");
@@ -154,6 +176,10 @@ namespace LocalizationAlgorithmsRunner
             AnchorNodes.Clear();
         }
 
+        /// <summary>
+        /// Fetches the RSS data from the database
+        /// </summary>
+        /// <returns>The DataSet</returns>
         private DataSet FetchData()
         {
             string LowerBound, UpperBound, MyQuery;

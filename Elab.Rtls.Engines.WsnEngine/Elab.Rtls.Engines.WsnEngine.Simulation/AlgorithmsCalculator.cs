@@ -4,28 +4,35 @@
     using System.Collections.Generic;
     using System.Data;
     using System.IO;
-    using System.Linq;
-    using System.Text;
-
     using DatabaseConnection;
-
     using Elab.Rtls.Engines.WsnEngine.Positioning;
 
     class AlgorithmsCalculator
     {
         #region Fields
 
+        /// <summary>
+        /// Contains all the anchor nodes that should be used for calibration
+        /// </summary>
         private List<Node> AnchorNodes = new List<Node>();
 
         /// <summary>
         /// List with all the node that should be positioned
         /// </summary>
         private List<Node> BlindNodes = new List<Node>();
+
+        /// <summary>
+        /// Connectionstring to use for the connection to the database (MySQL!)
+        /// </summary>
         private MySQLClass MyDb;
+
+        /// <summary>
+        /// Used to write to a text file
+        /// </summary>
         private StreamWriter logger;
 
         /// <summary>
-        /// BN's WsnId
+        /// BlindNode's WsnId
         /// </summary>
         private string currentID;
 
@@ -33,21 +40,32 @@
 
         #region Constructors
 
+        /// <summary>
+        /// Entry point for the application
+        /// </summary>
         internal static void Main()
         {
             AlgorithmsCalculator calc = new AlgorithmsCalculator();
         }
 
+        /// <summary>
+        /// Constructor
+        /// Initializes the log file
+        /// Contains the loop which calls all the required functions for simulation
+        /// </summary>
         public AlgorithmsCalculator()
         {
+            //connection string for the database
             MyDb = new MySQLClass("DRIVER={MySQL ODBC 3.51 Driver};SERVER=localhost;DATABASE=senseless;UID=root;PASSWORD=admin;OPTION=3;");
             string response, fileName;
 
+            //add the blind node
             BlindNodes.Add(new Node("11", MyDb));
 
             Console.Write("Enter the file which you wish to write to: ");
             fileName = Console.ReadLine();
             logger = new StreamWriter(fileName, true);
+
             //writing the csv header
             logger.WriteLine("idLocalization, time, WsnID, #anchors, CL X, CL X, CL AbsErr, CL RelErr," +
             "WCL X, WCL X, WCL AbsErr, WCL RelErr, MinMax R X, MinMax R Y, MinMax R AbsErr, MinMax R RelErr," +
@@ -59,9 +77,12 @@
 
             do
             {
+                //anchors can change of position over time, therefore it is smart to update this as well
                 UpdateAnhors();
+                //blind can change of position over time, therefore it is smart to update this as well
                 UpdateBlind();
 
+                //fetches the RSS data from the database
                 Console.WriteLine("Using a new batch of data!");
                 DataSet TempSet = FetchData();
                 Console.Write("Enter the number of anchor nodes that should be in this dataset: ");
@@ -77,6 +98,9 @@
             Console.ReadLine();
         }
 
+        /// <summary>
+        /// Asks the user to enter the position of the blind node
+        /// </summary>
         private void UpdateBlind()
         {
             Console.WriteLine("Enter the position of the blind node in doubles!");   
@@ -96,6 +120,13 @@
 
         #region Methods
 
+        
+        /// <summary>
+        /// Stored procedure wrapper
+        /// Adds a new position for a single node to the database
+        /// </summary>
+        /// <param name="wsnID">The WSNID of the node</param>
+        /// <param name="position">The position in a point type</param>
         private void AddPosition(string wsnID, Point position)
         {
             string AddPosition = "call addPosition(" + wsnID + ", '"
@@ -109,6 +140,12 @@
             MyDb.Query(AddPosition);
         }
 
+        /// <summary>
+        /// Executes the algorithms on the data
+        /// Results are written to a log
+        /// </summary>
+        /// <param name="Set">DataSet containing the RSS data</param>
+        /// <param name="numberAnchors">The number of anchors that the dataset should contain</param>
         private void ExecuteAlgorithms(DataSet Set, int numberAnchors)
         {
             Console.WriteLine("Executing each algorithm on the data");            
@@ -125,8 +162,6 @@
                 {
                         CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
                         CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
-                        ////TODO: check if automatically updated
-                        //CurrentNode = BlindNodes.Find(BN => BN.WsnIdProperty == currentID);
 
                     if (CurrentNode.Anchors.Count == numberAnchors)
                     {
@@ -184,23 +219,29 @@
                     logger.WriteLine("");
                     logger.Flush();
                 }
-                //else
-                //{
-                //    if (!AnchorNodes.Exists(AN => AN.WsnIdProperty == currentID))
-                //    {
-                //        AnchorNodes.Add(new Node(row["node"].ToString(), MyDb));
-                //    }
+                //Performs calibratino
+                else
+                {
+                    if (!AnchorNodes.Exists(AN => AN.WsnIdProperty == currentID))
+                    {
+                        AnchorNodes.Add(new Node(row["node"].ToString(), MyDb));
+                    }
 
-                //    CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
-                //    CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
-                //    //CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
+                    CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
+                    CurrentNode.UpdateAnchors(row["ANode"].ToString(), Convert.ToDouble(row["RSSI"].ToString()), 1, DateTime.Now);
+                    //CurrentNode = AnchorNodes.Find(AN => AN.WsnIdProperty == currentID);
 
-                //    RangeBasedPositioning.CalibratePathlossLS(AnchorNodes, RangeBasedPositioning.NoFilter);
-                    
-                //}
+                    RangeBasedPositioning.CalibratePathlossLS(AnchorNodes, RangeBasedPositioning.NoFilter);
+                }
             }
         }
 
+        /// <summary>
+        /// Helper function: writes the position to the log file
+        /// </summary>
+        /// <param name="pos">The position</param>
+        /// <param name="CurrentNode">The blind node object, containing the true position</param>
+        /// <param name="logger">Reference to the log writer</param>
         private void LogPosition(Point pos, Node CurrentNode, StreamWriter logger)
         {
             if (pos != null)
@@ -219,6 +260,10 @@
             }
         }
 
+        /// <summary>
+        /// Fetches the RSS data from the database
+        /// </summary>
+        /// <returns>The DataSet</returns>
         public DataSet FetchData()
         {
             string LowerBound, UpperBound, MyQuery;
@@ -249,6 +294,9 @@
             return Set;
         }
 
+        /// <summary>
+        /// Asks the user to enter the position of the anchor node
+        /// </summary>
         private void UpdateAnhors()
         {
             Console.Write("Do you wish to update the position of the anchors? (Y/N) ");
@@ -280,11 +328,21 @@
             }
         }
 
+        /// <summary>
+        /// Calculates the distance between two points
+        /// </summary>
+        /// <param name="point1">Point 1</param>
+        /// <param name="point2">Point 2</param>
+        /// <returns>The distance expressed in meters</returns>
         private static double DistanceBetweenTwoPoints(Point point1, Point point2)
         {
             return Math.Pow((Math.Pow((point1.x - point2.x), 2) + Math.Pow((point1.y - point2.y), 2)), 0.5);
         }
 
+        /// <summary>
+        /// Calculates the average distance to the anchors
+        /// </summary>
+        /// <returns>The distance expressed in meters</returns>
         private double AverageDistanceToAnchors()
         {
             double distance = 0.0;

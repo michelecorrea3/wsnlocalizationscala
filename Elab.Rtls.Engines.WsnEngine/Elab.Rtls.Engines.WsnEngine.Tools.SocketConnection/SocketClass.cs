@@ -1,18 +1,14 @@
 ﻿namespace SocketConnection
 {
     using System;
-    using System.Collections.Generic;
-    using System.Data;
     using System.IO;
     using System.Net;
     using System.Net.Sockets;
-    using System.Text;
-    using System.Xml;
 
     using Elab.Rtls.Engines.WsnEngine;
 
     /// <summary>
-    /// Baseclass that can be used for other socket-level classes.
+    /// Base class that can be used for other socket-level classes.
     /// </summary>
     public abstract class SocketClass
     {
@@ -142,13 +138,16 @@
             return ReceivedData; //Return the reply of the server
         }
 
+        /// <summary>
+        /// This method will try to establish a connection within a given time
+        /// </summary>
+        /// <returns>If the attempt to make a connection succeeded or not</returns>
         public bool TryConnection()
         {
             TcpClient testclient = new TcpClient();
 
             try
             {
-
                 testclient.Connect(_RemoteLocation, _Port);
                 testclient.SendTimeout = 1000;
                 Console.WriteLine("Connection open, host active");

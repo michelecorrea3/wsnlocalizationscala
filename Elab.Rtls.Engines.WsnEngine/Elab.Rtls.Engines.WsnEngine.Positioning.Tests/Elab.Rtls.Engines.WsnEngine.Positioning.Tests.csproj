@@ -62,7 +62,7 @@
       <Project>{25F894F5-9B32-46FA-985A-2FDBE8ACCDC6}</Project>
       <Name>Elab.Rtls.Engines.WsnEngine.Tools.DatabaseConnection</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Scala.Engine.WsnEngine.Positioning\Elab.Rtls.Engines.WsnEngine.Positioning.csproj">
+    <ProjectReference Include="..\Elab.Rtls.Engines.WsnEngine.Positioning\Elab.Rtls.Engines.WsnEngine.Positioning.csproj">
       <Project>{2EC133F5-6F78-4166-AEE7-F730B4ED258F}</Project>
       <Name>Elab.Rtls.Engines.WsnEngine.Positioning</Name>
     </ProjectReference>

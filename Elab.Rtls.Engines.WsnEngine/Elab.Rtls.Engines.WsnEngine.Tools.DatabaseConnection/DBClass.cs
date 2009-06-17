@@ -209,7 +209,7 @@
         /// <summary>
         /// Constructor for MySQLClass
         /// </summary>
-        /// <param name="MySQLConnectionString">connectionstring to use for the connection to the database (MySQL!)</param>
+        /// <param name="MySQLConnectionString">Connectionstring to use for the connection to the database (MySQL!)</param>
         public MySQLClass(string MySQLConnectionString)
             : base(MySQLConnectionString)
         {

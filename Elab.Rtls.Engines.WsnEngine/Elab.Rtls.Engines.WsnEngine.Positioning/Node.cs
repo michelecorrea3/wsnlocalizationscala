@@ -15,18 +15,47 @@
     {
         #region Fields
 
+        /// <summary>
+        /// Last 20 RSS samples
+        /// </summary>
         public Queue<double> RSS = new Queue<double>(20);
+        /// <summary>
+        /// Filtered RSS
+        /// </summary>
         public double fRSS;
+        /// <summary>
+        /// Time of last update
+        /// </summary>
         public DateTime lastUpdate;
+        /// <summary>
+        /// WsnId of this node
+        /// </summary>
         public string nodeid;
+        /// <summary>
+        /// X-coordinate
+        /// </summary>
         public double posx;
+        /// <summary>
+        /// Y-coordinate
+        /// </summary>
         public double posy;
+        /// <summary>
+        /// Distance from the connected blind node to this node in meters
+        /// </summary>
         public double range;
 
         #endregion Fields
 
         #region Constructors
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="wsnid">WsnId of this node</param>
+        /// <param name="posx">X-coordinate</param>
+        /// <param name="posy">Y-coordinate</param>
+        /// <param name="RSS">Current RSS reading</param>
+        /// <param name="now">Time of last update</param>
         public AnchorNode(string wsnid, double posx, double posy, double RSS, DateTime now)
         {
             this.nodeid = wsnid;
@@ -43,18 +72,37 @@
     public class Node
     {
         #region Fields
-
+        /// <summary>
+        /// WsnId of this node
+        /// </summary>
         public string WsnId;
+        /// <summary>
+        /// Position of this node
+        /// </summary>
         public Point position;
-
+        /// <summary>
+        /// Connectionstring to use for the connection to the database (MySQL!)
+        /// </summary>
         private MySQLClass MyDb;
+        /// <summary>
+        /// Connected anchors
+        /// </summary>
         private List<AnchorNode> anchorList = new List<AnchorNode>();
+        /// <summary>
+        ///Connected virtual anchors
+        /// Virtual Anchors: Blind nodes with a known position
+        /// </summary>
         private List<AnchorNode> virtualAnchorList = new List<AnchorNode>();
 
         #endregion Fields
 
         #region Constructors
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="WsnId">WsnId of this node</param>
+        /// <param name="MyDb">Connectionstring to use for the connection to the database (MySQL!)</param>
         public Node(string WsnId, MySQLClass MyDb)
         {
             this.MyDb = MyDb;
@@ -66,19 +114,35 @@
 
         #region Delegates
 
+        /// <summary>
+        /// Method which filters the RSS
+        /// </summary>
+        /// <param name="RSS">RSS reading to be filtered</param>
+        /// <returns>Filtered RSS</returns>
         public delegate double FilterMethod(Queue<double> RSS);
 
+        /// <summary>
+        /// Methods which performs the ranging
+        /// </summary>
+        /// <param name="fRSS"></param>
+        /// <returns></returns>
         public delegate double RangingMethod(double fRSS);
 
         #endregion Delegates
 
         #region Properties
 
+        /// <summary>
+        /// Connected anchor nodes
+        /// </summary>
         public List<AnchorNode> Anchors
         {
             get { return anchorList; }
         }
 
+        /// <summary>
+        /// Position of this node
+        /// </summary>
         public Point Position
         {
             get
@@ -87,11 +151,18 @@
                 }
         }
 
+        /// <summary>
+        /// Connected virtual anchors
+        /// Virtual Anchors: Blind nodes with a known position
+        /// </summary>
         public List<AnchorNode> VirtualAnchors
         {
             get { return virtualAnchorList; }
         }
 
+        /// <summary>
+        /// WsnID of this node
+        /// </summary>
         public string WsnIdProperty
         {
             get { return WsnId; }
@@ -110,6 +181,13 @@
             position = GetANPosition(this.WsnId);
         }
 
+        /// <summary>
+        /// Updates the list with the connected anchors with the node described in the parameters
+        /// </summary>
+        /// <param name="AnchorWsnId">WsnID of the anchor ndoe</param>
+        /// <param name="RSS">RSS reading from this anchor node</param>
+        /// <param name="van">VAN status of the anchor node</param>
+        /// <param name="now">Time when this node was added</param>
         public void UpdateAnchors(string AnchorWsnId, double RSS, int van, DateTime now)
         {
             Point ANpos = new Point();
@@ -198,6 +276,13 @@
             return pos;
         }
 
+        /// <summary>
+        /// Adds a new anchor to the list of connected anchors
+        /// </summary>
+        /// <param name="AnchorWsnId">The WsnID of this anchor</param>
+        /// <param name="RSS">RSS reading from this anchor node</param>
+        /// <param name="van">VAN status of the anchor node</param>
+        /// <param name="now">Time when this node was added</param>
         private void NewAnchor(string AnchorWsnId, double RSS, int van, DateTime now)
         {
             Point ANpos = GetANPosition(AnchorWsnId);
@@ -208,6 +293,9 @@
                 virtualAnchorList.Add(new AnchorNode(AnchorWsnId, ANpos.x, ANpos.y, RSS, now));
         }
 
+        /// <summary>
+        /// Removes anchors which have not been updated for two minutes
+        /// </summary>
         private void RemoveOutdatedAnchors()
         {
             for (int i = 0; i < Anchors.Count; i++)
@@ -225,6 +313,10 @@
         //    else
         //        virtualAnchorList.Add(new AnchorNode(AnchorWsnId, posx, posy, RSS));
         //}
+
+        /// <summary>
+        /// Updates the position of the anchors with the newest position from the database
+        /// </summary>
         private void UpdateAnchorPositions()
         {
             for (int i = 0; i < Anchors.Count; i++)
@@ -242,16 +334,5 @@
         }
 
         #endregion Methods
-
-        #region Other
-
-        //public Node(string WsnId, MySQLClass MyDb, string AnchorWsnId, double RSS, int van, DateTime now)
-        //{
-        //    this.MyDb = MyDb;
-        //    this.WsnId = WsnId;
-        //    NewAnchor(AnchorWsnId, RSS, van, now);
-        //}
-
-        #endregion Other
     }
 }
