@@ -7,14 +7,9 @@
     using System.IO;
     using System.Net.Sockets;
     using System.Xml;
-
     using DatabaseConnection;
-
     using Elab.Rtls.Engines.WsnEngine.Positioning;
-    using Elab.Toolkit.Core.Xml;
-
     using Scala.Core;
-
     using SocketConnection;
 
     /// <summary>
@@ -29,6 +24,9 @@
         /// </summary>
         public MySQLClass MySQLConn;
 
+        /// <summary>
+        /// Connected AnchorNodes
+        /// </summary>
         private List<Node> AnchorNodes = new List<Node>();
 
         /// <summary>
@@ -40,6 +38,10 @@
         /// List with all the node that should be positioned
         /// </summary>
         private List<Node> BlindNodes = new List<Node>();
+
+        /// <summary>
+        /// Nodes that should be calibrated
+        /// </summary>
         private List<Node> CalibrationNodes = new List<Node>();
 
         /// <summary>
@@ -73,14 +75,29 @@
 
         #region Events
 
+        /// <summary>
+        /// Event that is raised when the user presses the user button
+        /// </summary>
         public event EventHandler<EventMessage> ButtonPressed;
 
+        /// <summary>
+        /// Event that is raised when the humidity sensor samples
+        /// </summary>
         public event EventHandler<EventMessage> HumidityChanged;
 
+        /// <summary>
+        /// Event that is raised when the light sensor samples
+        /// </summary>
         public event EventHandler<EventMessage> LightChanged;
 
+        /// <summary>
+        /// Event that is raised when a new position is calculated
+        /// </summary>
         public event EventHandler<EventMessage> LocationUpdated;
 
+        /// <summary>
+        /// Event that is raised when the temperature sensor samples
+        /// </summary>
         public event EventHandler<EventMessage> TemperatureChanged;
 
         #endregion Events
@@ -103,11 +120,17 @@
             get; set;
         }
 
+        /// <summary>
+        /// Property for the selected calibration method
+        /// </summary>
         public string SelectedCalibration
         {
             get; set;
         }
 
+        /// <summary>
+        /// Property to use multihop positioning or not
+        /// </summary>
         public bool UseMultihop
         {
             get; set;
@@ -280,25 +303,6 @@
                 {
                     Console.WriteLine("\n" + e.Message);
                     Console.WriteLine(e.StackTrace + "\n");
-
-                    //This is stupid, delete?
-                    //Fatal error - send back a message to indicate a problem
-                    //DataSet Error = CreateReplyInt(0);
-                    //MemoryStream OutMemStream = new MemoryStream();
-                    //Error.WriteXml(OutMemStream);
-                    //OutMemStream.Position = 0;
-                    //StreamReader OutMemStreamReader = new StreamReader(OutMemStream);
-
-                    //try
-                    //{
-                    //    writer.WriteLine(OutMemStreamReader.ReadToEnd());
-                    //    writer.Flush();
-                    //}
-                    //catch (Exception)
-                    //{
-                    //    Console.WriteLine("Could not even send back an error message");
-                    //}
-
                 }
             }
         }
@@ -358,6 +362,12 @@
             return returnSet;
         }
 
+        /// <summary>
+        /// Performs calibration on the anchor nodes
+        /// </summary>
+        /// <param name="id">WsnID of the node to be calibrated</param>
+        /// <param name="ANid">WsnID of the sending anchor node</param>
+        /// <param name="RSSI">RSS reading from this beacon message</param>
         private void CalibrationAnchors(string id, string ANid, double RSSI)
         {
             Node CurrentNode;
@@ -369,9 +379,6 @@
             CurrentNode = CalibrationNodes.Find(BN => BN.WsnIdProperty == id);
             CurrentNode.UpdateAnchors(ANid, RSSI, 1, DateTime.Now);
             CurrentNode.SetOwnPosition();
-            //CurrentNode.SetOwnPosition = CurrentNode.GetANPosition(id);
-            //TODO: check if automatically updated
-            //CurrentNode = CalibrationNodes.Find(BN => BN.WsnIdProperty == id);
         }
 
         /// <summary>
@@ -392,18 +399,6 @@
             return Set;
         }
 
-        ///// <summary>
-        ///// Checks if the node is in the list
-        ///// </summary>
-        ///// <param name="alg"></param>
-        ///// <returns></returns>
-        //private bool ExistsNode(Node BlindNode)
-        //{
-        //    if (BlindNode.WsnIdProperty == currentID)
-        //        return true;
-        //    else
-        //        return false;
-        //}
         /// <summary>
         /// Read the config.txt in the base-directory of the executable and prepare the database-linkers.
         /// Peter: Loads the database info
@@ -416,6 +411,15 @@
                 MySQLConn = new MySQLClass(Options.Tables["ConnectionString"].Select("ID = 'MySQL'")[0]["ConnString"].ToString());
         }
 
+        /// <summary>
+        /// Parses the data from an anchor
+        /// Adds the anchor to AnchorNodes
+        /// Updates the RSS
+        /// Calls the requested calibration function
+        /// Forms a query to add the RSS to the database
+        /// </summary>
+        /// <param name="row">Incoming data</param>
+        /// <returns>the SQL query to be performed</returns>
         private string ParseAnchor(DataRow row)
         {
             Node CurrentNode;
@@ -477,6 +481,17 @@
             return cmd;
         }
 
+        /// <summary>
+        /// Parses the blind node data
+        /// Adds the node to BlindNodes
+        /// Updates the RSS
+        /// Performs the requested localization algorithm
+        /// Forms the query to put the RSS and postion in the database
+        /// Possibly throws an event as described in the event section
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="nodeId"></param>
+        /// <returns></returns>
         private string ParseBlind(DataRow row, string nodeId)
         {
             string cmd, currentID;
@@ -599,6 +614,14 @@
                 return cmd;
         }
 
+        /// <summary>
+        /// Parse the sensordata from a node
+        /// Forms the query to store the data in the database
+        /// Possibly throws an event as described in the event section
+        /// </summary>
+        /// <param name="row">Incoming data</param>
+        /// <param name="nodeId">Node ID of the node</param>
+        /// <returns>Query string</returns>
         private string ParseSensor(DataRow row, string nodeId)
         {
             string cmd;
@@ -682,6 +705,12 @@
             return cmd;
         }
 
+        /// <summary>
+        /// Parses a status reply from a node
+        /// Forms the query to put the reply in the database
+        /// </summary>
+        /// <param name="row">Incoming data</param>
+        /// <returns>The query string to be executed</returns>
         private string ParseStatus(DataRow row)
         {
             string cmd;
@@ -896,13 +925,6 @@
                     return ReqSet;
                 }
             }
-            //catch (Exception e)
-            //{
-            //    SocketServer.LogException(e, "LogServer.txt");
-
-            //    //Create an error-xml-msg
-            //    ReqSet = CreateReplyInt(0);
-            //}
 
             /********************************************************************************
              *                                                                              *
@@ -926,19 +948,6 @@
             SServer.Listen(HandleRequestSocket);    //Start listening for incoming messages
         }
 
-        //private void TimerTick(object state)
-        //{
-        //    if (ButtonPressed != null)
-        //    {
-        //        EventMessage EventData = new EventMessage();
-        //        //EventData.EventType = "ButtonPressed";
-        //        EventData.TagBlink["TagID"] = "9";
-        //        EventData.TagBlink["Button"] = "1";
-        //        ButtonPressed(this, EventData);
-        //        Console.WriteLine("ButtonPressed event sent!");
-        //    }
-        //    Console.WriteLine("Timer fired");
-        //}
         /// <summary>
         /// This function corresponds to the socketserver for the GUI-side/port.
         /// </summary>

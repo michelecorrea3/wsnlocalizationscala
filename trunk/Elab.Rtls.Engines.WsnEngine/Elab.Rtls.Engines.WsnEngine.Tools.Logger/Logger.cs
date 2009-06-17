@@ -4,6 +4,9 @@
     using System.Data.Odbc;
     using System.IO;
 
+    /// <summary>
+    /// Class which holds some logging functions
+    /// </summary>
     public static class Logger
     {
         #region Methods

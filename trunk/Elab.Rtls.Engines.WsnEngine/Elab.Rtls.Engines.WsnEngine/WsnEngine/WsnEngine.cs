@@ -2,53 +2,45 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Data;
-    using System.Diagnostics;
     using System.Drawing;
-    using System.Drawing.Imaging;
-    using System.IO;
-    using System.Net.Sockets;
     using System.ServiceModel;
-    using System.Text;
-    using System.Threading;
-    using System.Xml;
-    using System.Xml.Linq;
-
     using DatabaseConnection;
-
-    using Elab.Rtls.Engines.WsnEngine.Positioning;
-    using Elab.Toolkit.Core.Xml;
     using Elab.Toolkit.Imaging;
-
     using Scala.Core;
-
-    using SocketConnection;
 
     /// <summary>
     /// The WsnEngine class
-    /// Implements the service providing the ANSI RTLS API
-    /// TODO: Implement services...
+    /// Implements the service providing the ANSI RTLS API, thus forming the interface with Scala
     /// Singleton
     /// </summary>
     public sealed class WsnEngine : IQueryable, IEventSource, IMappable, ITagInformationSource
     {
         #region Fields
 
+        /// <summary>
+        /// Static instance of this class
+        /// </summary>
         private static readonly WsnEngine instance = new WsnEngine();
 
+        /// <summary>
+        /// Connectionstring to use for the connection to the database (MySQL!)
+        /// </summary>
         private readonly MySQLClass MyDB = new MySQLClass("DRIVER={MySQL ODBC 3.51 Driver};SERVER=localhost;DATABASE=senseless;UID=root;PASSWORD=admin;OPTION=3;");
 
+        /// <summary>
+        /// Reference to the controller
+        /// </summary>
         static Controller ControllerRef;
 
         #endregion Fields
 
         #region Constructors
 
-        static WsnEngine()
-        {
-        }
-
+        /// <summary>
+        /// Constructor
+        /// Initializes the list with the events to listen to
+        /// </summary>
         private WsnEngine()
         {
             this.EventListeners = new Dictionary<string, EventListener>();
@@ -58,12 +50,18 @@
 
         #region Events
 
+        /// <summary>
+        /// Event that rethrows the events coming from the controller
+        /// </summary>
         public event EventHandler<EventMessage> EventRaised;
 
         #endregion Events
 
         #region Properties
 
+        /// <summary>
+        /// Static instance of this class
+        /// </summary>
         public static WsnEngine Instance
         {
             get
@@ -72,8 +70,11 @@
             }
         }
 
-        //contains the eventlisteners
-        //automatic property
+        /// <summary>
+        /// contains the eventlisteners
+        /// which are filters for the event which you want to listen to
+        /// automatic property
+        /// </summary>
         private Dictionary<string, EventListener> EventListeners
         {
             get;
@@ -84,6 +85,10 @@
 
         #region Methods
 
+        /// <summary>
+        /// Advises the engine with a reference of the current controller instance
+        /// </summary>
+        /// <param name="controller"></param>
         public static void Advise(Controller controller)
         {
             ControllerRef = controller;
@@ -122,9 +127,12 @@
             return accuracy;
         }
 
+        /// <summary>
+        /// Retreives all existing maps in the database
+        /// </summary>
+        /// <returns>List containing all the maps</returns>
         public List<Map> GetAllMaps()
         {
-            //            throw new NotImplementedException();
             List<Map> MapList = new List<Map>();
             DataSet ReturnSet;
 
@@ -164,6 +172,11 @@
             return MapList;
         }
 
+        /// <summary>
+        /// Retreives all existing tags in the database
+        /// Warning these can be inactive
+        /// </summary>
+        /// <returns></returns>
         public List<Tag> GetAllTags()
         {
             List<Tag> tagList = new List<Tag>();
@@ -179,11 +192,20 @@
             return tagList;
         }
 
+        /// <summary>
+        /// Not supported in this engine
+        /// </summary>
+        /// <returns></returns>
         public List<Zone> GetAllZones()
         {
             throw new FaultException("Not implemented");
         }
 
+        /// <summary>
+        /// Retreives a specific map based on its id
+        /// </summary>
+        /// <param name="mapId">Id of the map native to this system</param>
+        /// <returns>Map</returns>
         public Map GetMap(string mapId)
         {
             DataSet ReturnSet;
@@ -220,17 +242,31 @@
             return CurrentMap;
         }
 
+        /// <summary>
+        /// Retreives a single tag based on its id
+        /// </summary>
+        /// <param name="tagId">Id of the tag native to this system</param>
+        /// <returns>Tag</returns>
         public Tag GetTag(string tagId)
         {
             Tag tag = new Tag(tagId, "TelosWsnEngine");
             return tag;
         }
 
+        /// <summary>
+        /// Not supported in this engine
+        /// </summary>
+        /// <returns></returns>
         public Zone GetZone(string zoneId)
         {
             throw new FaultException("Not implemented");
         }
 
+        /// <summary>
+        /// Method to the whether the engine is connected or not
+        /// </summary>
+        /// <param name="word">Any word</param>
+        /// <returns>Hello + parameter word</returns>
         public string Ping(string word)
         {
             //this.Logger.Trace("Ping method called in Ekahau4EngineAdapter");
@@ -248,6 +284,10 @@
             return WsnQueryHelper.Query(query, MyDB);
         }
 
+        /// <summary>
+        /// Subscribes to a specific event defined in eventSubscription
+        /// </summary>
+        /// <param name="eventSubscription">Data conserning the event to subscribe to</param>
         public void Subscribe(EventSubscription eventSubscription)
         {
             if (!this.EventListeners.ContainsKey(eventSubscription.EventId))
@@ -261,6 +301,10 @@
             }
         }
 
+        /// <summary>
+        /// Unsubscribes to a specific event defined in eventSubscription
+        /// </summary>
+        /// <param name="id">Id of the eventsubscription</param>
         public void Unsubscribe(string id)
         {
             if (this.EventListeners.ContainsKey(id))
@@ -270,6 +314,9 @@
             }
         }
 
+        /// <summary>
+        /// Unsubscribes to all subscripted events
+        /// </summary>
         public void UnsubscribeAll()
         {
             foreach (string key in this.EventListeners.Keys)
@@ -278,6 +325,11 @@
             }
         }
 
+        /// <summary>
+        /// Occurs when any event is thrown in the controller
+        /// </summary>
+        /// <param name="sender">Controller</param>
+        /// <param name="eventMessage">Custom data from the event</param>
         private void EventListenerEventReceived(object sender, EventMessage eventMessage)
         {
             // Make a temporary copy of the event to avoid possibility of

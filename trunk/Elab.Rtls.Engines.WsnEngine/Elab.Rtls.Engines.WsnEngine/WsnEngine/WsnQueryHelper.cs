@@ -2,28 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Data;
-    using System.Diagnostics;
-    using System.Drawing;
-    using System.Drawing.Imaging;
-    using System.IO;
-    using System.Net.Sockets;
     using System.ServiceModel;
     using System.Text;
-    using System.Threading;
-    using System.Xml;
-    using System.Xml.Linq;
-
     using DatabaseConnection;
-
-    using Elab.Rtls.Engines.WsnEngine.Positioning;
-    using Elab.Toolkit.Core.Xml;
-    using Elab.Toolkit.Imaging;
-
     using Scala.Core;
 
-    using SocketConnection;
 
     public static class WsnQueryHelper
     {

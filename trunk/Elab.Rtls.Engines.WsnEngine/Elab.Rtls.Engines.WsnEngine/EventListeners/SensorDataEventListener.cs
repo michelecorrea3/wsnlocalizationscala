@@ -1,14 +1,17 @@
 ﻿namespace Elab.Rtls.Engines.WsnEngine
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-
+    /// <summary>
+    /// Specific eventlistener for the sensordata events
+    /// Inherits from EventListener
+    /// </summary>
     public class SensorDataEventListener : EventListener
     {
         #region Constructors
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="eventSubscription">Data of the event to listen to</param>
         public SensorDataEventListener(Scala.Core.EventSubscription eventSubscription)
             : base(eventSubscription)
         {
@@ -18,6 +21,10 @@
 
         #region Methods
 
+        /// <summary>
+        /// Advises the event listener with a reference of the current controller instance
+        /// </summary>
+        /// <param name="controller">Reference to the controller</param>
         public override void Advise(Controller controller)
         {
             switch (base.EventSubscription.EventType)
@@ -37,6 +44,10 @@
             }
         }
 
+        /// <summary>
+        /// Unadvises the event listener with a reference of the current controller instance
+        /// </summary>
+        /// <param name="controller">Reference to the controller</param>
         public override void UnAdvise(Controller controller)
         {
             switch (base.EventSubscription.EventType)
