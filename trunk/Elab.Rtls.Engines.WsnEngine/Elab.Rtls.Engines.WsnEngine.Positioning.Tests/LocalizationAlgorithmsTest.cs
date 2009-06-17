@@ -1,12 +1,7 @@
 ﻿namespace Elab.Rtls.Engines.WsnEngine.Positioning.Tests
 {
-    using System.Collections.Generic;
-
     using DatabaseConnection;
-
     using Elab.Rtls.Engines.WsnEngine.Positioning;
-    using Elab.Rtls.Engines.WsnEngine.Positioning;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
@@ -89,7 +84,7 @@
         }
          */
         /// <summary>
-        ///A test for CalculatePosition
+        ///A test for CalculatePosition of MinMax
         ///</summary>
         [TestMethod]
         public void MinMaxTest()
