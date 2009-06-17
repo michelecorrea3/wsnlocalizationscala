@@ -1,0 +1,17 @@
+<span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;MapSensors</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/MapSensors.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;nodeid<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/nodeid<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;nodetype<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/nodetype<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;name<span class="re2">&gt;</span></span></span>Micro<span class="sc3"><span class="re1">&lt;/name<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;posx<span class="re2">&gt;</span></span></span>10<span class="sc3"><span class="re1">&lt;/posx<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;posy<span class="re2">&gt;</span></span></span>10<span class="sc3"><span class="re1">&lt;/posy<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;nodeid<span class="re2">&gt;</span></span></span>2<span class="sc3"><span class="re1">&lt;/nodeid<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;nodetype<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/nodetype<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;name<span class="re2">&gt;</span></span></span>Woonkamer<span class="sc3"><span class="re1">&lt;/name<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;posx<span class="re2">&gt;</span></span></span>20<span class="sc3"><span class="re1">&lt;/posx<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;posy<span class="re2">&gt;</span></span></span>10<span class="sc3"><span class="re1">&lt;/posy<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/MapSensors<span class="re2">&gt;</span></span></span>

@@ -1,0 +1,63 @@
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>addSensorToDB<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodetype<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>mapimg<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>name<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posx<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posy<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>addMapToDB<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>filename<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>map_name<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>checkMap<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>filename<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>checkSensorID<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>sensorid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>map<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>changePassword<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>username<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>oldpassword<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>newpassword<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>checkUsername<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>username<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>adduser<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>username<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>password<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>admin<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>checkLogin<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>username<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>password<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>admin<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>setPostionSensor<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posx<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posy<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>deleteSensorFromMap<span class="sc3"><span class="re1">&lt;/RequesName<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>

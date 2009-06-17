@@ -1,0 +1,83 @@
+
+
+
+<h3><a name="senseless_v3" id="senseless_v3">Senseless V3</a></h3>
+<div class="level3">
+
+</div>
+
+<h4><a name="schema" id="schema">Schema</a></h4>
+<div class="level4">
+
+<p>
+De tabel sensormeasurements is terug aangepast naar zijn originele staat. Er zijn 3 nieuwe tabellen bijgekomen: 
+</p>
+<ul>
+<li class="level1"><div class="li"> Localization: Houdt alle informatie betreffende localizatie bij</div>
+</li>
+<li class="level1"><div class="li"> Status: Hou alle status informatie bij, zeker relevant voor onze <acronym title="Graphical User Interface">GUI</acronym></div>
+</li>
+<li class="level1"><div class="li"> Request: Logt alle requests die naar het WSN worden gestuurd: NOT Implemented yet!</div>
+</li>
+</ul>
+
+<p>
+<a href="/wikis/map-wsn-scala-new/lib/exe/detail.php?id=mysql&amp;media=senselessv3.png" class="media" title="senselessv3.png"><img src="/wikis/map-wsn-scala-new/lib/exe/fetch.php?w=800&amp;media=senselessv3.png" class="media" alt="" width="800" /></a>
+</p>
+
+</div>
+
+<h4><a name="stored_procedures" id="stored_procedures">Stored procedures</a></h4>
+<div class="level4">
+
+<p>
+De volgende stored procedures zijn aangemaakt:
+</p>
+<ul>
+<li class="level1"><div class="li"> AddLocalizationData</div>
+</li>
+<li class="level1"><div class="li"> AddStatus</div>
+</li>
+<li class="level1"><div class="li"> TODO: add other stored procedures…</div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "Senseless V3" [1-554] -->
+<h3><a name="senseless_v2" id="senseless_v2">Senseless V2</a></h3>
+<div class="level3">
+
+</div>
+
+<h4><a name="schema1" id="schema1">Schema</a></h4>
+<div class="level4">
+
+<p>
+Voorlopig is enkel de tabel sensormeasurements aangepast.
+</p>
+
+<p>
+<a href="/wikis/map-wsn-scala-new/lib/exe/detail.php?id=mysql&amp;media=screenshot002.png" class="media" title="screenshot002.png"><img src="/wikis/map-wsn-scala-new/lib/exe/fetch.php?w=400&amp;media=screenshot002.png" class="media" alt="" width="400" /></a>
+</p>
+
+</div>
+
+<h4><a name="stored_procedures1" id="stored_procedures1">Stored procedures</a></h4>
+<div class="level4">
+
+<p>
+We moeten enkel de stored procedures aanpassen waar data uit de tabel sensormeasurements wordt gehaald. Volgende procedures zijn aangepast:
+
+</p>
+<ul>
+<li class="level1"><div class="li">AddSensorMeasurements</div>
+</li>
+</ul>
+
+<p>
+
+Dit is alles denk ik, we hebben geluk door dat Pieter overal de velden individueel aanspreekt. Meeste procedures hebben trouwens met de user te maken en niet met de sensordata zelf.
+</p>
+
+</div>
+<!-- SECTION "Senseless V2" [555-] -->

@@ -1,0 +1,264 @@
+=====Week 0 (3rd week examinations)====
+====26/1/9====
+==8h -> 13h==
+Linguapolis, correcting the survey paper
+
+====Rest of the week====
+Ill due to the flue, but we did briefly discuss the possibilities of the international project
+
+=====Week 1=====
+====2/2====
+==13h -> 17h==
+Improving paper
+==20h -> 22h==
+Finishing paper
+==23h -> 24h==
+finishing touch survey paper
+
+====3/2====
+==8h -> 12h==
+evaluating the Senseless frameworks, made a page for it on the wiki
+==13h -> 17h==
+reading papers
+==20h -> 21h==
+Going home to print all the relevant papers
+====4/2====
+==8h -> 13h==
+linguapolis sessie + onderweg + discussie keuze framework
+==16h -> 17h==
+Installing MySQL + ODBC driver			
+
+====5/2====
+???
+====6/2====
+???
+
+=====Week 2====
+====9/2/09====
+==8u30 tot 12u==
+Verderwerken aan Senseless framework... -> PC formateren (XP SP3) + software
+reden: probleem met access control list in Windows 7
+
+==12u tot 15u30==
+ip adres & poort nummer van de telosb parser zijn hardcoded, zoeken in bronbestanden waar dit aangepast kan worden.
+Serial.java bevat de code hiervoor.
+
+Rollen verdelen in samenspraak met Tim. + eten  Resultaat: Tim gaat Java gedeelte doen.
+
+==15u30 tot 17u==
+Verdiepen in broncode Olivier.
+
+====10/2/09====
+==9u tot 13u==
+Verder werken aan Controller
+==13u tot 18u==
+Onderweg + overleg Bachelorproef Omar + paper lezen
+
+====11/2/09====
+==9u tot 13==
+Bekijken specifieke functie controller om extra sensorwaarden toe te voegen?
+
+Verbinding maken met MySQL in Excel
+
+Nadenken over verder werk framework. We zullen het XML formaat verder uitbreiden maar zoeken verder het werk in het framework te beperken zodat we kunnen werken aan ons algoritme.
+
+MySQL workbench installeren en hiermee wat experimenteren.
+
+==13u tot 17u==
+*XML schema definieren samen met Tim
+*Controller aanpassen aan nieuw XML schema
+*Problemen met MYSQL DB oplossen
+  *Problemen met importeren schema
+  *Problemen met MySQL daemon
+
+====12/2/09====
+==8u30 tot 9u30==
+Problemen met MySQL daemon oplossen: klaar
+DB herstellen
+==9u30 tot 10u45==
+Schema + Stored procedures aanpassen
+==10u45 tot 12u==
+PHPmyAdmin installeren: problemen met PHP installer :(
+Andere GUI
+Officiele GUI:
+Admin Tools & Query browser
+==12u tot ...==
+???
+
+====13/2/09====
+==13u to 18==
+Werken met Tim om telosB parser in orde te krijgen
+
+Probleem met de nieuwe stored procedure
+
+
+=====Week 3=====
+====16/2/09====
+==9u tot 11u30==
+Probleem opgelost (null-values)
+==11u30 tot 13u==
+Thinking about the next steps of the thesis
+==14u tot 16==
+Discussing with Tim about the next steps and demonstrating the working senseless framework.
+==16u tot 17u==
+Reading paper GPS-less
+
+====17/2/09====
+==9u tot 10u==
+Organizing printed papers + Reading Paper: Locationing in Distributed AD-HOC Wireless Sensor Networks.
+==10u -> 17u==
+Reading paper Robust Positioning Algorithms
++Reading many Other papers, the results are discussed on the wiki
+
+====18/2/09====
+==8u tot 12u==
+Traveling + Unit 5 Linguapolis
+==12u tot 14u==
+Searching the IEEE + Sciencedirect + Springerlink databases
+==14u -> 16u30==
+Discussing the focus of our thesis with Maarten Weyn & Jerry Bracke + Traveling
+
+====19/2/09====
+==8u -> 9u ==
+Reviewing basics of statistics + browsing books from the Artesis library 
+==9u30 -> 13u==
+Reading & reviewing papers
+==13u -> 16u==
+Discussing our MAP with Tim: what to do next.
+
+====20/2/09====
+Building a proximity system, problems with the printf service
+
+=====Spring Break=====
+====23/2/09====
+==8h -> 17h==
+Adapt the senseless framework to V3 (DB, stored procedures)
+
+====24/2/09====
+==8h -> 17h==
+telosb code aanpassen + nieuw db schema + nieuwe stored procedures + controller aanpassen
+
+====Rest of the week====
+Writing and debugging telosb code.
+
+=====Week 4=====
+====2/3/09====
+==8u -> 12u30==
+Testen van payloadlength functie in een simpelere applicatie, zowel in 2.0.2 als in 2.1
+==14u -> 17u==
+GUI
+
+====3/3/09====
+==8h -> 12h==
+bestuderen code GUI + verder verdiepen in Controller
+==12h30 -> 17h==
+onderweg nr  school + meeting internationaal project met anderen + Omar introduceren tot TinyOS en Xubuntos ( +- 2u )
+
+====4/3/09====
+==9h -> 17h==
+alle nieuwe functionaliteit in de GUI gecodeerd in een ruwe maar werkende vorm + nieuwe stored procedures aangemaakt om data op te halen van de DB.
+resultaat: alles werkt in een ruwe vorm voor zover ik het kon testen. Zal alles morgen afwerken, exceptions afhandelen, code testen, GUI leuk voor het oog maken.
+
+====5/3/09====
+??? T
+
+====6/3/09====
+??? F
+
+
+=====Week 5=====
+====9/3/09====
+==12h -> 17h==
+Starting on draf paper + discussing with Tim about the structure of the paper
+
+====10/3/09====
+==8h -> 14h==
+Writing the intro of the paper
+==14h -> 17h==
+On the road + WIP + search for external antenna telosb
+==17h -> 0h30==
+Accenture bowling
+
+====11/3/09====
+==10h -> 24h==
+Writing paper, delivered temporary paper to Kathleen and wrote VGV2
+
+====12&13/3/09====
+Holiday
+
+=====Week 6=====
+====16/3/07====
+==12h -> 17h==
+Reading up on C# and WPF, helping Tim with TelosB code, reviewing everything from the Senseless framework
+
+====17/3/09====
+==8h -> 9h==
+Filling in my log from the Excel files. Everything must be written in English! TODO. It would be a good idea to write a summary after each week what has been delivered. This will be much more easier when reviewing things later on.
+
+==9h -> ..==
+Checking out the SandBox doc system (and Ndoc)
+
+====18-19-20/3====
+Attending the WPNC conference
+
+=====Week 7=====
+====23/3====
+==9h->12h==
+Improving the GUI: 
+   V1.1.1 & V1.1.2
+==12h->17h==
+Testing the GUI and controller with Tim's new parser. Result: dissemination works!
+
+====24/3====
+==8h->9h==
+Reviewing on some C# topics
+==10h->14h==
+Improving the GUi: 1.1.2
+==14h->15h30==
+Making a Gantt chart with Tim.
+==15h30 -> 17h==
+Debugging: problem with the TelosB parser. Gave Tim a correct working Senseless system so he could further work on his parser
+Discussing the use of Senseless for evaluating the algorithms
+====25/3====
+==11h->12h==
+Made 1.2.2 of the Controller
+==12h->13h==
+Made 1.2.3 of the Controller & 1.1.3 of the GUI, mainly exception handling
+==13h->14h30==
+Made 1.1.4 of the GUI, field validation & improving the control tab
+==14h30->17h==
+Building 1.1.5 of the GUI, implementing the TimeOut ...
+
+====26/3====
+==10h->11h==
+Rethinking the status.
+==11h->12h30==
+Discussing possible status methods
+==13h->15h==
+Implementing the new status method
+====27/3====
+??
+
+=====Week 8=====
+====30/3====
+==8h -> 13h==
+Implementing basic positioning algorithms
+
+==13h->17h==
+Working with Tim on the final steps of the framework, the reply from the WSN to an action request
+
+====31/3====
+==8h->10h==
+Rethinking the status to search for a solution with the dissemination problem
+==10h->11h30==
+Discussing the possible solutions with Tim
+==11h30->17h==
+Implementing and debugging
+
+====1/4====
+==8h->9h==
+Checking out Motelab and Octopus. Both apps are related to our work but are still a little bit different in what they want to achieve
+==10h->13h30==
+Correction session intermediair paper + Talking with Jerry about the SCALA interface
+==14h->17h==
+Improving the GUI

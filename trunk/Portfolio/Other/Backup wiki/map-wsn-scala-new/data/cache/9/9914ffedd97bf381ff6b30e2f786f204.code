@@ -1,0 +1,15 @@
+<span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;WSNReq</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;RequestAction<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;NodeID<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/NodeID<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED1<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED1<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED2<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED2<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED3<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED3<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED4<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED4<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED5<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED5<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED6<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED6<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED7<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED7<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED8<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED8<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;polling<span class="re2">&gt;</span></span></span>5<span class="sc3"><span class="re1">&lt;/polling<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/RequestAction<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/WSNReq<span class="re2">&gt;</span></span></span>

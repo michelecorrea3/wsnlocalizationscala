@@ -1,0 +1,355 @@
+====== Logboek Tim ======	 
+	 
+===== 09/02 =====	 
+	 
+vmware opstellen met images van david en nick, parser analyseren en compileren met de juiste packages in netbeans	 
+	 
+===== 10/02 =====	 
+	 
+Onderweg + overleg Bachelorproef Omar + paper lezen 	 
+	 
+===== 11/02 =====	 
+	 
+Nadenken over verder werk framework. We zullen het XML formaat verder uitbreiden maar zoeken verder het werk in het framework te beperken zodat we kunnen werken aan ons algoritme. 	 
+	 
+Probleem met de parser nl. java versie verschillen waardoor de parser niet gestart kan worden	 
+	 
+===== 12/02 =====	 
+	 
+Testing parser with the controller and database of peter --> 	 
+	 
+Failed:	 
+	 
+java.net.BindException: Address already in use	 
+        at java.net.PlainSocketImpl.socketBind(Native Method)	 
+        at java.net.PlainSocketImpl.bind(PlainSocketImpl.java:359)	 
+        at java.net.ServerSocket.bind(ServerSocket.java:319)	 
+        at java.net.ServerSocket.<init>(ServerSocket.java:185)	 
+        at java.net.ServerSocket.<init>(ServerSocket.java:97)	 
+        at parserv4.Requesthandler.createListener(Requesthandler.java:28)	 
+        at parserv4.Requesthandler.run(Requesthandler.java:35)	 
+        at java.lang.Thread.run(Thread.java:595)	 
+Listening on 1801	 
+Exception in thread "Thread-5" java.lang.NullPointerException	 
+        at parserv4.Requesthandler.readConnection(Requesthandler.java:52)	 
+        at parserv4.Requesthandler.run(Requesthandler.java:42)	 
+        at java.lang.Thread.run(Thread.java:595)	 
+	 
+I searched for a solution and saw that the problem could be that the port is assigned to another process. But it wasn’t. Maybe VMWare was blocking the port, opened it in the NAT. Finally checked de processes in ubuntos (ps ux) and concluded that the process was still running and was causing this problem. So, killed it (kill -9 ‘processnumber’) and the errors were gone.	 
+	 
+Next problem, it seems that the parser is stuck and isn’t transmitting any data:	 
+ubuntu@ubuntu:~/parser$ java -jar parserv4.jar -comm serial@/dev/ttyUSB4:telosb	 
+serial@/dev/ttyUSB4:115200: resynchronising	 
+Created socket on port 3801	 
+Listening on 3801	 
+	 
+Problem solved, a secondary node was missing, but old problem “bindexception” has returned, but the parser successfully transmits data to the controller.	 
+	 
+Installed MySQL and controller on desktop pc, to run as server for home.	 
+Noticed that the controller crashes after 30s,if parser is sending data.	 
+	 
+	 
+TODO:	 
+	 
+• Fix bug with listeningsocket	 
+	 
+• Expand xml sheme to the new format	 
+	 
+• Fix instability of controller.	 
+	 
+===== 13/02 =====	 
+	 
+Testing the parser with Peter’s controller: problem of bindexception didn’t occur. So I concluded that the problem  was locally to my computer. The controller also didn’t crash after 30s and was stable.	 
+Expanding the XML scheme of  the parser to make room for new data like RSSI, LQI and coordinates. We tested the new parser with the adjusted controller, but there is a problem with the controller if it receives a message from the parser.	 
+	 
+===== 15/02 =====	 
+	 
+Making website and structure for portfolio	 
+Creating WIP reports  for the portfolio	 
+	 
+	 
+===== 16/02 =====	 
+	 
+Meeting with Peter, phase 1 of the master test is finished, tested the adapted controller. Discussed adding new field to the xml scheme in the future. Discussed the next steps in our master test namely reading papers again	 
+	 
+Reading papers	 
+	 
+===== 17/02 =====	 
+	 
+Meeting with Peter about progress and interesting papers	 
+	 
+Reading papers & making design for parser connection details	 
+	 
+===== 18/02 =====	 
+	 
+Traveling + Linguapolis session	 
+Searching the IEEE + Springerlink +  databases and the library	 
+Discussing the focus of our thesis with Maarten Weyn & Jerry Bracke + Traveling	 
+Continuing with making panel for the parser --> Error “getenv JNI library not found”	 
+	 
+
+===== 19/02 =====	 
+	 
+Meeting with Peter and discussing the following steps of our master test + discussing the algorithms + Reading datasheet of cc2420 radio: there is a voltage regulator so checking the influence of battery level’s on the RSSI is out of the question	 
+	 
+===== 20/02 =====
+
+Testing printf for Tinyos 2.0.2 + continuing with panel for parser
+
+===== 22/02 =====
+
+Finished panel for parser testing in tinyos, ERROR -->
+
+Exception in thread “main” java.lang.NoClassDefFoundError: org/jdesktop/layout/GroupLayout$Group
+
+
+===== 23/02 =====
+
+Meeting with peter about GUI and application for the telosb nodes + administration (WIP)
+Problem solved  by adding some code in build.xml of the project in netbeans:
+
+    <target name="-post-jar">
+        <jar update="true" destfile="${dist.jar}">
+            <zipfileset src="${libs.swing-layout.classpath}"/>
+        </jar>
+    </target>
+(http://wiki.netbeans.org/FaqPackagingMatisseBasedProjects) 
+
+ Netbeans didn’t add the layout to the .jar file which caused the error. When I first entered this error in google they all said that the classpath wasn’t correct, even the FAQ off tinyos (http://www.tinyos.net/faq.html#SEC-15). So I extended the classpath so that it would contain my path of the jar file, but that didn’t do anything. Then I started to look into some existing java app’s in tinyos like AntiTheft. But they didn’t make us of a panel like I did in netbeans. 
+Finally I came across a website where someone had a similar problem en guided me to the correct solution.
+
+Problem with parser for string to int
+Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
+        at parserxmlnew.Serial.<init>(Serial.java:29)
+        at parserxmlnew.connectiondetails.startrunning(connectiondetails.java:135)
+        at parserxmlnew.connectiondetails.jButton1ActionPerformed(connectiondetails.java:120)
+        at parserxmlnew.connectiondetails.access$000(connectiondetails.java:20)
+        at parserxmlnew.connectiondetails$1.actionPerformed(connectiondetails.java:50)
+        at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1849)
+        at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2169)
+        at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:420)
+        at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:258)
+        at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:236)
+        at java.awt.Component.processMouseEvent(Component.java:5501)
+        at javax.swing.JComponent.processMouseEvent(JComponent.java:3135)
+        at java.awt.Component.processEvent(Component.java:5266)
+        at java.awt.Container.processEvent(Container.java:1966)
+        at java.awt.Component.dispatchEventImpl(Component.java:3968)
+        at java.awt.Container.dispatchEventImpl(Container.java:2024)
+        at java.awt.Component.dispatchEvent(Component.java:3803)
+        at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4212)
+        at java.awt.LightweightDispatcher.processMouseEvent(Container.java:3892)
+        at java.awt.LightweightDispatcher.dispatchEvent(Container.java:3822)
+        at java.awt.Container.dispatchEventImpl(Container.java:2010)
+        at java.awt.Window.dispatchEventImpl(Window.java:1778)
+        at java.awt.Component.dispatchEvent(Component.java:3803)
+        at java.awt.EventQueue.dispatchEvent(EventQueue.java:463)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:242)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+[1]   Killed                  java -jar panel.jar -comm serial@/dev/ttyUSB0:telosb
+
+Problem solved
+
+Linguapolis homework
+
+===== 24/02 =====
+
+Meeting with peter about progress
+
+Adapting parser to handle different messages between the controller and WSN (with dummy data)
+
+Looking into user&development manual of the GUI + looking into MIG, MIG is a tool that automatically generates message objects from packet description.
+
+===== 25/02 =====
+
+Meeting with peter: testing and correcting controller/parser to the new xml scheme and messages with dummy data.
+
+Generating java files for the different messages with mig
+
+Further expansion of the parser to handle live data in the new messages
+
+===== 26/02 =====
+
+Meeting with Peter: testing the parser with the build application for the telosb (not so successful). Adapting the parser to the new generated message formats of the telosb application. Everything seems to work.
+
+Investigating possibilities of netbeans with Tinyos (requires cygwin)
+
+===== 27/02 =====
+
+Installing cygwin for windows ( http://www.tinyos.net/tinyos-2.x/doc/html/install-tinyos.html). Failed to a stupid error: “Couldn’t locate cygwin1.dll”
+Going over with some nesc code with peter and testing some app’s
+Checking parser with a simple apps on the telosb to check if it is capable of handling the new message formats. Noticed error in different version of parsers: 
+
+Exception in thread "Thread-2" java.lang.NullPointerException
+        at parserxmlnew.Serial.run(Serial.java:36)
+        at java.lang.Thread.run(Thread.java:595)
+
+All the parsers transmit correct data to the controller, except the parser with new messages. Investigating…
+
+===== 01/03 =====
+
+Further investigation of the exception + found solution the MoteIf(gateway) wasn’t successfully created.
+
+===== 02/03 =====
+
+Refreshing tutorials about TinyOS: Modules, the TinyOS Exxcecution Model...
+
+===== 03/03 =====
+
+Planning trip for international project
+
+Helping bachelor student with setting environment and programming Telosb
+
+Setting up Tinyos 2.1 with vmware tools for experiment with threads
+
+===== 04/03 =====
+
+Looking into TOSThreads (tutorial and example applications) --> Cancelled should work with tasks
+
+Examining application for Telosb + expanding: different tasks, add demosensor, correcting errors…
+
+Stuck at a weird error because there is nothing there that is wrong…
+
+                 In component `BasicNetworkingC':
+                 BasicNetworkingC.nc: In function `BroadcastTask.runTask':
+                 BasicNetworkingC.nc:853: syntax error before `{'
+                 BasicNetworkingC.nc: At top level:
+                 BasicNetworkingC.nc:866: syntax error before `}'
+
+
+===== 05/03 =====
+
+Attending demo of SCALE + working a bit on the telosb app
+
+Solved problem of the above error
+
+Testing and debugging of my created application for telosb: got some bugs out but the broadcastSend.send was still doing difficult
+
+===== 06/03 =====
+
+Meeting with Peter: going over some bugs in NesC, fixed some and it seems to work. 
+Tested the application with the parser and got this error:
+                 receive error for parserxmlnew.CollMsg (AM type 147): invalid length message received (too short)
+
+So the parser receives a messages serial, but the size is not valid.
+
+===== 08/03 =====
+
+Further testing of parser & application for telosb, found that the error was with the application for the telosB (CollectReceive.receive). 
+
+Fixed the error and found that the sensormessage were successfully received by the parser, but the locationmessages didn’t arrive (new problem)
+
+===== 09/03 =====
+
+Meeting with peter about the paper
+
+Writing paper
+
+===== 10/03 =====
+
+Writing paper
+Meeting with Jeroen Doggen about our progress
+
+===== 11/03 =====
+
+Writing paper
+
+
+===== 14/03 =====
+
+reading paper
+
+===== 15/03 =====
+
+Fixing telosb app with different messages: still not able for the parser to receive 2 different messages. Fault could be with parser of telosb app
+
+===== 16/03 =====
+
+Meeting with peter, found problem with serial receive -> problem fixed
+
+Expanding telosB app and parser to handle the dissemination (almost finished)
+
+===== 17/03 =====
+
+WIP meeting with Jeroen + giving demo
+Meeting with Olivier, Roel & Peter about trip to hannover + planning route
+
+===== 18/03 =====
+
+Traveling to Hannover + going to social event
+
+===== 19/03 =====
+
+WPNC conference
+
+===== 20/03 =====
+
+Traveling home
+
+===== 21/03 =====
+
+Open campus day (giving presentations)
+
+Updating parser to handle all the dissemination request
+
+===== 22/03 =====
+
+Adding code for checking the amount of nodes active in the network
+Writing 2 wips and report on international project
+
+===== 23/03 =====
+
+Meeting with peter and testing parser with the new GUI: exception in the parser:
+        Exception in thread "Thread-6" java.lang.NumberFormatException: For input string: ">"
+        at java.lang.NumberFormatException.forInputString(NumberFormatException.java:48)
+        at java.lang.Integer.parseInt(Integer.java:447)
+        at java.lang.Integer.parseInt(Integer.java:497)
+        at parserxmlnew.dexml.decode(dexml.java:223)
+        at parserxmlnew.Requesthandler.handle(Requesthandler.java:89)
+        at parserxmlnew.Requesthandler.run(Requesthandler.java:51)
+        at java.lang.Thread.run(Thread.java
+Discussing future map
+
+===== 24/03 =====
+
+Research how to add power and frequency control to the telosb app, Mailing  list: 
+http://mail.millennium.berkeley.edu/pipermail/tinyos-help/2008-April/032494.html
+
+Meeting with Peter: Making a draft of our workplan + testing and setting up controller+GUI at desktop pc.
+
+Debugging parser: Dissemination works like a charm
+
+===== 25/03 =====
+
+Installing doxygen + reading HOWTO + starting documenting + updating changelog on wiki
+Expanding telosb app with power and frequency control
+
+CC2420Packet.getPower remains 0 and not the default level 31:
+https://www.millennium.berkeley.edu/pipermail/tinyos-help/2007-May/025148.html
+
+===== 26/03 =====
+
+Something wrong with frequency error, hasn’t been implemented yet
+
+Meeting with peter and testing the GUI. Framework needs to be added with something that can detect failure of a node and reply on a request. Discovered that the reply message wasn’t send properly to the controller (wrong socket).
+
+Solution is to distinguish the status message where it is coming from the type parameter of the statmsg struct. Strangest thing ever: if you send request to node 2 then type will be 4, then node 1 will have type 3, if you make request to node 1 then type will be 4 and the type of node 2 will be 3…
+
+===== 27/03 =====
+
+Trying different ways to make the boot.booted execute correctly
+
+Trying to share data between different threads
+
+===== 29/03 =====
+
+Fixed the sharing between threads
+
+===== 30/03 =====
+
+Meeting with peter and fixing the status message.
+Trying to make  the socket work of the parser to be able to send to the controller
+Debugging the dissemination process together with the parser

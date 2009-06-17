@@ -1,0 +1,121 @@
+====== Messages WSN ======
+
+===== Senseless v4 =====
+Inserted calibration & MAC & hop count
+
+==== StatMsg ====
+
+<code>
+typedef nx_struct StatMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_uint8_t MAC; // MAC address
+  nx_bool active; // Participating in the localization or not?
+  nx_bool AN; // AN=TRUE / BN=FALSE
+  nx_uint16_t posx; // x coordinate of the node
+  nx_uint16_t posy; // y coordinate of the node
+  nx_uint16_t sampleRate; // Period of sensor message
+  nx_uint16_t locRate; // Period of location message
+  nx_uint8_t leds; // Leds (0 to 7)
+  nx_uint8_t power; // Power (0 to 31)
+  nx_uint8_t frequency; // Frequency (11 to 26)
+  nx_uint8_t conn; // Containts the number of motes the BN is connected to... EXP 
+} StatMsg_t;
+</code>
+
+==== LocMsg ====
+
+<code>
+typedef nx_struct LocMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_am_addr_t ANmoteid; // moteID of the reference node
+  nx_uint8_t ANs; // grade of anchor of the source
+  nx_uint8_t ANr; // grade of anchor of the receiver
+  nx_uint8_t hopCount; // hop count
+  nx_int8_t RSSI; // Received Signal Strength Indication
+} LocMsg_t;
+</code>
+
+==== BroadcastMsg ====
+
+<code>
+typedef nx_struct broadcast {
+  nx_am_addr_t id; /* Mote id of sending mote. */
+  nx_uint8_t hopCount // hop count
+  nx_uint8_t VAR // grade of anchor
+} broadcast_t;
+</code>
+
+===== Senseless v3 =====
+
+==== Possible future fields ====
+  * Hopcount
+  * Counter for the dissemination from the GUI
+  * MAC address
+  * ParentID
+  * LQI
+
+==== CollMsg ====
+
+<code>
+typedef nx_struct CollMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_uint8_t type; //type of message: eg. 1 for sens data, 2 for localization data, 3 for status
+  nx_uint16_t battery; //demosensor/battery level
+  nx_uint16_t lightreading; // Light meas.
+  nx_uint16_t tempreading;  // Temp. meas.
+  nx_uint16_t humidityreading; // Humidity meas.
+  nx_bool button;	// Button pressed (1=YES / 0=NO
+} CollMsg_t;
+</code>
+
+==== StatMsg ====
+
+<code>
+typedef nx_struct StatMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_uint8_t type; // Request reply or Reboot reply
+  nx_bool active; // Participating in the localization or not?
+  nx_bool AN; // AN=TRUE / BN=FALSE
+  nx_uint16_t posx; // x coordinate of the node
+  nx_uint16_t posy; // y coordinate of the node
+  nx_uint16_t sampleRate; // Period of sensor message
+  nx_uint16_t locRate; // Period of location message
+  nx_uint8_t leds; // Leds (0 to 7)
+  nx_uint8_t power; // Power (0 to 31)
+  nx_uint8_t frequency; // Frequency (11 to 26)
+  nx_uint8_t conn; // Containts the number of motes the BN is connected to... EXP 
+} StatMsg_t;
+</code>
+
+==== LocMsg ====
+
+<code>
+typedef nx_struct LocMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_am_addr_t ANmoteid; // moteID of anchor node
+  nx_uint8_t type; //empty field
+  nx_uint16_t posx; // x coordinate of the blind mote
+  nx_uint16_t posy; // y coordinate of the blind mote
+  nx_int8_t RSSI; // Received Signal Strength Indication
+} LocMsg_t;
+</code>
+
+==== DissMsg ====
+
+<code>
+typedef nx_struct DissMsg {
+  nx_am_addr_t targetid; // moteID of targetmote
+  nx_uint8_t request; // see above
+  nx_uint16_t parameter; // parameter for request
+} DissMsg_t;
+</code>
+
+==== BroadcastMsg ====
+
+<code>
+typedef nx_struct broadcast {
+  nx_am_addr_t id; /* Mote id of sending mote. */
+  nx_uint16_t posx; /*x coordinate of the anchor mote*/
+  nx_uint16_t posy; /*x coordinate of the anchor mote*/
+} broadcast_t;
+</code>

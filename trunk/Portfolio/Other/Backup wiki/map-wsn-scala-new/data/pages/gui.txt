@@ -1,0 +1,20 @@
+====== GUI======
+
+===== General =====
+
+The GUI will function as a administration tool for the WSN. The goal here is to allow for easier experiments by controlling certain parameters real-time via the dissemination protocol. The GUI also allows us to quickly view RSSI data, and simply graph some of the data, this is however more of a showcase scenario, rather than actually having much use in our thesis. The actual analysis will be done via Excel.
+
+===== Dissemination =====
+
+==== Power ====
+use a range of 31 to 0:
+     Power level   Transmitted power level
+     31                0dbm (1 mW)
+     27               -1dbm
+     23               -3dbm (0.5 mW)
+     19               -5dbm
+     15               -7dbm
+     11               -10dbm
+     7                -15dbm
+     3                -25dbm
+     0                Radio off

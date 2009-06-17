@@ -1,0 +1,12 @@
+<span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;Requests</span> <span class="re0">xmlns:xsi</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/Requests.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>addSensorToDB<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- De unieke ID van de node waar we info over willen --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- Type van de node --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>Woonkamer<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- ID van de plattegrond --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>TV<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- Node die aan de TV is gekoppeld --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- In den hoek --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- in den hoek --&gt;</span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/Requests<span class="re2">&gt;</span></span></span>

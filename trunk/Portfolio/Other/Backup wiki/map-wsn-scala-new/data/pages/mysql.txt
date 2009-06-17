@@ -1,0 +1,27 @@
+====Senseless V3====
+===Schema===
+De tabel sensormeasurements is terug aangepast naar zijn originele staat. Er zijn 3 nieuwe tabellen bijgekomen: 
+  * Localization: Houdt alle informatie betreffende localizatie bij
+  * Status: Hou alle status informatie bij, zeker relevant voor onze GUI
+  * Request: Logt alle requests die naar het WSN worden gestuurd: NOT Implemented yet!
+{{:senselessv3.png?800px}}
+
+===Stored procedures===
+De volgende stored procedures zijn aangemaakt:
+  * AddLocalizationData
+  * AddStatus
+  * TODO: add other stored procedures...
+
+====Senseless V2===
+===Schema===
+Voorlopig is enkel de tabel sensormeasurements aangepast.
+
+{{:screenshot002.png?400px}}
+
+===Stored procedures===
+We moeten enkel de stored procedures aanpassen waar data uit de tabel sensormeasurements wordt gehaald. Volgende procedures zijn aangepast:
+
+  *AddSensorMeasurements
+
+Dit is alles denk ik, we hebben geluk door dat Pieter overal de velden individueel aanspreekt. Meeste procedures hebben trouwens met de user te maken en niet met de sensordata zelf.
+

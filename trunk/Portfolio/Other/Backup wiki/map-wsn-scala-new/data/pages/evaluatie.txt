@@ -1,0 +1,40 @@
+====== Research & evaluation ======
+
+===== Location error distribution =====
+x & y axis are distance and the Z axis is the location error / beacon distance (used with CL)
+
+===== Mean localization error versus transmission range =====
+x axis is the transission range / beacon distance and the y axis is localization error / beacon distance
+
+===== Orientation =====
+x axis is the distance and the y axist is de RSSI, then you different graphs with each orientation.
+
+
+===== Other =====
+
+
+Possible parameters include:
+
+Y-Axis
+
+  * Absolute range error
+  * Relative range error
+
+
+
+X-Axis
+
+  * Time/Number of measurements
+  * Total Density
+  * Anchor Density
+  * Transmission Power
+  * Transmission Frequency
+  * Node Spreading
+
+
+
+Other experiments worth investigating:
+
+  * Antenna radiation pattern
+  * RSSI/Battery
+  * People nearby...

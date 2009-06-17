@@ -1,0 +1,99 @@
+====== WIP verslagen ======	 
+	 
+===== 06/02 =====	 
+	 
+We had a meeting with our promoter, Jeroen Doggen. We went over our master contract and our gannt diagram. We compared our progress with our gannt diagram and we were on schedule. We are investigating the two projects of the theme weeks ICT (in these theme weeks we made an application which consists out off a controller, 2 GUI’s and 2 WSN’s) and we are comparing them so we can use the best parts. 	 
+	 
+We made some agreements:	 
+  * Keeping logbook updated on the wiki website	 
+  * Using wiki website as communication medium	 
+	 
+===== 10/02 =====	 
+	 
+We had a meeting with our main promoter, Jeroen Doggen. He gave us an interesting paper about a technique to use with localization of unknown nodes. We talked about our progress, compared to our last meeting. We finalized the comparison between the two projects of the theme weeks of ICT. We are going to use the project which Peter was the project leader off.	 
+	 
+We had a meeting with the bachelor student Omar Lakhal. We are going to guide this student with his bachelor test. We explained the project we made during the theme weeks of ICT. 	 
+	 
+Furthermore, we specified the assignment of Omar together with Jeroen. Omar is going to start up our project from ICT and is going to attach a development board to the wireless sensor nodes (Sun Spots).	 
+	 
+Finally, we had a talk with our other promoter, Jerry Bracke about our international project.
+
+===== 23/02 =====
+
+We have taken a new coarse four our master test. First, we were reading a lot of papers to investigate existing algorithms to get better RSSI readings and better positioning information. We gained knowledge about the existing algorithms, but it takes a lot of statistics knowledge to really understand these algorithms and takes a lot of time. We stopped our research for now, to create a proximity application. This application will tell you in which room u are currently being present.
+The application will contain:
+
+Suitable application that runs on the telosb motes. For performance reasons, this application will exist out of different messages:
+
+ * Sensormeasurements message, this will be send to the controller to report about the measurements of the sensors, this message exists out of:
+
+
+  * Battery (voltage)
+  * Light
+  * Humidity
+  * Temperature
+  * Button pressed?
+  * Mote ID
+  * Type (integer for the type of message)
+
+ * Status message, this will be send to the controller to report about the status of the network, this can happen when the user makes use of the GUI to put a LED on. This message exists out of:
+
+  * Mote id
+  * Type (of message)
+  * Active (participating in the localization or not?)
+  * AN
+  * Posx ( x coordinate, set by the GUI)
+  * Posy (y coordinate, set by the GUI)
+  * Samplerate (for the sensors)
+  * locRate (rate for transmitting RSSI)
+  * leds (what leds need or are on)
+  * power (transmit level)
+  * frequency
+  * conn (contains the number of motes the BN is connected to)
+
+ * Localization message, this is namely used to transmit the coordinates of the blind nodes and their RSSI, this message exist out of:
+Mote id
+
+  * ANmoteid
+  * Type (type of message)
+  * Posx (calculated x coordinate of mote)
+  * Posy (calculated y coordinate of mote)
+  * RSSI
+
+Further the adaption of the parser is needed to transmit these different messages correctly to the controller and we also added a panel to set the ip of the controller and the listen/send port.
+
+The final step is the creation of a GUI. This GUI will help us a great deal with testing the different algorithms. Like selecting anchor nodes, there frequency, coordinates, samplerates…
+
+===== 10/03 =====
+
+We had an oral meeting about the written WIP of 23/02/2009. We explained all the messages and our framework. We stated that the framework is almost complete: the application of the telosb needs some debugging, the parser needs to be adjusted to handle request of the GUI and the GUI needs to be expanded.
+
+We discussed the use of an external antenna to have a better radiation pattern, which was a good idea, because the onboard antenna of the telosb isn’t omnidirectional.
+
+We discussed the progress of the bachelor student Omar, which wasn’t that much work. 
+
+===== 17/03 =====
+
+We showed Jeroen a live demo of our framework. The framework is not finished completely: the request sending and handling to the WSN from the GUI, still needs some fine tuning. But the collection of the data works perfectly and the GUI can display all the data.
+
+We discussed the future of our framework: testing different algorithms (centralized and distributed). A combination of algorithms is possible to make a system that gives the best accuracy.
+
+===== 1/4=====
+Kathleen: The paper was considered good, however note that any changes to existing pieces should be clearly visible. If we write some part in the meanwhile(before the final version) we can send it to her for correction as well
+
+Jerry:
+  * Explained some development tools by the SCALA team
+  * Made an agreement about the tutorial
+  * Generally got a better view about the SCALA interface
+
+===== 21/4=====
+We discussed our progress until now: the basic interface with SCALA is set up. The application for the telosb motes and GUI are finished. The controller needs to be further update to be able to completely interface with SCALA.
+We discussed our progress and we are almost on schedule.
+We discussed possible research fields (density, external antenna, radiation pattern, different algorithms,  and the location of test area.
+Some agreements:
+
+•	Putting schedule & paper on wiki
+
+•	Checklist for master contract
+
+•	New name for master thesis ?

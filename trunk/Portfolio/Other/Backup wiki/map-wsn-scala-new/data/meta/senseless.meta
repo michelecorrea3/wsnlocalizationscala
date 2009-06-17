@@ -1,0 +1,15 @@
+a:2:{s:7:"current";a:7:{s:4:"date";a:2:{s:7:"created";i:1234194521;s:8:"modified";i:1234782586;}s:7:"creator";s:13:"peterdecauwer";s:11:"last_change";a:7:{s:4:"date";i:1234782586;s:2:"ip";s:13:"81.82.104.210";s:4:"type";s:1:"E";s:2:"id";s:9:"senseless";s:4:"user";s:5:"peter";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:5:"title";s:9:"Overzicht";s:11:"description";a:2:{s:15:"tableofcontents";a:4:{i:0;a:4:{s:3:"hid";s:9:"overzicht";s:5:"title";s:9:"Overzicht";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:1;a:4:{s:3:"hid";s:12:"aanpassingen";s:5:"title";s:12:"Aanpassingen";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:2;a:4:{s:3:"hid";s:13:"project_peter";s:5:"title";s:13:"Project Peter";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:3;a:4:{s:3:"hid";s:11:"project_tim";s:5:"title";s:11:"Project Tim";s:4:"type";s:2:"ul";s:5:"level";i:3;}}s:8:"abstract";s:353:"Overzicht
+
+Waarvoor gebruiken we het framework? (Voornamelijk de controller)
+
+
+	* Data verzamelen in MySQL Database
+	* Lokalisering a.d.h.v. data
+	* Interface met SCALA
+
+Aanpassingen
+
+Wat hebben we niet nodig?
+
+	*  Sun SPOT, we zullen voorlopig enkel met TelosB modules werken
+	*  DB2, dit lijkt ons een beetje zwaar voor onze laptops, MySQL zal voldoen";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}s:11:"contributor";a:1:{s:5:"peter";s:13:"peterdecauwer";}}s:10:"persistent";a:4:{s:4:"date";a:2:{s:7:"created";i:1234194521;s:8:"modified";i:1234782586;}s:7:"creator";s:13:"peterdecauwer";s:11:"last_change";a:7:{s:4:"date";i:1234782586;s:2:"ip";s:13:"81.82.104.210";s:4:"type";s:1:"E";s:2:"id";s:9:"senseless";s:4:"user";s:5:"peter";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:1:{s:5:"peter";s:13:"peterdecauwer";}}}

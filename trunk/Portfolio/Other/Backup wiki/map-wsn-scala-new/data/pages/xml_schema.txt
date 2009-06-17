@@ -1,0 +1,445 @@
+====== XML schemas======
+===== Senseless V4 =====
+
+==== WSN to Controller====
+=== status message (send if node reboots) ===
+
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StatusMessage"
+    targetNamespace="http://tempuri.org/StatusMessage.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/StatusMessage.xsd"
+    xmlns:mstns="http://tempuri.org/StatusMessage.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="StatusMessage"> <!-- Root of the xml-file-->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Status" maxOccurs="unbounded"> <!-- Each sensor has a single entry with all the measurements of that sensor -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" /> <!-- ID of node -->
+              <xs:element name="Time" /> <!-- Timestamp of the measurements -->
+			  <xs:element name="Active" /> <!-- Boolean participating in the localization or not? -->
+			  <xs:element name="AN" /> <!-- AN or BN -->
+			  <xs:element name="X" /> <!-- x coordinate of the anchor mote -->
+			  <xs:element name="Y" /> <!-- y coordinate of the anchor mote -->
+			  <xs:element name="SampleRate" /> 
+			  <xs:element name="LocRate" /> 
+			  <xs:element name="Leds" /> 
+			  <xs:element name="Power" />  <!-- Power level -->
+			  <xs:element name="Frequency" /> 
+			  <xs:element name="Conn" /> <!--containts the number of motes the BN is connected to... EXP -->
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+=== Localization message ===
+
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LocationMessage"
+    targetNamespace="http://tempuri.org/LocationMessage.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/LocationMessage.xsd"
+    xmlns:mstns="http://tempuri.org/LocationMessage.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="LocationMessage"> <!-- Root of the xml-file-->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Location" maxOccurs="unbounded"> <!-- Each sensor has a single entry with all the measurements of that sensor -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Node" /> <!-- ID of node -->
+			  <xs:element name="ANode" /> <!-- ID of the anchor node -->
+                          <xs:element name="Time" /> <!-- Timestamp of the measurements -->
+			  <xs:element name="VARs" /> <!-- grade of anchor for the source 0: BN, 1: True AN, 2: 2AN, 1VAN, 3: 1AN, 2VAN, 4: 3VAN-->
+			  <xs:element name="VARr" /> <!-- grade of anchor for the receiver -->
+			  <xs:element name="RSSI" /> 
+			  <xs:element name="hopCount" />  <!-- hop count to the anchor node -->
+			  <xs:element name="X" /> 
+			  <xs:element name="Y" /> 
+			  <xs:element name="Z" /> 
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+===== Senseless V3 =====
+==== WSN to Controller====
+=== status message (send if node reboots) ===
+
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StatusMessage"
+    targetNamespace="http://tempuri.org/StatusMessage.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/StatusMessage.xsd"
+    xmlns:mstns="http://tempuri.org/StatusMessage.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="StatusMessage"> <!-- Root of the xml-file-->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Status" maxOccurs="unbounded"> <!-- Each sensor has a single entry with all the measurements of that sensor -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" /> <!-- ID of node -->
+              <xs:element name="Time" /> <!-- Timestamp of the measurements -->
+			  <xs:element name="Active" /> <!-- Boolean participating in the localization or not? -->
+			  <xs:element name="AN" /> <!-- AN or BN -->
+			  <xs:element name="X" /> <!-- x coordinate of the anchor mote -->
+			  <xs:element name="Y" /> <!-- y coordinate of the anchor mote -->
+			  <xs:element name="SampleRate" /> 
+			  <xs:element name="LocRate" /> 
+			  <xs:element name="Leds" /> 
+			  <xs:element name="Power" />  <!-- Power level -->
+			  <xs:element name="Frequency" /> 
+			  <xs:element name="Conn" /> <!--containts the number of motes the BN is connected to... EXP -->
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+=== Sensormeasurments message ===
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SensorMeasurements"
+    targetNamespace="http://tempuri.org/SensorMeasurements.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/SensorMeasurements.xsd"
+    xmlns:mstns="http://tempuri.org/SensorMeasurements.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="SensorMeasurements"> <!-- Root of the xml-file-->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sensor" maxOccurs="unbounded"> <!-- Each sensor has a single entry with all the measurements of that sensor -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" /> <!-- ID of node -->
+              <xs:element name="Type" /> <!-- Type of node (e.g. TelosB, SunSpot) (0 & 1) --> 
+              <xs:element name="Time" /> <!-- Timestamp of the measurements -->
+              <xs:element name="Temp" /> <!-- Measurement of temperature -->
+              <xs:element name="Humidity" /> <!-- Measurement of humidity -->
+              <xs:element name="Light" /> <!-- Measurement of light -->
+              <xs:element name="Power" /> <!-- Measurement of power -->
+              <xs:element name="AccX"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of X-axis acceleration (SunSpot) -->
+              <xs:element name="AccY"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Y-axis acceleration (SunSpot) -->
+              <xs:element name="AccZ"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Z-axis acceleration (SunSpot) -->
+              <xs:element name="TiltX"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of X-axis tilt-angle (SunSpot) -->
+              <xs:element name="TiltY"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Y-axis tilt-angle (SunSpot) -->
+              <xs:element name="TiltZ"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Z-axis tilt-angle (SunSpot) -->
+              <xs:element name="LED1"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED2"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED3"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED4"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED5"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED6"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED7"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED8"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="Polling"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="Button1" minOccurs="1" maxOccurs="1" /> <!-- Status of button1 of the node  (1 = pressed, 0 = not pressed)-->
+              <xs:element name="Button2" minOccurs="1" maxOccurs="1" /> <!-- Status of button2 of the node  (1 = pressed, 0 = not pressed) (SunSpot)-->
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+=== Localization message ===
+
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LocationMessage"
+    targetNamespace="http://tempuri.org/LocationMessage.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/LocationMessage.xsd"
+    xmlns:mstns="http://tempuri.org/LocationMessage.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="LocationMessage"> <!-- Root of the xml-file-->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Location" maxOccurs="unbounded"> <!-- Each sensor has a single entry with all the measurements of that sensor -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Node" /> <!-- ID of node -->
+			  <xs:element name="ANode" /> <!-- ID of the anchor node -->
+                          <xs:element name="Time" /> <!-- Timestamp of the measurements -->
+			  <xs:element name="RSSI" /> 
+			  <xs:element name="X" /> 
+			  <xs:element name="Y" /> 
+			  <xs:element name="Z" /> 
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+====GUI to Controller====
+===DB Request==
+==getAllSensors==
+<code xml>
+  <Request>
+    <RequestName>getAllSensors</RequestName>
+  </Request>
+</code>
+=Reply=
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+  <xs:element name="MapSensors">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sensor" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nodeid" />
+              <xs:element name="nodetype" />
+              <xs:element name="name" />
+              <xs:element name="posx" />
+              <xs:element name="posy" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+==Sensor Data (detail)==
+<code xml>
+  <Request>
+    <RequestName>getNodeInfo</RequestName>
+    <arg>nodeid</arg>
+  </Request>
+</code>
+
+=Reply=
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+  <xs:element name="SensorMeasurements"> <!-- Root of the xml-file-->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sensor" maxOccurs="unbounded"> <!-- Each sensor has a single entry with all the measurements of that sensor -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" /> <!-- ID of node -->
+              <xs:element name="Type" /> <!-- Type of node (e.g. TelosB, SunSpot) -->
+              <xs:element name="Time" /> <!-- Timestamp of the measurements -->
+              <xs:element name="Temp" /> <!-- Measurement of temperature -->
+              <xs:element name="Humidity" /> <!-- Measurement of humidity -->
+              <xs:element name="Light" /> <!-- Measurement of light -->
+              <xs:element name="Power" /> <!-- Measurement of power -->
+              <xs:element name="AccX"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of X-axis acceleration (SunSpot) -->
+              <xs:element name="AccY"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Y-axis acceleration (SunSpot) -->
+              <xs:element name="AccZ"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Z-axis acceleration (SunSpot) -->
+              <xs:element name="TiltX"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of X-axis tilt-angle (SunSpot) -->
+              <xs:element name="TiltY"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Y-axis tilt-angle (SunSpot) -->
+              <xs:element name="TiltZ"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Z-axis tilt-angle (SunSpot) -->
+              <xs:element name="LED1"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED2"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED3"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED4"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED5"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED6"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED7"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED8"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="Polling"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="Button1" minOccurs="1" maxOccurs="1" /> <!-- Status of button1 of the node  (1 = pressed, 0 = not pressed)-->
+              <xs:element name="Button2" minOccurs="1" maxOccurs="1" /> <!-- Status of button2 of the node  (1 = pressed, 0 = not pressed) (SunSpot)-->
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+==Sensor Data (geschiedenis)==
+<code xml>
+  <Request>
+    <RequestName>getHistorylast</RequestName>
+    <arg>nodeid</arg>
+    <arg>MeasurementType</arg> <!-- zie schema van de meetwaarden om te zien wat die allemaal kunnen zijn -->
+    <arg>Last X values<arg>
+  </Request> 
+</code>
+
+=Reply=
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+  <xs:element name="History"> <!-- Root of the xml-file -->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sensor" maxOccurs="1"> <!-- Just an extra hint that it are values of just one sensor over a certain timespan -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" /> <!-- ID of node -->
+              <xs:element name="MeasurementType" /> <!-- Type of measurement (e.g. Temperature, Humidity, ...) -->
+              <xs:element name="Measurement" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="MeasurementValue" /><!-- Actual measured value -->
+                    <xs:element name="MeasurementTime" /><!-- Timestamp of the value in question -->
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+
+==GetNode IDs==
+<code xml>
+  <Request>
+    <RequestName>getWSNID</RequestName>
+    <arg>Nodeid</arg>
+  </Request> 
+
+  <Request>
+    <RequestName>getNodeid</RequestName>
+    <arg>WSNID</arg>
+  </Request> 
+</code>
+
+=Reply=
+NodeIDs
+NodeID
+idnode
+
+
+WSNIDs
+WSNID
+sensor
+===WSNActionRequest===
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WSNActionReq"
+    targetNamespace="http://tempuri.org/WSNActionReq.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/WSNActionReq.xsd"
+    xmlns:mstns="http://tempuri.org/WSNActionReq.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="WSNReq">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="RequestAction">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NodeID" minOccurs="1" maxOccurs="1" />
+              <xs:element name="active" minOccurs="0" maxOccurs="1" /><!-- values: 0 / 1 -->
+              <xs:element name="AN" minOccurs="0" maxOccurs="1" /><!-- values: 0 (BN) / 1 (AN) -->
+              <xs:element name="X" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Y" minOccurs="0" maxOccurs="1" />
+              <xs:element name="Samplerate" minOccurs="0" maxOccurs="1" /> <!-- values in ms -->
+              <xs:element name="LocRate" minOccurs="0" maxOccurs="1" /> <!-- values in ms -->
+              <xs:element name="Leds" minOccurs="0" maxOccurs="1" /><!-- values: 0 to 7 -->
+              <xs:element name="Power" minOccurs="0" maxOccurs="1" /><!-- values: 0 to 31 -->
+              <xs:element name="Frequency" minOccurs="0" maxOccurs="1" /><!-- values: 11 to 26 -->
+              <xs:element name="Discovery" minOccurs="0" maxOccurs="1" /><!--1 for discovery, 0 for nothing-->
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+==Reply==
+Voor alle requests behalve Discovery verwachten we het volgende formaat:
+
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WSNActionReq"
+    targetNamespace="http://tempuri.org/WSNActionReq.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/WSNActionReq.xsd"
+    xmlns:mstns="http://tempuri.org/WSNActionReq.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="WSNReply">
+    <xs:complexType>
+      <xs:sequence>
+  <xs:element name="StatusMessage"> <!-- Root of the xml-file-->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Status" maxOccurs="unbounded"> <!-- Each sensor has a single entry with all the measurements of that sensor -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" /> <!-- ID of node -->
+              <xs:element name="Time" /> <!-- Timestamp of the measurements -->
+			  <xs:element name="Active" /> <!-- Boolean participating in the localization or not? -->
+			  <xs:element name="AN" /> <!-- AN or BN -->
+			  <xs:element name="X" /> <!-- x coordinate of the anchor mote -->
+			  <xs:element name="Y" /> <!-- y coordinate of the anchor mote -->
+			  <xs:element name="SampleRate" /> 
+			  <xs:element name="LocRate" /> 
+			  <xs:element name="Leds" /> 
+			  <xs:element name="Power" />  <!-- Power level -->
+			  <xs:element name="Frequency" /> 
+			  <xs:element name="Conn" /> <!--containts the number of motes the BN is connected to... EXP -->
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+Voor de discovery request sturen we het volgende XML formaat terug:
+
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WSNActionReq"
+    targetNamespace="http://tempuri.org/WSNActionReq.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/WSNActionReq.xsd"
+    xmlns:mstns="http://tempuri.org/WSNActionReq.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DiscorveryReply">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Nodeid" maxOccurs="unbounded">
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+====Legacy====
+
+[[xml_schema_old|old XML schemas]]
+
+[[Requests van themaweken]]
+
+[[Replies van themaweken]]

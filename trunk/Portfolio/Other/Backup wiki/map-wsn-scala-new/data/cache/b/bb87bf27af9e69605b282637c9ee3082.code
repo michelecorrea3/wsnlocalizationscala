@@ -1,0 +1,46 @@
+<span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;SensorMeasurements</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/SensorMeasurements.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;ID<span class="re2">&gt;</span></span><span class="re1">&lt;/ID<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Type<span class="re2">&gt;</span></span><span class="re1">&lt;/Type<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Time<span class="re2">&gt;</span></span><span class="re1">&lt;/Time<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Temp<span class="re2">&gt;</span></span><span class="re1">&lt;/Temp<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Humidity<span class="re2">&gt;</span></span><span class="re1">&lt;/Humidity<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Light<span class="re2">&gt;</span></span><span class="re1">&lt;/Light<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Power<span class="re2">&gt;</span></span><span class="re1">&lt;/Power<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccX<span class="re2">&gt;</span></span><span class="re1">&lt;/AccX<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccY<span class="re2">&gt;</span></span><span class="re1">&lt;/AccY<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccZ<span class="re2">&gt;</span></span><span class="re1">&lt;/AccZ<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltX<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltX<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltY<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltY<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltZ<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltZ<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED1<span class="re2">&gt;</span></span><span class="re1">&lt;/LED1<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED2<span class="re2">&gt;</span></span><span class="re1">&lt;/LED2<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED3<span class="re2">&gt;</span></span><span class="re1">&lt;/LED3<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED4<span class="re2">&gt;</span></span><span class="re1">&lt;/LED4<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED5<span class="re2">&gt;</span></span><span class="re1">&lt;/LED5<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED6<span class="re2">&gt;</span></span><span class="re1">&lt;/LED6<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED7<span class="re2">&gt;</span></span><span class="re1">&lt;/LED7<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED8<span class="re2">&gt;</span></span><span class="re1">&lt;/LED8<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Polling<span class="re2">&gt;</span></span><span class="re1">&lt;/Polling<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Button1<span class="re2">&gt;</span></span><span class="re1">&lt;/Button1<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Button2<span class="re2">&gt;</span></span><span class="re1">&lt;/Button2<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;ID<span class="re2">&gt;</span></span><span class="re1">&lt;/ID<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Type<span class="re2">&gt;</span></span><span class="re1">&lt;/Type<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Time<span class="re2">&gt;</span></span><span class="re1">&lt;/Time<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Temp<span class="re2">&gt;</span></span><span class="re1">&lt;/Temp<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Humidity<span class="re2">&gt;</span></span><span class="re1">&lt;/Humidity<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Light<span class="re2">&gt;</span></span><span class="re1">&lt;/Light<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Power<span class="re2">&gt;</span></span><span class="re1">&lt;/Power<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccX<span class="re2">&gt;</span></span><span class="re1">&lt;/AccX<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccY<span class="re2">&gt;</span></span><span class="re1">&lt;/AccY<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccZ<span class="re2">&gt;</span></span><span class="re1">&lt;/AccZ<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltX<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltX<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltY<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltY<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltZ<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltZ<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Button1<span class="re2">&gt;</span></span><span class="re1">&lt;/Button1<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Button2<span class="re2">&gt;</span></span><span class="re1">&lt;/Button2<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/SensorMeasurements<span class="re2">&gt;</span></span></span>

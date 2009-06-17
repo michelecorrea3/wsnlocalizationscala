@@ -1,0 +1,17 @@
+a:2:{s:7:"current";a:7:{s:4:"date";a:2:{s:7:"created";i:1238073171;s:8:"modified";i:1241448667;}s:7:"creator";s:18:"Tim Van Overtveldt";s:11:"last_change";a:7:{s:4:"date";i:1241448667;s:2:"ip";s:11:"10.22.41.70";s:4:"type";s:1:"E";s:2:"id";s:15:"messages_in_wsn";s:4:"user";s:3:"tim";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:1:{s:3:"tim";s:18:"Tim Van Overtveldt";}s:5:"title";s:12:"Messages WSN";s:11:"description";a:2:{s:15:"tableofcontents";a:12:{i:0;a:4:{s:3:"hid";s:12:"messages_wsn";s:5:"title";s:12:"Messages WSN";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:1;a:4:{s:3:"hid";s:12:"senseless_v4";s:5:"title";s:12:"Senseless v4";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:2;a:4:{s:3:"hid";s:7:"statmsg";s:5:"title";s:7:"StatMsg";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:3;a:4:{s:3:"hid";s:6:"locmsg";s:5:"title";s:6:"LocMsg";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:4;a:4:{s:3:"hid";s:12:"broadcastmsg";s:5:"title";s:12:"BroadcastMsg";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:5;a:4:{s:3:"hid";s:12:"senseless_v3";s:5:"title";s:12:"Senseless v3";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:6;a:4:{s:3:"hid";s:22:"possible_future_fields";s:5:"title";s:22:"Possible future fields";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:7;a:4:{s:3:"hid";s:7:"collmsg";s:5:"title";s:7:"CollMsg";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:8;a:4:{s:3:"hid";s:8:"statmsg1";s:5:"title";s:7:"StatMsg";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:9;a:4:{s:3:"hid";s:7:"locmsg1";s:5:"title";s:6:"LocMsg";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:10;a:4:{s:3:"hid";s:7:"dissmsg";s:5:"title";s:7:"DissMsg";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:11;a:4:{s:3:"hid";s:13:"broadcastmsg1";s:5:"title";s:12:"BroadcastMsg";s:4:"type";s:2:"ul";s:5:"level";i:3;}}s:8:"abstract";s:503:"Senseless v4
+
+Inserted calibration & MAC & hop count
+
+StatMsg
+
+
+typedef nx_struct StatMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_uint8_t MAC; // MAC address
+  nx_bool active; // Participating in the localization or not?
+  nx_bool AN; // AN=TRUE / BN=FALSE
+  nx_uint16_t posx; // x coordinate of the node
+  nx_uint16_t posy; // y coordinate of the node
+  nx_uint16_t sampleRate; // Period of sensor message
+  nx_uint16_t locRate; // Period of location message
+  nx_uint8_t leds; // L…";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:4:{s:4:"date";a:2:{s:7:"created";i:1238073171;s:8:"modified";i:1241448667;}s:7:"creator";s:18:"Tim Van Overtveldt";s:11:"last_change";a:7:{s:4:"date";i:1241448667;s:2:"ip";s:11:"10.22.41.70";s:4:"type";s:1:"E";s:2:"id";s:15:"messages_in_wsn";s:4:"user";s:3:"tim";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:1:{s:3:"tim";s:18:"Tim Van Overtveldt";}}}

@@ -1,0 +1,24 @@
+<span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;History&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Root of the xml-file --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Sensor&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Just an extra hint that it are values of just one sensor over a certain timespan --&gt;</span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;ID&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of node --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MeasurementType&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Type of measurement (e.g. Temperature, Humidity, ...) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Measurement&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span>
+                <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+                  <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+                    <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MeasurementValue&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- Actual measured value --&gt;</span>
+                    <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MeasurementTime&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- Timestamp of the value in question --&gt;</span>
+                  <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+                <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span>

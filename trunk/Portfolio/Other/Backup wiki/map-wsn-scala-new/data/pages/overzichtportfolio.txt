@@ -1,0 +1,25 @@
+Hier wordt gediscussieerd over het portfolio. Voor de eenvoud staat hier alles wat in het portfolio moet..
+
+Inhoud
+  *masterproefcontract Eng
+  *voortgangsverslagen Eng
+  *logboek Eng
+  *poster Eng
+  *verslagen werk- of studiebezoeken Eng
+  *handleiding(en) bij het uitgewerkte product Eng
+  *geannoteerde literatuurlijst
+  *geannoteerde lijst met relevante URL's
+  *test- en/of simulatieresultaten Eng
+  *alle code van ontwikkelde software (commentaar) Eng
+  *het eindproduct (bvb: werkende softwareapplicatie)) Eng
+  *eigen relevante toevoegingen Eng
+  *het dossier van de bachelorproeven in het kader van de masterproef Eng
+  *internationaal project Eng
+  *Finale versie paper Eng
+  *Finale versie presentatie Eng
+  *voorstel Vervolg Masterproeven
+
+
+
+niet toegelaten:
+  *Datasheets (een verwijzing naar de bron kan wel)

@@ -1,0 +1,75 @@
+====== Localization in WSN ======
+===== Deadlines =====
+
+  * 18-20/03/2009: Conference Hannover
+  * 21/03/2009: OpenCampusdag van 10 tot 17u
+  * 01/04/2009 (9u-12): Correctiesessie tussentijdse paper (groep 1)
+  * 02/04/2009 (9u-12): Correctiesessie tussentijdse paper (groep 2)
+  * 03/04/2009: Gecorrigeerde tussentijdse paper @ promotor
+  * 13/05/2009: VGV 3 @ promotor
+  * 25/05/2009: Final paper @ taaldocent & promotor
+  * 28/05/2009: Tracking beurs (Antwerpen)
+  * 10/06/2009 (9u-12): Correctiesessie final paper (groep 1)
+  * 11/06/2009 (9u-12): Correctiesessie final paper (groep 2)
+  * 15/06/2009: Map presentatie AMBIT
+  * 16/06/2009: Map presentatie AMMI
+  * 17/06/2009: Map portfolio incl. final paper & final presentatie @ promotor
+  * Proclamatie: Verdeling bundel “Master Thesis: Papers”
+
+=====Senseless framework=====
+
+[[XML schema|XML schema's]]
+
+[[MySQL]]
+
+[[GUI]]
+
+[[Senseless-Changelog|Changelog]]
+
+[[Evaluatie]]
+
+[[Implementatie algoritmes]]
+
+[[Messages in WSN]]
+
+[[Documentation/explanation of Senseless]]
+
+[[Exception]]
+
+{{telosb_app.zip}}  als je alle code wilt, dan kunnen we ook link nr onze svn geven
+
+=====Localization=====
+[[Algorithms|Comparision of algorithms]]
+
+[[Definitions]]
+
+[[Paper]]
+
+
+=====Algemeen=====
+[[Balans|WIP Meetings]]
+
+[[Discussion]]
+
+[[shedule]]
+
+=====Portfolio=====
+[[overzichtportfolio|Overzicht]]
+
+[[Relevante links]]
+
+[[Literatuurlijst]]
+
+[[WIP verslagen]]
+
+{{:international_project.pdf}}
+
+====Logboeken====
+[[Logboek Peter]]
+
+[[Logboek Tim]]
+
+=====Legacy=====
+[[xml_schema_old|Old XML schemas]]
+
+[[Senseless|Senseless-Overview]]

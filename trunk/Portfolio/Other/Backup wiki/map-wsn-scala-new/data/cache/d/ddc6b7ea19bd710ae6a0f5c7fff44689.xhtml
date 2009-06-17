@@ -1,0 +1,409 @@
+
+
+
+<h1><a name="xml_schemas" id="xml_schemas">XML schemas</a></h1>
+<div class="level1">
+
+</div>
+<!-- SECTION "XML schemas" [1-25] -->
+<h2><a name="senseless_v3" id="senseless_v3">Senseless V3</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Senseless V3" [26-50] -->
+<h3><a name="wsn_to_controller" id="wsn_to_controller">WSN to Controller</a></h3>
+<div class="level3">
+
+</div>
+
+<h4><a name="status_message_send_if_node_reboots" id="status_message_send_if_node_reboots">status message (send if node reboots)</a></h4>
+<div class="level4">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;StatusMessage&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/StatusMessage.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/StatusMessage.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/StatusMessage.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;StatusMessage&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Root of the xml-file--&gt;</span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Status&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Each sensor has a single entry with all the measurements of that sensor --&gt;</span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;ID&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of node --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Time&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Timestamp of the measurements --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Active&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Boolean participating in the localization or not? --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AN&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- AN or BN --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;X&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- x coordinate of the anchor mote --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Y&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- y coordinate of the anchor mote --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;SampleRate&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LocRate&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Leds&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Power&quot;</span> <span class="re2">/&gt;</span></span>  <span class="sc-1">&lt;!-- Power level --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Frequency&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Conn&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!--containts the number of motes the BN is connected to... EXP --&gt;</span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+
+<h4><a name="sensormeasurments_message" id="sensormeasurments_message">Sensormeasurments message</a></h4>
+<div class="level4">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;SensorMeasurements&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/SensorMeasurements.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/SensorMeasurements.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/SensorMeasurements.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;SensorMeasurements&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Root of the xml-file--&gt;</span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Sensor&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Each sensor has a single entry with all the measurements of that sensor --&gt;</span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;ID&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of node --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Type&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Type of node (e.g. TelosB, SunSpot) (0 &amp; 1) --&gt;</span> 
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Time&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Timestamp of the measurements --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Temp&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of temperature --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Humidity&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of humidity --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Light&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of light --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Power&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of power --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AccX&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of X-axis acceleration (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AccY&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Y-axis acceleration (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AccZ&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Z-axis acceleration (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;TiltX&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of X-axis tilt-angle (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;TiltY&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Y-axis tilt-angle (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;TiltZ&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Z-axis tilt-angle (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED1&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED2&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED3&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED4&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED5&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED6&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED7&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED8&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Polling&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Button1&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Status of button1 of the node  (1 = pressed, 0 = not pressed)--&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Button2&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Status of button2 of the node  (1 = pressed, 0 = not pressed) (SunSpot)--&gt;</span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+
+<h4><a name="localization_message" id="localization_message">Localization message</a></h4>
+<div class="level4">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;LocationMessage&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/LocationMessage.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/LocationMessage.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/LocationMessage.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LocationMessage&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Root of the xml-file--&gt;</span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Location&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Each sensor has a single entry with all the measurements of that sensor --&gt;</span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Node&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of node --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;ANode&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of the anchor node --&gt;</span>
+                          <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Time&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Timestamp of the measurements --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;RSSI&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;X&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Y&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Z&quot;</span> <span class="re2">/&gt;</span></span> 
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "WSN to Controller" [51-5836] -->
+<h3><a name="gui_to_controller" id="gui_to_controller">GUI to Controller</a></h3>
+<div class="level3">
+
+</div>
+
+<h4><a name="db_request" id="db_request">DB Request</a></h4>
+<div class="level4">
+
+</div>
+
+<h5><a name="getallsensors" id="getallsensors">getAllSensors</a></h5>
+<div class="level5">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getAllSensors<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+
+=Reply=
+
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MapSensors&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Sensor&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;nodeid&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;nodetype&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;name&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;posx&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;posy&quot;</span> <span class="re2">/&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+
+<h5><a name="sensor_data_detail" id="sensor_data_detail">Sensor Data (detail)</a></h5>
+<div class="level5">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getNodeInfo<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+=Reply=
+
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;SensorMeasurements&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Root of the xml-file--&gt;</span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Sensor&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Each sensor has a single entry with all the measurements of that sensor --&gt;</span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;ID&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of node --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Type&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Type of node (e.g. TelosB, SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Time&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Timestamp of the measurements --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Temp&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of temperature --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Humidity&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of humidity --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Light&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of light --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Power&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of power --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AccX&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of X-axis acceleration (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AccY&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Y-axis acceleration (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AccZ&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Z-axis acceleration (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;TiltX&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of X-axis tilt-angle (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;TiltY&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Y-axis tilt-angle (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;TiltZ&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Z-axis tilt-angle (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED1&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED2&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED3&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED4&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED5&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED6&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED7&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED8&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Polling&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Button1&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Status of button1 of the node  (1 = pressed, 0 = not pressed)--&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Button2&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Status of button2 of the node  (1 = pressed, 0 = not pressed) (SunSpot)--&gt;</span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+
+<h5><a name="sensor_data_geschiedenis" id="sensor_data_geschiedenis">Sensor Data (geschiedenis)</a></h5>
+<div class="level5">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getHistorylast<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>MeasurementType<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- zie schema van de meetwaarden om te zien wat die allemaal kunnen zijn --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>Last X values<span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+=Reply=
+
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;History&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Root of the xml-file --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Sensor&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Just an extra hint that it are values of just one sensor over a certain timespan --&gt;</span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;ID&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of node --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MeasurementType&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Type of measurement (e.g. Temperature, Humidity, ...) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Measurement&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span>
+                <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+                  <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+                    <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MeasurementValue&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- Actual measured value --&gt;</span>
+                    <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MeasurementTime&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- Timestamp of the value in question --&gt;</span>
+                  <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+                <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+
+<h5><a name="getnode_ids" id="getnode_ids">GetNode IDs</a></h5>
+<div class="level5">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getWSNID<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>Nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span> 
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getNodeid<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>WSNID<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+=Reply=
+NodeIDs
+NodeID
+idnode
+</p>
+
+<p>
+
+WSNIDs
+WSNID
+sensor
+
+</p>
+
+</div>
+
+<h4><a name="wsnactionrequest" id="wsnactionrequest">WSNActionRequest</a></h4>
+<div class="level4">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;WSNActionReq&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;WSNReq&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;RequestAction&quot;</span><span class="re2">&gt;</span></span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;NodeID&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;active&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- values: 0 / 1 --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AN&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- values: 0 (BN) / 1 (AN) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;X&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Y&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Samplerate&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- values in ms --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LocRate&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- values in ms --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Leds&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- values: 0 to 7 --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Power&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- values: 0 to 31 --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Frequency&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- values: 11 to 26 --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Discovery&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!--1 for discovery, 0 for nothing--&gt;</span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+
+<h5><a name="reply" id="reply">Reply</a></h5>
+<div class="level5">
+
+<p>
+Voor alle requests behalve Discovery verwachten we het volgende formaat:
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;WSNActionReq&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;WSNReply&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;StatusMessage&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Root of the xml-file--&gt;</span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Status&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Each sensor has a single entry with all the measurements of that sensor --&gt;</span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;ID&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of node --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Time&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Timestamp of the measurements --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Active&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Boolean participating in the localization or not? --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AN&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- AN or BN --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;X&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- x coordinate of the anchor mote --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Y&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- y coordinate of the anchor mote --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;SampleRate&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LocRate&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Leds&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Power&quot;</span> <span class="re2">/&gt;</span></span>  <span class="sc-1">&lt;!-- Power level --&gt;</span>
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Frequency&quot;</span> <span class="re2">/&gt;</span></span> 
+			  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Conn&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!--containts the number of motes the BN is connected to... EXP --&gt;</span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+<p>
+Voor de discovery request sturen we het volgende <acronym title="Extensible Markup Language">XML</acronym> formaat terug:
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;WSNActionReq&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;DiscorveryReply&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Nodeid&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "GUI to Controller" [5837-15027] -->
+<h3><a name="legacy" id="legacy">Legacy</a></h3>
+<div class="level3">
+
+<p>
+
+<a href="/wikis/map-wsn-scala-new/doku.php?id=xml_schema_old" class="wikilink1" title="xml_schema_old">old XML schemas</a>
+</p>
+
+<p>
+<a href="/wikis/map-wsn-scala-new/doku.php?id=requests_van_themaweken" class="wikilink1" title="requests_van_themaweken">Requests van themaweken</a>
+</p>
+
+<p>
+<a href="/wikis/map-wsn-scala-new/doku.php?id=replies_van_themaweken" class="wikilink1" title="replies_van_themaweken">Replies van themaweken</a>
+
+</p>
+
+</div>
+<!-- SECTION "Legacy" [15028-] -->

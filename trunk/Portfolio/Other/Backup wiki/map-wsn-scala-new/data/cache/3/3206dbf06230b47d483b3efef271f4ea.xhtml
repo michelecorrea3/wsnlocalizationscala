@@ -1,0 +1,197 @@
+
+
+
+<h3><a name="overzicht" id="overzicht">Overzicht</a></h3>
+<div class="level3">
+
+<p>
+Waarvoor gebruiken we het framework? (Voornamelijk de controller)
+
+</p>
+<ul>
+<li class="level1"><div class="li">Data verzamelen in MySQL Database</div>
+</li>
+<li class="level1"><div class="li">Lokalisering a.d.h.v. data</div>
+</li>
+<li class="level1"><div class="li">Interface met SCALA</div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "Overzicht" [1-176] -->
+<h3><a name="aanpassingen" id="aanpassingen">Aanpassingen</a></h3>
+<div class="level3">
+
+</div>
+
+<h4><a name="wat_hebben_we_niet_nodig" id="wat_hebben_we_niet_nodig">Wat hebben we niet nodig?</a></h4>
+<div class="level4">
+<ul>
+<li class="level1"><div class="li"> Sun SPOT, we zullen voorlopig enkel met TelosB modules werken</div>
+</li>
+<li class="level1"><div class="li"> DB2, dit lijkt ons een beetje zwaar voor onze laptops, MySQL zal voldoen</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li">GUIs, deze zijn in huidige vorm niet direct bruikbaar voor ons project. We zouden deze eventueel kunnen uitbreiden, maar misschien dat SCALA hier een handige <acronym title="Graphical User Interface">GUI</acronym> voor heeft. Voor de data-analyse tijdens onze MAP zouden we rechtstreeks met een ODBC client werken. Later zouden we een <acronym title="Graphical User Interface">GUI</acronym> kunnen gebruiken om veranderingen makkelijker te analyseren. Deze moet dan echter op maat gemaakt zijn voor onze doeleinden.</div>
+</li>
+</ul>
+
+</div>
+
+<h4><a name="wat_wordt_er_behouden" id="wat_wordt_er_behouden">Wat wordt er behouden?</a></h4>
+<div class="level4">
+
+</div>
+
+<h4><a name="wat_moet_er_worden_verbeterd" id="wat_moet_er_worden_verbeterd">Wat moet er worden verbeterd?</a></h4>
+<div class="level4">
+<ul>
+<li class="level1"><div class="li"> TelosB module, deze moet informatie ondersteunen voor de lokatiebepaling, zo moeten zeker de volgende velden worden toegevoegd aan het <acronym title="Extensible Markup Language">XML</acronym> schema</div>
+<ul>
+<li class="level2"><div class="li">RSSI</div>
+</li>
+<li class="level2"><div class="li">LQI</div>
+</li>
+<li class="level2"><div class="li">X-Coordinaat</div>
+</li>
+<li class="level2"><div class="li">Y-Coordinaat</div>
+</li>
+<li class="level2"><div class="li">Z-Coordinaat</div>
+</li>
+<li class="level2"><div class="li">??</div>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+Als we met een gedistribueerd algoritme zouden werken dan moet de RSSI &amp; LQI data niet doorgestuurd worden. Omgekeerd, voor een gecentraliseerd algoritme zouden we de X, Y, Z coördinaat niet moeten verzenden. Omdat de keuze momenteel nog een open vraag is, voegen we best alle parameters toe om veilig te spelen.
+
+</p>
+<ul>
+<li class="level1"><div class="li"> Controller &amp; MySQL moeten eveneens deze veranderingen ondersteunen.</div>
+</li>
+</ul>
+
+</div>
+
+<h4><a name="vgl_tussen_2_projecten" id="vgl_tussen_2_projecten">Vgl tussen 2 projecten</a></h4>
+<div class="level4">
+
+</div>
+<!-- SECTION "Aanpassingen" [177-1504] -->
+<h3><a name="project_peter" id="project_peter">Project Peter</a></h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> Controller kan werken met 1 DB, 1 <acronym title="Graphical User Interface">GUI</acronym>, maar heeft 2 WSNs nodig. Dus er moet een dummy WSN gemaakt worden of de code moet aangepast worden.</div>
+</li>
+<li class="level1"><div class="li"> bestaat uit:</div>
+<ul>
+<li class="level2"><div class="li"> SocketServer</div>
+</li>
+<li class="level2"><div class="li"> SocketClient</div>
+</li>
+<li class="level2"><div class="li"> Processor</div>
+</li>
+<li class="level2"><div class="li"> <acronym title="Extensible Markup Language">XML</acronym> convertor</div>
+</li>
+<li class="level2"><div class="li"> DB connector</div>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+
+Controller lijkt me toch logisch geschreven al is het nadeel natuurlijk wel dat deze volledig hard-coded en statisch is. Eenvoudig dus een aantal parameters toevoegen zit er dus niet in denk ik. Misschien is de controller van Vincent dynamischer?  
+
+</p>
+<ul>
+<li class="level1"><div class="li"> TelosB gedeelte bestaat uit:</div>
+<ul>
+<li class="level2"><div class="li"> nesC code</div>
+</li>
+<li class="level2"><div class="li"> <acronym title="Extensible Markup Language">XML</acronym> parser in JAVA!</div>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> MySQL</div>
+<ul>
+<li class="level2"><div class="li"> DB-schema is gegeven.</div>
+</li>
+<li class="level2"><div class="li"> werkt met stored procedures, deze zullen ook moeten worden aangepast.</div>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "Project Peter" [1505-2222] -->
+<h3><a name="project_tim" id="project_tim">Project Tim</a></h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong>Controller</strong>:</div>
+<ul>
+<li class="level2"><div class="li"> werkt met 2 databases (MySQL &amp; DB2), met 2 <acronym title="Graphical User Interface">GUI</acronym>&#039;s (C# en php website) en met 2 WSN&#039;s (TelosB &amp; Sun spot), in principe kunnen er nog vele andere aangesloten worden door de uniforme interface met de controller.</div>
+</li>
+<li class="level2"><div class="li"> geschreven in java volgens de J2EE standaard, dus het is platform onafhankelijk</div>
+</li>
+<li class="level2"><div class="li"> benodigdheden: J2EE Application zoals Apache Tomcat 6.0</div>
+</li>
+<li class="level2"><div class="li"> het installeren van de applicatie kan makkelijk gebeuren met behulp van het WAR bestand</div>
+</li>
+<li class="level2"><div class="li"> bestaat uit:</div>
+<ul>
+<li class="level3"><div class="li"> datasource (platform onafhankelijk) voor DB2 &amp; MySQL</div>
+</li>
+<li class="level3"><div class="li"> <acronym title="Document Object Model">DOM</acronym> <acronym title="Extensible Markup Language">XML</acronym> parser (Xerces-J library)</div>
+</li>
+<li class="level3"><div class="li"> DAO (Data Access Object) framework</div>
+</li>
+<li class="level3"><div class="li"> Communicatie door webservices: /frontedService of /backendService of /backendDiscoveryService</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <strong>TelosB</strong></div>
+<ul>
+<li class="level2"><div class="li"> NesC</div>
+</li>
+<li class="level2"><div class="li"> <acronym title="Extensible Markup Language">XML</acronym> parser geschreven in java (werkt in 1 richting,namelijk info nr de controller sturen)</div>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <strong>MySQL</strong></div>
+<ul>
+<li class="level2"><div class="li"> DB-schema is gegeven, met voornamelijk 4 tabellen:</div>
+<ul>
+<li class="level3"><div class="li"> Node (info over de node: ID, status, netwerk interface, locatie, voltage, speed, levensduur… )</div>
+</li>
+<li class="level3"><div class="li"> Measurement (al de info die de nodes lezen: ID, eenheid van de meeting, tijd, datum, waarde…  )</div>
+</li>
+<li class="level3"><div class="li"> Network (info i.v.m. het netwerk: ID, naam, aantal nodes, tijd, datum… )</div>
+</li>
+<li class="level3"><div class="li"> NodeService (de services die node ondersteunen: ID en een ID voor de service )</div>
+</li>
+</ul>
+</li>
+<li class="level2"><div class="li"> werkt niet met stored procedures</div>
+</li>
+<li class="level2"><div class="li"> werkt met foreign keys</div>
+</li>
+<li class="level2"><div class="li"> Software: MySQL server 5</div>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "Project Tim" [2223-] -->
