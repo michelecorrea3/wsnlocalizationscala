@@ -17,13 +17,23 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
     {
         #region Fields
 
+        /// <summary>
+        /// Instance of the controller object
+        /// </summary>
         private Controller WsnController;
+
+        /// <summary>
+        /// WCF host
+        /// </summary>
         private ServiceHost host;
 
         #endregion Fields
 
         #region Constructors
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
@@ -86,6 +96,11 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
             return host;
         }
 
+        /// <summary>
+        /// Occurs when the multihop checkbox is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void checkBoxUseMultihop_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxUseMultihop.Checked)
@@ -95,18 +110,33 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
         }
 
         #region filters
+        /// <summary>
+        /// Occurs when the average filter radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonAverageFilter_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonAverageFilter.Checked)
                 WsnController.SelectedFilter = "Average";
         }
 
+        /// <summary>
+        /// Occurs when the median filter radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonMedianFilter_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonAverageFilter.Checked)
                 WsnController.SelectedFilter = "Median";
         }
 
+        /// <summary>
+        /// Occurs when the no-filter radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonNoFilter_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonNoFilter.Checked)
@@ -114,24 +144,44 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
         }
         #endregion
 
+        /// <summary>
+        /// Occurs when the centroid localization radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonCentroidLocalization_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonCentroidLocalization.Checked)
                 WsnController.SelectedAlgorithm = "CentroidLocalization";
         }
 
+        /// <summary>
+        /// Occurs when the trilateration radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonExtendedClusteredTrilateration_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonExtendedClusteredTrilateration.Checked)
                 WsnController.SelectedAlgorithm = "ExtendedTrilateration";
         }
 
+        /// <summary>
+        /// Occurs when the minmax radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonExtendedMinMax_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonExtendedMinMax.Checked)
                 WsnController.SelectedAlgorithm = "ExtendedMinMax";
         }
 
+        /// <summary>
+        /// Occurs when the weighted centroid localization radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonWeigthedCentroidLocalization_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonWeigthedCentroidLocalization.Checked)
@@ -140,24 +190,44 @@ namespace Elab.Rtls.Engines.WsnEngine.EngineForm
 
         #endregion Methods
 
+        /// <summary>
+        /// Occurs when the calibration disabled radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonCalibrationDisabled_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonCalibrationDisabled.Checked)
                 WsnController.SelectedCalibration = "Disabled";
         }
 
+        /// <summary>
+        /// Occurs when the normal calibration radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonCalibrationNormal_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonCalibrationNormal.Checked)
                 WsnController.SelectedCalibration = "Normal";
         }
 
+        /// <summary>
+        /// Occurs when the LS calibration radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonCalibrationLeastSquares_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonCalibrationLeastSquares.Checked)
                 WsnController.SelectedCalibration = "LeastSquares";
         }
 
+        /// <summary>
+        /// Occurs when the LS trilateration radiobutton is checked/unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButtonLeastSquaresTriLateration_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButtonLeastSquaresTriLateration.Checked)
