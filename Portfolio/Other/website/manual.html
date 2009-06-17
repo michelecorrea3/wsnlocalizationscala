@@ -2,17 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>WSN Multihop</title>
+<title>overview</title>
 <link href="css/default.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+<p>This framework  collects and stores data from a Wireless Sensor Network(WSN) in a database. The framework has localization support and uses this data to dertermine the location of an unknown node can be localized. New location algorithms can be easly added. The framework also has a monitoring &amp; control tool by which you can monitor and configure the nodes in the WSN at a remote location. Finally, this framework is interfaced with Scala, a localization middleware project.</p>
+<p>There are three main  components. First, the WSN, a controller with  database and a (graphical) user interface. The WSN is used to sample the environment like temperature, humidity or Received Signal Strength(RSS). This data is then transmitted and needs to be stored in a database, so that the data can be retrieved by a user interface  later on. The controller is the center of the framework and controls all the interfaces. All communication is done in XML with well defined schema&rsquo;s between every component. The controller also calculates the position of an unknow node with RSS with a localization algorithm: Centroid Localization, Weighted Centroid Localization, Min-Max and Trilateration.</p>
+<p>The figure below gives an overview of the project.</p>
 <h3>
-<ul>
-	<li>Telosb application</li>
+  <ul>
+    <li>Telosb application</li>
     <li>Controller</li>
     <li>GUI</li>
-	
-</ul>
-</h3>
+    
+  </ul>
+<img src="images/overview.jpg" width="634" height="515" /></h3>
 </body>
