@@ -81,7 +81,7 @@ public class connectiondetails extends javax.swing.JFrame {
 
         jTextField7.setBackground(new java.awt.Color(240, 240, 240));
         jTextField7.setEditable(false);
-        jTextField7.setText(" Port to listen to:");
+        jTextField7.setText(" Port to send to:");
         jTextField7.setBorder(null);
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
