@@ -550,11 +550,11 @@
                 toolStripStatusLabel.Text = "Connected to controller at IP " + controllerIP.Text + ", port " + controllerPort.Text;
 
                 //Sensorfetch
-                if (radioButtonGetSensors.Checked == true)
-                    GetSensors();
-                else if (radioButtonDiscovery.Checked == true)
-                    timerSensorFetch.Enabled = true;
-                else
+                //if (radioButtonGetSensors.Checked == true)
+                  //  GetSensors();
+                //else if (radioButtonDiscovery.Checked == true)
+                  //  timerSensorFetch.Enabled = true;
+                //else
                     SensorsTimeOut();
             }
             else
