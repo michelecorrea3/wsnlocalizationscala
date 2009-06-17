@@ -10,7 +10,7 @@
     using DatabaseConnection;
 
     /// <summary>
-    /// CHANGE: struct for the boundingbox in min max
+    /// struct for the boundingbox in min max
     /// </summary>
     public struct BoundingBox
     {
@@ -43,22 +43,25 @@
 
     /// <summary>
     /// Min-Max Localization algorithm with simple radio propagation model
-    /// Model parameters:
     /// </summary>
     public class MinMax : RangeBasedPositioning
     {
         #region Methods
-
+        /// <summary>
+        /// Calculates the position
+        /// </summary>
+        /// <param name="BlindNode">The BlindNode to be positioned</param>
+        /// <param name="filterMethod">The filter to use on the RSS values</param>
+        /// <param name="RangingMethod">The ranging method</param>
+        /// <param name="multihop">use multihop or not</param>
+        /// <returns>The position of the blind node</returns>
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multiHop)
         {
-            //Point position = new Point();
-            //double distance;
+
             Point center = new Point();
             List<AnchorNode> Anchors = new List<AnchorNode>();
             List<AnchorNode> AllAnchors = new List<AnchorNode>();
             int count = 0;
-
-            //StreamWriter Log = new StreamWriter("MinMax.csv", false);
 
             foreach (AnchorNode AN in BlindNode.Anchors)
             {
@@ -79,7 +82,6 @@
                 {
                     BlindNode.Anchors[j].fRSS = filterMethod(BlindNode.Anchors[j].RSS);
                     if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, BlindNode.Anchors[i].range, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, BlindNode.Anchors[j].range))
-                        //if (BelongsToAllBoxes(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10) )
                         count++;
                 }
                 if (count >= 3)
@@ -91,15 +93,11 @@
                 if (Anchors.Count >= 3)
                 {
                     center = MinMaxCalc(Anchors, filterMethod);
-                    //logger.Write(currentID + ",");
                 }
                 else
                 {
                     center = null;
                 }
-                //Log.Write("
-                //Log.Write(BlindNode.Anchors.Count.ToString());
-                //Log.Write(Anchors.Count.ToString());
 
             }
             else
@@ -121,7 +119,6 @@
                         for (int j = 0; j < AllAnchors.Count; j++)
                         {
                             if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, AllAnchors[i].range, AllAnchors[j].posx, AllAnchors[j].posy, AllAnchors[j].range))
-                            //if (BelongsToAllBoxes(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
                                 count++;
                         }
                         if (count >= 3)
@@ -130,7 +127,6 @@
                     if (Anchors.Count < 3)
                     {
                         center = null;
-                        //return center;
                     }
                     else
                         center = MinMaxCalc(Anchors, filterMethod);
@@ -140,192 +136,31 @@
                 {
                     center = null;
                 }
-
-                //Log.Write(BlindNode.Anchors.Count.ToString());
-                //Log.Write(BlindNode.VirtualAnchors.Count.ToString());
-                //Log.Write(AllAnchors.Count.ToString());
             }
-
-            //center = MinMaxCalc(Anchors, filterMethod);
 
             return center;
         }
-
-        /*
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, bool multiHop)
-        =======
-        public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.rangingmethod rangingmethod, bool multiHop)
-        >>>>>>> .r66
-        {
-            BoundingBox BnBox, AnBox;
-            Point position = new Point();
-            double distance;
-            Point center;
-
-            //if (multiHop && (BlindNode.Anchors.Count + BlindNode.VirtualAnchors.Count) >= 3)
-            //{
-            //    if (BlindNode.Anchors.Count >= 1)
-            //    {
-            //        //comment for the test
-            //        BlindNode.Anchors[0].fRSS = filterMethod(BlindNode.Anchors[0].RSS);
-            //        distance = rangingmethod(BlindNode.Anchors[0].fRSS);
-
-            //        center = new Point(BlindNode.Anchors[0].posx, BlindNode.Anchors[0].posy);
-
-            //        //TEST: replace distance with constance
-            //        AnBox = new BoundingBox(center, distance);
-            //        BnBox = AnBox;
-            //    }
-
-            //    if (BlindNode.Anchors.Count >= 2)
-            //    {
-            //        for ( int i = 1; i < BlindNode.Anchors.Count; i++ )
-            //        {
-            //            //disabled for testing
-            //            BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-            //            distance = rangingmethod(BlindNode.Anchors[i].fRSS);
-
-            //            center = new Point(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy);
-
-            //            AnBox = new BoundingBox(center, distance);
-
-            //            //TEST
-            //            //AnBox = new BoundingBox(center, 1);
-
-            //            BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
-            //            BnBox.Xmax = Math.Min(BnBox.Xmax, AnBox.Xmax);
-            //            BnBox.Ymin = Math.Max(BnBox.Ymin, AnBox.Ymin);
-            //            BnBox.Ymax = Math.Min(BnBox.Ymax, AnBox.Ymax);
-            //        }
-            //    }
-
-            //    if ( BlindNode.Anchors.Count < 3 )
-            //    {
-            //        if (BlindNode.Anchors.Count == 0)
-            //        {
-            //            BlindNode.Anchors[0].fRSS = filterMethod(BlindNode.VirtualAnchors[0].RSS);
-            //            distance = rangingmethod(BlindNode.VirtualAnchors[0].fRSS);
-
-            //            center = new Point(BlindNode.VirtualAnchors[0].posx, BlindNode.VirtualAnchors[0].posy);
-
-            //            //TEST: replace distance with constance
-            //            AnBox = new BoundingBox(center, distance);
-            //            BnBox = AnBox;
-
-            //            for (int i = 1; i < BlindNode.VirtualAnchors.Count; i++)
-            //            {
-            //                //disabled for testing
-            //                BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.VirtualAnchors[i].RSS);
-            //                distance = rangingmethod(BlindNode.VirtualAnchors[i].fRSS);
-
-            //                center = new Point(BlindNode.VirtualAnchors[i].posx, BlindNode.VirtualAnchors[i].posy);
-
-            //                AnBox = new BoundingBox(center, distance);
-
-            //                //TEST
-            //                //AnBox = new BoundingBox(center, 1);
-
-            //                BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
-            //                BnBox.Xmax = Math.Min(BnBox.Xmax, AnBox.Xmax);
-            //                BnBox.Ymin = Math.Max(BnBox.Ymin, AnBox.Ymin);
-            //                BnBox.Ymax = Math.Min(BnBox.Ymax, AnBox.Ymax);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            for (int i = 0; i < BlindNode.VirtualAnchors.Count; i++)
-            //            {
-            //                //disabled for testing
-            //                BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.VirtualAnchors[i].RSS);
-            //                distance = rangingmethod(BlindNode.VirtualAnchors[i].fRSS);
-
-            //                center = new Point(BlindNode.VirtualAnchors[i].posx, BlindNode.VirtualAnchors[i].posy);
-
-            //                AnBox = new BoundingBox(center, distance);
-
-            //                //TEST
-            //                //AnBox = new BoundingBox(center, 1);
-
-            //                BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
-            //                BnBox.Xmax = Math.Min(BnBox.Xmax, AnBox.Xmax);
-            //                BnBox.Ymin = Math.Max(BnBox.Ymin, AnBox.Ymin);
-            //                BnBox.Ymax = Math.Min(BnBox.Ymax, AnBox.Ymax);
-            //            }
-            //        }
-            //    }
-            //}
-            //else
-            if ( !multiHop & BlindNode.Anchors.Count >= 3)
-            {
-                //comment for the test
-                BlindNode.Anchors[0].fRSS = filterMethod(BlindNode.Anchors[0].RSS);
-                distance = rangingmethod(BlindNode.Anchors[0].fRSS);
-
-                center = new Point(BlindNode.Anchors[0].posx, BlindNode.Anchors[0].posy);
-
-                //TEST: replace distance with constance
-                AnBox = new BoundingBox(center, distance);
-                BnBox = AnBox;
-
-                for (int i = 1; i < BlindNode.Anchors.Count; i++)
-                {
-                    //disabled for testing
-                    BlindNode.Anchors[i].fRSS = filterMethod(BlindNode.Anchors[i].RSS);
-                    distance = rangingmethod(BlindNode.Anchors[i].fRSS);
-
-                    center = new Point(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy);
-
-                    AnBox = new BoundingBox(center, distance);
-
-                    //TEST
-                    //AnBox = new BoundingBox(center, 1);
-
-                    BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
-                    BnBox.Xmax = Math.Min(BnBox.Xmax, AnBox.Xmax);
-                    BnBox.Ymin = Math.Max(BnBox.Ymin, AnBox.Ymin);
-                    BnBox.Ymax = Math.Min(BnBox.Ymax, AnBox.Ymax);
-                }
-            }
-            else
-                throw new ApplicationException("Less than three anchor nodes available");
-
-            position.x = (BnBox.Xmin + BnBox.Xmax) / 2;
-            position.y = (BnBox.Ymin + BnBox.Ymax) / 2;
-
-            return position;
-        }
-        }
-         */
+        /// <summary>
+        /// Calculates the intersection points between two circles
+        /// </summary>
+        /// <param name="Anchors">List of anchor nodes</param>
+        /// <param name="filterMethod">The filter to use on the RSS values</param>
+        /// <returns>The center of the box in common</returns>
         public static Point MinMaxCalc(List<AnchorNode> Anchors, Node.FilterMethod filterMethod)
         {
             BoundingBox BnBox, AnBox;
-            //comment for the test
-            //Anchors[0].fRSS = filterMethod(Anchors[0].RSS);
-            //double distance = rangingMethod(Anchors[0].fRSS);
-            //double distance = Anchors[0].range;
             Point center;
 
             center = new Point(Anchors[0].posx, Anchors[0].posy);
-
-            //TEST: replace distance with constance
-            //AnBox = new BoundingBox(center, 10);
             AnBox = new BoundingBox(center, Anchors[0].range);
             BnBox = AnBox;
 
             for (int i = 1; i < Anchors.Count; i++)
             {
-                //disabled for testing
-                //Anchors[i].fRSS = filterMethod(Anchors[i].RSS);
                 double distance = Anchors[i].range;
-                //TEST
-                //distance = 10;
-
                 center = new Point(Anchors[i].posx, Anchors[i].posy);
-
                 AnBox = new BoundingBox(center, distance);
 
-                //TEST
-                //AnBox = new BoundingBox(center, 1);
                 if (!(BnBox.Xmax < AnBox.Xmin || BnBox.Xmin > AnBox.Xmax || BnBox.Ymax < AnBox.Ymin || BnBox.Ymin > AnBox.Ymax))
                     {
                         BnBox.Xmin = Math.Max(BnBox.Xmin, AnBox.Xmin);
@@ -339,7 +174,16 @@
 
             return center;
         }
-
+        /// <summary>
+        /// Checks if the boxes are out of range
+        /// </summary>
+        /// <param name="x1">x coordinate of the first cicrcle</param>
+        /// <param name="y1">y coordinate of the first cicrcle</param>
+        /// <param name="r1">the radius of the first circle</param>
+        /// <param name="x2">x coordinate of the second cicrcle</param>
+        /// <param name="y2">y coordinate of the second cicrcle</param>
+        /// <param name="r2">the radius of the second circle</param>
+        /// <returns>Returns true if the boxes cut</returns>
         private static bool BelongsToAllBoxes(double x1, double y1, double r1, double x2, double y2, double r2)
         {
             Point a1, a2;

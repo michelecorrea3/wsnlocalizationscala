@@ -8,11 +8,20 @@
     using System.Text;
 
     using DatabaseConnection;
-
+    /// <summary>
+    /// Trilateration algorithm without Least Square, the position is the cutting point of all the circles of the anchor nodes
+    /// </summary>
     public class ClusterTrilateration : RangeBasedPositioning
     {
         #region Methods
-
+        /// <summary>
+        /// Calculates the position
+        /// </summary>
+        /// <param name="BlindNode">The BlindNode to be positioned</param>
+        /// <param name="filterMethod">The filter to use on the RSS values</param>
+        /// <param name="RangingMethod">The ranging method</param>
+        /// <param name="multihop">use multihop or not</param>
+        /// <returns>The position of the blind node</returns>
         public static Point CalculatePosition(Node BlindNode, Node.FilterMethod filterMethod, Node.RangingMethod rangingMethod, bool multihop)
         {
             List<Point> intersectionPoints = new List<Point>();
@@ -23,7 +32,6 @@
 
             Point center = new Point();
             int numberOfCircles = 0;
-            //StreamWriter Log = new StreamWriter("Trilateration.csv", false);
 
             foreach (AnchorNode AN in BlindNode.Anchors)
             {
@@ -36,21 +44,6 @@
                 VAN.range = rangingMethod(VAN.fRSS);
             }
 
-                /*
-                for(int j = 0; j<BlindNode.Anchors.Count-1; j++)
-                {
-                    for (int l = j+1; l<BlindNode.Anchors.Count;j++)
-                    {
-                        anchor.x1 = BlindNode.Anchors[j].posx;
-                        anchor.y1 = BlindNode.Anchors[j].posy;
-                        anchor.r1 = Ranging(BlindNode.Anchors[j].fRSS);
-                        anchor.x1 = BlindNode.Anchors[l].posx;
-                        anchor.x2 = BlindNode.Anchors[l].posy;
-                        anchor.r2 = Ranging(BlindNode.Anchors[l].fRSS);
-                    }
-                    anchors.Add(anchor);
-                }
-                 */
                 if (!multihop)
                 {
                     if (BlindNode.Anchors.Count >= 3)
@@ -93,14 +86,6 @@
                                     intersectionPoints.Add(crossing);
 
                             }
-                            //TEST
-                            //List<Point> crossingPoints = GeometryHelper.Intersect(BlindNode.Anchors[i].posx, BlindNode.Anchors[i].posy, 10, BlindNode.Anchors[j].posx, BlindNode.Anchors[j].posy, 10);
-                            //if(crossingPoints != null)
-                            //{
-                            //    foreach (Point crossing in crossingPoints)
-                            //            intersectionPoints.Add(crossing);
-                            //
-                            //}
                         }
                     }
                     if (intersectionPoints.Count < 3)
@@ -123,14 +108,6 @@
                                         intersectionPoints.Add(crossing);
 
                                 }
-                                //TEST
-                                //List<Point> crossingPoints = GeometryHelper.Intersect(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10);
-                                //if (crossingPoints != null)
-                                //{
-                                //    foreach (Point crossing in crossingPoints)
-                                //        intersectionPoints.Add(crossing);
-                                //
-                                //}
                             }
                         }
                         for (int i = 0; i < AllAnchors.Count; i++)
@@ -138,9 +115,8 @@
                             numberOfCircles = 0;
                             for (int j = 0; j < AllAnchors.Count; j++)
                             {
-                                //TEST
+                                
                                 if (GeometryHelper.BelongTo(AllAnchors[i].posx, AllAnchors[i].posy, AllAnchors[i].range, AllAnchors[j].posx, AllAnchors[j].posy, AllAnchors[j].range))
-                                //if (GeometryHelper.BelongTo(AllAnchors[i].posx, AllAnchors[i].posy, 10, AllAnchors[j].posx, AllAnchors[j].posy, 10))
                                     numberOfCircles++;
                             }
                             CountOfCircles.Add(numberOfCircles);
@@ -161,7 +137,11 @@
                 }
                 return center;
         }
-
+        /// <summary>
+        /// Check the condition of the circles of the anchors
+        /// </summary>
+        /// <param name="anchors">List of the anchors</param>
+        /// <returns>Return if the anchors are to far apart or in each other</returns>
         private static Error Anchorsintersection(List<IntersectedAnchors> anchors)
         {
             Error fault = new Error();
@@ -184,7 +164,11 @@
 
             return fault;
         }
-
+        /// <summary>
+        /// Calculates the centroid of the cluster
+        /// </summary>
+        /// <param name="crossings">The obtained cutting points</param>
+        /// <returns></returns>
         private static Point Cluster(List<Point> crossings, int anchors)
         {
             List<Point> cluster = new List<Point>();

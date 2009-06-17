@@ -54,7 +54,16 @@
     {
         #region Methods
 
-        //public static Dictionary<double, double> AnchorNodeDistance
+        /// <summary>
+        /// Check if two circles cut
+        /// </summary>
+        /// <param name="x1">x coordinate of the first cicrcle</param>
+        /// <param name="y1">y coordinate of the first cicrcle</param>
+        /// <param name="radius1">the radius of the first circle</param>
+        /// <param name="x2">x coordinate of the second cicrcle</param>
+        /// <param name="y2">y coordinate of the second cicrcle</param>
+        /// <param name="radius2">the radius of the second circle</param>
+        /// <returns>True, if the circles cut</returns>
         public static bool BelongTo(double x1, double y1, double radius1, double x2, double y2, double radius2)
         {
             double distance = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
@@ -64,7 +73,16 @@
             else
                 return true;
         }
-
+        /// <summary>
+        /// Checks the condition of two circles
+        /// </summary>
+        /// <param name="x1">x coordinate of the first cicrcle</param>
+        /// <param name="y1">y coordinate of the first cicrcle</param>
+        /// <param name="radius1">the radius of the first circle</param>
+        /// <param name="x2">x coordinate of the second cicrcle</param>
+        /// <param name="y2">y coordinate of the second cicrcle</param>
+        /// <param name="radius2">the radius of the second circle</param>
+        /// <returns>The condition</returns>
         public static string InOrOut(double x1, double y1, double radius1, double x2, double y2, double radius2)
         {
             double distance = Math.Pow((Math.Pow((x1 - x2), 2) + Math.Pow((y1 - y2), 2)), 0.5);
@@ -80,7 +98,16 @@
             else
                 return "Cut";
         }
-
+        /// <summary>
+        /// Calculates the intersection points between two circles
+        /// </summary>
+        /// <param name="x1">x coordinate of the first cicrcle</param>
+        /// <param name="y1">y coordinate of the first cicrcle</param>
+        /// <param name="radius1">the radius of the first circle</param>
+        /// <param name="x2">x coordinate of the second cicrcle</param>
+        /// <param name="y2">y coordinate of the second cicrcle</param>
+        /// <param name="radius2">the radius of the second circle</param>
+        /// <returns>The intersection points</returns>
         public static List<Point> Intersect(double x1, double y1, double radius1, double x2, double y2, double radius2)
         {
             Point position1 = new Point();
@@ -103,13 +130,12 @@
             double xdis = Math.Pow((x1 - x2), 2);
             double ydis = Math.Pow((y1 - y2), 2);
 
-            //            double distance = Math.Pow(     (    Math.Pow(     (x1 - x2),2    ) + Math.Pow(   (y1 - y2),2     )   )     ,0.5);
             double distance = Math.Pow((xdis + ydis), 0.5);
 
             if ((distance > (radius1 + radius2)) || (distance < Math.Abs(radius1 - radius2)))
             {
                 return points = null;
-                //throw new ApplicationException("Distance between circles to big/small to cut");
+
             }
             else
             {
@@ -151,7 +177,6 @@
 
                     double e = 1;
                     double f = -2 * b;
-                    //double g = (b * b) + (Math.Pow(2.00, (position1.x - a)) - r1);
                     double g = (b * b) + (position1.x - a) * (position1.x - a) - r1;
 
                     if (((f * f) - 4 * e * g) == 0)
@@ -175,7 +200,6 @@
                     }
                     else
                         return points = null;
-                        //throw new ApplicationException("No cutting points");
 
                 }
                 else
@@ -219,12 +243,15 @@
                     }
                     else
                         return points = null;
-                        //throw new ApplicationException("No cutting points");
                 }
 
             }
         }
-
+        /// <summary>
+        /// Searches for the two closests points
+        /// </summary>
+        /// <param name="intersectionPoints">List of intersection points</param>
+        /// <returns>The points that are closests to each other</returns>
         public static ClosestPointPair ShortestDistanceBetweenCutPoints(List<Point> intersectionPoints)
         {
             List<ClosestPointPair> Distances = new List<ClosestPointPair>();
@@ -256,7 +283,11 @@
 
             return shortestClosest;
         }
-
+        /// <summary>
+        /// Searches for the two closests points
+        /// </summary>
+        /// <param name="intersectionPoints">List of intersection points</param>
+        /// <returns>The points that are closests to each other</returns>
         public static Point ShortestDistanceBetweenCutPoints(List<Point> intersectionPoints, Point centroid)
         {
             List<ClosestToCentroid> DistancesToCentroid = new List<ClosestToCentroid>();
