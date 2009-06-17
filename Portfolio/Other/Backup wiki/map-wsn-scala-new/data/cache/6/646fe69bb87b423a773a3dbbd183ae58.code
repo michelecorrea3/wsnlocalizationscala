@@ -1,0 +1,15 @@
+<span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;History</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/HistoryOfSensorMeasurement.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;ID<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/ID<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;MeasurementType<span class="re2">&gt;</span></span></span>Temperature<span class="sc3"><span class="re1">&lt;/MeasurementType<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Measurement<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;MeasurementValue<span class="re2">&gt;</span></span></span>40<span class="sc3"><span class="re1">&lt;/MeasurementValue<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;MeasurementTime<span class="re2">&gt;</span></span></span>10:10:10 09/10/2008<span class="sc3"><span class="re1">&lt;/MeasurementTime<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/Measurement<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Measurement<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;MeasurementValue<span class="re2">&gt;</span></span></span>41<span class="sc3"><span class="re1">&lt;/MeasurementValue<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;MeasurementTime<span class="re2">&gt;</span></span></span>10:10:15 09/10/2008<span class="sc3"><span class="re1">&lt;/MeasurementTime<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/Measurement<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/History<span class="re2">&gt;</span></span></span>

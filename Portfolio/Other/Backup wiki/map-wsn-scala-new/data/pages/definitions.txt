@@ -1,0 +1,7 @@
+On this page you can write any formal definition you encounter in the papers. This might be useful for our final paper and to stay on the same frequency so to speak. 
+
+^ Keyword ^ Definition ^ Paper ^
+|fine-grained localization|Approaches that use the distance to a reference point based on signal strenght or timing measurements|GPS-less|
+|course-grained localization|Approaches that use the proximity to a reference point|GPS-less|
+|Range error problem|The ability to cope with range errors|Robust positioning algorithms|
+|Sparse anchor node problem|The ability to cope with very few anchors|Robust positioning algorithms|

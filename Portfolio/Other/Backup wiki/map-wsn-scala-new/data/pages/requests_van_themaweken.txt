@@ -1,0 +1,187 @@
+===Opmerking===
+Dit zijn alle mogelijk combinaties van RequestName en de argumenten. De argumenten zoals ze hier worden getoond moeten dus elk in een <arg></arg> komen.
+\\ Deze structuren worden gebruikt bij [[xmlschema#requests]].
+\\ :!: Opmerking: zie [[requestname#Vraagje]]
+
+Bijvoorbeeld:
+<code xml>
+<Request>
+    <RequestName>addSensorToDB</RequestName>
+    <arg>nodeid</arg>
+    <arg>nodetype</arg>
+    <arg>mapimg</arg>
+    <arg>name</arg>
+    <arg>posx</arg>
+    <arg>posy</arg>
+</Request>
+</code>
+Betekent dus dat we in de Request het volgende hebben staan:
+<code xml>
+<?xml version="1.0" standalone="yes"?>
+<Requests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://tempuri.org/Requests.xsd">
+  <Request>
+    <RequestName>addSensorToDB</RequestName>
+    <arg>1</arg> <!-- De unieke ID van de node waar we info over willen -->
+    <arg>0</arg> <!-- Type van de node -->
+    <arg>Woonkamer</arg> <!-- ID van de plattegrond -->
+    <arg>TV</arg> <!-- Node die aan de TV is gekoppeld -->
+    <arg>0</arg> <!-- In den hoek -->
+    <arg>0</arg> <!-- in den hoek -->
+  </Request>
+</Requests>
+</code>
+
+===Lijst van Request/arg combo's===
+=====Reply (int)=====
+<code xml>
+  <Request>
+    <RequestName>addSensorToDB</RequestName>
+    <arg>nodeid</arg>
+    <arg>nodetype</arg>
+    <arg>mapimg</arg>
+    <arg>name</arg>
+    <arg>posx</arg>
+    <arg>posy</arg>
+  </Request>
+
+  <Request>
+    <RequestName>addMapToDB</RequestName>
+    <arg>filename</arg>
+    <arg>map_name</arg>
+  </Request>
+
+  <Request>
+    <RequestName>checkMap</RequestName>
+    <arg>filename</arg>
+  </Request>
+
+  <Request>
+    <RequestName>checkSensorID</RequestName>
+    <arg>sensorid</arg>
+    <arg>map</arg>
+  </Request>
+
+  <Request>
+    <RequestName>changePassword</RequestName>
+    <arg>username</arg>
+    <arg>oldpassword</arg>
+    <arg>newpassword</arg>
+  </Request>
+
+  <Request>
+    <RequestName>checkUsername</RequestName>
+    <arg>username</arg>
+  </Request>
+
+  <Request>
+    <RequestName>adduser</RequestName>
+    <arg>username</arg>
+    <arg>password</arg>
+    <arg>admin</arg>
+  </Request>
+
+  <Request>
+    <RequestName>checkLogin</RequestName>
+    <arg>username</arg>
+    <arg>password</arg>
+    <arg>admin</arg>
+  </Request>
+
+  <Request>
+    <RequestName>setPostionSensor</RequestName>
+    <arg>nodeid</arg>
+    <arg>posx</arg>
+    <arg>posy</arg>
+  </Request>
+
+  <Request>
+    <RequestName>deleteSensorFromMap</RequesName>
+  </Request>
+</code>
+De bovenstaande functies zullen enkel een integer teruggeven (ofwel een ID ofwel het aantal rijen dat was aangepast/geselecteerd).
+\\ Het antwoord op deze request is in de vorm van het "Reply (int)"-schema.
+
+====Vraagje====
+Is er een probleem moest er steeds een ID worden teruggestuurd? (ID zal niet 0 zijn indien aanwezig, dus omzetten van int naar bool zou 'juiste' resultaten geven)  --- //[[olivier__coude@hotmail.com|Olivier]] 2008/10/14 09:38//
+
+=====Sensors op een map=====
+<code xml>
+  <Request>
+    <RequestName>getSensors</RequestName>
+    <arg>mapimg</arg>
+  </Request>
+
+  <Request>
+    <RequestName>getAllSensors</RequestName>
+  </Request>
+</code>
+Antwoord is in "Sensors op een map"-schema.
+
+=====Reply (SensorTypes)=====
+<code xml>
+  <Request>
+    <RequestName>getSensortypesFromDB</RequestName>
+  </Request>
+</code>
+Antwoord is in het "Reply (SensorTypes)"-schema.
+
+<code xml>
+  <Request>
+    <RequestName>getNodetype</RequestName>
+    <arg>nodeid</arg>
+  </Request> 
+</code>
+Antwoord is volgens "Reply (SensorTypes)"-schema.
+
+=====Sensor Data (detail)=====
+<code xml>
+  <Request>
+    <RequestName>getNodeInfo</RequestName>
+    <arg>nodeid</arg>
+  </Request>
+</code>
+Antwoord is volgens "Sensor Data (detail)"-schema.
+
+=====Sensor Data (geschiedenis)=====
+<code xml>
+  <Request>
+    <RequestName>getHistorytime</RequestName>
+    <arg>nodeid</arg>
+    <arg>MeasurementType</arg> <!-- zie schema van de meetwaarden om te zien wat die allemaal kunnen zijn -->
+    <arg>Timestamp (start)</arg>
+    <arg>Timestamp (end)</arg> <!-- Optioneel, weglaten = tot nu -->
+  </Request> 
+
+  <Request>
+    <RequestName>getHistorylast</RequestName>
+    <arg>nodeid</arg>
+    <arg>MeasurementType</arg> <!-- zie schema van de meetwaarden om te zien wat die allemaal kunnen zijn -->
+    <arg>Last X values<arg>
+  </Request> 
+</code>
+Antwoord is volgens "Sensor Data (geschiedenis)"-schema
+
+=====Sensor acties=====
+<code xml>
+  <Request>
+    <RequestName>getNodeActions</RequestName>
+    <arg>nodeid</arg>
+  </Request> 
+</code>
+Antwoord is volgens "Sensor Actions"-schema
+
+=====Extra=====
+<code xml>
+  <Request>
+    <RequestName>getWSNID</RequestName>
+    <arg>Nodeid</arg>
+  </Request> 
+
+  <Request>
+    <RequestName>getNodeid</RequestName>
+    <arg>WSNID</arg>
+  </Request> 
+</code>
+
+...
+

@@ -1,0 +1,153 @@
+
+<h5><a name="tables" id="tables">Tables</a></h5>
+<div class="level5">
+
+<p>
+
+Note each algorithm that is relevant to our thesis in the following table. Try to fill in each column. Papers that describe an interesting feature/idea or aspect of RSSI, but are of a different kind of algorithm can be described in the 2nd table. In the third table you can fill in paper you have read but were not relevant to our thesis, for example because the used a different kind of ranging. Note that when different ranging techniques are used, the phase 2 algorithm can still be the same, so fill these in the 2nd table. In the fourth table you can note interesting reference that we have not downloaded yet.
+</p>
+
+</div>
+
+<h5><a name="columns" id="columns">Columns</a></h5>
+<div class="level5">
+
+<p>
+For completeness: A phase 1 algorithm/technique maps RSSI-values to distance and thus estimates the range. A phase 2 algorithm uses the information from phase 1 to determine the location, a classic example of this is lateration. When an algorithm describes both phase 1 &amp; 2, simply write 1+2 in the phase column.
+</p>
+
+<p>
+THIS TABLE IS STILL A WIP, SO KEEP THE PAPERS AT ARMS LENGTH. 
+</p>
+
+<p>
+D/C stands for Distributed/Centralized. In the column, CPU, describe the computational complexity as high, low, med… Write the status of the software in the implementation column, whether or not it is publicly available and for which platform it is written. 
+</p>
+
+<p>
+S/0 marks whether this data is gathered from the authors of the algorithm or from a survey. Surveys tend to be less complete but provide interesting results. Original papers tend to overvalue their own algorithm
+</p>
+
+</div>
+
+<h3><a name="read_papers" id="read_papers">Read papers</a></h3>
+<div class="level3">
+
+</div>
+
+<h4><a name="overview" id="overview">Overview</a></h4>
+<div class="level4">
+<table class="inline">
+	<tr class="row0">
+		<th class="col0"> Name Algorithm </th><th class="col1"> Name Paper </th><th class="col2"> Authors </th><th class="col3"> Year </th><th class="col4"> Phase </th><th class="col5"> Accuracy </th><th class="col6"> D/C </th><th class="col7"> Prop. Model </th><th class="col8"> Anchor prop </th><th class="col9"> Recursive </th><th class="col10"> Implementation </th><th class="col11"> S/O </th><th class="col12"> Notes </th><th class="col13"> SVN </th>
+	</tr>
+	<tr class="row1">
+		<td class="col0"> dwMDS </td><td class="col1"> Demonstrating Distributed Signal Strenght Location Estimation </td><td class="col2"> Neal Patware </td><td class="col3"> 2006 </td><td class="col4"> 1+2 </td><td class="col5"> <strong>+-60cm</strong> </td><td class="col6"> D </td><td class="col7"> ? </td><td class="col8"> Y? </td><td class="col9"> Y </td><td class="col10"> Public, TinyOS, Mica2 </td><td class="col11"> O </td><td class="col12"> Most interesting algorithm read </td><td class="col13"> Y </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">Global Topology Discovery</td><td class="col1">Locationing in distributed ad-hoc WSN</td><td class="col2">C. Savarese</td><td class="col3">?</td><td class="col4">2</td><td class="col5">Too low</td><td class="col6">D</td><td class="col7">?</td><td class="col8">Y</td><td class="col9">Y</td><td class="col10">?</td><td class="col11">O</td><td class="col12"> </td><td class="col13">Y</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">TERRAIN+Iteration</td><td class="col1">Locationing in distributed ad-hoc WSN</td><td class="col2">C. Savarese</td><td class="col3">?</td><td class="col4">2+3</td><td class="col5">5%→10%</td><td class="col6">D</td><td class="col7">?</td><td class="col8">Y</td><td class="col9">Y</td><td class="col10">?</td><td class="col11">O</td><td class="col12"> </td><td class="col13">Y</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">ML/Min-MAX/lateration/ROCRSSI</td><td class="col1">Exp Comp of RSSI localization</td><td class="col2">G.Zanca</td><td class="col3">2008</td><td class="col4">2</td><td class="col5">varies</td><td class="col6">D/C</td><td class="col7">Given in paper</td><td class="col8">?</td><td class="col9">N</td><td class="col10">?</td><td class="col11">S</td><td class="col12">ML clearly yield the best results, but is computationally intensive, Min-Max reasonable reasults and very simple. <strong>Advised to read the papers of ML and MIN-MAX</strong></td><td class="col13">Y</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">Convex Optimization/MDS-MAP </td><td class="col1"> Positioning in Ad Hoc Sensor Networks </td><td class="col2"> D.Niculescu </td><td class="col3"> 2004 </td><td class="col4"> 1+2 </td><td class="col5"> C </td><td class="col6">?</td><td class="col7">?</td><td class="col8">?</td><td class="col9">?</td><td class="col10">?</td><td class="col11">S</td><td class="col12">Complex, more info required, check references</td><td class="col13">Y</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">DV-hop/AhLOS/APS/DV-distance</td><td class="col1"> Positioning in Ad Hoc Sensor Networks </td><td class="col2"> D.Niculescu </td><td class="col3"> 2004 </td><td class="col4"> 1 </td><td class="col5"> D</td><td class="col6">?</td><td class="col7">Y</td><td class="col8">Y</td><td class="col9">?</td><td class="col10">S</td><td class="col11">/</td><td class="col12">Simpler, check references</td><td class="col13">Y</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">WLC</td><td class="col1">Low complexity localization</td><td class="col2">D.Timmerman</td><td class="col3">?</td><td class="col4">1+2</td><td class="col5">15%</td><td class="col6">D</td><td class="col7">Y</td><td class="col8">N</td><td class="col9">N</td><td class="col10">?</td><td class="col11">O</td><td class="col12">/</td><td class="col13">Y</td>
+	</tr>
+</table>
+
+</div>
+
+<h4><a name="interesting" id="interesting">Interesting</a></h4>
+<div class="level4">
+<table class="inline">
+	<tr class="row0">
+		<th class="col0"> Name Algorithm </th><th class="col1"> Name Paper </th><th class="col2"> Authors </th><th class="col3"> Year </th><th class="col4"> Interesting idea </th><th class="col5"> Notes/Algorithms used </th><th class="col6"> SVN </th>
+	</tr>
+	<tr class="row1">
+		<td class="col0"> GPS-Less </td><td class="col1">GPS-less Low-Cost Outdoor Localizatoin for Very Small Devices </td><td class="col2"> Nirupama Bulusu et.al. </td><td class="col3"> 2000 </td><td class="col4"> The RSSI packet should go from AN to MN for a good scalability </td><td class="col5"> Range-free algorithm/Connectivity </td><td class="col6"> Yes </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">ABC</td><td class="col1">Locationing in distributed ad-hoc WSN</td><td class="col2">C. Savarese</td><td class="col3">?</td><td class="col4">ABC is an algorithm for topoligy discovery</td><td class="col5">Used in TERRAIN</td><td class="col6">Y</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">/</td><td class="col1">Locating the nodes</td><td class="col2">Patwari</td><td class="col3">2005</td><td class="col4" colspan="2">Good overview of the statistics theory, vaguelly explains different kind of algoirthms, lots of references</td><td class="col6">Yes</td>
+	</tr>
+</table>
+
+</div>
+
+<h4><a name="irrelevant_read_papers" id="irrelevant_read_papers">Irrelevant read papers</a></h4>
+<div class="level4">
+<table class="inline">
+	<tr class="row0">
+		<th class="col0"> Name Paper </th><th class="col1"> Authors </th><th class="col2"> Notes </th><th class="col3">SVN </th>
+	</tr>
+	<tr class="row1">
+		<td class="col0">An Experimental Comparision of Localization methods</td><td class="col1">J.S.Gutmann</td><td class="col2">Robotics</td><td class="col3">Yes</td>
+	</tr>
+</table>
+
+</div>
+<!-- SECTION "Read papers" [1495-3484] -->
+<h3><a name="relevant_references" id="relevant_references">Relevant references</a></h3>
+<div class="level3">
+
+<p>
+Note references that might be worth reading:
+
+</p>
+<table class="inline">
+	<tr class="row0">
+		<th class="col0"> Title </th><th class="col1"> Author </th><th class="col2"> Referred by </th><th class="col3"> Notes </th>
+	</tr>
+	<tr class="row1">
+		<td class="col0"> SpotON .. </td><td class="col1"> J. Hightower </td><td class="col2" colspan="2"> Distributed localization in WSN: a quantative comparision </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">Geolocation in a picoradio env.</td><td class="col1">J. Beutel</td><td class="col2">Locationing in distributed ad-hoc WSN</td><td class="col3">Gives information on how to improve positioning error by using high node density</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">(ML)Relative location in WSN</td><td class="col1">N.Patwari</td><td class="col2">Exp comp of RSSI location</td><td class="col3">ML</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">Min-Max(Localization algorithms for SN using RF signal strenght</td><td class="col1">X.Nguyen</td><td class="col2">Exp comp of RSSI location</td><td class="col3">MIN-MAX</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">Sensor localization under limited measurement capabilities</td><td class="col1">C.Wang</td><td class="col2">Exp comp of RSSI location</td><td class="col3">Overview of localization methods</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">A self-localization method for WSN</td><td class="col1">R.L. Moses</td><td class="col2">Locating the nodes</td><td class="col3">MLE</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">Relative location estimation in WSN</td><td class="col1">Patwari</td><td class="col2">Locating the nodes</td><td class="col3">MLE</td>
+	</tr>
+	<tr class="row8">
+		<td class="col0">Signal processing techniques in network-aided positioning</td><td class="col1">G.Sun</td><td class="col2">Locating the nodes</td><td class="col3">Stats and overview</td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">Improved MDS-based positioning</td><td class="col1">Y.Shang</td><td class="col2">Locating the nodes</td><td class="col3">MDS</td>
+	</tr>
+</table>
+
+</div>
+<!-- SECTION "Relevant references" [3485-4468] -->
+<h3><a name="remarks" id="remarks">Remarks</a></h3>
+<div class="level3">
+<ol>
+<li class="level1"><div class="li"> Keeping in my mind the transmission pattern of the antenna</div>
+</li>
+<li class="level1"><div class="li"> At low transmission power, long distances are poorly estimated | At high power transmission, short distances are poorly estimated (<a href="http://www.notere-conf.org/wwsn/WWSN07-Le_Borgne.pdf" class="urlextern" title="http://www.notere-conf.org/wwsn/WWSN07-Le_Borgne.pdf"  rel="nofollow">http://www.notere-conf.org/wwsn/WWSN07-Le_Borgne.pdf</a>)</div>
+</li>
+</ol>
+
+</div>
+<!-- SECTION "Remarks" [4469-] -->

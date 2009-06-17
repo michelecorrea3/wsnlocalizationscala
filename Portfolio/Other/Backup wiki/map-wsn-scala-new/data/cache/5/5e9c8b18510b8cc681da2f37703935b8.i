@@ -1,0 +1,9 @@
+a:20:{i:0;a:3:{i:0;s:14:"document_start";i:1;a:0:{}i:2;i:0;}i:1;a:3:{i:0;s:6:"header";i:1;a:3:{i:0;s:28:"Corrected intermediary paper";i:1;i:4;i:2;i:1;}i:2;i:1;}i:2;a:3:{i:0;s:12:"section_open";i:1;a:1:{i:0;i:4;}i:2;i:1;}i:3;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:35;}i:4;a:3:{i:0;s:13:"internalmedia";i:1;a:7:{i:0;s:24:":intermediairy_paper.pdf";i:1;s:0:"";i:2;N;i:3;N;i:4;N;i:5;s:5:"cache";i:6;s:7:"details";}i:2;i:36;}i:5;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:65;}i:6;a:3:{i:0;s:13:"section_close";i:1;a:0:{}i:2;i:68;}i:7;a:3:{i:0;s:6:"header";i:1;a:3:{i:0;s:8:"Excerpts";i:1;i:4;i:2;i:68;}i:2;i:68;}i:8;a:3:{i:0;s:12:"section_open";i:1;a:1:{i:0;i:4;}i:2;i:68;}i:9;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:82;}i:10;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:118:"Here you can write down any pieces of text from the literature you deem interesting or that we could use in our paper.";}i:2;i:83;}i:11;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:201;}i:12;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:201;}i:13;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:300:"[104]. It was concluded in [104] that in general, if in a given sensor network
+and distributed algorithm, the average number of
+hops to the central processor exceeds the necessary
+number of iterations, then the distributed algorithm
+will be more energy-efficient than a typical centralized
+algorithm.";}i:2;i:203;}i:14;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:503;}i:15;a:3:{i:0;s:6:"p_open";i:1;a:0:{}i:2;i:503;}i:16;a:3:{i:0;s:5:"cdata";i:1;a:1:{i:0;s:245:"Localization schemes for wireless ad hoc networks can be classified as
+either range-based or connectivity-based depending on what information (e.g.,
+distance and angle measurements or proximity contraints) is used to provide
+position estimation.";}i:2;i:505;}i:17;a:3:{i:0;s:7:"p_close";i:1;a:0:{}i:2;i:750;}i:18;a:3:{i:0;s:13:"section_close";i:1;a:0:{}i:2;i:753;}i:19;a:3:{i:0;s:12:"document_end";i:1;a:0:{}i:2;i:753;}}

@@ -1,0 +1,204 @@
+
+
+
+<h1><a name="wip_verslagen" id="wip_verslagen">WIP verslagen</a></h1>
+<div class="level1">
+
+</div>
+<!-- SECTION "WIP verslagen" [1-33] -->
+<h2><a name="section0602" id="section0602">06/02</a></h2>
+<div class="level2">
+
+<p>
+We had a meeting with our promoter, Jeroen Doggen. We went over our master contract and our gannt diagram. We compared our progress with our gannt diagram and we were on schedule. We are investigating the two projects of the theme weeks ICT (in these theme weeks we made an application which consists out off a controller, 2 GUI’s and 2 WSN’s) and we are comparing them so we can use the best parts. 	 We made some agreements:	 
+</p>
+<ul>
+<li class="level1"><div class="li"> Keeping logbook updated on the wiki website	 </div>
+</li>
+<li class="level1"><div class="li"> Using wiki website as communication medium	 </div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "06/02" [34-595] -->
+<h2><a name="section1002" id="section1002">10/02</a></h2>
+<div class="level2">
+
+<p>
+We had a meeting with our main promoter, Jeroen Doggen. He gave us an interesting paper about a technique to use with localization of unknown nodes. We talked about our progress, compared to our last meeting. We finalized the comparison between the two projects of the theme weeks of ICT. We are going to use the project which Peter was the project leader off.	 We had a meeting with the bachelor student Omar Lakhal. We are going to guide this student with his bachelor test. We explained the project we made during the theme weeks of ICT. 	 Furthermore, we specified the assignment of Omar together with Jeroen. Omar is going to start up our project from ICT and is going to attach a development board to the wireless sensor nodes (Sun Spots).	 Finally, we had a talk with our other promoter, Jerry Bracke about our international project.
+</p>
+
+</div>
+<!-- SECTION "10/02" [596-1472] -->
+<h2><a name="section2302" id="section2302">23/02</a></h2>
+<div class="level2">
+
+<p>
+
+We have taken a new coarse four our master test. First, we were reading a lot of papers to investigate existing algorithms to get better RSSI readings and better positioning information. We gained knowledge about the existing algorithms, but it takes a lot of statistics knowledge to really understand these algorithms and takes a lot of time. We stopped our research for now, to create a proximity application. This application will tell you in which room u are currently being present.
+The application will contain:
+</p>
+
+<p>
+Suitable application that runs on the telosb motes. For performance reasons, this application will exist out of different messages:
+</p>
+
+<p>
+ * Sensormeasurements message, this will be send to the controller to report about the measurements of the sensors, this message exists out of:
+</p>
+<ul>
+<li class="level1"><div class="li"> Battery (voltage)</div>
+</li>
+<li class="level1"><div class="li"> Light</div>
+</li>
+<li class="level1"><div class="li"> Humidity</div>
+</li>
+<li class="level1"><div class="li"> Temperature</div>
+</li>
+<li class="level1"><div class="li"> Button pressed?</div>
+</li>
+<li class="level1"><div class="li"> Mote ID</div>
+</li>
+<li class="level1"><div class="li"> Type (integer for the type of message)</div>
+</li>
+</ul>
+
+<p>
+
+ * Status message, this will be send to the controller to report about the status of the network, this can happen when the user makes use of the <acronym title="Graphical User Interface">GUI</acronym> to put a LED on. This message exists out of:
+
+</p>
+<ul>
+<li class="level1"><div class="li"> Mote id</div>
+</li>
+<li class="level1"><div class="li"> Type (of message)</div>
+</li>
+<li class="level1"><div class="li"> Active (participating in the localization or not?)</div>
+</li>
+<li class="level1"><div class="li"> AN</div>
+</li>
+<li class="level1"><div class="li"> Posx ( x coordinate, set by the <acronym title="Graphical User Interface">GUI</acronym>)</div>
+</li>
+<li class="level1"><div class="li"> Posy (y coordinate, set by the <acronym title="Graphical User Interface">GUI</acronym>)</div>
+</li>
+<li class="level1"><div class="li"> Samplerate (for the sensors)</div>
+</li>
+<li class="level1"><div class="li"> locRate (rate for transmitting RSSI)</div>
+</li>
+<li class="level1"><div class="li"> leds (what leds need or are on)</div>
+</li>
+<li class="level1"><div class="li"> power (transmit level)</div>
+</li>
+<li class="level1"><div class="li"> frequency</div>
+</li>
+<li class="level1"><div class="li"> conn (contains the number of motes the BN is connected to)</div>
+</li>
+</ul>
+
+<p>
+
+ * Localization message, this is namely used to transmit the coordinates of the blind nodes and their RSSI, this message exist out of:
+Mote id
+
+</p>
+<ul>
+<li class="level1"><div class="li"> ANmoteid</div>
+</li>
+<li class="level1"><div class="li"> Type (type of message)</div>
+</li>
+<li class="level1"><div class="li"> Posx (calculated x coordinate of mote)</div>
+</li>
+<li class="level1"><div class="li"> Posy (calculated y coordinate of mote)</div>
+</li>
+<li class="level1"><div class="li"> RSSI</div>
+</li>
+</ul>
+
+<p>
+
+Further the adaption of the parser is needed to transmit these different messages correctly to the controller and we also added a panel to set the ip of the controller and the listen/send port.
+</p>
+
+<p>
+The final step is the creation of a <acronym title="Graphical User Interface">GUI</acronym>. This <acronym title="Graphical User Interface">GUI</acronym> will help us a great deal with testing the different algorithms. Like selecting anchor nodes, there frequency, coordinates, samplerates…
+</p>
+
+</div>
+<!-- SECTION "23/02" [1473-3678] -->
+<h2><a name="section1003" id="section1003">10/03</a></h2>
+<div class="level2">
+
+<p>
+
+We had an oral meeting about the written WIP of 23/02/2009. We explained all the messages and our framework. We stated that the framework is almost complete: the application of the telosb needs some debugging, the parser needs to be adjusted to handle request of the <acronym title="Graphical User Interface">GUI</acronym> and the <acronym title="Graphical User Interface">GUI</acronym> needs to be expanded.
+</p>
+
+<p>
+We discussed the use of an external antenna to have a better radiation pattern, which was a good idea, because the onboard antenna of the telosb isn’t omnidirectional.
+</p>
+
+<p>
+We discussed the progress of the bachelor student Omar, which wasn’t that much work. 
+</p>
+
+</div>
+<!-- SECTION "10/03" [3679-4263] -->
+<h2><a name="section1703" id="section1703">17/03</a></h2>
+<div class="level2">
+
+<p>
+
+We showed Jeroen a live demo of our framework. The framework is not finished completely: the request sending and handling to the WSN from the <acronym title="Graphical User Interface">GUI</acronym>, still needs some fine tuning. But the collection of the data works perfectly and the <acronym title="Graphical User Interface">GUI</acronym> can display all the data.
+</p>
+
+<p>
+We discussed the future of our framework: testing different algorithms (centralized and distributed). A combination of algorithms is possible to make a system that gives the best accuracy.
+</p>
+
+</div>
+<!-- SECTION "17/03" [4264-4735] -->
+<h2><a name="section14" id="section14">1/4</a></h2>
+<div class="level2">
+
+<p>
+Kathleen: The paper was considered good, however note that any changes to existing pieces should be clearly visible. If we write some part in the meanwhile(before the final version) we can send it to her for correction as well
+</p>
+
+<p>
+Jerry:
+</p>
+<ul>
+<li class="level1"><div class="li"> Explained some development tools by the SCALA team</div>
+</li>
+<li class="level1"><div class="li"> Made an agreement about the tutorial</div>
+</li>
+<li class="level1"><div class="li"> Generally got a better view about the SCALA interface</div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "1/4" [4736-5140] -->
+<h2><a name="section214" id="section214">21/4</a></h2>
+<div class="level2">
+
+<p>
+We discussed our progress until now: the basic interface with SCALA is set up. The application for the telosb motes and <acronym title="Graphical User Interface">GUI</acronym> are finished. The controller needs to be further update to be able to completely interface with SCALA.
+We discussed our progress and we are almost on schedule.
+We discussed possible research fields (density, external antenna, radiation pattern, different algorithms,  and the location of test area.
+Some agreements:
+</p>
+
+<p>
+•	Putting schedule &amp; paper on wiki
+</p>
+
+<p>
+•	Checklist for master contract
+</p>
+
+<p>
+•	New name for master thesis ?
+</p>
+
+</div>
+<!-- SECTION "21/4" [5141-] -->

@@ -1,0 +1,19 @@
+a:2:{s:7:"current";a:8:{s:4:"date";a:2:{s:7:"created";i:1234293944;s:8:"modified";i:1242028464;}s:7:"creator";s:13:"peterdecauwer";s:11:"last_change";a:7:{s:4:"date";i:1242028464;s:2:"ip";s:11:"10.22.41.83";s:4:"type";s:1:"E";s:2:"id";s:10:"xml_schema";s:4:"user";s:5:"peter";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:2:{s:5:"peter";s:13:"peterdecauwer";s:3:"tim";s:18:"Tim Van Overtveldt";}s:5:"title";s:11:"XML schemas";s:11:"description";a:2:{s:15:"tableofcontents";a:7:{i:0;a:4:{s:3:"hid";s:11:"xml_schemas";s:5:"title";s:11:"XML schemas";s:4:"type";s:2:"ul";s:5:"level";i:1;}i:1;a:4:{s:3:"hid";s:12:"senseless_v4";s:5:"title";s:12:"Senseless V4";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:2;a:4:{s:3:"hid";s:17:"wsn_to_controller";s:5:"title";s:17:"WSN to Controller";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:3;a:4:{s:3:"hid";s:12:"senseless_v3";s:5:"title";s:12:"Senseless V3";s:4:"type";s:2:"ul";s:5:"level";i:2;}i:4;a:4:{s:3:"hid";s:18:"wsn_to_controller1";s:5:"title";s:17:"WSN to Controller";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:5;a:4:{s:3:"hid";s:17:"gui_to_controller";s:5:"title";s:17:"GUI to Controller";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:6;a:4:{s:3:"hid";s:6:"legacy";s:5:"title";s:6:"Legacy";s:4:"type";s:2:"ul";s:5:"level";i:3;}}s:8:"abstract";s:503:"Senseless V4
+
+WSN to Controller
+
+status message (send if node reboots)
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="StatusMessage"
+    targetNamespace="http://tempuri.org/StatusMessage.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/StatusMessage.xsd"
+    xmlns:mstns="http://tempuri.org/StatusMessage.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="StatusMessage"> <!-- Root of the xml-file-->
+    <xs:complexType>
+      <xs:sequence>
+    …";}s:8:"relation";a:1:{s:10:"references";a:3:{s:14:"xml_schema_old";b:1;s:23:"requests_van_themaweken";b:1;s:22:"replies_van_themaweken";b:1;}}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}}s:10:"persistent";a:4:{s:4:"date";a:2:{s:7:"created";i:1234293944;s:8:"modified";i:1242028464;}s:7:"creator";s:13:"peterdecauwer";s:11:"last_change";a:7:{s:4:"date";i:1242028464;s:2:"ip";s:11:"10.22.41.83";s:4:"type";s:1:"E";s:2:"id";s:10:"xml_schema";s:4:"user";s:5:"peter";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:2:{s:5:"peter";s:13:"peterdecauwer";s:3:"tim";s:18:"Tim Van Overtveldt";}}}

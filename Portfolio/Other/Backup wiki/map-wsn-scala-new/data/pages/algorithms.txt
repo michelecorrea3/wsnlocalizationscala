@@ -1,0 +1,55 @@
+==Tables==
+
+Note each algorithm that is relevant to our thesis in the following table. Try to fill in each column. Papers that describe an interesting feature/idea or aspect of RSSI, but are of a different kind of algorithm can be described in the 2nd table. In the third table you can fill in paper you have read but were not relevant to our thesis, for example because the used a different kind of ranging. Note that when different ranging techniques are used, the phase 2 algorithm can still be the same, so fill these in the 2nd table. In the fourth table you can note interesting reference that we have not downloaded yet.
+
+==Columns==
+For completeness: A phase 1 algorithm/technique maps RSSI-values to distance and thus estimates the range. A phase 2 algorithm uses the information from phase 1 to determine the location, a classic example of this is lateration. When an algorithm describes both phase 1 & 2, simply write 1+2 in the phase column.
+
+THIS TABLE IS STILL A WIP, SO KEEP THE PAPERS AT ARMS LENGTH. 
+
+D/C stands for Distributed/Centralized. In the column, CPU, describe the computational complexity as high, low, med... Write the status of the software in the implementation column, whether or not it is publicly available and for which platform it is written. 
+
+S/0 marks whether this data is gathered from the authors of the algorithm or from a survey. Surveys tend to be less complete but provide interesting results. Original papers tend to overvalue their own algorithm
+
+====Read papers====
+===Overview===
+
+^ Name Algorithm ^ Name Paper ^ Authors ^ Year ^ Phase ^ Accuracy ^ D/C ^ Prop. Model ^ Anchor prop ^ Recursive ^ Implementation ^ S/O ^ Notes ^ SVN ^ 
+| dwMDS | Demonstrating Distributed Signal Strenght Location Estimation | Neal Patware | 2006 | 1+2 | **+-60cm** | D | ? | Y? | Y | Public, TinyOS, Mica2 | O | Most interesting algorithm read | Y |
+|Global Topology Discovery|Locationing in distributed ad-hoc WSN|C. Savarese|?|2|Too low|D|?|Y|Y|?|O| |Y|
+|TERRAIN+Iteration|Locationing in distributed ad-hoc WSN|C. Savarese|?|2+3|5%->10%|D|?|Y|Y|?|O| |Y|
+|ML/Min-MAX/lateration/ROCRSSI|Exp Comp of RSSI localization|G.Zanca|2008|2|varies|D/C|Given in paper|?|N|?|S|ML clearly yield the best results, but is computationally intensive, Min-Max reasonable reasults and very simple. **Advised to read the papers of ML and MIN-MAX**|Y|
+|Convex Optimization/MDS-MAP | Positioning in Ad Hoc Sensor Networks | D.Niculescu | 2004 | 1+2 | C |?|?|?|?|?|S|Complex, more info required, check references|Y|
+|DV-hop/AhLOS/APS/DV-distance| Positioning in Ad Hoc Sensor Networks | D.Niculescu | 2004 | 1 | D|?|Y|Y|?|S|/|Simpler, check references|Y|
+|WLC|Low complexity localization|D.Timmerman|?|1+2|15%|D|Y|N|N|?|O|/|Y|
+
+===Interesting===
+
+^ Name Algorithm ^ Name Paper ^ Authors ^ Year ^ Interesting idea ^ Notes/Algorithms used ^ SVN ^
+| GPS-Less |GPS-less Low-Cost Outdoor Localizatoin for Very Small Devices | Nirupama Bulusu et.al. | 2000 | The RSSI packet should go from AN to MN for a good scalability | Range-free algorithm/Connectivity | Yes |
+|ABC|Locationing in distributed ad-hoc WSN|C. Savarese|?|ABC is an algorithm for topoligy discovery|Used in TERRAIN|Y|
+|/|Locating the nodes|Patwari|2005|Good overview of the statistics theory, vaguelly explains different kind of algoirthms, lots of references||Yes|
+
+===Irrelevant read papers===
+
+^ Name Paper ^ Authors ^ Notes ^SVN ^
+|An Experimental Comparision of Localization methods|J.S.Gutmann|Robotics|Yes|
+
+====Relevant references====
+Note references that might be worth reading:
+
+^ Title ^ Author ^ Referred by ^ Notes ^ 
+| SpotON .. | J. Hightower | Distributed localization in WSN: a quantative comparision ||
+|Geolocation in a picoradio env.|J. Beutel|Locationing in distributed ad-hoc WSN|Gives information on how to improve positioning error by using high node density|
+|(ML)Relative location in WSN|N.Patwari|Exp comp of RSSI location|ML|
+|Min-Max(Localization algorithms for SN using RF signal strenght|X.Nguyen|Exp comp of RSSI location|MIN-MAX|
+|Sensor localization under limited measurement capabilities|C.Wang|Exp comp of RSSI location|Overview of localization methods|
+|A self-localization method for WSN|R.L. Moses|Locating the nodes|MLE|
+|Relative location estimation in WSN|Patwari|Locating the nodes|MLE|
+|Signal processing techniques in network-aided positioning|G.Sun|Locating the nodes|Stats and overview|
+|Improved MDS-based positioning|Y.Shang|Locating the nodes|MDS|
+
+====Remarks====
+  - Keeping in my mind the transmission pattern of the antenna
+  - At low transmission power, long distances are poorly estimated | At high power transmission, short distances are poorly estimated (http://www.notere-conf.org/wwsn/WWSN07-Le_Borgne.pdf)
+

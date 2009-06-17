@@ -1,0 +1,33 @@
+
+<p>
+<acronym title="Extensible Markup Language">XML</acronym>-schema:
+</p>
+<pre class="code">Enkel de dataflow/XML van TelosB naar Controller wordt aangepast.
+Enkel velden toevoegen voor lokatie. Redundantie?
+
+0.5u</pre>
+<pre class="code">      Status: In orde, XML voor TelosB naar Controller is aangepast.
+      Totale tijd: 1u
+</pre>
+
+<p>
+TelosB:
+</p>
+<pre class="code">Method aanpassen om deze velden te parsen in het XML formaat 1u
+Voorlopig dummy waarden genereren
+</pre>
+
+<p>
+Controller:
+</p>
+<pre class="code">Method aanpassen om de velden te parsen uit de dataset en deze door te sturen als parameters voor de stored procedures 1u</pre>
+<pre class="code">      Status: velden toegevoegd in AddSensorMeasormeasurements..
+      Tijd: 0.5u        </pre>
+
+<p>
+MySQL:
+</p>
+<pre class="code">Schema aanpassen	2u
+Bepaalde/Alle Stored procedures aanpassen 2u/4u
+
+LATER: Stored procedures toevoegen voor lokaties op te halen. Kunnen in eerste instantie enkel real-time werken. DB is natuurlijk interessant. TBD</pre>

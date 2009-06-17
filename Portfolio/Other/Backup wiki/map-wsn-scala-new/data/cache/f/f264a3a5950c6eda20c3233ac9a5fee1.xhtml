@@ -1,0 +1,235 @@
+
+<h4><a name="opmerking" id="opmerking">Opmerking</a></h4>
+<div class="level4">
+
+<p>
+Dit zijn alle mogelijk combinaties van RequestName en de argumenten. De argumenten zoals ze hier worden getoond moeten dus elk in een &lt;arg&gt;&lt;/arg&gt; komen.
+<br/>
+ Deze structuren worden gebruikt bij <a href="/wikis/map-wsn-scala-new/doku.php?id=xmlschema#requests" class="wikilink2" title="xmlschema" rel="nofollow">requests</a>.
+<br/>
+ <img src="/wikis/map-wsn-scala-new/lib/images/smileys/icon_exclaim.gif" class="middle" alt=":!:" /> Opmerking: zie <a href="/wikis/map-wsn-scala-new/doku.php?id=requestname#vraagje" class="wikilink2" title="requestname" rel="nofollow">Vraagje</a>
+</p>
+
+<p>
+Bijvoorbeeld:
+
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>addSensorToDB<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodetype<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>mapimg<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>name<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posx<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posy<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+
+Betekent dus dat we in de Request het volgende hebben staan:
+
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;Requests</span> <span class="re0">xmlns:xsi</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/Requests.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>addSensorToDB<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- De unieke ID van de node waar we info over willen --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- Type van de node --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>Woonkamer<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- ID van de plattegrond --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>TV<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- Node die aan de TV is gekoppeld --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- In den hoek --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- in den hoek --&gt;</span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/Requests<span class="re2">&gt;</span></span></span></pre>
+</div>
+
+<h4><a name="lijst_van_request_arg_combo_s" id="lijst_van_request_arg_combo_s">Lijst van Request/arg combo&#039;s</a></h4>
+<div class="level4">
+
+</div>
+
+<h2><a name="reply_int" id="reply_int">Reply (int)</a></h2>
+<div class="level2">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>addSensorToDB<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodetype<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>mapimg<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>name<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posx<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posy<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>addMapToDB<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>filename<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>map_name<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>checkMap<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>filename<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>checkSensorID<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>sensorid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>map<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>changePassword<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>username<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>oldpassword<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>newpassword<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>checkUsername<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>username<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>adduser<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>username<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>password<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>admin<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>checkLogin<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>username<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>password<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>admin<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>setPostionSensor<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posx<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>posy<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>deleteSensorFromMap<span class="sc3"><span class="re1">&lt;/RequesName<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+
+De bovenstaande functies zullen enkel een integer teruggeven (ofwel een ID ofwel het aantal rijen dat was aangepast/geselecteerd).
+<br/>
+ Het antwoord op deze request is in de vorm van het “Reply (int)”-schema.
+</p>
+
+</div>
+<!-- SECTION "Reply (int)" [1160-2654] -->
+<h3><a name="vraagje" id="vraagje">Vraagje</a></h3>
+<div class="level3">
+
+<p>
+Is er een probleem moest er steeds een ID worden teruggestuurd? (ID zal niet 0 zijn indien aanwezig, dus omzetten van int naar bool zou &#039;juiste&#039; resultaten geven)  — <em><a href="mailto:&#x6f;&#x6c;&#x69;&#x76;&#x69;&#x65;&#x72;&#x5f;&#x5f;&#x63;&#x6f;&#x75;&#x64;&#x65;&#x40;&#x68;&#x6f;&#x74;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;" class="mail JSnocheck" title="&#x6f;&#x6c;&#x69;&#x76;&#x69;&#x65;&#x72;&#x5f;&#x5f;&#x63;&#x6f;&#x75;&#x64;&#x65;&#x40;&#x68;&#x6f;&#x74;&#x6d;&#x61;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#x6d;">Olivier</a> 2008/10/14 09:38</em>
+</p>
+
+</div>
+<!-- SECTION "Vraagje" [2655-2899] -->
+<h2><a name="sensors_op_een_map" id="sensors_op_een_map">Sensors op een map</a></h2>
+<div class="level2">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getSensors<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>mapimg<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getAllSensors<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+
+Antwoord is in “Sensors op een map”-schema.
+</p>
+
+</div>
+<!-- SECTION "Sensors op een map" [2900-3152] -->
+<h2><a name="reply_sensortypes" id="reply_sensortypes">Reply (SensorTypes)</a></h2>
+<div class="level2">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getSensortypesFromDB<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+
+Antwoord is in het “Reply (SensorTypes)”-schema.
+</p>
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getNodetype<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+
+Antwoord is volgens “Reply (SensorTypes)”-schema.
+</p>
+
+</div>
+<!-- SECTION "Reply (SensorTypes)" [3153-3489] -->
+<h2><a name="sensor_data_detail" id="sensor_data_detail">Sensor Data (detail)</a></h2>
+<div class="level2">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getNodeInfo<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+
+Antwoord is volgens “Sensor Data (detail)”-schema.
+</p>
+
+</div>
+<!-- SECTION "Sensor Data (detail)" [3490-3681] -->
+<h2><a name="sensor_data_geschiedenis" id="sensor_data_geschiedenis">Sensor Data (geschiedenis)</a></h2>
+<div class="level2">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getHistorytime<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>MeasurementType<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- zie schema van de meetwaarden om te zien wat die allemaal kunnen zijn --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>Timestamp (start)<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>Timestamp (end)<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- Optioneel, weglaten = tot nu --&gt;</span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span> 
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getHistorylast<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>MeasurementType<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- zie schema van de meetwaarden om te zien wat die allemaal kunnen zijn --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>Last X values<span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+
+Antwoord is volgens “Sensor Data (geschiedenis)”-schema
+</p>
+
+</div>
+<!-- SECTION "Sensor Data (geschiedenis)" [3682-4333] -->
+<h2><a name="sensor_acties" id="sensor_acties">Sensor acties</a></h2>
+<div class="level2">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getNodeActions<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+
+Antwoord is volgens “Sensor Actions”-schema
+</p>
+
+</div>
+<!-- SECTION "Sensor acties" [4334-4515] -->
+<h2><a name="extra" id="extra">Extra</a></h2>
+<div class="level2">
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getWSNID<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>Nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span> 
+&nbsp;
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getNodeid<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>WSNID<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span></pre>
+<p>
+…
+</p>
+
+</div>
+<!-- SECTION "Extra" [4516-] -->

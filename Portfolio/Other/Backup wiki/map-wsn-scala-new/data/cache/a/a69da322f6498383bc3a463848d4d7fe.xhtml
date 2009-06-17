@@ -1,0 +1,163 @@
+
+
+
+<h1><a name="messages_wsn" id="messages_wsn">Messages WSN</a></h1>
+<div class="level1">
+
+</div>
+<!-- SECTION "Messages WSN" [1-28] -->
+<h2><a name="senseless_v4" id="senseless_v4">Senseless v4</a></h2>
+<div class="level2">
+
+<p>
+Inserted calibration &amp; MAC &amp; hop count
+</p>
+
+</div>
+<!-- SECTION "Senseless v4" [29-93] -->
+<h3><a name="statmsg" id="statmsg">StatMsg</a></h3>
+<div class="level3">
+<pre class="code">
+typedef nx_struct StatMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_uint8_t MAC; // MAC address
+  nx_bool active; // Participating in the localization or not?
+  nx_bool AN; // AN=TRUE / BN=FALSE
+  nx_uint16_t posx; // x coordinate of the node
+  nx_uint16_t posy; // y coordinate of the node
+  nx_uint16_t sampleRate; // Period of sensor message
+  nx_uint16_t locRate; // Period of location message
+  nx_uint8_t leds; // Leds (0 to 7)
+  nx_uint8_t power; // Power (0 to 31)
+  nx_uint8_t frequency; // Frequency (11 to 26)
+  nx_uint8_t conn; // Containts the number of motes the BN is connected to... EXP 
+} StatMsg_t;
+</pre>
+
+</div>
+<!-- SECTION "StatMsg" [94-760] -->
+<h3><a name="locmsg" id="locmsg">LocMsg</a></h3>
+<div class="level3">
+<pre class="code">
+typedef nx_struct LocMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_am_addr_t ANmoteid; // moteID of the reference node
+  nx_uint8_t ANs; // grade of anchor of the source
+  nx_uint8_t ANr; // grade of anchor of the receiver
+  nx_uint8_t hopCount; // hop count
+  nx_int8_t RSSI; // Received Signal Strength Indication
+} LocMsg_t;
+</pre>
+
+</div>
+<!-- SECTION "LocMsg" [761-1137] -->
+<h3><a name="broadcastmsg" id="broadcastmsg">BroadcastMsg</a></h3>
+<div class="level3">
+<pre class="code">
+typedef nx_struct broadcast {
+  nx_am_addr_t id; /* Mote id of sending mote. */
+  nx_uint8_t hopCount // hop count
+  nx_uint8_t VAR // grade of anchor
+} broadcast_t;
+</pre>
+
+</div>
+<!-- SECTION "BroadcastMsg" [1138-1343] -->
+<h2><a name="senseless_v3" id="senseless_v3">Senseless v3</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Senseless v3" [1344-1369] -->
+<h3><a name="possible_future_fields" id="possible_future_fields">Possible future fields</a></h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> Hopcount</div>
+</li>
+<li class="level1"><div class="li"> Counter for the dissemination from the <acronym title="Graphical User Interface">GUI</acronym></div>
+</li>
+<li class="level1"><div class="li"> MAC address</div>
+</li>
+<li class="level1"><div class="li"> ParentID</div>
+</li>
+<li class="level1"><div class="li"> LQI</div>
+</li>
+</ul>
+
+</div>
+<!-- SECTION "Possible future fields" [1370-1500] -->
+<h3><a name="collmsg" id="collmsg">CollMsg</a></h3>
+<div class="level3">
+<pre class="code">
+typedef nx_struct CollMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_uint8_t type; //type of message: eg. 1 for sens data, 2 for localization data, 3 for status
+  nx_uint16_t battery; //demosensor/battery level
+  nx_uint16_t lightreading; // Light meas.
+  nx_uint16_t tempreading;  // Temp. meas.
+  nx_uint16_t humidityreading; // Humidity meas.
+  nx_bool button;	// Button pressed (1=YES / 0=NO
+} CollMsg_t;
+</pre>
+
+</div>
+<!-- SECTION "CollMsg" [1501-1958] -->
+<h3><a name="statmsg1" id="statmsg1">StatMsg</a></h3>
+<div class="level3">
+<pre class="code">
+typedef nx_struct StatMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_uint8_t type; // Request reply or Reboot reply
+  nx_bool active; // Participating in the localization or not?
+  nx_bool AN; // AN=TRUE / BN=FALSE
+  nx_uint16_t posx; // x coordinate of the node
+  nx_uint16_t posy; // y coordinate of the node
+  nx_uint16_t sampleRate; // Period of sensor message
+  nx_uint16_t locRate; // Period of location message
+  nx_uint8_t leds; // Leds (0 to 7)
+  nx_uint8_t power; // Power (0 to 31)
+  nx_uint8_t frequency; // Frequency (11 to 26)
+  nx_uint8_t conn; // Containts the number of motes the BN is connected to... EXP 
+} StatMsg_t;
+</pre>
+
+</div>
+<!-- SECTION "StatMsg" [1959-2644] -->
+<h3><a name="locmsg1" id="locmsg1">LocMsg</a></h3>
+<div class="level3">
+<pre class="code">
+typedef nx_struct LocMsg { 
+  nx_am_addr_t moteid; // moteID of sending mote
+  nx_am_addr_t ANmoteid; // moteID of anchor node
+  nx_uint8_t type; //empty field
+  nx_uint16_t posx; // x coordinate of the blind mote
+  nx_uint16_t posy; // y coordinate of the blind mote
+  nx_int8_t RSSI; // Received Signal Strength Indication
+} LocMsg_t;
+</pre>
+
+</div>
+<!-- SECTION "LocMsg" [2645-3015] -->
+<h3><a name="dissmsg" id="dissmsg">DissMsg</a></h3>
+<div class="level3">
+<pre class="code">
+typedef nx_struct DissMsg {
+  nx_am_addr_t targetid; // moteID of targetmote
+  nx_uint8_t request; // see above
+  nx_uint16_t parameter; // parameter for request
+} DissMsg_t;
+</pre>
+
+</div>
+<!-- SECTION "DissMsg" [3016-3225] -->
+<h3><a name="broadcastmsg1" id="broadcastmsg1">BroadcastMsg</a></h3>
+<div class="level3">
+<pre class="code">
+typedef nx_struct broadcast {
+  nx_am_addr_t id; /* Mote id of sending mote. */
+  nx_uint16_t posx; /*x coordinate of the anchor mote*/
+  nx_uint16_t posy; /*x coordinate of the anchor mote*/
+} broadcast_t;
+</pre>
+
+</div>
+<!-- SECTION "BroadcastMsg" [3226-] -->

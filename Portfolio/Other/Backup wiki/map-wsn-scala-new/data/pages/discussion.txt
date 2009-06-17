@@ -1,0 +1,47 @@
+====== Discussion ======
+
+===== Master title =====
+
+  * WSN platform for localization with RSSI
+  * Senseless platform with wsn localization
+  * WSN localization with senseless
+
+  * WSN framework with self-localization
+  * WSN system with localization
+
+===== Master contract (checklist) =====
+
+==== Scala ====
+  * interface between scala and senseless
+  * position data
+  * sensor data
+  * map support
+
+==== senseless ====
+
+complete system:
+  * database
+  * controller
+  * gui
+  * parser
+  * telosb
+
+==== research ====
+
+  * test results (different antenna, density, algorithms...)
+  * multiple algorithms for range estimation & position estimation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

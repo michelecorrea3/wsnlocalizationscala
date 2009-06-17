@@ -1,0 +1,7 @@
+Security alert. Local file inclusion bug. More info 
+	  <a href="http://bugs.splitbrain.org/index.php?do=details&task_id=1700">here</a>,
+          <a href="http://www.splitbrain.org/go/dokuwiki">fixed release</a> available. [18] <a href="http://www.dokuwiki.org/update_check">(what's this?)</a>
+%
+New release available: 2009-02-14.
+          <a href="http://www.splitbrain.org/go/dokuwiki">upgrade now!</a> [17] <a href="http://www.dokuwiki.org/update_check">(what's this?)</a>
+%

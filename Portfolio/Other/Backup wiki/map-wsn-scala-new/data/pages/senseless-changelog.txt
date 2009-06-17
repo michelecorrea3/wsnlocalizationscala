@@ -1,0 +1,123 @@
+====== Changelog of the senseless framework ======
+
+=====Controller/DB=====
+===1.0===
+Original version from the thematic weeks
+
+===1.1 / V2===
+adjusted the table sensormeasurements for RSSI...
+
+===1.2 / V3===
+  * totally new DB schema, ..see wiki
+  * loc data in separate table
+  * status message
+  * logging of WSN commands already present in DB, however not functional yet
+==1.2.1==
+Some minor improvements, did not note which
+==1.2.2==
+Delete DB2 from the program, results in an easier to read code. DB2 was not going to be used for Senseless. However, the classes required to make a connection with DB2 still exist in DBclass.cs
+==1.2.3==
+Improved exception handling
+known exception: when the GUI connects an empty message is sent first. This throws an XMLexception
+==1.2.4==
+ Added processing of getSensorTimeOut
+==1.2.5==
+implemented new status method
+
+ 
+
+=====GUI=====
+===1.0===
+Original version from the thematic weeks
+===1.1===
+New features to reflect the changes in Senseless 1.2
+  * Localization page
+  * Option to connect to server
+  * Control page
+  * Extra graphing options
+  * Discovery protocol
+
+==1.1.1==
+  * Changed some of the fields in the options tab to more appropriate controls
+  * Bug with leds fixed
+==1.1.2==
+  * Disconnect button clears the lists
+  * Keuze toevoeen voor type node discovery
+  * Improve 2 helper methods, when the node is not in the list, fetch it from the database -> does not have to, just add it after
+  * Grafiek:
+  * Real-time
+    * RSSI	
+    * Exceptions afhandelen
+==1.1.3==
+Improve exception handling
+
+* Null reference exceptions in getLoc & getSensors & getGraphData
+* exception handler for controller timeout.
+
+==1.1.4==
+Validate: Controller connection parameters, polling, X, Y, LocRate, SampleRate, these parameters are validated when the user clicks on the accept changes button.
+
+The fields AN, X, Y, LocRate are enabled depending on the state of Active & AN in the Control tab
+==1.1.5==
+Implemented the SensorTimeOut function
+
+==1.1.6==
+reimplemented status fetching
+
+==1.1.7==
+Re-reinplemented status fetching and bugs solved
+
+====SocketConnection====
+===Description===
+Code to initialize a socket client and a socket server, which is the method of communication in the Senseless framework. Distributed as a DLL
+===1.0===
+Original Senseless version
+===1.1===
+Added new method ***TryConnection*** which test a connection with given IP and Port, times out after a period.
+
+Useful for testing the connection parameters
+==1.1.1==
+Fixed bug in TryConnection
+==1.1.2==
+Added a TimeOut to the Connect method
+
+=====TelosB=====
+
+====telosb app(peter)====
+Expanding of the telosb app of the theme weeks, using length of packets to recognize different messages
+====Collmsg====
+Expanding of the app of the theme weeks of ICT namely the format of the different messages to see that the parser works correctly
+====telosb app(tim)====
+Adapting the app of peter, adapting to use different interfaces/components to handle the different messages within the WSN. Making use of 1 collection interface.
+====telosb app (tim)v2====
+using multiple collection receive but only 1 Collection component
+====telosb app (tim)v3====
+using a collection component for each different message in the network. The app can handle every message and send it without any problem to the controller
+====telosb app (tim)vDiss====
+application that can handle dissemination together with all the messages in the network
+
+====telosb app (tim)vDiss2====
+
+Improved dissemination without powerset & frequency set
+
+====telosb app (tim)vDiss3====
+
+=====Parsers=====
+====parserV3====
+original parser of the themes week, but with wrong java version (1.6)
+====parserV4====
+parser with good java version (1.5) and with original xml scheme
+====ParserXMLNew====
+parser with new xml scheme of senseless v2
+====ParserWithPanel====
+Added a panel to the parser with xml scheme of senseless v2
+====ParserWithPanelOrgXML====
+Parser with panel for senseless v1
+====ParserWithDifMessages====
+Parser that works with the xml scheme of senseless v1 and transmit 3 different XML schemes to the controller
+====CollmsgTest====
+Parser to the test the mig tool for tinyos, to see if the different messages were transferred to the parser
+====ParserWithDifMessagesReal====
+Parser that handles the 3 different from the telosb and parses the data to the controller
+====ParserWithDifMessagesRealv2====
+Parser that handles the dissemination messages from the controller

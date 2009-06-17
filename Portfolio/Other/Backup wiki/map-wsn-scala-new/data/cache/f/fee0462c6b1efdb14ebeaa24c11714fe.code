@@ -1,0 +1,6 @@
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getHistorylast<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>MeasurementType<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span> <span class="sc-1">&lt;!-- zie schema van de meetwaarden om te zien wat die allemaal kunnen zijn --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>Last X values<span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>

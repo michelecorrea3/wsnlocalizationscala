@@ -1,0 +1,19 @@
+====GUI====
+
+====Controller====
+
+
+====Status Message====
+===The problem===
+What do we need to do with the status of the nodes so that it may assist us in analyzing the localization protocols?
+
+  * Status of the nodes needs to be logged at all times
+  * The capability to set the status of the nodes
+    * Check the current status so that we do changes nodes status unnecessary
+    * Get a confirmation so that we are assured the nodes status has changed
+
+We considered two possibilities for the status message. 
+===Option 1===
+
+
+===Option 2===

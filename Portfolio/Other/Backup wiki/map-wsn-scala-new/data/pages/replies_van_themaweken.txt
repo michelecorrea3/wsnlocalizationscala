@@ -1,0 +1,413 @@
+=====Nut=====
+Hier plaatsen we alle XML schemas die we zullen gaan gebruiken. [[discussie-xmlschema|Discussie!]] 
+
+-----
+:!: Belangrijke opmerking: voor je de xml over het netwerk naar de controller stuurt; VERWIJDER AL DE CARRIAGE FEEDS aka enters (\r\n in meeste talen). Indien dit niet wordt gedaan, gaat de controller enkel de eerste lijn inlezen. (met al de gevolgen van dien). Vergeet wel niet op het einde van je bericht een "\r\n" toe te voegen (indien je niet een functie zoals WriteLine() gebruikt, want deze doet dit automatisch.)
+
+-----
+
+Het doel is om al de communicatie volgens deze schema's uit te voeren. De schema's dienen om te kunnen nagaan of de syntax van een xml-bestand/stream/string correct is.
+
+====Legende====
+De betekenis van de schema's is als volgt:
+  *  <code xml><xs:element name="<tagname>"></code> Is een echte tag met naam tagname.
+  *  <code xml><xs:sequence></xs:sequnce></code>  betekent dat alles dat hiertussen staat in deze exacte volgorde moet voorkomen.
+  *  <code xml>maxOccurs / minOccurs</code> is hoe vaak een tag minimaal en maximaal moet/mag voorkomen. Als het er niet bij staat: default is 1 voor beide attributen.
+
+Opmerking: bij de voorbeelden staat er vaak een hele waslijst in de 'root' node van de voorbeelden. Dit moet niet aanwezig zijn in de berichten; het ontbreken van deze attributen in de root-node brengt geen gevaar met zich mee.
+Opmerking2: Het is ook zo dat er vaak in de schema's elementen(tags) aanwezig zijn die niet verplicht zijn (aangeduid met minOccurs = 0), ik zou toch aanraden om deze tags toch toe te voegen, maar gewoon leeg te laten.
+
+=====Sensor Data (detail)=====
+====Schema=====
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SensorMeasurements"
+    targetNamespace="http://tempuri.org/SensorMeasurements.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/SensorMeasurements.xsd"
+    xmlns:mstns="http://tempuri.org/SensorMeasurements.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="SensorMeasurements"> <!-- Root of the xml-file-->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sensor" maxOccurs="unbounded"> <!-- Each sensor has a single entry with all the measurements of that sensor -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" /> <!-- ID of node -->
+              <xs:element name="Type" /> <!-- Type of node (e.g. TelosB, SunSpot) -->
+              <xs:element name="Time" /> <!-- Timestamp of the measurements -->
+              <xs:element name="Temp" /> <!-- Measurement of temperature -->
+              <xs:element name="Humidity" /> <!-- Measurement of humidity -->
+              <xs:element name="Light" /> <!-- Measurement of light -->
+              <xs:element name="Power" /> <!-- Measurement of power -->
+              <xs:element name="AccX"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of X-axis acceleration (SunSpot) -->
+              <xs:element name="AccY"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Y-axis acceleration (SunSpot) -->
+              <xs:element name="AccZ"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Z-axis acceleration (SunSpot) -->
+              <xs:element name="TiltX"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of X-axis tilt-angle (SunSpot) -->
+              <xs:element name="TiltY"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Y-axis tilt-angle (SunSpot) -->
+              <xs:element name="TiltZ"  minOccurs="0" maxOccurs="1" /> <!-- Measurement of Z-axis tilt-angle (SunSpot) -->
+              <xs:element name="LED1"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED2"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED3"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED4"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED5"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED6"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED7"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="LED8"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="Polling"  minOccurs="0" maxOccurs="1" />
+              <xs:element name="Button1" minOccurs="1" maxOccurs="1" /> <!-- Status of button1 of the node  (1 = pressed, 0 = not pressed)-->
+              <xs:element name="Button2" minOccurs="1" maxOccurs="1" /> <!-- Status of button2 of the node  (1 = pressed, 0 = not pressed) (SunSpot)-->
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+====Voorbeeld====
+<code xml>
+<?xml version="1.0" standalone="yes"?>
+<SensorMeasurements xmlns="http://tempuri.org/SensorMeasurements.xsd">
+  <Sensor>
+    <ID></ID>
+    <Type></Type>
+    <Time></Time>
+    <Temp></Temp>
+    <Humidity></Humidity>
+    <Light></Light>
+    <Power></Power>
+    <AccX></AccX>
+    <AccY></AccY>
+    <AccZ></AccZ>
+    <TiltX></TiltX>
+    <TiltY></TiltY>
+    <TiltZ></TiltZ>
+    <LED1></LED1>
+    <LED2></LED2>
+    <LED3></LED3>
+    <LED4></LED4>
+    <LED5></LED5>
+    <LED6></LED6>
+    <LED7></LED7>
+    <LED8></LED8>
+    <Polling></Polling>
+    <Button1></Button1>
+    <Button2></Button2>
+  </Sensor>
+  <Sensor>
+    <ID></ID>
+    <Type></Type>
+    <Time></Time>
+    <Temp></Temp>
+    <Humidity></Humidity>
+    <Light></Light>
+    <Power></Power>
+    <AccX></AccX>
+    <AccY></AccY>
+    <AccZ></AccZ>
+    <TiltX></TiltX>
+    <TiltY></TiltY>
+    <TiltZ></TiltZ>
+    <Button1></Button1>
+    <Button2></Button2>
+  </Sensor>
+</SensorMeasurements>
+</code>
+=====Sensor Data (geschiedenis)=====
+====Schema====
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="HistoryOfSensorMeasurement"
+    targetNamespace="http://tempuri.org/HistoryOfSensorMeasurement.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/HistoryOfSensorMeasurement.xsd"
+    xmlns:mstns="http://tempuri.org/HistoryOfSensorMeasurement.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="History"> <!-- Root of the xml-file -->
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sensor" maxOccurs="1"> <!-- Just an extra hint that it are values of just one sensor over a certain timespan -->
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ID" /> <!-- ID of node -->
+              <xs:element name="MeasurementType" /> <!-- Type of measurement (e.g. Temperature, Humidity, ...) -->
+              <xs:element name="Measurement" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="MeasurementValue" /><!-- Actual measured value -->
+                    <xs:element name="MeasurementTime" /><!-- Timestamp of the value in question -->
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+====Voorbeeld====
+<code xml>
+<?xml version="1.0" standalone="yes"?>
+<History xmlns="http://tempuri.org/HistoryOfSensorMeasurement.xsd">
+  <Sensor>
+    <ID>1</ID>
+    <MeasurementType>Temperature</MeasurementType>
+    <Measurement>
+      <MeasurementValue>40</MeasurementValue>
+      <MeasurementTime>10:10:10 09/10/2008</MeasurementTime>
+    </Measurement>
+    <Measurement>
+      <MeasurementValue>41</MeasurementValue>
+      <MeasurementTime>10:10:15 09/10/2008</MeasurementTime>
+    </Measurement>
+  </Sensor>
+</History>
+</code>
+=====Sensor acties=====
+====Schema====
+
+====Voorbeeld====
+<code xml>
+<?xml version="1.0" standalone="yes"?>
+<SensorActions>
+  <SENSORTYPE>
+    <AvailAction></AvailAction>
+    <AvailAction></AvailAction>
+    <AvailAction></AvailAction>
+  </SENSORTYPE>
+</SensorActions>
+</code>
+=====Sensors op een map=====
+====Schema====
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="MapSensors"
+    targetNamespace="http://tempuri.org/MapSensors.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/MapSensors.xsd"
+    xmlns:mstns="http://tempuri.org/MapSensors.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="MapSensors">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Sensor" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nodeid" />
+              <xs:element name="nodetype" />
+              <xs:element name="name" />
+              <xs:element name="posx" />
+              <xs:element name="posy" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+====Voorbeeld====
+<code xml>
+<?xml version="1.0" standalone="yes"?>
+<MapSensors xmlns="http://tempuri.org/MapSensors.xsd">
+  <Sensor>
+    <nodeid>1</nodeid>
+    <nodetype>1</nodetype>
+    <name>Micro</name>
+    <posx>10</posx>
+    <posy>10</posy>
+  </Sensor>
+  <Sensor>
+    <nodeid>2</nodeid>
+    <nodetype>1</nodetype>
+    <name>Woonkamer</name>
+    <posx>20</posx>
+    <posy>10</posy>
+  </Sensor>
+</MapSensors>
+</code>
+
+=====Reply (int)=====
+====Schema====
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Reply"
+    targetNamespace="http://tempuri.org/Reply.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/Reply.xsd"
+    xmlns:mstns="http://tempuri.org/Reply.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="Replies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Reply">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="INT"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+====Voorbeeld====
+<code xml>
+<?xml version="1.0" standalone="yes"?>
+<Replies xmlns="http://tempuri.org/Reply.xsd">
+  <Reply>
+    <INT>1</INT>
+  </Reply>
+</Replies>
+</code>
+
+=====Reply (SensorTypes)=====
+====Schema====
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SensorTypes"
+    targetNamespace="http://tempuri.org/SensorTypes.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/SensorTypes.xsd"
+    xmlns:mstns="http://tempuri.org/SensorTypes.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="SensorTypes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SensorType" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="typeid" />
+              <xs:element name="typename" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+====Voorbeeld====
+<code xml>
+<?xml version="1.0" standalone="yes"?>
+<SensorTypes xmlns="http://tempuri.org/SensorTypes.xsd">
+  <SensorType>
+    <typeid>1</typeid>
+    <typename>SunSpot</typename>
+  </SensorType>
+  <SensorType>
+    <typeid>2</typeid>
+    <typename>TelosB</typename>
+  </SensorType>
+</SensorTypes>
+</code>
+
+=====Requests=====
+zie [[requestname|lijst van requestnames]] voor meer info.
+====Schema====
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Requests"
+    targetNamespace="http://tempuri.org/Requests.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/Requests.xsd"
+    xmlns:mstns="http://tempuri.org/Requests.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="Requests">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Request">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RequestName" minOccurs="1" maxOccurs="1" />
+              <xs:element name="arg" minOccurs="0" maxOccurs="unbounded" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+
+====Voorbeeld====
+<code xml>
+<?xml version="1.0" standalone="yes"?>
+<Requests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://tempuri.org/Requests.xsd">
+  <Request>
+    <RequestName>getMaps</RequestName>
+    <arg>testarg</arg>
+    <arg>testarg2</arg>
+  </Request>
+</Requests>
+</code>
+
+=====WSN Action Request=====
+====Opmerking====
+LED1...LED8: Activeer de leds. Sunspot heeft 8 tricolor leds, telosb heeft maar 3 single color leds (RYB).
+\\ ga er vanuit dat et een 1 (aan) of 0 (uit) is.
+
+Polling: Hiermee kan de gebruiker opgeven met welk interval de sensoren meten (in seconden)
+
+====Schema====
+<code xml>
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WSNActionReq"
+    targetNamespace="http://tempuri.org/WSNActionReq.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/WSNActionReq.xsd"
+    xmlns:mstns="http://tempuri.org/WSNActionReq.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="WSNReq">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="RequestAction">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NodeID" minOccurs="1" maxOccurs="1" />
+              <xs:element name="LED1" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="LED2" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="LED3" minOccurs="1" maxOccurs="1"/>
+              <xs:element name="LED4" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="LED5" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="LED6" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="LED7" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="LED8" minOccurs="0" maxOccurs="1"/>
+              <xs:element name="polling" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+</code>
+====Voorbeeld====
+<code xml>
+<?xml version="1.0" standalone="yes"?>
+<WSNReq xmlns="http://tempuri.org/WSNActionReq.xsd">
+  <RequestAction>
+    <NodeID>1</NodeID>
+    <LED1>0</LED1>
+    <LED2>0</LED2>
+    <LED3>0</LED3>
+    <LED4>0</LED4>
+    <LED5>0</LED5>
+    <LED6>0</LED6>
+    <LED7>0</LED7>
+    <LED8>0</LED8>
+    <polling>5</polling>
+  </RequestAction>
+</WSNReq></code>

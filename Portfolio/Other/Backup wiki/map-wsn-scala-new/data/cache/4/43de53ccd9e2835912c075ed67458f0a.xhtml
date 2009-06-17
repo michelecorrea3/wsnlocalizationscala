@@ -1,0 +1,452 @@
+
+
+
+<h1><a name="changelog_of_the_senseless_framework" id="changelog_of_the_senseless_framework">Changelog of the senseless framework</a></h1>
+<div class="level1">
+
+</div>
+<!-- SECTION "Changelog of the senseless framework" [1-52] -->
+<h2><a name="controller_db" id="controller_db">Controller/DB</a></h2>
+<div class="level2">
+
+</div>
+
+<h4><a name="section10" id="section10">1.0</a></h4>
+<div class="level4">
+
+<p>
+Original version from the thematic weeks
+</p>
+
+</div>
+
+<h4><a name="v2" id="v2">1.1 / V2</a></h4>
+<div class="level4">
+
+<p>
+adjusted the table sensormeasurements for RSSI…
+</p>
+
+</div>
+
+<h4><a name="v3" id="v3">1.2 / V3</a></h4>
+<div class="level4">
+<ul>
+<li class="level1"><div class="li"> totally new DB schema, ..see wiki</div>
+</li>
+<li class="level1"><div class="li"> loc data in separate table</div>
+</li>
+<li class="level1"><div class="li"> status message</div>
+</li>
+<li class="level1"><div class="li"> logging of WSN commands already present in DB, however not functional yet</div>
+</li>
+</ul>
+
+</div>
+
+<h5><a name="section121" id="section121">1.2.1</a></h5>
+<div class="level5">
+
+<p>
+Some minor improvements, did not note which
+
+</p>
+
+</div>
+
+<h5><a name="section122" id="section122">1.2.2</a></h5>
+<div class="level5">
+
+<p>
+Delete DB2 from the program, results in an easier to read code. DB2 was not going to be used for Senseless. However, the classes required to make a connection with DB2 still exist in DBclass.cs
+
+</p>
+
+</div>
+
+<h5><a name="section123" id="section123">1.2.3</a></h5>
+<div class="level5">
+
+<p>
+Improved exception handling
+known exception: when the <acronym title="Graphical User Interface">GUI</acronym> connects an empty message is sent first. This throws an XMLexception
+
+</p>
+
+</div>
+
+<h5><a name="section124" id="section124">1.2.4</a></h5>
+<div class="level5">
+
+<p>
+ Added processing of getSensorTimeOut
+
+</p>
+
+</div>
+
+<h5><a name="section125" id="section125">1.2.5</a></h5>
+<div class="level5">
+
+<p>
+implemented new status method
+</p>
+
+</div>
+<!-- SECTION "Controller/DB" [53-862] -->
+<h2><a name="gui" id="gui">GUI</a></h2>
+<div class="level2">
+
+</div>
+
+<h4><a name="section101" id="section101">1.0</a></h4>
+<div class="level4">
+
+<p>
+Original version from the thematic weeks
+
+</p>
+
+</div>
+
+<h4><a name="section11" id="section11">1.1</a></h4>
+<div class="level4">
+
+<p>
+New features to reflect the changes in Senseless 1.2
+</p>
+<ul>
+<li class="level1"><div class="li"> Localization page</div>
+</li>
+<li class="level1"><div class="li"> Option to connect to server</div>
+</li>
+<li class="level1"><div class="li"> Control page</div>
+</li>
+<li class="level1"><div class="li"> Extra graphing options</div>
+</li>
+<li class="level1"><div class="li"> Discovery protocol</div>
+</li>
+</ul>
+
+</div>
+
+<h5><a name="section111" id="section111">1.1.1</a></h5>
+<div class="level5">
+<ul>
+<li class="level1"><div class="li"> Changed some of the fields in the options tab to more appropriate controls</div>
+</li>
+<li class="level1"><div class="li"> Bug with leds fixed</div>
+</li>
+</ul>
+
+</div>
+
+<h5><a name="section112" id="section112">1.1.2</a></h5>
+<div class="level5">
+<ul>
+<li class="level1"><div class="li"> Disconnect button clears the lists</div>
+</li>
+<li class="level1"><div class="li"> Keuze toevoeen voor type node discovery</div>
+</li>
+<li class="level1"><div class="li"> Improve 2 helper methods, when the node is not in the list, fetch it from the database → does not have to, just add it after</div>
+</li>
+<li class="level1"><div class="li"> Grafiek:</div>
+</li>
+<li class="level1"><div class="li"> Real-time</div>
+<ul>
+<li class="level2"><div class="li"> RSSI	</div>
+</li>
+<li class="level2"><div class="li"> Exceptions afhandelen</div>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+<h5><a name="section113" id="section113">1.1.3</a></h5>
+<div class="level5">
+
+<p>
+Improve exception handling
+</p>
+
+<p>
+* Null reference exceptions in getLoc &amp; getSensors &amp; getGraphData
+* exception handler for controller timeout.
+</p>
+
+</div>
+
+<h5><a name="section114" id="section114">1.1.4</a></h5>
+<div class="level5">
+
+<p>
+Validate: Controller connection parameters, polling, X, Y, LocRate, SampleRate, these parameters are validated when the user clicks on the accept changes button.
+</p>
+
+<p>
+The fields AN, X, Y, LocRate are enabled depending on the state of Active &amp; AN in the Control tab
+
+</p>
+
+</div>
+
+<h5><a name="section115" id="section115">1.1.5</a></h5>
+<div class="level5">
+
+<p>
+Implemented the SensorTimeOut function
+</p>
+
+</div>
+
+<h5><a name="section116" id="section116">1.1.6</a></h5>
+<div class="level5">
+
+<p>
+reimplemented status fetching
+</p>
+
+</div>
+
+<h5><a name="section117" id="section117">1.1.7</a></h5>
+<div class="level5">
+
+<p>
+Re-reinplemented status fetching and bugs solved
+</p>
+
+</div>
+<!-- SECTION "GUI" [863-2086] -->
+<h3><a name="socketconnection" id="socketconnection">SocketConnection</a></h3>
+<div class="level3">
+
+</div>
+
+<h4><a name="description" id="description">Description</a></h4>
+<div class="level4">
+
+<p>
+Code to initialize a socket client and a socket server, which is the method of communication in the Senseless framework. Distributed as a DLL
+
+</p>
+
+</div>
+
+<h4><a name="section102" id="section102">1.0</a></h4>
+<div class="level4">
+
+<p>
+Original Senseless version
+
+</p>
+
+</div>
+
+<h4><a name="section118" id="section118">1.1</a></h4>
+<div class="level4">
+
+<p>
+Added new method <strong>*TryConnection</strong>* which test a connection with given IP and Port, times out after a period.
+</p>
+
+<p>
+Useful for testing the connection parameters
+
+</p>
+
+</div>
+
+<h5><a name="section1111" id="section1111">1.1.1</a></h5>
+<div class="level5">
+
+<p>
+Fixed bug in TryConnection
+
+</p>
+
+</div>
+
+<h5><a name="section1121" id="section1121">1.1.2</a></h5>
+<div class="level5">
+
+<p>
+Added a TimeOut to the Connect method
+</p>
+
+</div>
+<!-- SECTION "SocketConnection" [2087-2561] -->
+<h2><a name="telosb" id="telosb">TelosB</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "TelosB" [2562-2579] -->
+<h3><a name="telosb_app_peter" id="telosb_app_peter">telosb app(peter)</a></h3>
+<div class="level3">
+
+<p>
+Expanding of the telosb app of the theme weeks, using length of packets to recognize different messages
+
+</p>
+
+</div>
+<!-- SECTION "telosb app(peter)" [2580-2709] -->
+<h3><a name="collmsg" id="collmsg">Collmsg</a></h3>
+<div class="level3">
+
+<p>
+Expanding of the app of the theme weeks of ICT namely the format of the different messages to see that the parser works correctly
+
+</p>
+
+</div>
+<!-- SECTION "Collmsg" [2710-2855] -->
+<h3><a name="telosb_app_tim" id="telosb_app_tim">telosb app(tim)</a></h3>
+<div class="level3">
+
+<p>
+Adapting the app of peter, adapting to use different interfaces/components to handle the different messages within the WSN. Making use of 1 collection interface.
+
+</p>
+
+</div>
+<!-- SECTION "telosb app(tim)" [2856-3041] -->
+<h3><a name="telosb_app_tim_v2" id="telosb_app_tim_v2">telosb app (tim)v2</a></h3>
+<div class="level3">
+
+<p>
+using multiple collection receive but only 1 Collection component
+
+</p>
+
+</div>
+<!-- SECTION "telosb app (tim)v2" [3042-3134] -->
+<h3><a name="telosb_app_tim_v3" id="telosb_app_tim_v3">telosb app (tim)v3</a></h3>
+<div class="level3">
+
+<p>
+using a collection component for each different message in the network. The app can handle every message and send it without any problem to the controller
+
+</p>
+
+</div>
+<!-- SECTION "telosb app (tim)v3" [3135-3316] -->
+<h3><a name="telosb_app_tim_vdiss" id="telosb_app_tim_vdiss">telosb app (tim)vDiss</a></h3>
+<div class="level3">
+
+<p>
+application that can handle dissemination together with all the messages in the network
+</p>
+
+</div>
+<!-- SECTION "telosb app (tim)vDiss" [3317-3435] -->
+<h3><a name="telosb_app_tim_vdiss2" id="telosb_app_tim_vdiss2">telosb app (tim)vDiss2</a></h3>
+<div class="level3">
+
+<p>
+
+Improved dissemination without powerset &amp; frequency set
+</p>
+
+</div>
+<!-- SECTION "telosb app (tim)vDiss2" [3436-3524] -->
+<h3><a name="telosb_app_tim_vdiss3" id="telosb_app_tim_vdiss3">telosb app (tim)vDiss3</a></h3>
+<div class="level3">
+
+</div>
+<!-- SECTION "telosb app (tim)vDiss3" [3525-3556] -->
+<h2><a name="parsers" id="parsers">Parsers</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Parsers" [3557-3574] -->
+<h3><a name="parserv3" id="parserv3">parserV3</a></h3>
+<div class="level3">
+
+<p>
+original parser of the themes week, but with wrong java version (1.6)
+
+</p>
+
+</div>
+<!-- SECTION "parserV3" [3575-3661] -->
+<h3><a name="parserv4" id="parserv4">parserV4</a></h3>
+<div class="level3">
+
+<p>
+parser with good java version (1.5) and with original xml scheme
+
+</p>
+
+</div>
+<!-- SECTION "parserV4" [3662-3743] -->
+<h3><a name="parserxmlnew" id="parserxmlnew">ParserXMLNew</a></h3>
+<div class="level3">
+
+<p>
+parser with new xml scheme of senseless v2
+
+</p>
+
+</div>
+<!-- SECTION "ParserXMLNew" [3744-3807] -->
+<h3><a name="parserwithpanel" id="parserwithpanel">ParserWithPanel</a></h3>
+<div class="level3">
+
+<p>
+Added a panel to the parser with xml scheme of senseless v2
+
+</p>
+
+</div>
+<!-- SECTION "ParserWithPanel" [3808-3891] -->
+<h3><a name="parserwithpanelorgxml" id="parserwithpanelorgxml">ParserWithPanelOrgXML</a></h3>
+<div class="level3">
+
+<p>
+Parser with panel for senseless v1
+
+</p>
+
+</div>
+<!-- SECTION "ParserWithPanelOrgXML" [3892-3956] -->
+<h3><a name="parserwithdifmessages" id="parserwithdifmessages">ParserWithDifMessages</a></h3>
+<div class="level3">
+
+<p>
+Parser that works with the xml scheme of senseless v1 and transmit 3 different <acronym title="Extensible Markup Language">XML</acronym> schemes to the controller
+
+</p>
+
+</div>
+<!-- SECTION "ParserWithDifMessages" [3957-4095] -->
+<h3><a name="collmsgtest" id="collmsgtest">CollmsgTest</a></h3>
+<div class="level3">
+
+<p>
+Parser to the test the mig tool for tinyos, to see if the different messages were transferred to the parser
+
+</p>
+
+</div>
+<!-- SECTION "CollmsgTest" [4096-4223] -->
+<h3><a name="parserwithdifmessagesreal" id="parserwithdifmessagesreal">ParserWithDifMessagesReal</a></h3>
+<div class="level3">
+
+<p>
+Parser that handles the 3 different from the telosb and parses the data to the controller
+
+</p>
+
+</div>
+<!-- SECTION "ParserWithDifMessagesReal" [4224-4347] -->
+<h3><a name="parserwithdifmessagesrealv2" id="parserwithdifmessagesrealv2">ParserWithDifMessagesRealv2</a></h3>
+<div class="level3">
+
+<p>
+Parser that handles the dissemination messages from the controller
+</p>
+
+</div>
+<!-- SECTION "ParserWithDifMessagesRealv2" [4348-] -->

@@ -1,0 +1,4 @@
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getNodeActions<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>nodeid<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>

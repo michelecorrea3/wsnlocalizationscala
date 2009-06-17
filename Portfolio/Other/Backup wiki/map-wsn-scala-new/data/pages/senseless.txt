@@ -1,0 +1,75 @@
+====Overzicht====
+Waarvoor gebruiken we het framework? (Voornamelijk de controller)
+
+  *Data verzamelen in MySQL Database
+  *Lokalisering a.d.h.v. data
+  *Interface met SCALA
+
+====Aanpassingen====
+===Wat hebben we niet nodig?===
+  * Sun SPOT, we zullen voorlopig enkel met TelosB modules werken
+  * DB2, dit lijkt ons een beetje zwaar voor onze laptops, MySQL zal voldoen
+
+  *GUIs, deze zijn in huidige vorm niet direct bruikbaar voor ons project. We zouden deze eventueel kunnen uitbreiden, maar misschien dat SCALA hier een handige GUI voor heeft. Voor de data-analyse tijdens onze MAP zouden we rechtstreeks met een ODBC client werken. Later zouden we een GUI kunnen gebruiken om veranderingen makkelijker te analyseren. Deze moet dan echter op maat gemaakt zijn voor onze doeleinden.
+
+===Wat wordt er behouden?===
+
+
+===Wat moet er worden verbeterd?===
+  * TelosB module, deze moet informatie ondersteunen voor de lokatiebepaling, zo moeten zeker de volgende velden worden toegevoegd aan het XML schema
+    *RSSI
+    *LQI
+    *X-Coordinaat
+    *Y-Coordinaat
+    *Z-Coordinaat
+    *??
+Als we met een gedistribueerd algoritme zouden werken dan moet de RSSI & LQI data niet doorgestuurd worden. Omgekeerd, voor een gecentraliseerd algoritme zouden we de X, Y, Z coördinaat niet moeten verzenden. Omdat de keuze momenteel nog een open vraag is, voegen we best alle parameters toe om veilig te spelen.
+
+  * Controller & MySQL moeten eveneens deze veranderingen ondersteunen.
+
+===Vgl tussen 2 projecten===
+====Project Peter====
+
+  * Controller kan werken met 1 DB, 1 GUI, maar heeft 2 WSNs nodig. Dus er moet een dummy WSN gemaakt worden of de code moet aangepast worden.
+  * bestaat uit:
+    * SocketServer
+    * SocketClient
+    * Processor
+    * XML convertor
+    * DB connector
+
+Controller lijkt me toch logisch geschreven al is het nadeel natuurlijk wel dat deze volledig hard-coded en statisch is. Eenvoudig dus een aantal parameters toevoegen zit er dus niet in denk ik. Misschien is de controller van Vincent dynamischer?  
+
+  * TelosB gedeelte bestaat uit:
+    * nesC code
+    * XML parser in JAVA!
+
+  * MySQL
+    * DB-schema is gegeven.
+    * werkt met stored procedures, deze zullen ook moeten worden aangepast.
+
+====Project Tim====
+  * **Controller**:
+    * werkt met 2 databases (MySQL & DB2), met 2 GUI's (C# en php website) en met 2 WSN's (TelosB & Sun spot), in principe kunnen er nog vele andere aangesloten worden door de uniforme interface met de controller.
+    * geschreven in java volgens de J2EE standaard, dus het is platform onafhankelijk
+    * benodigdheden: J2EE Application zoals Apache Tomcat 6.0
+    * het installeren van de applicatie kan makkelijk gebeuren met behulp van het WAR bestand
+    * bestaat uit:
+       * datasource (platform onafhankelijk) voor DB2 & MySQL
+       * DOM XML parser (Xerces-J library)
+       * DAO (Data Access Object) framework
+       * Communicatie door webservices: /frontedService of /backendService of /backendDiscoveryService
+
+  * **TelosB**
+    * NesC
+    * XML parser geschreven in java (werkt in 1 richting,namelijk info nr de controller sturen)
+
+  * **MySQL**
+    * DB-schema is gegeven, met voornamelijk 4 tabellen:
+       * Node (info over de node: ID, status, netwerk interface, locatie, voltage, speed, levensduur... )
+       * Measurement (al de info die de nodes lezen: ID, eenheid van de meeting, tijd, datum, waarde...  )
+       * Network (info i.v.m. het netwerk: ID, naam, aantal nodes, tijd, datum... )
+       * NodeService (de services die node ondersteunen: ID en een ID voor de service )
+    * werkt niet met stored procedures
+    * werkt met foreign keys
+    * Software: MySQL server 5

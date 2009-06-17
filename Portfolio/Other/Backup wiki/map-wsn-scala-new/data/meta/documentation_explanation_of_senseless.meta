@@ -1,0 +1,15 @@
+a:2:{s:7:"current";a:7:{s:4:"date";a:2:{s:7:"created";i:1238075004;s:8:"modified";i:1238075542;}s:7:"creator";s:13:"peterdecauwer";s:11:"last_change";a:7:{s:4:"date";i:1238075542;s:2:"ip";s:14:"213.219.148.14";s:4:"type";s:1:"E";s:2:"id";s:38:"documentation_explanation_of_senseless";s:4:"user";s:5:"peter";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:5:"title";s:3:"GUI";s:11:"description";a:2:{s:15:"tableofcontents";a:3:{i:0;a:4:{s:3:"hid";s:3:"gui";s:5:"title";s:3:"GUI";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:1;a:4:{s:3:"hid";s:10:"controller";s:5:"title";s:10:"Controller";s:4:"type";s:2:"ul";s:5:"level";i:3;}i:2;a:4:{s:3:"hid";s:14:"status_message";s:5:"title";s:14:"Status Message";s:4:"type";s:2:"ul";s:5:"level";i:3;}}s:8:"abstract";s:423:"GUI
+
+Controller
+
+Status Message
+
+The problem
+
+What do we need to do with the status of the nodes so that it may assist us in analyzing the localization protocols?
+
+
+	*  Status of the nodes needs to be logged at all times
+	*  The capability to set the status of the nodes
+		*  Check the current status so that we do changes nodes status unnecessary
+		*  Get a confirmation so that we are assured the nodes status has changed";}s:8:"internal";a:2:{s:5:"cache";b:1;s:3:"toc";b:1;}s:11:"contributor";a:1:{s:5:"peter";s:13:"peterdecauwer";}}s:10:"persistent";a:4:{s:4:"date";a:2:{s:7:"created";i:1238075004;s:8:"modified";i:1238075542;}s:7:"creator";s:13:"peterdecauwer";s:11:"last_change";a:7:{s:4:"date";i:1238075542;s:2:"ip";s:14:"213.219.148.14";s:4:"type";s:1:"E";s:2:"id";s:38:"documentation_explanation_of_senseless";s:4:"user";s:5:"peter";s:3:"sum";s:0:"";s:5:"extra";s:0:"";}s:11:"contributor";a:1:{s:5:"peter";s:13:"peterdecauwer";}}}

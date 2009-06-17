@@ -1,0 +1,512 @@
+
+
+
+<h2><a name="nut" id="nut">Nut</a></h2>
+<div class="level2">
+
+<p>
+Hier plaatsen we alle <acronym title="Extensible Markup Language">XML</acronym> schemas die we zullen gaan gebruiken. <a href="/wikis/map-wsn-scala-new/doku.php?id=discussie-xmlschema" class="wikilink2" title="discussie-xmlschema" rel="nofollow">Discussie!</a> 
+
+</p>
+<hr />
+
+<p>
+
+<img src="/wikis/map-wsn-scala-new/lib/images/smileys/icon_exclaim.gif" class="middle" alt=":!:" /> Belangrijke opmerking: voor je de xml over het netwerk naar de controller stuurt; VERWIJDER AL DE CARRIAGE FEEDS aka enters (\r\n in meeste talen). Indien dit niet wordt gedaan, gaat de controller enkel de eerste lijn inlezen. (met al de gevolgen van dien). Vergeet wel niet op het einde van je bericht een “\r\n” toe te voegen (indien je niet een functie zoals WriteLine() gebruikt, want deze doet dit automatisch.)
+
+</p>
+<hr />
+
+<p>
+Het doel is om al de communicatie volgens deze schema&#039;s uit te voeren. De schema&#039;s dienen om te kunnen nagaan of de syntax van een xml-bestand/stream/string correct is.
+</p>
+
+</div>
+<!-- SECTION "Nut" [1-720] -->
+<h3><a name="legende" id="legende">Legende</a></h3>
+<div class="level3">
+
+<p>
+De betekenis van de schema&#039;s is als volgt:
+</p>
+<ul>
+<li class="level1"><div class="li">  <pre class="code xml"><span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;&lt;tagname&gt;</span></span>&quot;&gt;</pre>
+<p>
+ Is een echte tag met naam tagname.
+</p>
+</div>
+</li>
+<li class="level1"><div class="li">  <pre class="code xml"><span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span><span class="re1">&lt;/xs:sequnce<span class="re2">&gt;</span></span></span></pre>
+<p>
+  betekent dat alles dat hiertussen staat in deze exacte volgorde moet voorkomen.
+</p>
+</div>
+</li>
+<li class="level1"><div class="li">  <pre class="code xml">maxOccurs / minOccurs</pre>
+<p>
+ is hoe vaak een tag minimaal en maximaal moet/mag voorkomen. Als het er niet bij staat: default is 1 voor beide attributen.
+</p>
+</div>
+</li>
+</ul>
+
+<p>
+
+Opmerking: bij de voorbeelden staat er vaak een hele waslijst in de &#039;root&#039; node van de voorbeelden. Dit moet niet aanwezig zijn in de berichten; het ontbreken van deze attributen in de root-node brengt geen gevaar met zich mee.
+Opmerking2: Het is ook zo dat er vaak in de schema&#039;s elementen(tags) aanwezig zijn die niet verplicht zijn (aangeduid met minOccurs = 0), ik zou toch aanraden om deze tags toch toe te voegen, maar gewoon leeg te laten.
+</p>
+
+</div>
+<!-- SECTION "Legende" [721-1613] -->
+<h2><a name="sensor_data_detail" id="sensor_data_detail">Sensor Data (detail)</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Sensor Data (detail)" [1614-1644] -->
+<h3><a name="schema" id="schema">Schema</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;SensorMeasurements&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/SensorMeasurements.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/SensorMeasurements.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/SensorMeasurements.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;SensorMeasurements&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Root of the xml-file--&gt;</span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Sensor&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Each sensor has a single entry with all the measurements of that sensor --&gt;</span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;ID&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of node --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Type&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Type of node (e.g. TelosB, SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Time&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Timestamp of the measurements --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Temp&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of temperature --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Humidity&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of humidity --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Light&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of light --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Power&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of power --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AccX&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of X-axis acceleration (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AccY&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Y-axis acceleration (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;AccZ&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Z-axis acceleration (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;TiltX&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of X-axis tilt-angle (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;TiltY&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Y-axis tilt-angle (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;TiltZ&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Measurement of Z-axis tilt-angle (SunSpot) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED1&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED2&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED3&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED4&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED5&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED6&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED7&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED8&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Polling&quot;</span>  <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Button1&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Status of button1 of the node  (1 = pressed, 0 = not pressed)--&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Button2&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Status of button2 of the node  (1 = pressed, 0 = not pressed) (SunSpot)--&gt;</span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Schema" [1645-4660] -->
+<h3><a name="voorbeeld" id="voorbeeld">Voorbeeld</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;SensorMeasurements</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/SensorMeasurements.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;ID<span class="re2">&gt;</span></span><span class="re1">&lt;/ID<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Type<span class="re2">&gt;</span></span><span class="re1">&lt;/Type<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Time<span class="re2">&gt;</span></span><span class="re1">&lt;/Time<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Temp<span class="re2">&gt;</span></span><span class="re1">&lt;/Temp<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Humidity<span class="re2">&gt;</span></span><span class="re1">&lt;/Humidity<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Light<span class="re2">&gt;</span></span><span class="re1">&lt;/Light<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Power<span class="re2">&gt;</span></span><span class="re1">&lt;/Power<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccX<span class="re2">&gt;</span></span><span class="re1">&lt;/AccX<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccY<span class="re2">&gt;</span></span><span class="re1">&lt;/AccY<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccZ<span class="re2">&gt;</span></span><span class="re1">&lt;/AccZ<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltX<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltX<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltY<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltY<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltZ<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltZ<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED1<span class="re2">&gt;</span></span><span class="re1">&lt;/LED1<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED2<span class="re2">&gt;</span></span><span class="re1">&lt;/LED2<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED3<span class="re2">&gt;</span></span><span class="re1">&lt;/LED3<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED4<span class="re2">&gt;</span></span><span class="re1">&lt;/LED4<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED5<span class="re2">&gt;</span></span><span class="re1">&lt;/LED5<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED6<span class="re2">&gt;</span></span><span class="re1">&lt;/LED6<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED7<span class="re2">&gt;</span></span><span class="re1">&lt;/LED7<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED8<span class="re2">&gt;</span></span><span class="re1">&lt;/LED8<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Polling<span class="re2">&gt;</span></span><span class="re1">&lt;/Polling<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Button1<span class="re2">&gt;</span></span><span class="re1">&lt;/Button1<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Button2<span class="re2">&gt;</span></span><span class="re1">&lt;/Button2<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;ID<span class="re2">&gt;</span></span><span class="re1">&lt;/ID<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Type<span class="re2">&gt;</span></span><span class="re1">&lt;/Type<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Time<span class="re2">&gt;</span></span><span class="re1">&lt;/Time<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Temp<span class="re2">&gt;</span></span><span class="re1">&lt;/Temp<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Humidity<span class="re2">&gt;</span></span><span class="re1">&lt;/Humidity<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Light<span class="re2">&gt;</span></span><span class="re1">&lt;/Light<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Power<span class="re2">&gt;</span></span><span class="re1">&lt;/Power<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccX<span class="re2">&gt;</span></span><span class="re1">&lt;/AccX<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccY<span class="re2">&gt;</span></span><span class="re1">&lt;/AccY<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AccZ<span class="re2">&gt;</span></span><span class="re1">&lt;/AccZ<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltX<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltX<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltY<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltY<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;TiltZ<span class="re2">&gt;</span></span><span class="re1">&lt;/TiltZ<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Button1<span class="re2">&gt;</span></span><span class="re1">&lt;/Button1<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Button2<span class="re2">&gt;</span></span><span class="re1">&lt;/Button2<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/SensorMeasurements<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Voorbeeld" [4661-5635] -->
+<h2><a name="sensor_data_geschiedenis" id="sensor_data_geschiedenis">Sensor Data (geschiedenis)</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Sensor Data (geschiedenis)" [5636-5672] -->
+<h3><a name="schema1" id="schema1">Schema</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;HistoryOfSensorMeasurement&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/HistoryOfSensorMeasurement.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/HistoryOfSensorMeasurement.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/HistoryOfSensorMeasurement.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;History&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Root of the xml-file --&gt;</span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Sensor&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">&gt;</span></span> <span class="sc-1">&lt;!-- Just an extra hint that it are values of just one sensor over a certain timespan --&gt;</span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;ID&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- ID of node --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MeasurementType&quot;</span> <span class="re2">/&gt;</span></span> <span class="sc-1">&lt;!-- Type of measurement (e.g. Temperature, Humidity, ...) --&gt;</span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Measurement&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span>
+                <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+                  <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+                    <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MeasurementValue&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- Actual measured value --&gt;</span>
+                    <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MeasurementTime&quot;</span> <span class="re2">/&gt;</span></span><span class="sc-1">&lt;!-- Timestamp of the value in question --&gt;</span>
+                  <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+                <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Schema" [5673-7109] -->
+<h3><a name="voorbeeld1" id="voorbeeld1">Voorbeeld</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;History</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/HistoryOfSensorMeasurement.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;ID<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/ID<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;MeasurementType<span class="re2">&gt;</span></span></span>Temperature<span class="sc3"><span class="re1">&lt;/MeasurementType<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Measurement<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;MeasurementValue<span class="re2">&gt;</span></span></span>40<span class="sc3"><span class="re1">&lt;/MeasurementValue<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;MeasurementTime<span class="re2">&gt;</span></span></span>10:10:10 09/10/2008<span class="sc3"><span class="re1">&lt;/MeasurementTime<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/Measurement<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;Measurement<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;MeasurementValue<span class="re2">&gt;</span></span></span>41<span class="sc3"><span class="re1">&lt;/MeasurementValue<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;MeasurementTime<span class="re2">&gt;</span></span></span>10:10:15 09/10/2008<span class="sc3"><span class="re1">&lt;/MeasurementTime<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/Measurement<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/History<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Voorbeeld" [7110-7641] -->
+<h2><a name="sensor_acties" id="sensor_acties">Sensor acties</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Sensor acties" [7642-7665] -->
+<h3><a name="schema2" id="schema2">Schema</a></h3>
+<div class="level3">
+
+</div>
+<!-- SECTION "Schema" [7666-7681] -->
+<h3><a name="voorbeeld2" id="voorbeeld2">Voorbeeld</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;SensorActions<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;SENSORTYPE<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AvailAction<span class="re2">&gt;</span></span><span class="re1">&lt;/AvailAction<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AvailAction<span class="re2">&gt;</span></span><span class="re1">&lt;/AvailAction<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;AvailAction<span class="re2">&gt;</span></span><span class="re1">&lt;/AvailAction<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/SENSORTYPE<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/SensorActions<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Voorbeeld" [7682-7917] -->
+<h2><a name="sensors_op_een_map" id="sensors_op_een_map">Sensors op een map</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Sensors op een map" [7918-7946] -->
+<h3><a name="schema3" id="schema3">Schema</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;MapSensors&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/MapSensors.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/MapSensors.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/MapSensors.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;MapSensors&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Sensor&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;nodeid&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;nodetype&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;name&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;posx&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;posy&quot;</span> <span class="re2">/&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Schema" [7947-8829] -->
+<h3><a name="voorbeeld3" id="voorbeeld3">Voorbeeld</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;MapSensors</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/MapSensors.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;nodeid<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/nodeid<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;nodetype<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/nodetype<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;name<span class="re2">&gt;</span></span></span>Micro<span class="sc3"><span class="re1">&lt;/name<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;posx<span class="re2">&gt;</span></span></span>10<span class="sc3"><span class="re1">&lt;/posx<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;posy<span class="re2">&gt;</span></span></span>10<span class="sc3"><span class="re1">&lt;/posy<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;Sensor<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;nodeid<span class="re2">&gt;</span></span></span>2<span class="sc3"><span class="re1">&lt;/nodeid<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;nodetype<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/nodetype<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;name<span class="re2">&gt;</span></span></span>Woonkamer<span class="sc3"><span class="re1">&lt;/name<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;posx<span class="re2">&gt;</span></span></span>20<span class="sc3"><span class="re1">&lt;/posx<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;posy<span class="re2">&gt;</span></span></span>10<span class="sc3"><span class="re1">&lt;/posy<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Sensor<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/MapSensors<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Voorbeeld" [8830-9251] -->
+<h2><a name="reply_int" id="reply_int">Reply (int)</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Reply (int)" [9252-9273] -->
+<h3><a name="schema4" id="schema4">Schema</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;Reply&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/Reply.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/Reply.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/Reply.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Replies&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Reply&quot;</span><span class="re2">&gt;</span></span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;INT&quot;</span><span class="re2">/&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Schema" [9274-9938] -->
+<h3><a name="voorbeeld4" id="voorbeeld4">Voorbeeld</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;Replies</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/Reply.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Reply<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;INT<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/INT<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Reply<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/Replies<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Voorbeeld" [9939-10111] -->
+<h2><a name="reply_sensortypes" id="reply_sensortypes">Reply (SensorTypes)</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "Reply (SensorTypes)" [10112-10141] -->
+<h3><a name="schema5" id="schema5">Schema</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;SensorTypes&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/SensorTypes.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/SensorTypes.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/SensorTypes.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;SensorTypes&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;SensorType&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span><span class="re2">&gt;</span></span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;typeid&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;typename&quot;</span> <span class="re2">/&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Schema" [10142-10910] -->
+<h3><a name="voorbeeld5" id="voorbeeld5">Voorbeeld</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;SensorTypes</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/SensorTypes.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;SensorType<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;typeid<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/typeid<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;typename<span class="re2">&gt;</span></span></span>SunSpot<span class="sc3"><span class="re1">&lt;/typename<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/SensorType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;SensorType<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;typeid<span class="re2">&gt;</span></span></span>2<span class="sc3"><span class="re1">&lt;/typeid<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;typename<span class="re2">&gt;</span></span></span>TelosB<span class="sc3"><span class="re1">&lt;/typename<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/SensorType<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/SensorTypes<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Voorbeeld" [10911-11232] -->
+<h2><a name="requests" id="requests">Requests</a></h2>
+<div class="level2">
+
+<p>
+zie <a href="/wikis/map-wsn-scala-new/doku.php?id=requestname" class="wikilink2" title="requestname" rel="nofollow">lijst van requestnames</a> voor meer info.
+
+</p>
+
+</div>
+<!-- SECTION "Requests" [11233-11310] -->
+<h3><a name="schema6" id="schema6">Schema</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;Requests&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/Requests.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/Requests.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/Requests.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Requests&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;Request&quot;</span><span class="re2">&gt;</span></span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;RequestName&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;arg&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;unbounded&quot;</span> <span class="re2">/&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Schema" [11311-12104] -->
+<h3><a name="voorbeeld6" id="voorbeeld6">Voorbeeld</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;Requests</span> <span class="re0">xmlns:xsi</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/Requests.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;Request<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;RequestName<span class="re2">&gt;</span></span></span>getMaps<span class="sc3"><span class="re1">&lt;/RequestName<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>testarg<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;arg<span class="re2">&gt;</span></span></span>testarg2<span class="sc3"><span class="re1">&lt;/arg<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/Request<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/Requests<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Voorbeeld" [12105-12409] -->
+<h2><a name="wsn_action_request" id="wsn_action_request">WSN Action Request</a></h2>
+<div class="level2">
+
+</div>
+<!-- SECTION "WSN Action Request" [12410-12438] -->
+<h3><a name="opmerking" id="opmerking">Opmerking</a></h3>
+<div class="level3">
+
+<p>
+LED1…LED8: Activeer de leds. Sunspot heeft 8 tricolor leds, telosb heeft maar 3 single color leds (RYB).
+<br/>
+ ga er vanuit dat et een 1 (aan) of 0 (uit) is.
+</p>
+
+<p>
+Polling: Hiermee kan de gebruiker opgeven met welk interval de sensoren meten (in seconden)
+</p>
+
+</div>
+<!-- SECTION "Opmerking" [12439-12707] -->
+<h3><a name="schema7" id="schema7">Schema</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">encoding</span>=<span class="st0">&quot;utf-8&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;xs:schema</span> <span class="re0">id</span>=<span class="st0">&quot;WSNActionReq&quot;</span></span>
+<span class="sc3">    <span class="re0">targetNamespace</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">elementFormDefault</span>=<span class="st0">&quot;qualified&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:mstns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span></span>
+<span class="sc3">    <span class="re0">xmlns:xs</span>=<span class="st0">&quot;http://www.w3.org/2001/XMLSchema&quot;</span></span>
+<span class="sc3"><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;WSNReq&quot;</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;RequestAction&quot;</span><span class="re2">&gt;</span></span>
+          <span class="sc3"><span class="re1">&lt;xs:complexType<span class="re2">&gt;</span></span></span>
+            <span class="sc3"><span class="re1">&lt;xs:sequence<span class="re2">&gt;</span></span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;NodeID&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED1&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED2&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED3&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED4&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED5&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED6&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED7&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;LED8&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;0&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+              <span class="sc3"><span class="re1">&lt;xs:element</span> <span class="re0">name</span>=<span class="st0">&quot;polling&quot;</span> <span class="re0">minOccurs</span>=<span class="st0">&quot;1&quot;</span> <span class="re0">maxOccurs</span>=<span class="st0">&quot;1&quot;</span><span class="re2">/&gt;</span></span>
+            <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+          <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+      <span class="sc3"><span class="re1">&lt;/xs:sequence<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/xs:complexType<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/xs:element<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/xs:schema<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Schema" [12708-14054] -->
+<h3><a name="voorbeeld7" id="voorbeeld7">Voorbeeld</a></h3>
+<div class="level3">
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;?xml</span> <span class="re0">version</span>=<span class="st0">&quot;1.0&quot;</span> <span class="re0">standalone</span>=<span class="st0">&quot;yes&quot;</span><span class="re2">?&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;WSNReq</span> <span class="re0">xmlns</span>=<span class="st0">&quot;http://tempuri.org/WSNActionReq.xsd&quot;</span><span class="re2">&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;RequestAction<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;NodeID<span class="re2">&gt;</span></span></span>1<span class="sc3"><span class="re1">&lt;/NodeID<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED1<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED1<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED2<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED2<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED3<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED3<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED4<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED4<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED5<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED5<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED6<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED6<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED7<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED7<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;LED8<span class="re2">&gt;</span></span></span>0<span class="sc3"><span class="re1">&lt;/LED8<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;polling<span class="re2">&gt;</span></span></span>5<span class="sc3"><span class="re1">&lt;/polling<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;/RequestAction<span class="re2">&gt;</span></span></span>
+<span class="sc3"><span class="re1">&lt;/WSNReq<span class="re2">&gt;</span></span></span></pre>
+</div>
+<!-- SECTION "Voorbeeld" [14055-] -->
