@@ -1,21 +1,9 @@
 ﻿namespace Elab.Rtls.Engines.WsnEngine
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
     using System.Data;
-    using System.Globalization;
     using System.IO;
-    using System.Net.Sockets;
-    using System.Xml;
-
-    using DatabaseConnection;
-
     using Elab.Rtls.Engines.WsnEngine.Positioning;
-
-    using Scala.Core;
-
-    using SocketConnection;
 
     public partial class Controller
     {
@@ -41,6 +29,13 @@
             return dateTime.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
+        /// <summary>
+        /// Stored procedure wrapper
+        /// Adds a new position for a single node to the database
+        /// </summary>
+        /// <param name="wsnID">The WSNID of the node</param>
+        /// <param name="position">The position in a point type</param>
+        /// <param name="anchor">Anchor node or Blind Node</param>
         private void AddPosition(DataRow row, Point pos, int anchor)
         {
             string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
@@ -54,6 +49,11 @@
             MySQLConn.Query(AddPosition);
         }
 
+        /// <summary>
+        /// Stored procedure wrapper
+        /// Adds a new position for a single node to the database
+        /// </summary>
+        /// <param name="row">The data to be added containing the position</param>
         private void AddPosition(DataRow row)
         {
             string AddPosition = "call addPosition(" + row["ID"].ToString() + ", '"
@@ -62,6 +62,11 @@
             MySQLConn.Query(AddPosition);
         }
 
+        /// <summary>
+        /// Converts an XML-string to a DataSet
+        /// </summary>
+        /// <param name="incxml">XML-string to be converted</param>
+        /// <returns>DataSet containing the data from the XML</returns>
         private DataSet StringToDataSet(string incxml)
         {
             DataSet IncMsg = new DataSet();
