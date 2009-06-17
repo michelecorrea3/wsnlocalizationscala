@@ -82,16 +82,23 @@ Figure \ref{fig:OnboardAntenna} and \ref{fig:ExternalAntenna} display the mean a
 The results are consistent with the common belief that node orientation influences RSS readings.
 
 \subsection{In \& outdoor positioning}
+Figure \ref{fig:IndoorAccuracy} and \ref{fig:OutdoorAccuracy} show the relative positioning error for respectively the indoor and outdoor positioning. The relative positioning error is measured as the absolute positioning error divided by the average distance to every connected anchor node.
+
+
+The relative positioning error of the algorithms in the outdoor environment is generally below 140\%. The two trilateration algorithms perform really poor in the indoor environment. While Min-Max has a maximun relative positioning error of 68\% and keeps dropping when more anchors are added.
 \begin{figure}[h]
 	\centering
-		\includegraphics[scale=0.35]{Images/IndoorAccuracy.png}
+		\includegraphics[scale=0.5]{Images/IndoorAccuracy.png}
 	\caption{Average relative positioning error in the indoor environment}
 	\label{fig:IndoorAccuracy}
 \end{figure}
 
+The relative positioning error of the algorithms in the outdoor environment is generally below 80\%. The trilateration with least squares has good computational performance but a very low accuracy in most cases. A better solution would be to use a more advanced form of least square like the weighted least square and the non-linear least square.
+Min-Max has the best accuracy, even under 50\%.
 \begin{figure}[h]
 	\centering
-		\includegraphics[scale=0.35]{Images/OutdoorAccuracy.png}
+		\includegraphics[scale=0.5]{Images/OutdoorAccuracy.png}
 	\caption{Average relative positioning error in the outdoor environment}
 	\label{fig:OutdoorAccuracy}
 \end{figure}
+The results show that the accuracy improves when more anchor nodes are added to the system, but we do notice that the accuracy becomes stagnated when we reach the number of 7 anchor nodes. The trilateration algorithms lags behind in accuracy compared to the other algorithms. The Min-Max algorithm is computationally simple and devilers the best accuracy. Therefore it is our current algorithm of choice.
