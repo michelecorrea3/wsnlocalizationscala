@@ -214,11 +214,13 @@
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        /// 
         private void timerSensorFetch_Tick(object sender, EventArgs e)
         {
-            if (radioButtonDiscovery.Checked)
-                Discovery();
-            else if (radioButtonSensorTimeOut.Checked)
+            //if (radioButtonDiscovery.Checked)
+                //Discovery();
+            //else if (radioButtonSensorTimeOut.Checked)
+            if (radioButtonSensorTimeOut.Checked)
                 SensorsTimeOut();
         }
 
