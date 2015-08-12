@@ -1,0 +1,1 @@
+This project uses WSN for localization for purposes and uses RSSI as the ranging method
